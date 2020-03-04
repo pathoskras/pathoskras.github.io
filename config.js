@@ -46,12 +46,19 @@ exports.config = {
     },
     controllers: {
         kras: function (router) {
-            console.log(Object.keys(router.views));
-            const data = {
+            // console.log(Object.keys(router.views));
+            router.readAllViews(function(views){
+                const data = {
+                    images: [
+                        '/images/a.jpg'
+                    ]
+                };
 
-            };
-            var output = mustache.render(router.views.kras, data, router.views);
-            router.res.end(output);
+                console.log(Object.keys(views));
+
+                var output = mustache.render(views.kras, data, views);
+                router.res.end(output);
+            })
         }
     }
 }

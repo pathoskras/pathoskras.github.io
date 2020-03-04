@@ -11,13 +11,16 @@
 </head>
 
 <body>
-    <h1>Free Hand Drawer using HTML5 Canvas</h1>
+    <h1>Free Hand Drawer using HTML5 canvas</h1>
 
     <span id="controls">Controls</span>
-    <canvas id="canvas-display" width="400" height="400"></canvas>
+    <canvas id="canvas-display" width="800" height="500">
+        <img src="images/a.png">
+    </canvas>
     <br />
     <ul id="colors">
         <li style="background-color:black;"> </li>
+        <li style="background-color:white;"> </li>
         <li style="background-color:red;"> </li>
         <li style="background-color:green;"> </li>
         <li style="background-color:orange;"> </li>
@@ -54,6 +57,10 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $('#canvas-display').paintBrush();
+
+            setTimeout(function(){
+                make_base();
+            },500);
         });
     </script>
     <script>
@@ -74,9 +81,11 @@
                             core.draw();
                             core.controls();
                             //core.toggleScripts();
+console.log("hello");
                         },
 
                         canvasInit: function () {
+console.log("canvasInit")
                             context = document.getElementById("canvas-display").getContext("2d");
                             context.lineCap = "round";
                             //Fill it with white background
@@ -221,6 +230,20 @@
             link.href = document.getElementById('canvas-display').toDataURL()
             link.click();
         }
+
+
+var canvas = document.getElementById('canvas-display'),
+context = canvas.getContext('2d');
+
+
+function make_base()
+{
+  base_image = new Image();
+  base_image.src = 'images/a.png';
+  context.drawImage(base_image, 0, 0);
+}
+
+
     </script>
 </body>
 
