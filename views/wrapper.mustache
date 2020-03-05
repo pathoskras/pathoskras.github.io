@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>KRAS Annotation</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+	<link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="/canvas/canvas.css">
+	<style>
+	body,
+    html {
+      position: fixed;
+    }
+    div#footer {
+        background: white;
+        border-top: solid 1px black;
+        height: 15vh;
+        position: fixed;
+        bottom: 0;
+        width: 100vw;
+    }
+    #footer .nav-button {
+        background: white;
+        padding: 0.5vh;
+        width: 15vh;
+        height: 15vh;
+        margin-right: -5px;
+        cursor: pointer;
+    }
+
+    #footer .nav-button img {
+        object-fit: cover;
+    }
+    #footer .nav-button:hover {
+        border: solid 3px black;
+        background: red;
+    }
+	</style>
+</head>
+
+<body>
+    <div id="wrapper" class="container-fluid page">
+        <div class="row">
+            <h1>Hello World!</h1>
+            {{> kras}}
+        </div>
+    
+    </div>
+
+    
+    <div id="footer">
+        <div>
+            <img class="nav-button" src="/images/home.png">
+
+            {{#images}}
+            <img class="nav-button" src="/images/{{image}}">
+            {{/images}}
+            <img class="nav-button" src="/images/email.png">
+
+        </div>
+        asdf
+    </div>
+
+</body>
+
+</html>

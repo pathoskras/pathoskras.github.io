@@ -56,6 +56,23 @@ exports.config = {
         }
     },
     controllers: {
+        wrapper: function(router) {
+            router.readAllViews(views => {
+                console.log(router.path);
+                var data = {
+                    images: [
+                        {image: "KRasGapBoundSwitchOffFrame2752.png"},
+                        {image: "KRasGDPBoundWithSos1Frame1429.png"},
+                        {image: "KRasGTPBoundWithSos1.png"},
+                        {image: "MutantKRasBoundToRaf1Frame3233.png"},
+                        {image: "tumourCelllsDividingFrame3779.png"}
+                    ]
+                }
+                views.inner = views.kras;
+                var output = mustache.render(views.wrapper, data, views);
+                router.res.end(output);
+            })
+        },
         kras: function (router) {
             // console.log(Object.keys(router.views));
             router.readAllViews(function(views){
