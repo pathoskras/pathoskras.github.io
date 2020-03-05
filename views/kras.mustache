@@ -6,8 +6,24 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>KRAS Annotation</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
 	<link rel="stylesheet" href="/css/main.css">
 	<link rel="stylesheet" href="/canvas/canvas.css">
+	<style>
+	body,
+    html {
+      position: fixed;
+    }
+    #colors {
+        position: fixed;
+        left: 0;
+    }
+    #canvas-display {
+        margin-left: 50px;
+    }
+
+	</style>
 </head>
 
 <body scroll="no" style="overflow: hidden">
@@ -29,12 +45,6 @@
 
     <script src="/js/vendor.min.js"></script>
     <script type="text/javascript">
-        {{! console.log("{{foo}}"); }}
-
-        document.ontouchmove = function(event){
-        event.preventDefault();
-    }
-
 
         $(document).ready(function () {
             $('#canvas-display').paintBrush();
@@ -145,6 +155,47 @@ console.log("canvasInit")
                                     }
                                 });
 
+
+
+
+
+
+
+                            //Drawing Code
+                            $('#canvas-display').on("touchstart", function (e) {
+                                if (e.button == 0) {
+                                    draw = 1;
+                                    core.saveActions(); //Start The drawing flow. Save the state
+                                    cntxt.beginPath();
+                                    cntxt.moveTo(e.pageX - left, e.pageY - top);
+                                } else {
+                                    draw = 0;
+                                }
+                            })
+                                .on("touchend", function (e) {
+                                    if (e.button != 0) {
+                                        draw = 1;
+                                    } else {
+                                        draw = 0;
+                                        cntxt.lineTo(e.pageX - left + 1, e.pageY - top + 1);
+                                        cntxt.stroke();
+                                        cntxt.closePath();
+                                    }
+                                })
+                                .on("touchmove", function (e) {
+                                    if (draw == 1) {
+                                        cntxt.lineTo(e.pageX - left + 1, e.pageY - top + 1);
+                                        cntxt.stroke();
+                                    }
+                                });
+
+
+
+
+
+
+
+
                         },
 
                         controls: function () {
@@ -203,8 +254,8 @@ console.log("canvasInit")
                         },
 
                         toggleScripts: function () {
-                            $('#colors').slideToggle(400);
-                            $('#control-buttons').toggle(400);
+//                             $('#colors').slideToggle(400);
+//                             $('#control-buttons').toggle(400);
                         }
                     };
 
