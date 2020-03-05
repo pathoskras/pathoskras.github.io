@@ -1,4 +1,15 @@
 const mustache = require('mustache');
+const nodemailer = require('nodemailer');
+let config = {
+    "mail_auth": {
+        "user": "username@gmail.com",
+        "pass": "password_here_lol"
+    }
+}
+try {
+    config = require(__dirname + '/config/config.json')
+} catch (e) {}
+const mail_auth = config.mail_auth;
 
 exports.config = {
     redirects: {
@@ -50,15 +61,55 @@ exports.config = {
             router.readAllViews(function(views){
                 const data = {
                     images: [
-                        '/images/a.jpg'
-                    ]
+                        {image: '/images/a.jpg'}
+                        // {image: '/images/prob.jpeg'}
+                    ],
+                    foo: [{
+                        abc: 123
+                    }]
                 };
 
-                console.log(Object.keys(views));
+                // console.log(Object.keys(views));
 
                 var output = mustache.render(views.kras, data, views);
                 router.res.end(output);
             })
+        },
+        mail: function (router) {
+            let transporter = nodemailer.createTransport({
+                pool: true,
+                host: "smtp.gmail.com",
+                port: 465,
+                secure: true, // use TLS
+                auth: mail_auth
+            });
+            transporter.verify(function(error, success) {
+                if (error) {
+                  console.log(error);
+                } else {
+                  console.log("Server is ready to take our messages");
+                }
+              });
+
+              var mailOptions = {
+                from: 'frostickle@gmail.com',
+                to: 'siyzdkbslxcnkmdidh@awdrt.net',
+                subject: 'Sending Email using Node.js',
+                text: 'That was easy!'
+              };
+
+              transporter.sendMail(mailOptions, function(error, info){
+                if (error) {
+                  console.log(error);
+                } else {
+                  console.log('Email sent: ' + info.response);
+                }
+              });
+              
+
+
+
+              router.res.end("Ok lol I guess we sent some mail??");
         }
     }
 }
