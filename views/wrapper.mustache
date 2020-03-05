@@ -40,6 +40,8 @@
         background: red;
     }
 	</style>
+    <script src="/js/vendor.min.js"></script>
+
 </head>
 
 <body>
@@ -62,8 +64,32 @@
             <img class="nav-button" src="/images/email.png">
 
         </div>
-        asdf
     </div>
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $('#canvas-display').paintBrush();
+
+        setTimeout(function(){
+            make_base();
+        },1500);
+    });
+
+    var canvas = document.getElementById('canvas-display'),
+    context = canvas.getContext('2d');
+
+
+    function make_base()
+    {
+        console.log("making base");
+        base_image = new Image();
+        base_image.src = 'images/a.jpg';
+        context.drawImage(base_image, 100, 100);
+    }
+
+</script>
 
 </body>
 
