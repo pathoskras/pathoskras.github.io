@@ -5,63 +5,57 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>PathOS</title>
+    <title>KRAS Annotation</title>
 	<link rel="stylesheet" href="/css/main.css">
 	<link rel="stylesheet" href="/canvas/canvas.css">
 </head>
 
-<body>
-    <h1>Free Hand Drawer using HTML5 canvas</h1>
+<body scroll="no" style="overflow: hidden">
+    <h1>KRAS Annotation</h1>
+{{#images}}
+    <img style="display: none;" src="{{image}}">
+{{/images}}
 
+
+
+{{! {{#images}} }}
     <span id="controls">Controls</span>
-    <canvas id="canvas-display" width="800" height="500">
-        <img src="images/a.png">
+    <canvas id="canvas-display" width="1000" height="700">
+        
     </canvas>
-    <br />
-    <ul id="colors">
-        <li style="background-color:black;"> </li>
-        <li style="background-color:white;"> </li>
-        <li style="background-color:red;"> </li>
-        <li style="background-color:green;"> </li>
-        <li style="background-color:orange;"> </li>
-        <li style="background-color:brown;"> </li>
-        <li style="background-color:#d2232a;"> </li>
-        <li style="background-color:#fcb017;"> </li>
-        <li style="background-color:#fff460;"> </li>
-        <li style="background-color:#9ecc3b;"> </li>
-        <li style="background-color:#fcb017;"> </li>
-        <li style="background-color:#fff460;"> </li>
-        <li style="background-color:#F43059;"> </li>
-        <li style="background-color:#82B82C;"> </li>
-        <li style="background-color:#0099FF;"> </li>
-        <li style="background-color:#ff00ff;"> </li>
-    </ul>
-    <br style="clear:both;" />
-    <br style="clear:both;" />
-    <div id="control-buttons">
-        <div style="float:left;">
-            <button id="undo" href="#" disabled="disabled">Undo</button>
-            <button id="clear" href="#">Reset</button>
-            <a target="_blank" class="button" id="export" href="#" download="my-file-name.png">Save as Image</a>
-        </div>
-        <div style="float:left;margin-left: 22px;text-align: center;width: 130px;">
-            Brush Size:<br />
-            <input name="brush" id="brush_size" type="range" value="5" min="0" max="20" />
-        </div>
-    </div>
-
-
+    {{> controls}}
+{{! {{/images}} }}
 
 
     <script src="/js/vendor.min.js"></script>
     <script type="text/javascript">
+        {{! console.log("{{foo}}"); }}
+
+        document.ontouchmove = function(event){
+        event.preventDefault();
+    }
+
+
         $(document).ready(function () {
             $('#canvas-display').paintBrush();
 
             setTimeout(function(){
                 make_base();
-            },500);
+            },1500);
         });
+
+        var canvas = document.getElementById('canvas-display'),
+        context = canvas.getContext('2d');
+
+
+        function make_base()
+        {
+            console.log("making base");
+            base_image = new Image();
+            base_image.src = 'images/a.jpg';
+            context.drawImage(base_image, 100, 100);
+        }
+
     </script>
     <script>
         (function ($) {
@@ -231,17 +225,6 @@ console.log("canvasInit")
             link.click();
         }
 
-
-var canvas = document.getElementById('canvas-display'),
-context = canvas.getContext('2d');
-
-
-function make_base()
-{
-  base_image = new Image();
-  base_image.src = 'images/a.png';
-  context.drawImage(base_image, 0, 0);
-}
 
 
     </script>
