@@ -1,5 +1,6 @@
 const mustache = require('mustache');
 const nodemailer = require('nodemailer');
+const formidable = require('formidable');
 let config = {
     "mail_auth": {
         "user": "username@gmail.com",
@@ -144,9 +145,31 @@ exports.config = {
               router.res.end("Ok lol I guess we sent some mail??");
         },
         test: function(router){
-            console.log(router);
+            const form = formidable();
+            form.parse(router.req, (err, fields, files) =>{
+                if(err) {
+                    console.log("ERROR!", err);
+                    router.res.end(err);
+                }
 
-            router.res.end("Ok");
+                // console.log(router.req);
+                console.log(fields);
+                console.log(files);
+                var data = {
+                    'Testing': "OKAY!"
+                }
+
+                router.db.Worksheet.create({
+                    email: fields.email,
+                    firstName: fields.firstName,
+                    lastName: fields.lastNmae,
+                    doctor: fields.doctor,
+                    hash: "lololol",
+                    data: data
+                });
+
+                router.res.end(JSON.stringify(fields));
+            });
         }
     }
 }

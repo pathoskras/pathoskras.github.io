@@ -128,14 +128,31 @@ function email() {
     $("#contentBox").html("");
     var div = d3.select("#contentBox").append("div");
     var form = div.append("form").attrs({
-        action: "test"
+        action: "test",
+        id: "saveForm",
+        method: "post"
     });
-    form.append("label").text("Email:");
+    form.append("label").text("Email:").attrs({
+        for: "email"
+    });
     form.append("input").attrs({
+        for: "saveForm",
+        id: "email",
         name: "email",
         type: "email",
         required: true
     });
+    form.append("label").text("First Name:").attrs({
+        for: "firstName"
+    });
+    form.append("input").attrs({
+        for: "saveForm",
+        id: "firstName",
+        name: "firstName",
+        type: "firstName",
+        required: true
+    });
+
     form.append("input").attrs({
         type: "submit"
     });
