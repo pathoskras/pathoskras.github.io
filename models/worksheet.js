@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
     email: DataTypes.STRING,
     doctor: DataTypes.STRING,
     hash: DataTypes.STRING,
-    data: DataTypes.JSON
+    data: DataTypes.TEXT
   }, {});
   Worksheet.associate = function(models) {
     // associations can be defined here

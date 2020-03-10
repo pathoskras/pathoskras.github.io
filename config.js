@@ -64,12 +64,12 @@ exports.config = {
                     images: [
                         {
                             image: "KRasGapBoundSwitchOffFrame2752.png",
-                            name: "Switch Off Frame",
+                            name: "Inactive Kras",
                             id: 1
                         },
                         {
                             image: "KRasGDPBoundWithSos1Frame1429.png",
-                            name: "Sos 1 Frame",
+                            name: "Kras bound with Sos",
                             id: 2
                         },
                         {
@@ -90,7 +90,7 @@ exports.config = {
                     ]
                 }
                 views.inner = views.kras;
-                if(router.path) {
+                if(router.path && router.path[0] && router.path[0] !== "") {
                     router.db.Worksheet.findOne({
                         where: {
                             hash: router.path[0]
@@ -104,6 +104,7 @@ exports.config = {
                         router.res.end(output);    
                     }).catch(e => {
                         console.log("ERROR?");
+                        console.log(e);
                         router.res.end(JSON.stringify(e));
                     })
 
@@ -185,7 +186,7 @@ exports.config = {
                     lastName: fields.lastName,
                     doctor: fields.doctor,
                     hash: hash,
-                    data: data
+                    data: JSON.stringify(data)
                 });
 
                 router.res.end(`Your hash is: ${hash}<br><br>
