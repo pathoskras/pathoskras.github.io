@@ -63,7 +63,7 @@
                     <li><a href="#Welcome" onclick="welcome()">Welcome</a></li>
                     {{#images}}
                     <li>
-                        <a href="#{{image}}" onclick="openScreen('{{image}}')">{{name}}</a>
+                        <a href="#{{image}}" onclick="openScreen('{{image}}', {{id}})">{{name}}</a>
                     </li>
                     {{/images}}
                     <li><a href="#Email" onclick="email()">Email</a></li>
@@ -71,9 +71,17 @@
             </div>
             <div class="col-md-10 col-xs-9">
             {{! Content goes here! }}
+                <form action="/saveDetails" id="saveForm" method="post">
 
                 <div id='contentBox'></div>
 
+                <textarea name="text-1" id="text-1" class="bigText hidden" for="saveForm"></textarea>
+                <textarea name="text-2" id="text-2" class="bigText hidden" for="saveForm"></textarea>
+                <textarea name="text-3" id="text-3" class="bigText hidden" for="saveForm"></textarea>
+                <textarea name="text-4" id="text-4" class="bigText hidden" for="saveForm"></textarea>
+                <textarea name="text-5" id="text-5" class="bigText hidden" for="saveForm"></textarea>
+
+                </form>
             </div>
         </div>
     
@@ -100,7 +108,7 @@ const md = new showdown.Converter({openLinksInNewWindow: true});
 welcome();
 
 function welcome() {
-    console.log("hello!");
+    hideEverything();
 
     $("#contentBox").html(md.makeHtml(`
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lobortis elementum nibh tellus molestie nunc non. Mattis vulputate enim nulla aliquet porttitor lacus. Vulputate eu scelerisque felis imperdiet. Sed libero enim sed faucibus turpis. Faucibus turpis in eu mi bibendum neque. Bibendum arcu vitae elementum curabitur vitae nunc sed velit. Quis vel eros donec ac. Amet luctus venenatis lectus magna. In hac habitasse platea dictumst. Feugiat in fermentum posuere urna nec tincidunt praesent semper feugiat. Quis imperdiet massa tincidunt nunc. Elit scelerisque mauris pellentesque pulvinar pellentesque habitant morbi tristique. Interdum varius sit amet mattis. Dictumst vestibulum rhoncus est pellentesque elit. Vulputate mi sit amet mauris. Et netus et malesuada fames ac. Egestas congue quisque egestas diam.
@@ -109,39 +117,32 @@ Aliquam id diam maecenas ultricies mi. Tincidunt tortor aliquam nulla facilisi. 
     `)).append(`<iframe width="560" height="315" src="https://www.youtube.com/embed/s8GxvVrnF38?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`);
 }
 
-
-function openScreen(image){
+function hideEverything() {
     $("#contentBox").html("");
+    d3.selectAll(".bigText").classed("hidden", true);
+}
+
+function openScreen(image, id){
+    hideEverything();
     var div = d3.select("#contentBox").append("div");
     div.append("img").attrs({
         class: "bigImage",
         src: `/images/${image}`
     });
     div2 = d3.select("#contentBox").append("div");
-    div2.append("h3").text("Notes:");    
-    div2.append("textarea").attrs({
+    div2.append("h3").text("Notes:");
+    d3.select(`#text-${id}`).classed("hidden", false);
+
+    {{! div2.append("textarea").attrs({
         class: "bigText"
-    });
+    }); }}
 }
 
 function email() {
-    $("#contentBox").html("");
+    hideEverything();
     var div = d3.select("#contentBox").append("div");
-    var form = div.append("form").attrs({
-        action: "test",
-        id: "saveForm",
-        method: "post"
-    });
-    form.append("label").text("Email:").attrs({
-        for: "email"
-    });
-    form.append("input").attrs({
-        for: "saveForm",
-        id: "email",
-        name: "email",
-        type: "email",
-        required: true
-    });
+    var form = div.append('div');
+
     form.append("label").text("First Name:").attrs({
         for: "firstName"
     });
@@ -152,6 +153,42 @@ function email() {
         type: "firstName",
         required: true
     });
+    form.append("br");
+
+    form.append("label").text("Last Name:").attrs({
+        for: "lastName"
+    });
+    form.append("input").attrs({
+        for: "saveForm",
+        id: "lastName",
+        name: "lastName",
+        type: "lastName",
+        required: true
+    });
+    form.append("br");
+
+    form.append("label").text("Email:").attrs({
+        for: "email"
+    });
+    form.append("input").attrs({
+        for: "saveForm",
+        id: "email",
+        name: "email",
+        type: "email",
+        required: true
+    });
+    form.append("br");
+
+    form.append("label").text("Doctor:").attrs({
+        for: "doctor"
+    });
+    form.append("input").attrs({
+        for: "saveForm",
+        id: "doctor",
+        name: "doctor",
+        type: "doctor"
+    });
+    form.append("br");
 
     form.append("input").attrs({
         type: "submit"

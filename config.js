@@ -64,23 +64,28 @@ exports.config = {
                     images: [
                         {
                             image: "KRasGapBoundSwitchOffFrame2752.png",
-                            name: "Switch Off Frame"
+                            name: "Switch Off Frame",
+                            id: 1
                         },
                         {
                             image: "KRasGDPBoundWithSos1Frame1429.png",
-                            name: "Sos 1 Frame"
+                            name: "Sos 1 Frame",
+                            id: 2
                         },
                         {
                             image: "KRasGTPBoundWithSos1.png",
-                            name: "GTP Bound with Sos1"
+                            name: "GTP Bound with Sos1",
+                            id: 3
                         },
                         {
                             image: "MutantKRasBoundToRaf1Frame3233.png",
-                            name: "Mutant Kras"
+                            name: "Mutant Kras",
+                            id: 4
                         },
                         {
                             image: "tumourCelllsDividingFrame3779.png",
-                            name: "Tumour Cells"
+                            name: "Tumour Cells",
+                            id: 5
                         }
                     ]
                 }
@@ -144,7 +149,7 @@ exports.config = {
 
               router.res.end("Ok lol I guess we sent some mail??");
         },
-        test: function(router){
+        saveDetails: function(router){
             const form = formidable();
             form.parse(router.req, (err, fields, files) =>{
                 if(err) {
@@ -152,23 +157,19 @@ exports.config = {
                     router.res.end(err);
                 }
 
-                // console.log(router.req);
-                console.log(fields);
-                console.log(files);
-                var data = {
-                    'Testing': "OKAY!"
-                }
+                var data = fields;
+                var hash = Math.random().toString(16).slice(2);
 
                 router.db.Worksheet.create({
                     email: fields.email,
                     firstName: fields.firstName,
                     lastName: fields.lastNmae,
                     doctor: fields.doctor,
-                    hash: "lololol",
+                    hash: hash,
                     data: data
                 });
 
-                router.res.end(JSON.stringify(fields));
+                router.res.end(`Your hash is: ${hash}<br><br>Data: `+JSON.stringify(fields));
             });
         }
     }
