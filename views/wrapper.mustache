@@ -75,11 +75,11 @@
 
                 <div id='contentBox'></div>
 
-                <textarea name="text-1" id="text-1" class="bigText hidden" for="saveForm"></textarea>
-                <textarea name="text-2" id="text-2" class="bigText hidden" for="saveForm"></textarea>
-                <textarea name="text-3" id="text-3" class="bigText hidden" for="saveForm"></textarea>
-                <textarea name="text-4" id="text-4" class="bigText hidden" for="saveForm"></textarea>
-                <textarea name="text-5" id="text-5" class="bigText hidden" for="saveForm"></textarea>
+                <textarea name="text-1" id="text-1" class="bigText hidden" for="saveForm">{{text-1}}</textarea>
+                <textarea name="text-2" id="text-2" class="bigText hidden" for="saveForm">{{text-2}}</textarea>
+                <textarea name="text-3" id="text-3" class="bigText hidden" for="saveForm">{{text-3}}</textarea>
+                <textarea name="text-4" id="text-4" class="bigText hidden" for="saveForm">{{text-4}}</textarea>
+                <textarea name="text-5" id="text-5" class="bigText hidden" for="saveForm">{{text-5}}</textarea>
 
                 </form>
             </div>
@@ -151,6 +151,7 @@ function email() {
         id: "firstName",
         name: "firstName",
         type: "firstName",
+        value: "{{firstName}}",
         required: true
     });
     form.append("br");
@@ -163,6 +164,7 @@ function email() {
         id: "lastName",
         name: "lastName",
         type: "lastName",
+        value: "{{lastName}}",
         required: true
     });
     form.append("br");
@@ -175,6 +177,7 @@ function email() {
         id: "email",
         name: "email",
         type: "email",
+        value: "{{email}}",
         required: true
     });
     form.append("br");
@@ -184,6 +187,7 @@ function email() {
     });
     form.append("input").attrs({
         for: "saveForm",
+        value: "{{doctor}}",
         id: "doctor",
         name: "doctor",
         type: "doctor"

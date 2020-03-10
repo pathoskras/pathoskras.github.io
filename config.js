@@ -90,8 +90,27 @@ exports.config = {
                     ]
                 }
                 views.inner = views.kras;
-                var output = mustache.render(views.template, data, views);
-                router.res.end(output);
+                if(router.path) {
+                    router.db.Worksheet.findOne({
+                        where: {
+                            hash: router.path[0]
+                        }
+                    }).then((d) => {
+                        console.log(d.dataValues);
+                        // console.log(parse);
+                        Object.assign(data, JSON.parse(d.dataValues.data));
+
+                        var output = mustache.render(views.template, data, views);
+                        router.res.end(output);    
+                    }).catch(e => {
+                        console.log("ERROR?");
+                        router.res.end(JSON.stringify(e));
+                    })
+
+                } else {
+                    var output = mustache.render(views.template, data, views);
+                    router.res.end(output);
+                }
             })
         },
         kras: function (router) {
@@ -163,13 +182,16 @@ exports.config = {
                 router.db.Worksheet.create({
                     email: fields.email,
                     firstName: fields.firstName,
-                    lastName: fields.lastNmae,
+                    lastName: fields.lastName,
                     doctor: fields.doctor,
                     hash: hash,
                     data: data
                 });
 
-                router.res.end(`Your hash is: ${hash}<br><br>Data: `+JSON.stringify(fields));
+                router.res.end(`Your hash is: ${hash}<br><br>
+<a href="/wrapper/${hash}">Link to send to patient</a>
+                <br><br>
+                Data: `+JSON.stringify(fields));
             });
         }
     }
