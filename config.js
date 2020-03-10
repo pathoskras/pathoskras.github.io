@@ -57,19 +57,34 @@ exports.config = {
     },
     controllers: {
         wrapper: function(router) {
-            router.readAllViews(views => {
+            router.readTemplate('wrapper.mustache', 'dummy', views => {
                 console.log(router.path);
                 var data = {
                     images: [
-                        {image: "KRasGapBoundSwitchOffFrame2752.png"},
-                        {image: "KRasGDPBoundWithSos1Frame1429.png"},
-                        {image: "KRasGTPBoundWithSos1.png"},
-                        {image: "MutantKRasBoundToRaf1Frame3233.png"},
-                        {image: "tumourCelllsDividingFrame3779.png"}
+                        {
+                            image: "KRasGapBoundSwitchOffFrame2752.png",
+                            name: "Switch Off Frame"
+                        },
+                        {
+                            image: "KRasGDPBoundWithSos1Frame1429.png",
+                            name: "Sos 1 Frame"
+                        },
+                        {
+                            image: "KRasGTPBoundWithSos1.png",
+                            name: "GTP Bound with Sos1"
+                        },
+                        {
+                            image: "MutantKRasBoundToRaf1Frame3233.png",
+                            name: "Mutant Kras"
+                        },
+                        {
+                            image: "tumourCelllsDividingFrame3779.png",
+                            name: "Tumour Cells"
+                        }
                     ]
                 }
                 views.inner = views.kras;
-                var output = mustache.render(views.wrapper, data, views);
+                var output = mustache.render(views.template, data, views);
                 router.res.end(output);
             })
         },

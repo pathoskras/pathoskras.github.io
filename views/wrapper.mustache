@@ -8,12 +8,14 @@
     <title>KRAS Annotation</title>
     <meta name="apple-mobile-web-app-capable" content="yes">
 
+    <link rel="stylesheet" href="/drawerJs/drawerJs.css"/>
 	<link rel="stylesheet" href="/css/main.css">
 	<link rel="stylesheet" href="/canvas/canvas.css">
 	<style>
 	body,
     html {
       position: fixed;
+      width: 100vw;
     }
     div#footer {
         background: white;
@@ -40,35 +42,60 @@
         background: red;
     }
 	</style>
+    {{> styles }}
     <script src="/js/vendor.min.js"></script>
+    <script src="/drawerJs/drawerJs.standalone.js"></script>
 
 </head>
 
 <body>
     <div id="wrapper" class="container-fluid page">
         <div class="row">
-            <h1>Hello World!</h1>
-            {{> kras}}
+            <div class="col-md-2 col-xs-3 sidebar">
+                <span>Kras mutation</span>
+                {{! <input placeholder="Placeholder"> }}
+                <ul>
+                    <li><a href="#Welcome" onclick="welcome()">Welcome</a></li>
+                    {{#images}}
+                    <li>
+                        <a href="#{{image}}" onclick="openScreen('{{image}}')">{{name}}</a>
+                    </li>
+                    {{/images}}
+                    <li><a href="#Email" onclick="email()">Email</a></li>
+                </ul>
+            </div>
+            <div class="col-md-10 col-xs-9">
+                {{> content}}
+            </div>
         </div>
     
     </div>
 
-    
+{{!     
     <div id="footer">
         <div>
             <img class="nav-button" src="/images/home.png">
-
-            {{#images}}
-            <img class="nav-button" src="/images/{{image}}">
-            {{/images}}
+            {{#images} }
+            <img class="nav-button" src="/images/{{image} }">
+            {{/images} }
             <img class="nav-button" src="/images/email.png">
 
         </div>
     </div>
+}}
 
+
+{{> scripts }}
 
 <script type="text/javascript">
+welcome();
 
+function welcome() {
+    console.log("hello!");
+}
+
+
+    {{! This stuff belongs to the basic version
     $(document).ready(function () {
         $('#canvas-display').paintBrush();
 
@@ -87,7 +114,7 @@
         base_image = new Image();
         base_image.src = 'images/a.jpg';
         context.drawImage(base_image, 100, 100);
-    }
+    } }}
 
 </script>
 
