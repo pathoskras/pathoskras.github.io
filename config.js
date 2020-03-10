@@ -142,6 +142,11 @@ exports.config = {
 
 
               router.res.end("Ok lol I guess we sent some mail??");
+        },
+        test: function(router){
+            console.log(router);
+
+            router.res.end("Ok");
         }
     }
 }

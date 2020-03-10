@@ -41,10 +41,15 @@
         border: solid 3px black;
         background: red;
     }
+
+    img.bigImage, textarea.bigText {
+        width: 70vw;
+    }
 	</style>
     {{> styles }}
     <script src="/js/vendor.min.js"></script>
     <script src="/drawerJs/drawerJs.standalone.js"></script>
+    <script src="/js/showdown.min.js"></script>
 
 </head>
 
@@ -65,7 +70,10 @@
                 </ul>
             </div>
             <div class="col-md-10 col-xs-9">
-                {{> content}}
+            {{! Content goes here! }}
+
+                <div id='contentBox'></div>
+
             </div>
         </div>
     
@@ -88,11 +96,53 @@
 {{> scripts }}
 
 <script type="text/javascript">
+const md = new showdown.Converter({openLinksInNewWindow: true});
 welcome();
 
 function welcome() {
     console.log("hello!");
+
+    $("#contentBox").html(md.makeHtml(`
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lobortis elementum nibh tellus molestie nunc non. Mattis vulputate enim nulla aliquet porttitor lacus. Vulputate eu scelerisque felis imperdiet. Sed libero enim sed faucibus turpis. Faucibus turpis in eu mi bibendum neque. Bibendum arcu vitae elementum curabitur vitae nunc sed velit. Quis vel eros donec ac. Amet luctus venenatis lectus magna. In hac habitasse platea dictumst. Feugiat in fermentum posuere urna nec tincidunt praesent semper feugiat. Quis imperdiet massa tincidunt nunc. Elit scelerisque mauris pellentesque pulvinar pellentesque habitant morbi tristique. Interdum varius sit amet mattis. Dictumst vestibulum rhoncus est pellentesque elit. Vulputate mi sit amet mauris. Et netus et malesuada fames ac. Egestas congue quisque egestas diam.
+
+Aliquam id diam maecenas ultricies mi. Tincidunt tortor aliquam nulla facilisi. Lectus nulla at volutpat diam ut venenatis tellus in metus. Molestie at elementum eu facilisis sed. Egestas quis ipsum suspendisse ultrices. Velit ut tortor pretium viverra suspendisse potenti. Suspendisse faucibus interdum posuere lorem ipsum dolor sit amet consectetur. Ultricies mi quis hendrerit dolor magna eget est lorem. Sed faucibus turpis in eu mi. Turpis egestas sed tempus urna et pharetra. Morbi tristique senectus et netus et malesuada fames ac turpis.
+    `)).append(`<iframe width="560" height="315" src="https://www.youtube.com/embed/s8GxvVrnF38?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`);
 }
+
+
+function openScreen(image){
+    $("#contentBox").html("");
+    var div = d3.select("#contentBox").append("div");
+    div.append("img").attrs({
+        class: "bigImage",
+        src: `/images/${image}`
+    });
+    div2 = d3.select("#contentBox").append("div");
+    div2.append("h3").text("Notes:");    
+    div2.append("textarea").attrs({
+        class: "bigText"
+    });
+}
+
+function email() {
+    $("#contentBox").html("");
+    var div = d3.select("#contentBox").append("div");
+    var form = div.append("form").attrs({
+        action: "test"
+    });
+    form.append("label").text("Email:");
+    form.append("input").attrs({
+        name: "email",
+        type: "email",
+        required: true
+    });
+    form.append("input").attrs({
+        type: "submit"
+    });
+}
+
+
+
 
 
     {{! This stuff belongs to the basic version
