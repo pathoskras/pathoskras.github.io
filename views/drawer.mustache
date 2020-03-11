@@ -9,7 +9,7 @@
     <script src="/drawerJs/jquery-1.12.4.js"></script>
     <script src="/drawerJs/jquery-migrate-1.2.1.min.js"></script>
 
-    <link rel="stylesheet" href="/css/vendor/bootstrap.min.css"/>
+    {{! <link rel="stylesheet" href="/css/vendor/bootstrap.min.css"/> }}
     <link href="/css/font-awesome.min.css" rel="stylesheet">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
@@ -239,8 +239,45 @@ toolbars: {
             toggleVisibilityButton: true
         }
     }
+},
+contentConfig: {
+    saveInHtml: false,
+    saveCanvasData: function(canvasId, canvasData) {
+        localStorage.setItem('canvas_' + canvasId, JSON.stringify(canvasData));
+        saveContent();
+    },
+    loadCanvasData: function(canvasId) {
+        return localStorage.getItem('canvas_' + canvasId);
+    },
+    saveImageData: function(canvasId, imageData) {
+        localStorage.setItem('image_' + canvasId, JSON.stringify(imageData));
+    },
+    loadImageData: function(canvasId) {
+        return localStorage.getItem('image_' + canvasId);
+    }
 }
 }, getCanvasWidth(), getCanvasHeight());
+
+
+
+var saveContent = function() {
+    var html = $('#canvas-editor').html();
+    localStorage.setItem('html', html);
+    localStorage.setItem('canvas_id', canvas.id);
+};
+var loadContent = function() {
+    var html = localStorage.getItem('html');
+    var canvasId = localStorage.getItem('canvas_id');
+    if(html && canvasId) {
+        $('#canvas-editor').html(html);
+        canvas.id = canvasId;
+        return true;
+    }
+    return false;
+};
+
+
+
 
 function getCanvasWidth() {
 //var viewportWidth = $(window).width();

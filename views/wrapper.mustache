@@ -14,8 +14,8 @@
 	<style>
 	body,
     html {
-      position: fixed;
-      width: 100vw;
+      {{! position: fixed; }}
+      {{! width: 100vw; }}
     }
     div#footer {
         background: white;
@@ -110,11 +110,20 @@ welcome();
 function welcome() {
     hideEverything();
 
-    $("#contentBox").html(md.makeHtml(`
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lobortis elementum nibh tellus molestie nunc non. Mattis vulputate enim nulla aliquet porttitor lacus. Vulputate eu scelerisque felis imperdiet. Sed libero enim sed faucibus turpis. Faucibus turpis in eu mi bibendum neque. Bibendum arcu vitae elementum curabitur vitae nunc sed velit. Quis vel eros donec ac. Amet luctus venenatis lectus magna. In hac habitasse platea dictumst. Feugiat in fermentum posuere urna nec tincidunt praesent semper feugiat. Quis imperdiet massa tincidunt nunc. Elit scelerisque mauris pellentesque pulvinar pellentesque habitant morbi tristique. Interdum varius sit amet mattis. Dictumst vestibulum rhoncus est pellentesque elit. Vulputate mi sit amet mauris. Et netus et malesuada fames ac. Egestas congue quisque egestas diam.
+    $("#contentBox").html(md.makeHtml(`#The KRAS Gene
 
-Aliquam id diam maecenas ultricies mi. Tincidunt tortor aliquam nulla facilisi. Lectus nulla at volutpat diam ut venenatis tellus in metus. Molestie at elementum eu facilisis sed. Egestas quis ipsum suspendisse ultrices. Velit ut tortor pretium viverra suspendisse potenti. Suspendisse faucibus interdum posuere lorem ipsum dolor sit amet consectetur. Ultricies mi quis hendrerit dolor magna eget est lorem. Sed faucibus turpis in eu mi. Turpis egestas sed tempus urna et pharetra. Morbi tristique senectus et netus et malesuada fames ac turpis.
-    `)).append(`<iframe width="560" height="315" src="https://www.youtube.com/embed/s8GxvVrnF38?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`);
+The KRAS gene provides instructions for making a protein called K-Ras that is part of a signaling pathway known as the RAS/MAPK pathway. The protein relays signals from outside the cell to the cell's nucleus. These signals instruct the cell to grow and divide (proliferate) or to mature and take on specialized functions (differentiate). The K-Ras protein is a GTPase, which means it converts a molecule called GTP into another molecule called GDP. In this way the K-Ras protein acts like a switch that is turned on and off by the GTP and GDP molecules. To transmit signals, it must be turned on by attaching (binding) to a molecule of GTP. The K-Ras protein is turned off (inactivated) when it converts the GTP to GDP. When the protein is bound to GDP, it does not relay signals to the cell's nucleus.
+
+The KRAS gene belongs to a class of genes known as oncogenes. When mutated, oncogenes have the potential to cause normal cells to become cancerous. The KRAS gene is in the Ras family of oncogenes, which also includes two other genes: [HRAS](https://ghr.nlm.nih.gov/gene/HRAS) and [NRAS](https://ghr.nlm.nih.gov/gene/NRAS). These proteins play important roles in cell division, cell differentiation, and the self-destruction of cells (apoptosis).
+
+#KRAS and lung cancer
+
+At least three mutations in the KRAS gene have been associated with lung cancer. Lung cancer is a disease in which certain cells in the lungs become abnormal and multiply uncontrollably to form a tumor. Lung cancer may not cause signs or symptoms in its early stages. These KRAS gene mutations are somatic, which means they are acquired during a person's lifetime and are present only in tumor cells. Somatic mutations are not inherited. Nearly all of the KRAS gene mutations associated with lung cancer change the amino acid glycine at position 12 or 13 (Gly12 or Gly13) or change the amino acid glutamine at position 61 (Gln61) in the K-Ras protein. These mutations result in a K-Ras protein that is constantly turned on (constitutively activated) and directing cells to proliferate in an uncontrolled way, which leads to tumor formation. When these genetic changes occur in cells in the lungs, lung cancer can develop.
+
+KRAS gene mutations are found in 15 to 25 percent of all lung cancer cases but are more frequent in white populations than in Asian populations; 25 to 50 percent of whites with lung cancer have KRAS gene mutations, whereas 5 to 15 percent of Asians with lung cancer have KRAS gene mutations.
+
+KRAS gene mutations are much more common in long-term tobacco smokers with lung cancer than in nonsmokers. Lung cancers with KRAS gene mutations typically indicate a poor prognosis and are associated with resistance to several cancer treatments.
+`)).append(`<iframe width="560" height="315" src="https://www.youtube.com/embed/s8GxvVrnF38?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`);
 }
 
 function hideEverything() {
