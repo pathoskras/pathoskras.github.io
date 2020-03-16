@@ -114,7 +114,64 @@ exports.config = {
                 }
             })
         },
-        kras: function (router) {
+        kras: function(router) {
+            router.readTemplate('wrapper.mustache', 'd3_inner', views => {
+                console.log(router.path);
+                var data = {
+                    images: [
+                        {
+                            image: "KRasGapBoundSwitchOffFrame2752.png",
+                            name: "Inactive Kras",
+                            id: 1
+                        },
+                        {
+                            image: "KRasGDPBoundWithSos1Frame1429.png",
+                            name: "Kras bound with Sos",
+                            id: 2
+                        },
+                        {
+                            image: "KRasGTPBoundWithSos1.png",
+                            name: "GTP Bound with Sos1",
+                            id: 3
+                        },
+                        {
+                            image: "MutantKRasBoundToRaf1Frame3233.png",
+                            name: "Mutant Kras",
+                            id: 4
+                        },
+                        {
+                            image: "tumourCelllsDividingFrame3779.png",
+                            name: "Tumour Cells",
+                            id: 5
+                        }
+                    ]
+                }
+                views.inner = views.kras;
+                if(router.path && router.path[0] && router.path[0] !== "") {
+                    router.db.Worksheet.findOne({
+                        where: {
+                            hash: router.path[0]
+                        }
+                    }).then((d) => {
+                        console.log(d.dataValues);
+                        // console.log(parse);
+                        Object.assign(data, JSON.parse(d.dataValues.data));
+
+                        var output = mustache.render(views.template, data, views);
+                        router.res.end(output);    
+                    }).catch(e => {
+                        console.log("ERROR?");
+                        console.log(e);
+                        router.res.end(JSON.stringify(e));
+                    })
+
+                } else {
+                    var output = mustache.render(views.template, data, views);
+                    router.res.end(output);
+                }
+            })
+        },
+        old_kras: function (router) {
             // console.log(Object.keys(router.views));
             router.readAllViews(function(views){
                 const data = {
