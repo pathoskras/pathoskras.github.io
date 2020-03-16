@@ -7,8 +7,11 @@
     <script src="https://d3js.org/d3.v3.min.js"></script>
     <style>
     #canvas {
-  background: oldlace;
-}
+        background: oldlace;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
 #ui {
   position: absolute;
   top: 0;
@@ -54,8 +57,11 @@
 </style>
   </head>
   <body>
-    <svg id="canvas" width="960px" height="500px"></svg>
-    <svg id="ui" width="960px" height="500px"></svg>
+
+    <div style='padding: 5px; margin: 10px;'>
+        <svg id="canvas" width="960px" height="500px"></svg>
+        <svg id="ui" width="200px" height="200px"></svg>
+    </div>
 
     <script>
 // From http://bl.ocks.org/nitaku/d79632a53187f8e92b15/dc1b22049eed0a4922bf093e85601de053b37dc5

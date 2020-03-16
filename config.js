@@ -150,8 +150,8 @@ exports.config = {
               });
 
               var mailOptions = {
-                from: 'frostickle@gmail.com',
-                to: 'siyzdkbslxcnkmdidh@awdrt.net',
+                from: '7oclockco@gmail.com',
+                to: 'eohomguhetqnxffobm@awdrt.net',
                 subject: 'Sending Email using Node.js',
                 text: 'That was easy!'
               };
