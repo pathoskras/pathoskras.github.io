@@ -45,6 +45,9 @@
     img.bigImage, textarea.bigText {
         width: 70vw;
     }
+    #noteBox {
+        margin-top: 550px;
+    }
 	</style>
     {{> styles }}
     <script src="/js/vendor.min.js"></script>
@@ -76,12 +79,14 @@
 
                 <div id='contentBox'></div>
 
-                <textarea name="text-1" id="text-1" class="bigText hidden" for="saveForm">{{text-1}}</textarea>
-                <textarea name="text-2" id="text-2" class="bigText hidden" for="saveForm">{{text-2}}</textarea>
-                <textarea name="text-3" id="text-3" class="bigText hidden" for="saveForm">{{text-3}}</textarea>
-                <textarea name="text-4" id="text-4" class="bigText hidden" for="saveForm">{{text-4}}</textarea>
-                <textarea name="text-5" id="text-5" class="bigText hidden" for="saveForm">{{text-5}}</textarea>
-
+                <div id="noteBox">
+                    <h3>Notes:</h3>
+                    <textarea name="text-1" id="text-1" class="bigText hidden" for="saveForm">{{text-1}}</textarea>
+                    <textarea name="text-2" id="text-2" class="bigText hidden" for="saveForm">{{text-2}}</textarea>
+                    <textarea name="text-3" id="text-3" class="bigText hidden" for="saveForm">{{text-3}}</textarea>
+                    <textarea name="text-4" id="text-4" class="bigText hidden" for="saveForm">{{text-4}}</textarea>
+                    <textarea name="text-5" id="text-5" class="bigText hidden" for="saveForm">{{text-5}}</textarea>
+                </div>
                 </form>
             </div>
         </div>
@@ -127,14 +132,29 @@ KRAS gene mutations are much more common in long-term tobacco smokers with lung 
 `)).append(`<iframe width="560" height="315" src="https://www.youtube.com/embed/s8GxvVrnF38?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`);
 }
 
+var images = {{{imagesJson}}};
+var currentScreen = null;
+var save_data = {};
+
 function hideEverything() {
     $("#contentBox").html("");
     d3.selectAll(".bigText").classed("hidden", true);
     d3.selectAll(".drawer").classed("hidden", true);
+    d3.select("#noteBox").classed("hidden", true);
+
+    if(currentScreen) {
+        save_data[currentScreen] = drawing_data;
+        drawing_data.lines = [];
+        redraw();
+    }
 }
 
 function openScreen(image, id){
     hideEverything();
+    d3.select("#noteBox").classed("hidden", false);
+    currentScreen = id;
+    drawing_data = save_data[id] ? save_data[id] : {lines:[]};
+    redraw();
 
     d3.select(".drawer").classed("hidden", false);
     d3.select("#d3-background-image").attr("src", `/images/${image}`);
@@ -147,7 +167,7 @@ function openScreen(image, id){
         src: `/images/${image}`
     });
     div2 = d3.select("#contentBox").append("div");
-    div2.append("h3").text("Notes:");
+    {{! div2.append("h3").text("Notes:"); }}
     d3.select(`#text-${id}`).classed("hidden", false);
 
     {{! div2.append("textarea").attrs({

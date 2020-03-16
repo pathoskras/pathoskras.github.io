@@ -146,6 +146,8 @@ exports.config = {
                         }
                     ]
                 }
+                data.imagesJson = JSON.stringify(data.images);
+
                 views.inner = views.kras;
                 if(router.path && router.path[0] && router.path[0] !== "") {
                     router.db.Worksheet.findOne({
