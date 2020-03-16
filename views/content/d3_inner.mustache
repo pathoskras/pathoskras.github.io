@@ -1,6 +1,6 @@
  <style>
 #canvas {
-    background: oldlace;
+    {{! background: oldlace; }}
     position: absolute;
     top: 0;
     left: 0;
@@ -10,6 +10,11 @@
   top: 0;
   left: 0;
   pointer-events: none;
+}
+#d3-background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 .swatch {
   pointer-events: all;
@@ -52,12 +57,22 @@
     {{! display: none; }}
 }
 
+img.bigImage{
+    display: none;
+}
+#saveForm.bigText {
+    position: absolute;
+    bottom: 50;
+}
+#d3-background-image {
+    padding: 50px;
+    fit: cover;
+}
 </style>
 
-
-
-    <div id="d3-drawer" class="" style='padding: 5px; margin: 10px;'>
-        <svg id="canvas" width="960px" height="500px"></svg>
+    <div id="d3-drawer" class="drawer hidden" style='padding: 5px; margin: 10px;'>
+        <img id="d3-background-image" width="960px" height="600px">
+        <svg id="canvas" width="960px" height="600px"></svg>
         <svg id="ui" width="200px" height="200px"></svg>
     </div>
 
@@ -98,7 +113,7 @@
     transform: "translate(" + (4 + SWATCH_D / 2) + "," + (4 + SWATCH_D / 2) + ")"
   });
 
-  swatches = palette.selectAll('swatch').data(["#333333", "#ffffff", "#1b9e77", "#d95f02", "#7570b3", "#e7298a", "#66a61e", "#e6ab02", "#a6761d", "#666666"]);
+  swatches = palette.selectAll('.swatch').data(["#333333", "#ffffff", "#1b9e77", "#d95f02", "#7570b3", "#e7298a", "#66a61e", "#e6ab02", "#a6761d", "#666666"]);
 
   trash_btn = ui.append('text').html('&#xf1f8;').attrs({
     "class": 'btn',
@@ -110,7 +125,8 @@
   });
 
   swatches.enter().append('circle').attrs({
-    "class": 'swatch',
+        stroke: "grey",
+        "class": 'swatch',
     cx: function(d, i) {
       return i * (SWATCH_D + 4) / 2;
     },
@@ -127,7 +143,7 @@
     }
   }).on('click', function(d) {
     active_color = d;
-    swatches.classed('active', false);
+    palette.selectAll('.swatch').classed('active', false);
     return d3.select(this).classed('active', true);
   });
 
