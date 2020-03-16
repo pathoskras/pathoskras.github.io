@@ -120,28 +120,28 @@ exports.config = {
                 var data = {
                     images: [
                         {
-                            image: "KRasGapBoundSwitchOffFrame2752.png",
-                            name: "Inactive Kras",
+                            image: "KRasGDPBoundWithSos1Frame1429.png",
+                            name: "Inactive KRAS",
                             id: 1
                         },
                         {
-                            image: "KRasGDPBoundWithSos1Frame1429.png",
-                            name: "Kras bound with Sos",
+                            image: "KRasGTPBoundWithSos1.png",
+                            name: "Active KRAS",
                             id: 2
                         },
                         {
-                            image: "KRasGTPBoundWithSos1.png",
-                            name: "GTP Bound with Sos1",
+                            image: "KRasGapBoundSwitchOffFrame2752.png",
+                            name: "KRAS inactivated by p120GAP",
                             id: 3
                         },
                         {
                             image: "MutantKRasBoundToRaf1Frame3233.png",
-                            name: "Mutant Kras",
+                            name: "Mutant KRAS",
                             id: 4
                         },
                         {
                             image: "tumourCelllsDividingFrame3779.png",
-                            name: "Tumour Cells",
+                            name: "Tumour Cells Dividing",
                             id: 5
                         }
                     ]
@@ -248,7 +248,18 @@ exports.config = {
                     data: JSON.stringify(data)
                 });
 
-                router.res.end(`Your hash is: ${hash}<br><br>
+try {
+                sendEmail({
+                    toAddress: fields.email,
+                    body: `
+Click this <a href="/wrapper/${hash}">link</a> to see your notes.
+`
+                });
+} catch(e) {
+    console.log("Error sending mail.", e);
+}
+
+            router.res.end(`Your hash is: ${hash}<br><br>
 <a href="/wrapper/${hash}">Link to send to patient</a>
                 <br><br>
                 Data: `+JSON.stringify(fields));
@@ -258,3 +269,42 @@ exports.config = {
 }
 
 
+function sendEmail(config) {
+    var options = {
+        toAddress: config.toAddress || "7oclockco@gmail.com",
+        subject: config.subject || "Your KRAS notes",
+        body: config.body || ""
+    }
+
+    let transporter = nodemailer.createTransport({
+        pool: true,
+        host: "smtp.gmail.com",
+        port: 465,
+        secure: true, // use TLS
+        auth: mail_auth
+    });
+    transporter.verify(function(error, success) {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log("Server is ready to take our messages");
+        }
+      });
+
+      var mailOptions = {
+        from: '7oclockco@gmail.com',
+        to: 'eohomguhetqnxffobm@awdrt.net',
+        subject: 'Sending Email using Node.js',
+        text: 'That was easy!'
+      };
+
+      transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Email sent: ' + info.response);
+        }
+      });
+      
+
+}

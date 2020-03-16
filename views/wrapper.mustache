@@ -129,6 +129,11 @@ At least three mutations in the KRAS gene have been associated with lung cancer.
 KRAS gene mutations are found in 15 to 25 percent of all lung cancer cases but are more frequent in white populations than in Asian populations; 25 to 50 percent of whites with lung cancer have KRAS gene mutations, whereas 5 to 15 percent of Asians with lung cancer have KRAS gene mutations.
 
 KRAS gene mutations are much more common in long-term tobacco smokers with lung cancer than in nonsmokers. Lung cancers with KRAS gene mutations typically indicate a poor prognosis and are associated with resistance to several cancer treatments.
+
+#Link to Protein Databank:
+[Mutant KRAS interacting with AMG 510](https://www.rcsb.org/pdb/explore/jmol.do?structureId=6oim&bionumber=1&jmolMode=HTML5)
+
+#Peter Mac video on What Goes Wrong In Cancer:
 `)).append(`<iframe width="560" height="315" src="https://www.youtube.com/embed/s8GxvVrnF38?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`);
 }
 
@@ -143,9 +148,13 @@ function hideEverything() {
     d3.select("#noteBox").classed("hidden", true);
 
     if(currentScreen) {
-        save_data[currentScreen] = drawing_data;
-        drawing_data.lines = [];
-        redraw();
+        console.log("saving data for "+currentScreen);
+        console.log(drawing_data);
+        save_data[currentScreen] = drawing_data.lines;
+        {{! drawing_data = {lines:[]}; }}
+        {{! redraw(); }}
+    } else {
+        console.log("Not on a screen to save..?");
     }
 }
 
@@ -153,7 +162,14 @@ function openScreen(image, id){
     hideEverything();
     d3.select("#noteBox").classed("hidden", false);
     currentScreen = id;
-    drawing_data = save_data[id] ? save_data[id] : {lines:[]};
+
+    drawing_data = {
+        lines: save_data[id] ? save_data[id] : []
+    }
+
+    console.log(`looking for data for ${id}`);
+    console.log("here is save_data", save_data[id]);
+
     redraw();
 
     d3.select(".drawer").classed("hidden", false);
