@@ -66,7 +66,7 @@
                     <li><a href="#Welcome" onclick="welcome()">Welcome</a></li>
                     {{#images}}
                     <li>
-                        <a href="#{{image}}" onclick="openScreen('{{image}}', {{id}})">{{name}}</a>
+                        <a href="#{{image}}" onclick="openScreen({{id}})">{{name}}</a>
                     </li>
                     {{/images}}
                     <li><a href="#Email" onclick="email()">Email</a></li>
@@ -111,7 +111,6 @@
 
 <script type="text/javascript">
 const md = new showdown.Converter({openLinksInNewWindow: true});
-welcome();
 
 function welcome() {
     hideEverything();
@@ -137,13 +136,14 @@ KRAS gene mutations are much more common in long-term tobacco smokers with lung 
 `)).append(`<iframe width="560" height="315" src="https://www.youtube.com/embed/s8GxvVrnF38?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`);
 }
 
-var images = {{{imagesJson}}};
-var currentScreen = null;
-var save_data = images.map(d => {
-    console.log(d);
-
-    return []
-});
+const images = {{{imagesJson}}}.reduce((acc,d) => {
+    const blob = d;
+    blob.lines = [];
+    acc[d.id] = blob;
+    return acc;
+}, {});
+let currentScreen = null;
+welcome();
 
 function hideEverything() {
     $("#contentBox").html("");
@@ -153,28 +153,24 @@ function hideEverything() {
 
     if(currentScreen) {
         console.log("saving data for "+currentScreen);
-        console.log(drawing_data);
-        save_data[currentScreen-1] = drawing_data.lines;
+        console.log(drawing_data.lines);
+        images[currentScreen].lines = drawing_data.lines;
 
-
-        {{! drawing_data = {lines:[]}; }}
-        {{! redraw(); }}
     } else {
         console.log("Not on a screen to save..?");
     }
+
 }
 
-function openScreen(image, id){
+function openScreen(id){
     hideEverything();
     d3.select("#noteBox").classed("hidden", false);
+    const blob = drawing_data = images[id],
+          image = blob.image;
     currentScreen = id;
 
-    drawing_data = {
-        lines: save_data[id-1] ? save_data[id-1] : []
-    }
-
     console.log(`looking for data for ${id}`);
-    console.log("here is save_data", save_data[id-1]);
+    {{! blob.data.forEach(line => redraw(line)); }}
 
     redraw();
 
