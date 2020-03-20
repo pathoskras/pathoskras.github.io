@@ -270,11 +270,17 @@ try {
     var emailOptions = {
         toAddress: fields.email,
         body: `
-Click this <a href="/kras/${hash}">link</a> to see your notes.
+Hello! Thanks for using the PathOS KRAS image annotation app.
+
+Click this <a href="https://pathos.co/kras/${hash}">link</a> to see your notes.
 `
     }
-    console.log("Don't send mail...");
-    // sendEmail(emailOptions);
+    // console.log("Don't send mail...");
+
+    if (fields.tickedEmailBox) {
+        sendEmail(emailOptions);
+    }
+
 } catch(e) {
     console.log("Error sending mail.", e);
 }
@@ -313,9 +319,9 @@ function sendEmail(config) {
 
       var mailOptions = {
         from: '7oclockco@gmail.com',
-        to: 'eohomguhetqnxffobm@awdrt.net',
-        subject: 'Sending Email using Node.js',
-        text: 'That was easy!'
+        to: options.toAddress,
+        subject: options.subject,
+        text: options.body
       };
 
       transporter.sendMail(mailOptions, function(error, info){

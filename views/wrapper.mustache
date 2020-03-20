@@ -98,8 +98,10 @@
                         <td><input value="{{email}}" for="saveForm" id="email" name="email" type="email" value="" required="true"></td></tr>
                         <tr><td>Doctor:</td>
                         <td><input value="{{doctor}}" for="saveForm" id="doctor" name="doctor" value="" required="true"></td></tr>
+                        <tr><td>Send email:</td>
+                        <td><input type="checkbox" for="saveForm" name="tickedEmailBox"></td></tr>
                     </table>
-                    <input type="submit">
+                    <input value="Save details" type="submit">
                     <div id="hiddenData" style="display: none;">
                         <textarea value="{{lineData}}" name="lineData" id="lineData" for="saveForm"></textarea>
                         <input value="{{hash}}" name="hash" for="saveForm">
@@ -161,9 +163,11 @@ let images = {{{imagesJson}}}.reduce((acc,d) => {
     acc[d.id] = blob;
     return acc;
 }, {});
-if('{{{lineData}}}') {
-    images = {{{lineData}}}
-}
+
+{{#lineData}}
+images = {{{lineData}}}
+{{/lineData}}
+
 let currentScreen = null;
 welcome();
 
