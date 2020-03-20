@@ -87,6 +87,25 @@
                     <textarea name="text-4" id="text-4" class="bigText hidden" for="saveForm">{{text-4}}</textarea>
                     <textarea name="text-5" id="text-5" class="bigText hidden" for="saveForm">{{text-5}}</textarea>
                 </div>
+
+                <div id="emailForm" class="hidden">
+                    <table>
+                        <tr><td>First Name:</td>
+                        <td><input value="{{firstName}}" for="saveForm" id="firstName" name="firstName" value="" required="true"></td></tr>
+                        <tr><td>Last Name:</td>
+                        <td><input value="{{lastName}}" for="saveForm" id="lastName" name="lastName" value="" required="true"></td></tr>
+                        <tr><td>Email:</td>
+                        <td><input value="{{email}}" for="saveForm" id="email" name="email" type="email" value="" required="true"></td></tr>
+                        <tr><td>Doctor:</td>
+                        <td><input value="{{doctor}}" for="saveForm" id="doctor" name="doctor" value="" required="true"></td></tr>
+                    </table>
+                    <input type="submit">
+                    <div id="hiddenData" style="display: none;">
+                        <textarea value="{{lineData}}" name="lineData" id="lineData" for="saveForm"></textarea>
+                        <input value="{{hash}}" name="hash" for="saveForm">
+                    </div>
+                </div>
+
                 </form>
             </div>
         </div>
@@ -138,7 +157,7 @@ KRAS gene mutations are much more common in long-term tobacco smokers with lung 
 
 const images = {{{imagesJson}}}.reduce((acc,d) => {
     const blob = d;
-    blob.lines = [];
+    blob.lines = new Array();
     acc[d.id] = blob;
     return acc;
 }, {});
@@ -150,12 +169,19 @@ function hideEverything() {
     d3.selectAll(".bigText").classed("hidden", true);
     d3.selectAll(".drawer").classed("hidden", true);
     d3.select("#noteBox").classed("hidden", true);
+    d3.select("#emailForm").classed("hidden", true);
 
     if(currentScreen) {
         console.log("saving data for "+currentScreen);
         console.log(drawing_data.lines);
-        images[currentScreen].lines = drawing_data.lines;
+        images[currentScreen].lines = drawing_data.lines.map(d => {
+            return {
+                points: d.points,
+                color: d.color
+            };
+        });
 
+        $("#lineData").val(JSON.stringify(images));
     } else {
         console.log("Not on a screen to save..?");
     }
@@ -195,89 +221,8 @@ function openScreen(id){
 
 function email() {
     hideEverything();
-    var div = d3.select("#contentBox").append("div");
-    var form = div.append('div');
-
-    form.append("label").text("First Name:").attrs({
-        for: "firstName"
-    });
-    form.append("input").attrs({
-        for: "saveForm",
-        id: "firstName",
-        name: "firstName",
-        type: "firstName",
-        value: "{{firstName}}",
-        required: true
-    });
-    form.append("br");
-
-    form.append("label").text("Last Name:").attrs({
-        for: "lastName"
-    });
-    form.append("input").attrs({
-        for: "saveForm",
-        id: "lastName",
-        name: "lastName",
-        type: "lastName",
-        value: "{{lastName}}",
-        required: true
-    });
-    form.append("br");
-
-    form.append("label").text("Email:").attrs({
-        for: "email"
-    });
-    form.append("input").attrs({
-        for: "saveForm",
-        id: "email",
-        name: "email",
-        type: "email",
-        value: "{{email}}",
-        required: true
-    });
-    form.append("br");
-
-    form.append("label").text("Doctor:").attrs({
-        for: "doctor"
-    });
-    form.append("input").attrs({
-        for: "saveForm",
-        value: "{{doctor}}",
-        id: "doctor",
-        name: "doctor",
-        type: "doctor"
-    });
-    form.append("br");
-
-    form.append("input").attrs({
-        type: "submit"
-    });
+    d3.select("#emailForm").classed("hidden", false);
 }
-
-
-
-
-
-    {{! This stuff belongs to the basic version
-    $(document).ready(function () {
-        $('#canvas-display').paintBrush();
-
-        setTimeout(function(){
-            make_base();
-        },1500);
-    });
-
-    var canvas = document.getElementById('canvas-display'),
-    context = canvas.getContext('2d');
-
-
-    function make_base()
-    {
-        console.log("making base");
-        base_image = new Image();
-        base_image.src = 'images/a.jpg';
-        context.drawImage(base_image, 100, 100);
-    } }}
 
 </script>
 

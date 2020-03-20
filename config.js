@@ -155,10 +155,11 @@ exports.config = {
                             hash: router.path[0]
                         }
                     }).then((d) => {
-                        console.log(d.dataValues);
-                        // console.log(parse);
+                        // console.log(d.dataValues);
                         Object.assign(data, JSON.parse(d.dataValues.data));
-
+                        Object.assign(data, {
+                            hash: d.dataValues.hash
+                        });
                         var output = mustache.render(views.template, data, views);
                         router.res.end(output);    
                     }).catch(e => {
@@ -236,31 +237,49 @@ exports.config = {
                     router.res.end(err);
                 }
 
-                var data = fields;
-                var hash = Math.random().toString(16).slice(2);
+                console.log("Here's all your fields!", fields);
 
-                router.db.Worksheet.create({
+                var data = fields;
+
+                var blob = {
                     email: fields.email,
                     firstName: fields.firstName,
                     lastName: fields.lastName,
                     doctor: fields.doctor,
-                    hash: hash,
                     data: JSON.stringify(data)
-                });
+                }
+
+                if(fields.hash) {
+                    var hash = fields.hash;
+                    blob.hash = fields.hash;
+                    router.db.Worksheet.update(blob, {
+                        where: {
+                            hash: blob.hash
+                        }
+                    });
+                } else {
+                    var hash = Math.random().toString(16).slice(2);
+                    blob.hash = hash;
+                    router.db.Worksheet.create(blob);
+                }
+
+
 
 try {
-                sendEmail({
-                    toAddress: fields.email,
-                    body: `
-Click this <a href="/wrapper/${hash}">link</a> to see your notes.
+    var emailOptions = {
+        toAddress: fields.email,
+        body: `
+Click this <a href="/kras/${hash}">link</a> to see your notes.
 `
-                });
+    }
+    console.log("Don't send mail...");
+    // sendEmail(emailOptions);
 } catch(e) {
     console.log("Error sending mail.", e);
 }
 
             router.res.end(`Your hash is: ${hash}<br><br>
-<a href="/wrapper/${hash}">Link to send to patient</a>
+<a href="/kras/${hash}">Link to send to patient</a>
                 <br><br>
                 Data: `+JSON.stringify(fields));
             });
