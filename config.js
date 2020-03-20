@@ -160,6 +160,7 @@ exports.config = {
                         Object.assign(data, {
                             hash: d.dataValues.hash
                         });
+                        console.log("data is...", data);
                         var output = mustache.render(views.template, data, views);
                         router.res.end(output);    
                     }).catch(e => {

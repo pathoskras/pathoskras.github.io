@@ -155,12 +155,15 @@ KRAS gene mutations are much more common in long-term tobacco smokers with lung 
 `)).append(`<iframe width="560" height="315" src="https://www.youtube.com/embed/s8GxvVrnF38?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`);
 }
 
-const images = {{{imagesJson}}}.reduce((acc,d) => {
+let images = {{{imagesJson}}}.reduce((acc,d) => {
     const blob = d;
     blob.lines = new Array();
     acc[d.id] = blob;
     return acc;
 }, {});
+if('{{{lineData}}}') {
+    images = {{{lineData}}}
+}
 let currentScreen = null;
 welcome();
 
@@ -195,10 +198,7 @@ function openScreen(id){
           image = blob.image;
     currentScreen = id;
 
-    console.log(`looking for data for ${id}`);
-    {{! blob.data.forEach(line => redraw(line)); }}
-
-    redraw();
+    paint(drawing_data);
 
     d3.select(".drawer").classed("hidden", false);
     d3.select("#d3-background-image").attr("src", `/images/${image}`);
