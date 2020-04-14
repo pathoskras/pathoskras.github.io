@@ -264,21 +264,34 @@ exports.config = {
                     router.db.Worksheet.create(blob);
                 }
 
-
+var message = `<a href="/kras/${hash}">Link to saved data</a>. No email sent.`
 
 try {
     var emailOptions = {
         toAddress: fields.email,
         body: `
-Hello! Thanks for using the PathOS KRAS image annotation app.
+Hello!
 
-Click this <a href="https://pathos.co/kras/${hash}">link</a> to see your notes.
+Thanks for using the PathOS K-Ras Resource.
+
+Your notes are here:
+https://pathos.co/kras/${hash}
+
+Please use this form to give us feedback on the K-Ras Resource:
+https://forms.gle/jnqC2yFXgN9Zim8N9
+
+Thanks,
+PathOS Team.
 `
     }
     // console.log("Don't send mail...");
 
     if (fields.tickedEmailBox) {
+        if(fields.doctor) {
+            emailOptions.subject = `Your K-Ras notes from Dr. ${fields.doctor}`
+        }
         sendEmail(emailOptions);
+        message = '<a href="/kras/${hash}">Link sent to patient</a> at ${fields.email} using 7oclockco@gmail.com'
     }
 
 } catch(e) {
@@ -286,9 +299,14 @@ Click this <a href="https://pathos.co/kras/${hash}">link</a> to see your notes.
 }
 
             router.res.end(`Your hash is: ${hash}<br><br>
-<a href="/kras/${hash}">Link to send to patient</a>
+${message}
                 <br><br>
-                Data: `+JSON.stringify(fields));
+
+Please use this form to give us feedback on the K-Ras Resource:<br>
+<a href="https://forms.gle/jnqC2yFXgN9Zim8N9" target="_blank">https://forms.gle/jnqC2yFXgN9Zim8N9</a>
+`);
+//<br><br>
+                // Data for debugging purposes: `+JSON.stringify(fields));
             });
         }
     }
@@ -298,7 +316,7 @@ Click this <a href="https://pathos.co/kras/${hash}">link</a> to see your notes.
 function sendEmail(config) {
     var options = {
         toAddress: config.toAddress || "7oclockco@gmail.com",
-        subject: config.subject || "Your KRAS notes",
+        subject: config.subject || "Your K-Ras notes",
         body: config.body || ""
     }
 
