@@ -291,7 +291,7 @@ PathOS Team.
             emailOptions.subject = `Your K-Ras notes from Dr. ${fields.doctor}`
         }
         sendEmail(emailOptions);
-        message = '<a href="/kras/${hash}">Link sent to patient</a> at ${fields.email} using 7oclockco@gmail.com'
+        message = `<a href="/kras/${hash}">Link sent to patient</a> at ${fields.email} using 7oclockco@gmail.com`
     }
 
 } catch(e) {
