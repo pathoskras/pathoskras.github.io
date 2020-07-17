@@ -63,27 +63,27 @@ exports.config = {
                 var data = {
                     images: [
                         {
-                            image: "KRasGapBoundSwitchOffFrame2752.png",
+                            image: "KRasEditPlusLabelsNoCaptionsSwitchingOFF.png",
                             name: "Inactive Kras",
                             id: 1
                         },
                         {
-                            image: "KRasGDPBoundWithSos1Frame1429.png",
+                            image: "KRasEditPlusLabelsNoCaptionsOFF_Switch.png",
                             name: "Kras bound with Sos",
                             id: 2
                         },
                         {
-                            image: "KRasGTPBoundWithSos1.png",
+                            image: "KRasEditPlusLabelsNoCaptionsON_Switch.png",
                             name: "GTP Bound with Sos1",
                             id: 3
                         },
                         {
-                            image: "MutantKRasBoundToRaf1Frame3233.png",
+                            image: "KRasEditPlusLabelsNoCaptionsMUTANT_K_Ras.png",
                             name: "Mutant Kras",
                             id: 4
                         },
                         {
-                            image: "tumourCelllsDividingFrame3779.png",
+                            image: "KRasEditPlusLabelsNoCaptionsCancerCellsDividing.png",
                             name: "Tumour Cells",
                             id: 5
                         }
@@ -120,27 +120,27 @@ exports.config = {
                 var data = {
                     images: [
                         {
-                            image: "KRasGDPBoundWithSos1Frame1429.png",
+                            image: "KRasEditPlusLabelsNoCaptionsOFF_Switch.png",
                             name: "Inactive KRAS",
                             id: 1
                         },
                         {
-                            image: "KRasGTPBoundWithSos1.png",
+                            image: "KRasEditPlusLabelsNoCaptionsON_Switch.png",
                             name: "Active KRAS",
                             id: 2
                         },
                         {
-                            image: "KRasGapBoundSwitchOffFrame2752.png",
+                            image: "KRasEditPlusLabelsNoCaptionsSwitchingOFF.png",
                             name: "KRAS inactivated by p120GAP",
                             id: 3
                         },
                         {
-                            image: "MutantKRasBoundToRaf1Frame3233.png",
+                            image: "KRasEditPlusLabelsNoCaptionsMUTANT_K_Ras.png",
                             name: "Mutant KRAS",
                             id: 4
                         },
                         {
-                            image: "tumourCelllsDividingFrame3779.png",
+                            image: "KRasEditPlusLabelsNoCaptionsCancerCellsDividing.png",
                             name: "Tumour Cells Dividing",
                             id: 5
                         }
