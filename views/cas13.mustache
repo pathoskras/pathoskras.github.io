@@ -174,18 +174,23 @@ function test() {
 
 
     if(seq.checkType(sequence, 1) == 'dna' || seq.checkType(sequence, 1) == 'rna') {
-        while(pos < sequence.length) {
-            if(pos + spacer_length < sequence.length) {
-                count++;
-                var spacer = sequence.slice(pos, pos + spacer_length);
-                outputs.push(`gRNA_${count}_F ${F_primer}${spacer}`);
-                outputs.push(`gRNA_${count}_R ${R_primer}${seq.reverse(spacer)}`);
-            }
-            pos += intervals;
-        }
+        console.log("Sequence is fine, no errors.");
     } else {
-        alert("Input sequence is not DNA or RNA");
+        var message = "Input sequence is not DNA or RNA";
+        errors.push(message);
     }
+
+
+    while(pos < sequence.length) {
+        if(pos + spacer_length < sequence.length) {
+            count++;
+            var spacer = sequence.slice(pos, pos + spacer_length);
+            outputs.push(`gRNA_${count}_F ${F_primer}${spacer}`);
+            outputs.push(`gRNA_${count}_R ${R_primer}${seq.reverse(spacer)}`);
+        }
+        pos += intervals;
+    }
+
 
     $("#output").val(outputs.join("\n"));
 
