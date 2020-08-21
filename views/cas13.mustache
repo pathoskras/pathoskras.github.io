@@ -81,7 +81,9 @@
 
 <div id='output_div' style="display: none;">
     <br>
-    <td align="left"> <strong>Output: </strong> <a id="download_csv">Download CSV</a> </td>
+    <td align="left"> <strong>Output: </strong> 
+        <br>
+    <a id="download_csv">Download CSV</a> </td>
     <br>
     <textarea id='output' rows="8" cols="120"></textarea>
 </div>
@@ -118,15 +120,20 @@ const seq = require('bionode-seq');
 const md = new showdown.Converter({openLinksInNewWindow: true});
 
 
-{{!  Dummy stuff }}
+// Dummy stuff 
+//*
 $("#fasta_sequence").val('acgtagctgacgtcgtagtacacgtagctgacgtcgtagtacacgtagctgacgtcgtagtacacgtagctgacgtcgtagtacacgtagctgacgtcgtagtacacgtagctgacgtcgtagtacacgtagctgacgtcgtagtacacgtagctgacgtcgtagtac');
+$("#F_primer").val('gtagtac');
+$("#R_primer").val('tagctga');
 
+// */
 
 
 function test() {
     event.preventDefault();
     console.log("hello");
     $("#output_div").css("display", 'block');
+    var errors = [];
 
     var sequence = $("#fasta_sequence").val().toUpperCase(),
         F_primer = $("#F_primer").val().toLowerCase(),
@@ -138,12 +145,16 @@ function test() {
     var pos = 0;
     var count = 0;
 
-    if(intervals < 1) {
-        alert("Intervals must be 1 or greater");
+    if(!Number.isInteger(intervals) || intervals < 1 || parseInt($("#intervals").val()) === 0) {
+        var message = "Intervals must be an integer 1 or greater, setting 'intervals' to 1.";
+        {{! alert(message); }}
+        errors.push(message);
         intervals = 1;
     }
-    if(spacer_length < 1) {
-        alert("Spacer Length must be 1 or greater");
+    if(!Number.isInteger(intervals) || spacer_length < 1 || parseInt($("#spacer_length").val()) === 0) {
+        var message = "Spacer Length must be an integer 1 or greater, setting 'spacer_length' to 1.";
+        {{! alert(message); }}
+        errors.push(message);
         spacer_length = 1;
     }
 
@@ -169,6 +180,12 @@ function test() {
         href: `data:text/plain;charset=utf-8,${encodeURIComponent(outputs.join("\n"))}`,
         download: "results.txt"
     });
+
+console.log("errors", errors);
+    if(errors.length > 0) {
+        $("#errors_div").css("display", 'block');
+        $("#errors").val(errors.join("\n"));
+    }
 
 }
 
