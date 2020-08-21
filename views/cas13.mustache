@@ -95,6 +95,13 @@
     <textarea id='errors' rows="8" cols="120"></textarea>
 </div>
 
+<div id='stats_div' style="display: none;">
+    <br>
+    <td align="left"> <strong>Stats: </strong> </td>
+    <br>
+    <textarea id='stats' rows="8" cols="120"></textarea>
+</div>
+
     <br>
     <p>
     <b><br>If you are using Cas13-gRNA server in your research, please cite:<br> </b>
@@ -132,26 +139,33 @@ $("#R_primer").val('tagctga');
 function test() {
     event.preventDefault();
     console.log("hello");
+    $("#errors_div").css("display", 'none');
+    $("#stats_div").css("display", 'none');
+
     $("#output_div").css("display", 'block');
     var errors = [];
 
     var sequence = $("#fasta_sequence").val().toUpperCase(),
         F_primer = $("#F_primer").val().toLowerCase(),
         R_primer = $("#R_primer").val().toLowerCase(),
-        spacer_length = parseInt($("#spacer_length").val()) || 30,
-        intervals = parseInt($("#intervals").val()) || 1;
+        spacer_length = parseInt($("#spacer_length").val()),
+        intervals = parseInt($("#intervals").val());
 
     var outputs = [];
     var pos = 0;
     var count = 0;
 
-    if(!Number.isInteger(intervals) || intervals < 1 || parseInt($("#intervals").val()) === 0) {
+    if ($("#spacer_length").val() === '') spacer_length = 30;
+    if ($("#intervals").val() === '') intervals = 1;
+
+    if((!Number.isInteger(intervals) && $("#intervals").val() !== '') || intervals < 1 || parseInt($("#intervals").val()) === 0) {
         var message = "Intervals must be an integer 1 or greater, setting 'intervals' to 1.";
         {{! alert(message); }}
         errors.push(message);
         intervals = 1;
     }
-    if(!Number.isInteger(intervals) || spacer_length < 1 || parseInt($("#spacer_length").val()) === 0) {
+
+    if((!Number.isInteger(spacer_length) && $("#spacer_length").val() !== '') || spacer_length < 1 || parseInt($("#spacer_length").val()) === 0) {
         var message = "Spacer Length must be an integer 1 or greater, setting 'spacer_length' to 1.";
         {{! alert(message); }}
         errors.push(message);
@@ -181,12 +195,30 @@ function test() {
         download: "results.txt"
     });
 
-console.log("errors", errors);
+// Print any errors
     if(errors.length > 0) {
         $("#errors_div").css("display", 'block');
         $("#errors").val(errors.join("\n"));
     }
 
+// Print stats
+    var stats = [];
+    stats.push(`Sequence length: ${sequence.length}`);
+    
+    stats.push(`GC content: ${countGCcontent(sequence)}`);
+
+    $("#stats_div").css("display", 'block');
+    $("#stats").val(stats.join("\n"));
+}
+
+
+function countGCcontent(sequence) {
+    var total = sequence.length,
+        gc = 0;
+    sequence.split('').forEach(char => {
+        if(char == 'c' || char == 'C' || char == 'g' | char == 'G') gc++;
+    });
+    return Math.floor((100 * gc)/total)+'%';
 }
 
 
