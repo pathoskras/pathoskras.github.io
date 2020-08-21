@@ -114,6 +114,15 @@ exports.config = {
                 }
             })
         },
+        cas13: function(router) {
+            router.readTemplate('cas13.mustache', 'd3_inner', views => {
+                console.log("hey");
+                var data = {};
+
+                var output = mustache.render(views.template, data, views);
+                router.res.end(output);
+            });
+        },
         kras: function(router) {
             router.readTemplate('wrapper.mustache', 'd3_inner', views => {
                 console.log(router.path);
