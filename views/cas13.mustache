@@ -73,6 +73,7 @@
 }}
 
     </tbody></table>
+    <input type="BUTTON" value="Show Example" onclick="example()">
     <input type="SUBMIT" value="Submit" onclick="test()">
     <input type="RESET" value="Clear">
     <input type="hidden" name="METHOD" value="Go!">
@@ -127,13 +128,12 @@ const seq = require('bionode-seq');
 const md = new showdown.Converter({openLinksInNewWindow: true});
 
 
-// Dummy stuff 
-//*
-$("#fasta_sequence").val('acgtagctgacgtcgtagtacacgtagctgacgtcgtagtacacgtagctgacgtcgtagtacacgtagctgacgtcgtagtacacgtagctgacgtcgtagtacacgtagctgacgtcgtagtacacgtagctgacgtcgtagtacacgtagctgacgtcgtagtac');
-$("#F_primer").val('gtagtac');
-$("#R_primer").val('tagctga');
-
-// */
+// Display an example
+function example() {
+    $("#fasta_sequence").val('acgtagctgacgtcgtagtacacgtagctgacgtcgtagtacacgtagctgacgtcgtagtacacgtagctgacgtcgtagtacacgtagctgacgtcgtagtacacgtagctgacgtcgtagtacacgtagctgacgtcgtagtacacgtagctgacgtcgtagtac');
+    $("#F_primer").val('gtagtac');
+    $("#R_primer").val('tagctga');
+}
 
 
 function test() {
