@@ -56,12 +56,12 @@
     </tr>
 
     <tr>
-    <td align="center"> Forward Primer:</td>
+    <td align="center"> 5' Adapter:</td>
     <td align="left"> <input type="TEXT" value="" name="F_primer" id="F_primer" size="75"></td>
     </tr>
 
     <tr>
-    <td align="center"> Reverse Primer:</td>
+    <td align="center"> 3' Adapter:</td>
     <td align="left"> <input type="TEXT" value="" name="R_primer" id="R_primer" size="75"></td>
     </tr>
 
@@ -73,27 +73,27 @@
 }}
 
     </tbody></table>
-    <input type="BUTTON" value="Show Example" onclick="example()">
-    <input type="SUBMIT" value="Submit" onclick="test()">
-    <input type="RESET" value="Clear">
+    <input type="BUTTON" value="Show Example" onclick="show_example()">
+    <input type="SUBMIT" value="Submit" onclick="submit_sequence()">
+    <input type="RESET" value="Clear" onclick="clear_results()">
     <input type="hidden" name="METHOD" value="Go!">
 
     </form> 
+
+<div id='errors_div' style="display: none;">
+    <br>
+    <td align="left"> <strong style="color: red;">Errors: </strong></td>
+    <br>
+    <textarea id='errors' rows="8" cols="120"></textarea>
+</div>
 
 <div id='output_div' style="display: none;">
     <br>
     <td align="left"> <strong>Output: </strong> 
         <br>
-    <a id="download_csv">Download CSV</a> </td>
+    <a id="download_csv">Download as .txt file</a> </td>
     <br>
     <textarea id='output' rows="8" cols="120"></textarea>
-</div>
-
-<div id='errors_div' style="display: none;">
-    <br>
-    <td align="left"> <strong>Errors: </strong></td>
-    <br>
-    <textarea id='errors' rows="8" cols="120"></textarea>
 </div>
 
 <div id='stats_div' style="display: none;">
@@ -129,14 +129,23 @@ const md = new showdown.Converter({openLinksInNewWindow: true});
 
 
 // Display an example
-function example() {
-    $("#fasta_sequence").val('acgtagctgacgtcgtagtacacgtagctgacgtcgtagtacacgtagctgacgtcgtagtacacgtagctgacgtcgtagtacacgtagctgacgtcgtagtacacgtagctgacgtcgtagtacacgtagctgacgtcgtagtacacgtagctgacgtcgtagtac');
-    $("#F_primer").val('gtagtac');
-    $("#R_primer").val('tagctga');
+function show_example() {
+    {{! console.log("Doing example"); }}
+    $("#fasta_sequence").val('acgtagctgacgtcgtagtacacgtagctgacgtcgtagtacacgtagctgacgtcgtagtacacgtagctgacgtcgtagtacacgtagctgacgtcgtagtacacgtagctgacgtcgtagtacacgtagctgacgtcgtagtacacgtagctgacgtcgtagtacacgtagctgacgtcgtagtacacgtagctgacgtcgtagtacacgtagctgacgtcgtagtacacgtagctgacgtcgtagtacacgtagctgacgtcgtagtacacgtagctgacgtcgtagtacacgtagctgacgtcgtagtacacgtagctgacgtcgtagtac');
+    $("#spacer_length").val(30);
+    $("#intervals").val(1);
+    $("#F_primer").val('cacc');
+    $("#R_primer").val('caac');
 }
 
+function clear_results() {
+    {{! console.log("clearing"); }}
+    $("#errors_div").css("display", 'none');
+    $("#stats_div").css("display", 'none');
+    $("#output_div").css("display", 'none');
+}
 
-function test() {
+function submit_sequence() {
     event.preventDefault();
     console.log("hello");
     $("#errors_div").css("display", 'none');
@@ -200,6 +209,10 @@ function test() {
         download: "results.txt"
     });
 
+    if( spacer_length > sequence.length ) {
+        errors.push("Warning, spacer length is longer than sequence length.");
+    }
+
 // Print any errors
     if(errors.length > 0) {
         $("#errors_div").css("display", 'block');
@@ -209,8 +222,8 @@ function test() {
 // Print stats
     var stats = [];
     stats.push(`Sequence length: ${sequence.length}`);
-    
     stats.push(`GC content: ${countGCcontent(sequence)}`);
+    stats.push(`Number of guide RNAs created: ${outputs.length}`);
 
     $("#stats_div").css("display", 'block');
     $("#stats").val(stats.join("\n"));
