@@ -131,7 +131,7 @@ const md = new showdown.Converter({openLinksInNewWindow: true});
 // Display an example
 function show_example() {
     {{! console.log("Doing example"); }}
-    $("#fasta_sequence").val('acgtagctgacgtcgtagtacacgtagctgacgtcgtagtacacgtagctgacgtcgtagtacacgtagctgacgtcgtagtacacgtagctgacgtcgtagtacacgtagctgacgtcgtagtacacgtagctgacgtcgtagtacacgtagctgacgtcgtagtacacgtagctgacgtcgtagtacacgtagctgacgtcgtagtacacgtagctgacgtcgtagtacacgtagctgacgtcgtagtacacgtagctgacgtcgtagtacacgtagctgacgtcgtagtacacgtagctgacgtcgtagtacacgtagctgacgtcgtagtac');
+    $("#fasta_sequence").val('ATTAAAGGTTTATACCTTCCCAGGTAACAAACCAACCAACTTTCGATCTCTTGTAGATCTGTTCTCTAAACGAACTTTAAAATCTGTGTGGCTGTCACTCGGCTGCATGCTTAGTGCACTCACGCAGTATAATTAATAACTAATTACTGTCGTTGACAGGACACGAGTAACTCGTCTATCTTCTGCAGGCTGCTTACGGTTTCGTCCGTGTTGCAGCCGATCATCAGCACATCTAGGTTTCGTCCGGGTGTGACCGAAAGGTAAGATGGAGAGCCTTGTCCCTGGTTTCAACGAGAAAACACACGTCCAACTCAGTTTGCCTGTTTTACAGGTTCGCGACGTGCTCGTACGTGGCTTTGGAGACTCCGTGGAGGAGGTCTTATCAGAGGCACGTCAACATCTTAAAGATGGCACTTGTGGCTTAGTAGAAG');
     $("#spacer_length").val(30);
     $("#intervals").val(1);
     $("#F_primer").val('cacc');
@@ -194,8 +194,8 @@ function submit_sequence() {
         if(pos + spacer_length < sequence.length) {
             count++;
             var spacer = sequence.slice(pos, pos + spacer_length);
-            outputs.push(`gRNA_${count}_F ${F_primer}${spacer}`);
-            outputs.push(`gRNA_${count}_R ${R_primer}${seq.reverse(spacer)}`);
+            outputs.push(`gRNA_${count}_F ${F_primer}${seq.reverse(seq.complement(spacer))}`);
+            outputs.push(`gRNA_${count}_R ${R_primer}${spacer}`);
         }
         pos += intervals;
     }
