@@ -1,46 +1,27 @@
-'use strict';
+import * as sequelize from 'sequelize';
+import {UserFactory} from "./user-model";
+import {SkillsFactory} from "./skills-model";
 
-import fs = require('fs');
-import path = require('path');
+// From https://medium.com/@enetoOlveda/use-sequelize-and-typescript-like-a-pro-with-out-the-legacy-decorators-fbaabed09472
 
-// https://sequelize.org/master/manual/typescript.html
-import { Sequelize, DataTypes } from "sequelize";
+export const dbConfig :sequelize.Sequelize = new sequelize.Sequelize(
+    (process.env.DB_NAME = "typescript_test"),
+    (process.env.DB_USER = "root"),
+    (process.env.DB_PASSWORD = ""),
+    {
+        port: Number(process.env.DB_PORT) || 3306,
+        host: process.env.DB_HOST || "localhost",
+        dialect: "mysql",
+        pool: {
+            min: 0,
+            max: 5,
+            acquire: 30000,
+            idle: 10000,
+        },
+    }
+);
+// THIS ONES ARE THE ONES YOU NEED TO USE ON YOUR CONTROLLERS
+export const User = UserFactory(dbConfig)
 
-const basename = path.basename(__filename);
-const env = process.env.NODE_ENV || 'development';
-const config = require(__dirname + '/../config/config.json')[env];
-const db :any = {};
-
-let sequelize;
-if (config.use_env_variable) {
-  sequelize = new Sequelize(process.env[config.use_env_variable], config);
-} else {
-  sequelize = new Sequelize(config.database, config.username, config.password, config);
-}
-
-fs
-  .readdirSync(__dirname)
-  .filter(file => {
-    return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
-  })
-  .forEach(file => {
-console.log("Loading model: ", path.join(__dirname, file));
-
-    const model = require(path.join(__dirname, file))(sequelize, DataTypes);
-    db[model.name] = model;
-  });
-
-Object.keys(db).forEach(modelName => {
-    if (db[modelName].associate) {
-    db[modelName].associate(db);
-  }
-});
-
-db.sequelize = sequelize;
-db.Sequelize = Sequelize;
-
-console.log("Returning database: ",Object.keys(db));
-console.log(Object.keys(db.Worksheet));
-
-// export { db }
-module.exports = db;
+// THIS ONES ARE THE ONES YOU NEED TO USE ON YOUR CONTROLLERS
+export const Skills = SkillsFactory(dbConfig)

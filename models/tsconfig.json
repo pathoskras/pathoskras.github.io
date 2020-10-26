@@ -5,6 +5,8 @@
 
         "allowSyntheticDefaultImports":  true,
         "esModuleInterop": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
 
         "noImplicitAny": false,
         "noImplicitThis": false,
@@ -12,7 +14,7 @@
         "noUnusedLocals": false
     },
     "files": [
-        "index.ts",
-        "worksheet.ts"
+        "user-model.ts",
+        "index.ts"
     ]
 }

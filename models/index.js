@@ -1,38 +1,41 @@
-'use strict';
+"use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const fs = require("fs");
-const path = require("path");
-// https://sequelize.org/master/manual/typescript.html
-const sequelize_1 = require("sequelize");
-const basename = path.basename(__filename);
-const env = process.env.NODE_ENV || 'development';
-const config = require(__dirname + '/../config/config.json')[env];
-const db = {};
-let sequelize;
-if (config.use_env_variable) {
-    sequelize = new sequelize_1.Sequelize(process.env[config.use_env_variable], config);
-}
-else {
-    sequelize = new sequelize_1.Sequelize(config.database, config.username, config.password, config);
-}
-fs
-    .readdirSync(__dirname)
-    .filter(file => {
-    return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
-})
-    .forEach(file => {
-    console.log("Loading model: ", path.join(__dirname, file));
-    const model = require(path.join(__dirname, file))(sequelize, sequelize_1.DataTypes);
-    db[model.name] = model;
+exports.Skills = exports.User = exports.dbConfig = void 0;
+const sequelize = __importStar(require("sequelize"));
+const user_model_1 = require("./user-model");
+const skills_model_1 = require("./skills-model");
+// From https://medium.com/@enetoOlveda/use-sequelize-and-typescript-like-a-pro-with-out-the-legacy-decorators-fbaabed09472
+exports.dbConfig = new sequelize.Sequelize((process.env.DB_NAME = "typescript_test"), (process.env.DB_USER = "root"), (process.env.DB_PASSWORD = ""), {
+    port: Number(process.env.DB_PORT) || 3306,
+    host: process.env.DB_HOST || "localhost",
+    dialect: "mysql",
+    pool: {
+        min: 0,
+        max: 5,
+        acquire: 30000,
+        idle: 10000,
+    },
 });
-Object.keys(db).forEach(modelName => {
-    if (db[modelName].associate) {
-        db[modelName].associate(db);
-    }
-});
-db.sequelize = sequelize;
-db.Sequelize = sequelize_1.Sequelize;
-console.log("Returning database: ", Object.keys(db));
-console.log(Object.keys(db.Worksheet));
-// export { db }
-module.exports = db;
+// THIS ONES ARE THE ONES YOU NEED TO USE ON YOUR CONTROLLERS
+exports.User = user_model_1.UserFactory(exports.dbConfig);
+// THIS ONES ARE THE ONES YOU NEED TO USE ON YOUR CONTROLLERS
+exports.Skills = skills_model_1.SkillsFactory(exports.dbConfig);
