@@ -9,15 +9,13 @@
 if (typeof define !== 'function') {
     var define = require('amdefine')(module);
 }
-define("requestHandlers", ["require", "exports"], function (require, exports) {
+define("requestHandlers", ["require", "exports", "fs", "mustache"], function (require, exports, fs, mustache) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.handle = void 0;
     // requestHandlers.ts
     const db = require("./database").db;
-    const fs = require('fs');
     const fsPromise = fs.promises;
-    const mustache = require('mustache');
     const Website = function (site, config) {
         if (typeof config === "object") {
             this.data = false;
@@ -50,12 +48,18 @@ define("requestHandlers", ["require", "exports"], function (require, exports) {
                 let config, cred;
                 try {
                     const start = Date.now();
-                    config = require('../config').config;
+                    if (fs.existsSync(`${__dirname}/../config.js`)) {
+                        config = require(`${__dirname}/../config`).config;
+                    }
+                    else {
+                        config = require(`${__dirname}/../config/config`).config;
+                    }
                     console.log(`Loading time: ${Date.now() - start} ms - config.js`);
                 }
                 catch (err) {
                     if (err.code !== 'MODULE_NOT_FOUND') {
                         console.log("Warning, your config script is broken!");
+                        console.error(err);
                         console.log();
                     }
                     else {
@@ -64,7 +68,7 @@ define("requestHandlers", ["require", "exports"], function (require, exports) {
                     }
                 }
                 try {
-                    cred = JSON.parse(fs.readFileSync('cred.json'));
+                    cred = JSON.parse(fs.readFileSync('cred.json').toString());
                 }
                 catch (err) { }
                 config.standAlone = true;
@@ -80,12 +84,18 @@ define("requestHandlers", ["require", "exports"], function (require, exports) {
                 var config, cred;
                 try {
                     const start = Date.now();
-                    config = require('../websites/' + site + '/config').config;
+                    if (fs.existsSync(`${__dirname}/../websites/${site}/config.js`)) {
+                        config = require(`${__dirname}/../websites/${site}/config`).config;
+                    }
+                    else {
+                        config = require(`${__dirname}/../websites/${site}/config/config`).config;
+                    }
                     console.log(`${Date.now() - start} ms - config.js for ${site}`);
                 }
                 catch (err) {
                     if (err.code !== 'MODULE_NOT_FOUND') {
                         console.log("Warning, your config script for " + site + " is broken!");
+                        console.error(err);
                         console.log();
                     }
                     else {
@@ -94,9 +104,12 @@ define("requestHandlers", ["require", "exports"], function (require, exports) {
                     }
                 }
                 try {
-                    cred = JSON.parse(fs.readFileSync('websites/' + site + '/cred.json'));
+                    cred = JSON.parse(fs.readFileSync(`websites/${site}/cred.json`).toString());
+                    // console.log("Cred: ", cred);
                 }
-                catch (err) { }
+                catch (err) {
+                    console.log(err);
+                }
                 config.cache = false;
                 handle.addWebsite(site, config, cred);
             }
@@ -106,16 +119,22 @@ define("requestHandlers", ["require", "exports"], function (require, exports) {
                         console.log("Adding site: " + site);
                         var config, cred;
                         try {
-                            config = require('../websites/' + site + '/config').config;
+                            if (fs.existsSync(`${__dirname}/../websites/${site}/config.js`)) {
+                                config = require(`${__dirname}/../websites/${site}/config`).config;
+                            }
+                            else {
+                                config = require(`${__dirname}/../websites/${site}/config/config`).config;
+                            }
                         }
                         catch (err) {
                             if (err.code !== 'MODULE_NOT_FOUND') {
                                 console.log("Warning, your config script for " + site + " is broken!");
+                                console.error(err);
                                 console.log();
                             }
                         }
                         try {
-                            cred = JSON.parse(fs.readFileSync('websites/' + site + '/cred.json'));
+                            cred = JSON.parse(fs.readFileSync(`websites/${site}/cred.json`).toString());
                         }
                         catch (err) { }
                         handle.addWebsite(site, config, cred);
@@ -153,6 +172,16 @@ define("requestHandlers", ["require", "exports"], function (require, exports) {
                 try {
                     const start = Date.now();
                     handle.websites[site].seq = require(`${baseUrl}db_bootstrap.js`).seq;
+                    console.log(`${Date.now() - start} ms - Database bootstrap.js ${site}`);
+                }
+                catch (e) {
+                    console.log(e);
+                }
+            }
+            else if (fs.existsSync(`${baseUrl}config/db_bootstrap.js`)) {
+                try {
+                    const start = Date.now();
+                    handle.websites[site].seq = require(`${baseUrl}config/db_bootstrap.js`).seq;
                     console.log(`${Date.now() - start} ms - Database bootstrap.js ${site}`);
                 }
                 catch (e) {
@@ -303,14 +332,10 @@ define("requestHandlers", ["require", "exports"], function (require, exports) {
         });
     }
 });
-define("router", ["require", "exports"], function (require, exports) {
+define("router", ["require", "exports", "fs", "mime", "zlib"], function (require, exports, fs, mime, zlib) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.router = void 0;
-    // router.ts
-    const fs = require("fs");
-    const mime = require('mime');
-    const zlib = require('zlib');
     function router(website, pathname, response, request) {
         response.setHeader("Access-Control-Allow-Origin", "*");
         const route = new Promise(function (resolve, reject) {
@@ -569,14 +594,10 @@ ${links.join("\n")}
     }
     exports.router = router;
 });
-define("server", ["require", "exports"], function (require, exports) {
+define("server", ["require", "exports", "http", "url", "http-proxy"], function (require, exports, http, url, httpProxy) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.start = void 0;
-    // server.ts
-    const http = require("http");
-    const url = require("url");
-    const httpProxy = require('http-proxy');
     let blacklist = [];
     try {
         blacklist = require("../blacklist").blacklist;
@@ -665,7 +686,9 @@ define("server", ["require", "exports"], function (require, exports) {
                     response.end("Logged out.");
                 }
                 else if (url_object.query.password && passwords.indexOf(url_object.query.password) >= 0) {
-                    let password = encodeBase64(url_object.query.password);
+                    // console.log(url_object.query.password);
+                    let password = encodeBase64(url_object.query.password[0]);
+                    // let password = encodeBase64(url_object.query.password);
                     response.setHeader('Set-Cookie', [`password=${password};path=/;expires=false`]);
                     webProxy(proxyConfig);
                 }
@@ -752,11 +775,10 @@ div {
 </html>`;
 });
 // database.ts
-define("database", ["require", "exports"], function (require, exports) {
+define("database", ["require", "exports", "mysql"], function (require, exports, mysql) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.db = void 0;
-    var mysql = require("mysql");
     var Database = function (cred) {
         this.cred = cred;
         this.connected = false;
@@ -816,7 +838,7 @@ if (typeof define !== 'function') {
     var define = require('amdefine')(module);
 }
 define(function (require) {
-    require(['server', 'router', 'requestHandlers'], function (server, router, requestHandlers) {
+    require(['server', 'router', 'requestHandlers', 'fs'], function (server, router, requestHandlers, fs) {
         let port = '1337'; // change the port here?
         const pattern = /^\d{0,5}$/;
         let workspace = 'default';
@@ -832,6 +854,10 @@ define(function (require) {
         }
         else if (typeof process.argv[3] !== null && process.argv[3] !== undefined && !pattern.exec(process.argv[3])) {
             workspace = process.argv[3];
+        }
+        if (!fs.existsSync(`websites/${workspace}`)) {
+            console.error(`Error. ${workspace} is an invalid workspace`);
+            process.exit(1);
         }
         requestHandlers.handle.index.localhost = workspace;
         requestHandlers.handle.loadAllWebsites();
