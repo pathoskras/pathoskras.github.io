@@ -24,11 +24,12 @@ try {
 } catch(e){ console.error("No config.json provided for Sequelize"); }
 
 // Do NOT log your password on production!!!
-if(env == 'development') { console.log("Initilizing Sequelize with options:", seqOptions); }
+if(env == 'development') { console.log("Initialising Sequelize with options:", seqOptions); }
 
-// Set up all the models
+// Initialise Sequelize 
 export const dbConfig :sequelize.Sequelize = new sequelize.Sequelize(seqOptions);
 
+// Initialise models
 export const User = UserFactory(dbConfig)
 export const Skills = SkillsFactory(dbConfig)
 export const Worksheet = WorksheetFactory(dbConfig)

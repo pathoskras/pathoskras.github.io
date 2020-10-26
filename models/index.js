@@ -50,10 +50,11 @@ catch (e) {
 }
 // Do NOT log your password on production!!!
 if (env == 'development') {
-    console.log("Initilizing Sequelize with options:", seqOptions);
+    console.log("Initialising Sequelize with options:", seqOptions);
 }
-// Set up all the models
+// Initialise Sequelize 
 exports.dbConfig = new sequelize.Sequelize(seqOptions);
+// Initialise models
 exports.User = user_model_1.UserFactory(exports.dbConfig);
 exports.Skills = skills_model_1.SkillsFactory(exports.dbConfig);
 exports.Worksheet = worksheet_1.WorksheetFactory(exports.dbConfig);
