@@ -53,7 +53,7 @@ exports.config = {
                             id: 2
                         },
                         {
-                            image: "KRasEditPlusLabelsNoCaptionsSwitchingOFF_.png",
+                            image: "KRasEditPlusLabelsNoCaptionsSwitchingOFF.png",
                             name: "KRAS inactivated by p120GAP",
                             id: 3
                         },
@@ -69,7 +69,7 @@ exports.config = {
                         },
                         {
                             image: "KRas_AMG510WithLabels.png",
-                            name: "Tumour Cells Dividing",
+                            name: "KRas AMG510",
                             id: 6
                         }
                     ]
