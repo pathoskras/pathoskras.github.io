@@ -12,6 +12,7 @@
         "noUnusedLocals": false
     },
     "files": [
+        "db_bootstrap.ts",
         "config.ts"
     ]
 }

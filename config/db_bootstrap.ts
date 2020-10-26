@@ -1,3 +1,5 @@
+console.log("running bootstrap.ts")
+
 const seq = require(`${__dirname}/../models/index`);
 const Worksheet = seq.Worksheet = require(`${__dirname}/../models`).Worksheet;
 
@@ -10,4 +12,5 @@ if (false) {
 }
 
 
-exports.seq = seq;
+
+export { seq }

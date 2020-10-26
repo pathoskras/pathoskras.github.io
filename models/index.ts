@@ -1,8 +1,11 @@
 'use strict';
 
-const fs = require('fs');
-const path = require('path');
-const Sequelize = require('sequelize');
+import fs = require('fs');
+import path = require('path');
+
+// https://sequelize.org/master/manual/typescript.html
+import { Sequelize, DataTypes } from "sequelize";
+
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../config/config.json')[env];
@@ -21,12 +24,14 @@ fs
     return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
   })
   .forEach(file => {
-    const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
+console.log("Loading model: ", path.join(__dirname, file));
+
+    const model = require(path.join(__dirname, file))(sequelize, DataTypes);
     db[model.name] = model;
   });
 
 Object.keys(db).forEach(modelName => {
-  if (db[modelName].associate) {
+    if (db[modelName].associate) {
     db[modelName].associate(db);
   }
 });
@@ -34,4 +39,8 @@ Object.keys(db).forEach(modelName => {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-export { db }
+console.log("Returning database: ",Object.keys(db));
+console.log(Object.keys(db.Worksheet));
+
+// export { db }
+module.exports = db;

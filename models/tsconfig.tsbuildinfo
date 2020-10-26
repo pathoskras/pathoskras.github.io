@@ -211,15 +211,145 @@
         "signature": "f58c6d0669d1ee04b2fcb0e87fb949b6828602f3f29c7bf6c76a214f16fd50d5",
         "affectsGlobalScope": false
       },
+      "../../../node_modules/sequelize/types/lib/data-types.d.ts": {
+        "version": "90f0eb36d6cca7e856726c478d061c40c869d184012e2912098269ffc904417f",
+        "signature": "90f0eb36d6cca7e856726c478d061c40c869d184012e2912098269ffc904417f",
+        "affectsGlobalScope": false
+      },
+      "../../../node_modules/sequelize/types/lib/deferrable.d.ts": {
+        "version": "c0f575e9f7005738c3470854fa23817120457d870b1a58eadb3b3212d38aaa80",
+        "signature": "c0f575e9f7005738c3470854fa23817120457d870b1a58eadb3b3212d38aaa80",
+        "affectsGlobalScope": false
+      },
+      "../../../node_modules/sequelize/types/lib/operators.d.ts": {
+        "version": "f64a696104d96d1bbf022949dd6276504ea98b1dd470ec12eddf9042e7e93855",
+        "signature": "f64a696104d96d1bbf022949dd6276504ea98b1dd470ec12eddf9042e7e93855",
+        "affectsGlobalScope": false
+      },
+      "../../../node_modules/sequelize/types/lib/query-types.d.ts": {
+        "version": "0c098f6d249616469e6d9e2c584145c8e9299297b472d77ca348d293fe3ffd80",
+        "signature": "0c098f6d249616469e6d9e2c584145c8e9299297b472d77ca348d293fe3ffd80",
+        "affectsGlobalScope": false
+      },
+      "../../../node_modules/sequelize/types/lib/table-hints.d.ts": {
+        "version": "fd7d0017b5f33a8a58e07d0c15a93387250ae1d627170ecec68f0a93960cc02b",
+        "signature": "fd7d0017b5f33a8a58e07d0c15a93387250ae1d627170ecec68f0a93960cc02b",
+        "affectsGlobalScope": false
+      },
+      "../../../node_modules/sequelize/types/lib/index-hints.d.ts": {
+        "version": "334236475f89849f4373639c9053809ec3ee48f20f859f96e3cd3f0eff770921",
+        "signature": "334236475f89849f4373639c9053809ec3ee48f20f859f96e3cd3f0eff770921",
+        "affectsGlobalScope": false
+      },
+      "../../../node_modules/sequelize/types/lib/associations/base.d.ts": {
+        "version": "63751196a413d53618aa3819ee39c957a4bd0c8b0b0cadf5201ae85c8c02ded3",
+        "signature": "63751196a413d53618aa3819ee39c957a4bd0c8b0b0cadf5201ae85c8c02ded3",
+        "affectsGlobalScope": false
+      },
+      "../../../node_modules/sequelize/types/lib/associations/belongs-to.d.ts": {
+        "version": "9d00ccc37aa1dc7da29e5e2009c33db6177e3551f481be4687e512d5916a4664",
+        "signature": "9d00ccc37aa1dc7da29e5e2009c33db6177e3551f481be4687e512d5916a4664",
+        "affectsGlobalScope": false
+      },
+      "../../../node_modules/sequelize/types/lib/associations/has-one.d.ts": {
+        "version": "9cd5e6b023e25421d14e8f0fde49b258f0db5e89c48cc71d0524ff1a06d5da39",
+        "signature": "9cd5e6b023e25421d14e8f0fde49b258f0db5e89c48cc71d0524ff1a06d5da39",
+        "affectsGlobalScope": false
+      },
+      "../../../node_modules/sequelize/types/lib/associations/has-many.d.ts": {
+        "version": "fee714d79d176aa62bdc016aa0bcf00c6d1a6d1f0a3933076def39d3031b1c5a",
+        "signature": "fee714d79d176aa62bdc016aa0bcf00c6d1a6d1f0a3933076def39d3031b1c5a",
+        "affectsGlobalScope": false
+      },
+      "../../../node_modules/sequelize/types/lib/associations/belongs-to-many.d.ts": {
+        "version": "96b5683ddbaeee3afd722c265b1d8388b8d3ed65e32c0efc3607695086562b90",
+        "signature": "96b5683ddbaeee3afd722c265b1d8388b8d3ed65e32c0efc3607695086562b90",
+        "affectsGlobalScope": false
+      },
+      "../../../node_modules/sequelize/types/lib/associations/index.d.ts": {
+        "version": "47d01ed73d26a694589ea1e020f8edf31cb0640d82096203672bb603d82e7166",
+        "signature": "47d01ed73d26a694589ea1e020f8edf31cb0640d82096203672bb603d82e7166",
+        "affectsGlobalScope": false
+      },
+      "../../../node_modules/sequelize/types/lib/instance-validator.d.ts": {
+        "version": "2501f0aaf3650774a9f7bf18340d2a04cbdc013c4ebac4572666c214411c4196",
+        "signature": "2501f0aaf3650774a9f7bf18340d2a04cbdc013c4ebac4572666c214411c4196",
+        "affectsGlobalScope": false
+      },
+      "../../../node_modules/sequelize/types/lib/model-manager.d.ts": {
+        "version": "6b41e2c79936d58d2cc9749264df7e9f5e93866d450a89cb5d880ca4c9ff9e5e",
+        "signature": "6b41e2c79936d58d2cc9749264df7e9f5e93866d450a89cb5d880ca4c9ff9e5e",
+        "affectsGlobalScope": false
+      },
+      "../../../node_modules/sequelize/types/lib/transaction.d.ts": {
+        "version": "d7ecf0a9c702347d1994dea6d682df8695b9c0c43d3b37ce06208ec50ed3fb5f",
+        "signature": "d7ecf0a9c702347d1994dea6d682df8695b9c0c43d3b37ce06208ec50ed3fb5f",
+        "affectsGlobalScope": false
+      },
+      "../../../node_modules/sequelize/types/type-helpers/set-required.d.ts": {
+        "version": "4b2007ffacc248d92dcee289b18043050de29f979cd1e11c9fef97c0a8ea287d",
+        "signature": "4b2007ffacc248d92dcee289b18043050de29f979cd1e11c9fef97c0a8ea287d",
+        "affectsGlobalScope": false
+      },
+      "../../../node_modules/sequelize/types/lib/query-interface.d.ts": {
+        "version": "c4699a41413a80fc3b5a84dc3a07f1415180cfe4eea6a5e92dc8993bce9cf6f9",
+        "signature": "c4699a41413a80fc3b5a84dc3a07f1415180cfe4eea6a5e92dc8993bce9cf6f9",
+        "affectsGlobalScope": false
+      },
+      "../../../node_modules/sequelize/types/lib/connection-manager.d.ts": {
+        "version": "c5c489ade4246228fe543cb09ae9b834b7e415f4e6497e03c5bdbfa338a00bd5",
+        "signature": "c5c489ade4246228fe543cb09ae9b834b7e415f4e6497e03c5bdbfa338a00bd5",
+        "affectsGlobalScope": false
+      },
+      "../../../node_modules/sequelize/types/lib/sequelize.d.ts": {
+        "version": "a94ba10bb7f3c4b8a594af8d193d326f33825522b115a3bef2c05476dff53512",
+        "signature": "a94ba10bb7f3c4b8a594af8d193d326f33825522b115a3bef2c05476dff53512",
+        "affectsGlobalScope": false
+      },
+      "../../../node_modules/sequelize/types/lib/hooks.d.ts": {
+        "version": "bf4e99820210dbd5d1b4715540dbcc90cdb31cf16cec85503d37ac382e6d45ab",
+        "signature": "bf4e99820210dbd5d1b4715540dbcc90cdb31cf16cec85503d37ac382e6d45ab",
+        "affectsGlobalScope": false
+      },
+      "../../../node_modules/sequelize/types/lib/model.d.ts": {
+        "version": "84255e546edc5439bc79d2543537a5dc3528c5ff0935ed6ae0d99a219b36c9ba",
+        "signature": "84255e546edc5439bc79d2543537a5dc3528c5ff0935ed6ae0d99a219b36c9ba",
+        "affectsGlobalScope": false
+      },
+      "../../../node_modules/sequelize/types/lib/utils.d.ts": {
+        "version": "abc08bf57b4cc17510dd3b32675700574892a7611fc19227a1f00974a43bc7ee",
+        "signature": "abc08bf57b4cc17510dd3b32675700574892a7611fc19227a1f00974a43bc7ee",
+        "affectsGlobalScope": false
+      },
+      "../../../node_modules/sequelize/types/lib/errors.d.ts": {
+        "version": "9c5062d7febf5228522af9f2d44d2e16f1f5e40c596f732e9a5fb0b4ff1e182b",
+        "signature": "9c5062d7febf5228522af9f2d44d2e16f1f5e40c596f732e9a5fb0b4ff1e182b",
+        "affectsGlobalScope": false
+      },
+      "../../../node_modules/@types/validator/index.d.ts": {
+        "version": "d51dd1eeec95fbe192e6dfeee8f982b3d6115a0ff6059cafc879330d94367fb0",
+        "signature": "d51dd1eeec95fbe192e6dfeee8f982b3d6115a0ff6059cafc879330d94367fb0",
+        "affectsGlobalScope": false
+      },
+      "../../../node_modules/sequelize/types/lib/utils/validator-extras.d.ts": {
+        "version": "3b9e650cf228a1d63f90e018be93b4e77e2250c563006559a77a617a3d5bae2e",
+        "signature": "3b9e650cf228a1d63f90e018be93b4e77e2250c563006559a77a617a3d5bae2e",
+        "affectsGlobalScope": false
+      },
+      "../../../node_modules/sequelize/types/index.d.ts": {
+        "version": "d24299347fbdeb89097ebaa5acd9ead460c6a9228778fdb50cfdf4f592af4258",
+        "signature": "d24299347fbdeb89097ebaa5acd9ead460c6a9228778fdb50cfdf4f592af4258",
+        "affectsGlobalScope": false
+      },
       "./index.ts": {
-        "version": "05d0eb496fe8f3bb6c81b5c58e21e74356101167296633dc02adaf12226e0ee8",
-        "signature": "65f660e59188aece21ee5624d337a118c44ea753e3d17b662ac18d065cc82f8e",
+        "version": "3fe7065f7ddf557d47e215ca725d28e5b7cf5e5465d475261e809d987a63af05",
+        "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
         "affectsGlobalScope": false
       },
       "./worksheet.ts": {
-        "version": "da8e9a3536613dbeedd5c4cc7ad06f81246c555bea1e8710403b9420babd43fe",
-        "signature": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-        "affectsGlobalScope": true
+        "version": "a414375cef3cd565ae1ed29d30e8b459ddc66e387baeb238d3bbecae9efe6413",
+        "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
+        "affectsGlobalScope": false
       },
       "../../../node_modules/@types/node/globals.d.ts": {
         "version": "56050f582fd08c001b713b168ade15cc8c1649801e13c94b4370f8f203e03087",
@@ -755,11 +885,6 @@
         "version": "f9a2dd6a6084665f093ed0e9664b8e673be2a45e342a59dd4e0e4e552e68a9ad",
         "signature": "f9a2dd6a6084665f093ed0e9664b8e673be2a45e342a59dd4e0e4e552e68a9ad",
         "affectsGlobalScope": false
-      },
-      "../../../node_modules/@types/validator/index.d.ts": {
-        "version": "d51dd1eeec95fbe192e6dfeee8f982b3d6115a0ff6059cafc879330d94367fb0",
-        "signature": "d51dd1eeec95fbe192e6dfeee8f982b3d6115a0ff6059cafc879330d94367fb0",
-        "affectsGlobalScope": false
       }
     },
     "options": {
@@ -1068,6 +1193,117 @@
         "../../../node_modules/@types/node/http.d.ts",
         "../../../node_modules/@types/node/index.d.ts",
         "../../../node_modules/@types/node/stream.d.ts"
+      ],
+      "../../../node_modules/sequelize/types/index.d.ts": [
+        "../../../node_modules/sequelize/types/lib/associations/index.d.ts",
+        "../../../node_modules/sequelize/types/lib/data-types.d.ts",
+        "../../../node_modules/sequelize/types/lib/deferrable.d.ts",
+        "../../../node_modules/sequelize/types/lib/errors.d.ts",
+        "../../../node_modules/sequelize/types/lib/index-hints.d.ts",
+        "../../../node_modules/sequelize/types/lib/model.d.ts",
+        "../../../node_modules/sequelize/types/lib/operators.d.ts",
+        "../../../node_modules/sequelize/types/lib/query-interface.d.ts",
+        "../../../node_modules/sequelize/types/lib/query-types.d.ts",
+        "../../../node_modules/sequelize/types/lib/sequelize.d.ts",
+        "../../../node_modules/sequelize/types/lib/table-hints.d.ts",
+        "../../../node_modules/sequelize/types/lib/transaction.d.ts",
+        "../../../node_modules/sequelize/types/lib/utils.d.ts",
+        "../../../node_modules/sequelize/types/lib/utils/validator-extras.d.ts"
+      ],
+      "../../../node_modules/sequelize/types/lib/associations/base.d.ts": [
+        "../../../node_modules/sequelize/types/lib/model.d.ts"
+      ],
+      "../../../node_modules/sequelize/types/lib/associations/belongs-to-many.d.ts": [
+        "../../../node_modules/sequelize/types/lib/associations/base.d.ts",
+        "../../../node_modules/sequelize/types/lib/model.d.ts"
+      ],
+      "../../../node_modules/sequelize/types/lib/associations/belongs-to.d.ts": [
+        "../../../node_modules/sequelize/types/lib/associations/base.d.ts",
+        "../../../node_modules/sequelize/types/lib/data-types.d.ts",
+        "../../../node_modules/sequelize/types/lib/model.d.ts"
+      ],
+      "../../../node_modules/sequelize/types/lib/associations/has-many.d.ts": [
+        "../../../node_modules/sequelize/types/lib/associations/base.d.ts",
+        "../../../node_modules/sequelize/types/lib/data-types.d.ts",
+        "../../../node_modules/sequelize/types/lib/model.d.ts"
+      ],
+      "../../../node_modules/sequelize/types/lib/associations/has-one.d.ts": [
+        "../../../node_modules/sequelize/types/lib/associations/base.d.ts",
+        "../../../node_modules/sequelize/types/lib/data-types.d.ts",
+        "../../../node_modules/sequelize/types/lib/model.d.ts"
+      ],
+      "../../../node_modules/sequelize/types/lib/associations/index.d.ts": [
+        "../../../node_modules/sequelize/types/lib/associations/base.d.ts",
+        "../../../node_modules/sequelize/types/lib/associations/belongs-to-many.d.ts",
+        "../../../node_modules/sequelize/types/lib/associations/belongs-to.d.ts",
+        "../../../node_modules/sequelize/types/lib/associations/has-many.d.ts",
+        "../../../node_modules/sequelize/types/lib/associations/has-one.d.ts"
+      ],
+      "../../../node_modules/sequelize/types/lib/hooks.d.ts": [
+        "../../../node_modules/sequelize/types/lib/instance-validator.d.ts",
+        "../../../node_modules/sequelize/types/lib/model.d.ts",
+        "../../../node_modules/sequelize/types/lib/sequelize.d.ts"
+      ],
+      "../../../node_modules/sequelize/types/lib/instance-validator.d.ts": [
+        "../../../node_modules/sequelize/types/lib/model.d.ts"
+      ],
+      "../../../node_modules/sequelize/types/lib/model-manager.d.ts": [
+        "../../../node_modules/sequelize/types/lib/model.d.ts",
+        "../../../node_modules/sequelize/types/lib/sequelize.d.ts"
+      ],
+      "../../../node_modules/sequelize/types/lib/model.d.ts": [
+        "../../../node_modules/sequelize/types/index.d.ts",
+        "../../../node_modules/sequelize/types/lib/associations/index.d.ts",
+        "../../../node_modules/sequelize/types/lib/data-types.d.ts",
+        "../../../node_modules/sequelize/types/lib/deferrable.d.ts",
+        "../../../node_modules/sequelize/types/lib/hooks.d.ts",
+        "../../../node_modules/sequelize/types/lib/instance-validator.d.ts",
+        "../../../node_modules/sequelize/types/lib/operators.d.ts",
+        "../../../node_modules/sequelize/types/lib/query-interface.d.ts",
+        "../../../node_modules/sequelize/types/lib/sequelize.d.ts",
+        "../../../node_modules/sequelize/types/lib/transaction.d.ts",
+        "../../../node_modules/sequelize/types/lib/utils.d.ts"
+      ],
+      "../../../node_modules/sequelize/types/lib/query-interface.d.ts": [
+        "../../../node_modules/sequelize/types/lib/data-types.d.ts",
+        "../../../node_modules/sequelize/types/lib/model.d.ts",
+        "../../../node_modules/sequelize/types/lib/query-types.d.ts",
+        "../../../node_modules/sequelize/types/lib/sequelize.d.ts",
+        "../../../node_modules/sequelize/types/lib/transaction.d.ts",
+        "../../../node_modules/sequelize/types/lib/utils.d.ts",
+        "../../../node_modules/sequelize/types/type-helpers/set-required.d.ts"
+      ],
+      "../../../node_modules/sequelize/types/lib/sequelize.d.ts": [
+        "../../../node_modules/sequelize/types/lib/connection-manager.d.ts",
+        "../../../node_modules/sequelize/types/lib/data-types.d.ts",
+        "../../../node_modules/sequelize/types/lib/hooks.d.ts",
+        "../../../node_modules/sequelize/types/lib/instance-validator.d.ts",
+        "../../../node_modules/sequelize/types/lib/model-manager.d.ts",
+        "../../../node_modules/sequelize/types/lib/model.d.ts",
+        "../../../node_modules/sequelize/types/lib/query-interface.d.ts",
+        "../../../node_modules/sequelize/types/lib/query-types.d.ts",
+        "../../../node_modules/sequelize/types/lib/transaction.d.ts",
+        "../../../node_modules/sequelize/types/lib/utils.d.ts"
+      ],
+      "../../../node_modules/sequelize/types/lib/transaction.d.ts": [
+        "../../../node_modules/sequelize/types/lib/deferrable.d.ts",
+        "../../../node_modules/sequelize/types/lib/model.d.ts",
+        "../../../node_modules/sequelize/types/lib/sequelize.d.ts"
+      ],
+      "../../../node_modules/sequelize/types/lib/utils.d.ts": [
+        "../../../node_modules/sequelize/types/lib/data-types.d.ts",
+        "../../../node_modules/sequelize/types/lib/model.d.ts"
+      ],
+      "../../../node_modules/sequelize/types/lib/utils/validator-extras.d.ts": [
+        "../../../node_modules/@types/validator/index.d.ts"
+      ],
+      "./index.ts": [
+        "../../../node_modules/@types/node/fs.d.ts",
+        "../../../node_modules/@types/node/path.d.ts",
+        "../../../node_modules/sequelize/types/index.d.ts"
+      ],
+      "./worksheet.ts": [
+        "../../../node_modules/sequelize/types/index.d.ts"
       ]
     },
     "exportedModulesMap": {
@@ -1361,6 +1597,109 @@
         "../../../node_modules/@types/node/http.d.ts",
         "../../../node_modules/@types/node/index.d.ts",
         "../../../node_modules/@types/node/stream.d.ts"
+      ],
+      "../../../node_modules/sequelize/types/index.d.ts": [
+        "../../../node_modules/sequelize/types/lib/associations/index.d.ts",
+        "../../../node_modules/sequelize/types/lib/data-types.d.ts",
+        "../../../node_modules/sequelize/types/lib/deferrable.d.ts",
+        "../../../node_modules/sequelize/types/lib/errors.d.ts",
+        "../../../node_modules/sequelize/types/lib/index-hints.d.ts",
+        "../../../node_modules/sequelize/types/lib/model.d.ts",
+        "../../../node_modules/sequelize/types/lib/operators.d.ts",
+        "../../../node_modules/sequelize/types/lib/query-interface.d.ts",
+        "../../../node_modules/sequelize/types/lib/query-types.d.ts",
+        "../../../node_modules/sequelize/types/lib/sequelize.d.ts",
+        "../../../node_modules/sequelize/types/lib/table-hints.d.ts",
+        "../../../node_modules/sequelize/types/lib/transaction.d.ts",
+        "../../../node_modules/sequelize/types/lib/utils.d.ts",
+        "../../../node_modules/sequelize/types/lib/utils/validator-extras.d.ts"
+      ],
+      "../../../node_modules/sequelize/types/lib/associations/base.d.ts": [
+        "../../../node_modules/sequelize/types/lib/model.d.ts"
+      ],
+      "../../../node_modules/sequelize/types/lib/associations/belongs-to-many.d.ts": [
+        "../../../node_modules/sequelize/types/lib/associations/base.d.ts",
+        "../../../node_modules/sequelize/types/lib/model.d.ts"
+      ],
+      "../../../node_modules/sequelize/types/lib/associations/belongs-to.d.ts": [
+        "../../../node_modules/sequelize/types/lib/associations/base.d.ts",
+        "../../../node_modules/sequelize/types/lib/data-types.d.ts",
+        "../../../node_modules/sequelize/types/lib/model.d.ts"
+      ],
+      "../../../node_modules/sequelize/types/lib/associations/has-many.d.ts": [
+        "../../../node_modules/sequelize/types/lib/associations/base.d.ts",
+        "../../../node_modules/sequelize/types/lib/data-types.d.ts",
+        "../../../node_modules/sequelize/types/lib/model.d.ts"
+      ],
+      "../../../node_modules/sequelize/types/lib/associations/has-one.d.ts": [
+        "../../../node_modules/sequelize/types/lib/associations/base.d.ts",
+        "../../../node_modules/sequelize/types/lib/data-types.d.ts",
+        "../../../node_modules/sequelize/types/lib/model.d.ts"
+      ],
+      "../../../node_modules/sequelize/types/lib/associations/index.d.ts": [
+        "../../../node_modules/sequelize/types/lib/associations/base.d.ts",
+        "../../../node_modules/sequelize/types/lib/associations/belongs-to-many.d.ts",
+        "../../../node_modules/sequelize/types/lib/associations/belongs-to.d.ts",
+        "../../../node_modules/sequelize/types/lib/associations/has-many.d.ts",
+        "../../../node_modules/sequelize/types/lib/associations/has-one.d.ts"
+      ],
+      "../../../node_modules/sequelize/types/lib/hooks.d.ts": [
+        "../../../node_modules/sequelize/types/lib/instance-validator.d.ts",
+        "../../../node_modules/sequelize/types/lib/model.d.ts",
+        "../../../node_modules/sequelize/types/lib/sequelize.d.ts"
+      ],
+      "../../../node_modules/sequelize/types/lib/instance-validator.d.ts": [
+        "../../../node_modules/sequelize/types/lib/model.d.ts"
+      ],
+      "../../../node_modules/sequelize/types/lib/model-manager.d.ts": [
+        "../../../node_modules/sequelize/types/lib/model.d.ts",
+        "../../../node_modules/sequelize/types/lib/sequelize.d.ts"
+      ],
+      "../../../node_modules/sequelize/types/lib/model.d.ts": [
+        "../../../node_modules/sequelize/types/index.d.ts",
+        "../../../node_modules/sequelize/types/lib/associations/index.d.ts",
+        "../../../node_modules/sequelize/types/lib/data-types.d.ts",
+        "../../../node_modules/sequelize/types/lib/deferrable.d.ts",
+        "../../../node_modules/sequelize/types/lib/hooks.d.ts",
+        "../../../node_modules/sequelize/types/lib/instance-validator.d.ts",
+        "../../../node_modules/sequelize/types/lib/operators.d.ts",
+        "../../../node_modules/sequelize/types/lib/query-interface.d.ts",
+        "../../../node_modules/sequelize/types/lib/sequelize.d.ts",
+        "../../../node_modules/sequelize/types/lib/transaction.d.ts",
+        "../../../node_modules/sequelize/types/lib/utils.d.ts"
+      ],
+      "../../../node_modules/sequelize/types/lib/query-interface.d.ts": [
+        "../../../node_modules/sequelize/types/lib/data-types.d.ts",
+        "../../../node_modules/sequelize/types/lib/model.d.ts",
+        "../../../node_modules/sequelize/types/lib/query-types.d.ts",
+        "../../../node_modules/sequelize/types/lib/sequelize.d.ts",
+        "../../../node_modules/sequelize/types/lib/transaction.d.ts",
+        "../../../node_modules/sequelize/types/lib/utils.d.ts",
+        "../../../node_modules/sequelize/types/type-helpers/set-required.d.ts"
+      ],
+      "../../../node_modules/sequelize/types/lib/sequelize.d.ts": [
+        "../../../node_modules/sequelize/types/lib/connection-manager.d.ts",
+        "../../../node_modules/sequelize/types/lib/data-types.d.ts",
+        "../../../node_modules/sequelize/types/lib/hooks.d.ts",
+        "../../../node_modules/sequelize/types/lib/instance-validator.d.ts",
+        "../../../node_modules/sequelize/types/lib/model-manager.d.ts",
+        "../../../node_modules/sequelize/types/lib/model.d.ts",
+        "../../../node_modules/sequelize/types/lib/query-interface.d.ts",
+        "../../../node_modules/sequelize/types/lib/query-types.d.ts",
+        "../../../node_modules/sequelize/types/lib/transaction.d.ts",
+        "../../../node_modules/sequelize/types/lib/utils.d.ts"
+      ],
+      "../../../node_modules/sequelize/types/lib/transaction.d.ts": [
+        "../../../node_modules/sequelize/types/lib/deferrable.d.ts",
+        "../../../node_modules/sequelize/types/lib/model.d.ts",
+        "../../../node_modules/sequelize/types/lib/sequelize.d.ts"
+      ],
+      "../../../node_modules/sequelize/types/lib/utils.d.ts": [
+        "../../../node_modules/sequelize/types/lib/data-types.d.ts",
+        "../../../node_modules/sequelize/types/lib/model.d.ts"
+      ],
+      "../../../node_modules/sequelize/types/lib/utils/validator-extras.d.ts": [
+        "../../../node_modules/@types/validator/index.d.ts"
       ]
     },
     "semanticDiagnosticsPerFile": [
@@ -1514,6 +1853,31 @@
       "../../../node_modules/@types/responselike/index.d.ts",
       "../../../node_modules/@types/sizzle/index.d.ts",
       "../../../node_modules/@types/validator/index.d.ts",
+      "../../../node_modules/sequelize/types/index.d.ts",
+      "../../../node_modules/sequelize/types/lib/associations/base.d.ts",
+      "../../../node_modules/sequelize/types/lib/associations/belongs-to-many.d.ts",
+      "../../../node_modules/sequelize/types/lib/associations/belongs-to.d.ts",
+      "../../../node_modules/sequelize/types/lib/associations/has-many.d.ts",
+      "../../../node_modules/sequelize/types/lib/associations/has-one.d.ts",
+      "../../../node_modules/sequelize/types/lib/associations/index.d.ts",
+      "../../../node_modules/sequelize/types/lib/connection-manager.d.ts",
+      "../../../node_modules/sequelize/types/lib/data-types.d.ts",
+      "../../../node_modules/sequelize/types/lib/deferrable.d.ts",
+      "../../../node_modules/sequelize/types/lib/errors.d.ts",
+      "../../../node_modules/sequelize/types/lib/hooks.d.ts",
+      "../../../node_modules/sequelize/types/lib/index-hints.d.ts",
+      "../../../node_modules/sequelize/types/lib/instance-validator.d.ts",
+      "../../../node_modules/sequelize/types/lib/model-manager.d.ts",
+      "../../../node_modules/sequelize/types/lib/model.d.ts",
+      "../../../node_modules/sequelize/types/lib/operators.d.ts",
+      "../../../node_modules/sequelize/types/lib/query-interface.d.ts",
+      "../../../node_modules/sequelize/types/lib/query-types.d.ts",
+      "../../../node_modules/sequelize/types/lib/sequelize.d.ts",
+      "../../../node_modules/sequelize/types/lib/table-hints.d.ts",
+      "../../../node_modules/sequelize/types/lib/transaction.d.ts",
+      "../../../node_modules/sequelize/types/lib/utils.d.ts",
+      "../../../node_modules/sequelize/types/lib/utils/validator-extras.d.ts",
+      "../../../node_modules/sequelize/types/type-helpers/set-required.d.ts",
       "./index.ts",
       "./worksheet.ts"
     ]

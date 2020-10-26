@@ -211,6 +211,11 @@
         "signature": "f58c6d0669d1ee04b2fcb0e87fb949b6828602f3f29c7bf6c76a214f16fd50d5",
         "affectsGlobalScope": false
       },
+      "./db_bootstrap.ts": {
+        "version": "27b0df647c2fa79be942805414a49b9b695ef68ef5b8df03f7e8b11a30c813a5",
+        "signature": "a45d42aff2123ffa31bbdae2340a71b1e5ebb682a808e859de1d223b7339e5a8",
+        "affectsGlobalScope": false
+      },
       "../../../node_modules/@types/mustache/index.d.ts": {
         "version": "976fdab81483f691ad4a132b56e5a699f7ee2316139e9021a4f13df0a7675a15",
         "signature": "976fdab81483f691ad4a132b56e5a699f7ee2316139e9021a4f13df0a7675a15",
@@ -462,7 +467,7 @@
         "affectsGlobalScope": false
       },
       "./kras.ts": {
-        "version": "39d38605b6af301fbd3254e7378d87fe52f4be873e6416b0142692403c3f783d",
+        "version": "6ef17454ec1841e7adc1e085505a2fb2a6c95851bec2a2821d253ed9835adafd",
         "signature": "4b66b161e157bca9314f801471d0847233ab072a1584669cba7b8401a34f97fa",
         "affectsGlobalScope": false
       },
@@ -1523,6 +1528,7 @@
       "../../../node_modules/@types/sizzle/index.d.ts",
       "../../../node_modules/@types/validator/index.d.ts",
       "./config.ts",
+      "./db_bootstrap.ts",
       "./kras.ts"
     ]
   },

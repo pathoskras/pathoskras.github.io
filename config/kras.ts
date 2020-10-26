@@ -18,8 +18,12 @@ var kras = {
     controllers: {
 
         kras: function(router) {
+            console.log("router.path is:", router.path);
+            console.log("keys: ",Object.keys(router));
+            console.log("db: ",Object.keys(router.db));
+
+
             router.readTemplate('wrapper.mustache', 'd3_inner', views => {
-                console.log("router.path is:", router.path);
                 var data :any = {
                     images: [
                         {
@@ -119,6 +123,10 @@ var kras = {
 
         saveDetails: function(router){
 // console.log(router.db);
+console.log("router.path is:", router.path);
+console.log("keys: ",Object.keys(router));
+console.log("db: ",Object.keys(router.db));
+console.log("db: ",router.db.Worksheet);
 
             const form = new formidable.IncomingForm();
             form.parse(router.req, (err, fields, files) =>{
