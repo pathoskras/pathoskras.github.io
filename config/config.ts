@@ -1,18 +1,20 @@
-const mustache = require('mustache');
-const nodemailer = require('nodemailer');
-const formidable = require('formidable');
-let config = {
-    "mail_auth": {
-        "user": "username@gmail.com",
-        "pass": "password_here_lol"
-    }
+import mustache = require('mustache');
+import nodemailer = require('nodemailer');
+import _ = require('lodash');
+
+const { formidable } = require('formidable');
+
+let mail_auth = {
+    "user": "username@gmail.com",
+    "pass": "password_here_lol"
 }
 try {
-    config = require(__dirname + '/config/config.json')
+    mail_auth = require( 'config.json' ).mail_auth;
 } catch (e) {}
-const mail_auth = config.mail_auth;
 
-exports.config = {
+console.log("mail_auth is: ", mail_auth);
+
+var pathos = {
     redirects: {
         "/cas13": "//cas13.david-ma.net",
         "/help": "https://atlassian.petermac.org.au/confluence/display/PVS/How-to+articles",
@@ -261,3 +263,8 @@ function sendEmail(config) {
       
 
 }
+
+
+import { kras } from './kras';
+var config = _.merge(pathos, kras);
+export { config }

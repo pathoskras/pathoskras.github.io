@@ -211,10 +211,20 @@
         "signature": "f58c6d0669d1ee04b2fcb0e87fb949b6828602f3f29c7bf6c76a214f16fd50d5",
         "affectsGlobalScope": false
       },
+      "../../../node_modules/@types/mustache/index.d.ts": {
+        "version": "976fdab81483f691ad4a132b56e5a699f7ee2316139e9021a4f13df0a7675a15",
+        "signature": "976fdab81483f691ad4a132b56e5a699f7ee2316139e9021a4f13df0a7675a15",
+        "affectsGlobalScope": false
+      },
+      "./kras.ts": {
+        "version": "aeb61bf40e5f991b31be9a53b9208b114a414d74bbdb16a1e77134e8146c5559",
+        "signature": "5d593c300b8832c5807602ed9ef4734fbee09a3e2f2c21601718b34ad5b73a78",
+        "affectsGlobalScope": false
+      },
       "./config.ts": {
-        "version": "3ee65069de1d57145045f109cc80b82d1420c95acc93b272c14006c23a39044a",
-        "signature": "d558013d77a1b13bc6e3c09c2d9dc6bb26f388d54de1c79a4b6bee410e311760",
-        "affectsGlobalScope": true
+        "version": "b0a3148f2a1f792d7b7f3697d9d695f42dd49e70eae9ee5c000889d01c78487e",
+        "signature": "e1328648ff24f17e7dc7f405c759256dd413da9d20f78e5efe2222039028a46a",
+        "affectsGlobalScope": false
       },
       "../../../node_modules/@types/node/globals.d.ts": {
         "version": "56050f582fd08c001b713b168ade15cc8c1649801e13c94b4370f8f203e03087",
@@ -736,11 +746,6 @@
         "signature": "be27a64e821a3e5af838650e4aa25805c60f057d0c37a9762c378d19d364b3e6",
         "affectsGlobalScope": false
       },
-      "../../../node_modules/@types/mustache/index.d.ts": {
-        "version": "976fdab81483f691ad4a132b56e5a699f7ee2316139e9021a4f13df0a7675a15",
-        "signature": "976fdab81483f691ad4a132b56e5a699f7ee2316139e9021a4f13df0a7675a15",
-        "affectsGlobalScope": false
-      },
       "../../../node_modules/@types/mysql/index.d.ts": {
         "version": "e2ba19c1f9f0f2e48f3d4ff98202f43e1802f530e065f0402086f2ae1c7e5a0a",
         "signature": "e2ba19c1f9f0f2e48f3d4ff98202f43e1802f530e065f0402086f2ae1c7e5a0a",
@@ -1063,6 +1068,13 @@
         "../../../node_modules/@types/node/http.d.ts",
         "../../../node_modules/@types/node/index.d.ts",
         "../../../node_modules/@types/node/stream.d.ts"
+      ],
+      "./config.ts": [
+        "../../../node_modules/@types/mustache/index.d.ts",
+        "./kras.ts"
+      ],
+      "./kras.ts": [
+        "../../../node_modules/@types/node/http.d.ts"
       ]
     },
     "exportedModulesMap": {
@@ -1356,6 +1368,9 @@
         "../../../node_modules/@types/node/http.d.ts",
         "../../../node_modules/@types/node/index.d.ts",
         "../../../node_modules/@types/node/stream.d.ts"
+      ],
+      "./kras.ts": [
+        "../../../node_modules/@types/node/http.d.ts"
       ]
     },
     "semanticDiagnosticsPerFile": [
@@ -1509,7 +1524,8 @@
       "../../../node_modules/@types/responselike/index.d.ts",
       "../../../node_modules/@types/sizzle/index.d.ts",
       "../../../node_modules/@types/validator/index.d.ts",
-      "./config.ts"
+      "./config.ts",
+      "./kras.ts"
     ]
   },
   "version": "4.0.3"
