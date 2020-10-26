@@ -5,16 +5,10 @@
 
         "allowSyntheticDefaultImports":  true,
         "esModuleInterop": true,
-        "experimentalDecorators": true,
-        "emitDecoratorMetadata": true,
 
         "noImplicitAny": false,
         "noImplicitThis": false,
         "noImplicitReturns": false,
         "noUnusedLocals": false
-    },
-    "files": [
-        "user-model.ts",
-        "index.ts"
-    ]
+    }
 }

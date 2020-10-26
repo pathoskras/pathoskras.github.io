@@ -346,29 +346,34 @@
         "signature": "47d15b6691b8989b402a0952245eafd71f49ce7940a085d776be462330a3756b",
         "affectsGlobalScope": false
       },
-      "../models/api-rest.d.ts": {
-        "version": "3c7a708606fd9dc013fe226f99401681a587840c9d879bc24b36aad655616f64",
-        "signature": "3c7a708606fd9dc013fe226f99401681a587840c9d879bc24b36aad655616f64",
+      "../models/models.d.ts": {
+        "version": "12cc332eeb761ac6f3c4e1acfb42f8761bb4c07927422b39942230141456a920",
+        "signature": "12cc332eeb761ac6f3c4e1acfb42f8761bb4c07927422b39942230141456a920",
         "affectsGlobalScope": false
       },
       "../models/user-model.ts": {
-        "version": "8c707c134f4bfc0d47e296c17653c89752f7821f4f5a66fbf25ffec3fca4a2b3",
-        "signature": "f4c813bba6886274f0dfa9ddfa327261a074bdf18cf42bd63c3126380c553d5d",
+        "version": "f1a0cf8b27a4d833b9e68b3c7c31563ede86740850b75c47e703b52c14ba88ce",
+        "signature": "f3f43b5e440aad36758add04b82eae6129dc0723eea342cda267c1e2e956ecbb",
         "affectsGlobalScope": false
       },
       "../models/skills-model.ts": {
-        "version": "80529822add24ef64d1182528c20c9fd941942c1574213c19c62e0bbd97a633d",
-        "signature": "7e7032af2a5e9cacf948936cf5659b849b636f1578e789164f1c970582aeebcf",
+        "version": "aaee946c2d61a6fecd93d3ed8eb1f84a5299b287db6bfd0bc9e3c4cebf758f57",
+        "signature": "559452aae699b080b0bee834a46d59a34c3c58bd04a49d66e20a5ed3f50a954c",
+        "affectsGlobalScope": false
+      },
+      "../models/worksheet.ts": {
+        "version": "2c7acee847544a64cfa0e74154bee65a64b93fc069b4de7958aef9fc9d4ece37",
+        "signature": "afa619de946cc76d540c283d69d5da89488292c8d223170c46ec34ac79b8f52b",
         "affectsGlobalScope": false
       },
       "../models/index.ts": {
-        "version": "51027904e58e094b0bf38060005dd5a453c29d42436db0b3717c26d7cc58b4c7",
-        "signature": "6528303127f6179d4dca35ea4d0e795c2cf2ce2401126cbb3b2d1396a6990a9f",
+        "version": "bffd3778947db61c940d4273f8091f63e2d0eb24ad9e57d8a95986796fe93489",
+        "signature": "4cb16b0d16e98a3dfcdab8de05e600911885e5f38fd84ba1744479fb0fd25356",
         "affectsGlobalScope": false
       },
       "./db_bootstrap.ts": {
-        "version": "15dce782bf1cc76aab6d760dd7da515580f00e5f22bccc4d6c710a9ec221cbaf",
-        "signature": "676375df9c1aedf13b4f8239996927b928af1ae82005e28c02f261038f8c66c5",
+        "version": "6e9c3ebfc76803e5b51f94a34a17b750e06c92c60b64d91ba45903505c5b1ff2",
+        "signature": "3d909ff16ab15a758b78ab7a3f348411fa413a90c2624824b6e238e4b76c9037",
         "affectsGlobalScope": false
       },
       "../../../node_modules/@types/mustache/index.d.ts": {
@@ -1348,29 +1353,34 @@
       ],
       "./db_bootstrap.ts": [
         "../../../node_modules/sequelize/types/index.d.ts",
-        "../models/api-rest.d.ts",
-        "../models/index.ts"
+        "../models/index.ts",
+        "../models/models.d.ts"
       ],
       "./kras.ts": [
         "../../../node_modules/@types/formidable/index.d.ts",
         "../../../node_modules/@types/mustache/index.d.ts",
         "../../../node_modules/@types/node/http.d.ts"
       ],
-      "../models/api-rest.d.ts": [
-        "../../../node_modules/sequelize/types/index.d.ts"
-      ],
       "../models/index.ts": [
         "../../../node_modules/sequelize/types/index.d.ts",
         "../models/skills-model.ts",
-        "../models/user-model.ts"
+        "../models/user-model.ts",
+        "../models/worksheet.ts"
+      ],
+      "../models/models.d.ts": [
+        "../../../node_modules/sequelize/types/index.d.ts"
       ],
       "../models/skills-model.ts": [
         "../../../node_modules/sequelize/types/index.d.ts",
-        "../models/api-rest.d.ts"
+        "../models/models.d.ts"
       ],
       "../models/user-model.ts": [
         "../../../node_modules/sequelize/types/index.d.ts",
-        "../models/api-rest.d.ts"
+        "../models/models.d.ts"
+      ],
+      "../models/worksheet.ts": [
+        "../../../node_modules/sequelize/types/index.d.ts",
+        "../models/models.d.ts"
       ]
     },
     "exportedModulesMap": {
@@ -1785,23 +1795,26 @@
         "../../../node_modules/@types/validator/index.d.ts"
       ],
       "./db_bootstrap.ts": [
-        "../../../node_modules/sequelize/types/index.d.ts",
-        "../models/api-rest.d.ts"
-      ],
-      "../models/api-rest.d.ts": [
         "../../../node_modules/sequelize/types/index.d.ts"
       ],
       "../models/index.ts": [
         "../../../node_modules/sequelize/types/index.d.ts",
-        "../models/api-rest.d.ts"
+        "../models/models.d.ts"
+      ],
+      "../models/models.d.ts": [
+        "../../../node_modules/sequelize/types/index.d.ts"
       ],
       "../models/skills-model.ts": [
         "../../../node_modules/sequelize/types/index.d.ts",
-        "../models/api-rest.d.ts"
+        "../models/models.d.ts"
       ],
       "../models/user-model.ts": [
         "../../../node_modules/sequelize/types/index.d.ts",
-        "../models/api-rest.d.ts"
+        "../models/models.d.ts"
+      ],
+      "../models/worksheet.ts": [
+        "../../../node_modules/sequelize/types/index.d.ts",
+        "../models/models.d.ts"
       ]
     },
     "semanticDiagnosticsPerFile": [
@@ -1984,10 +1997,11 @@
       "./config.ts",
       "./db_bootstrap.ts",
       "./kras.ts",
-      "../models/api-rest.d.ts",
       "../models/index.ts",
+      "../models/models.d.ts",
       "../models/skills-model.ts",
-      "../models/user-model.ts"
+      "../models/user-model.ts",
+      "../models/worksheet.ts"
     ]
   },
   "version": "4.0.3"

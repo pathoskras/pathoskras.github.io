@@ -19,12 +19,15 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Skills = exports.User = exports.dbConfig = void 0;
+exports.Worksheet = exports.Skills = exports.User = exports.dbConfig = void 0;
 const sequelize = __importStar(require("sequelize"));
 const user_model_1 = require("./user-model");
 const skills_model_1 = require("./skills-model");
-// From https://medium.com/@enetoOlveda/use-sequelize-and-typescript-like-a-pro-with-out-the-legacy-decorators-fbaabed09472
-exports.dbConfig = new sequelize.Sequelize((process.env.DB_NAME = "typescript_test"), (process.env.DB_USER = "root"), (process.env.DB_PASSWORD = ""), {
+const worksheet_1 = require("./worksheet");
+// Adapted from https://medium.com/@enetoOlveda/use-sequelize-and-typescript-like-a-pro-with-out-the-legacy-decorators-fbaabed09472
+const env = process.env.NODE_ENV || 'development';
+const config = require(__dirname + '/../config/config.json')[env];
+exports.dbConfig = new sequelize.Sequelize((process.env.DB_NAME = config.database || "typescript_test"), (process.env.DB_USER = config.username || "root"), (process.env.DB_PASSWORD = config.password || ""), {
     port: Number(process.env.DB_PORT) || 3306,
     host: process.env.DB_HOST || "localhost",
     dialect: "mysql",
@@ -34,8 +37,11 @@ exports.dbConfig = new sequelize.Sequelize((process.env.DB_NAME = "typescript_te
         acquire: 30000,
         idle: 10000,
     },
+    // logging: (env == "development"), // should be a function or false??
+    define: {
+        underscored: true
+    }
 });
-// THIS ONES ARE THE ONES YOU NEED TO USE ON YOUR CONTROLLERS
 exports.User = user_model_1.UserFactory(exports.dbConfig);
-// THIS ONES ARE THE ONES YOU NEED TO USE ON YOUR CONTROLLERS
 exports.Skills = skills_model_1.SkillsFactory(exports.dbConfig);
+exports.Worksheet = worksheet_1.WorksheetFactory(exports.dbConfig);

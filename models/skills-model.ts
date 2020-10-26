@@ -1,5 +1,5 @@
 import { DataTypes, Sequelize } from 'sequelize';
-import { SkillsStatic } from './api-rest';
+import { SkillsStatic } from './models';
 
 export function SkillsFactory (sequelize: Sequelize): SkillsStatic {
     return <SkillsStatic>sequelize.define("skills", {

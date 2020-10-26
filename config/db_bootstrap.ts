@@ -1,26 +1,24 @@
-console.log("running bootstrap.ts")
-
 import { Model, Sequelize } from "sequelize";
-import { dbConfig, User, Skills }from '../models/index'
-
-import { SkillsStatic, UserModel, UserStatic } from "../models/api-rest"
+import { dbConfig, User, Skills, Worksheet }from '../models/index'
+import { SkillsStatic, WorksheetStatic, UserStatic } from "../models/models"
 
 interface seqObject {
-    [key: string] : Sequelize | Model<any> | UserStatic | SkillsStatic;
+    [key: string] : Model | any | Sequelize; //<any> | UserStatic | SkillsStatic | WorksheetStatic;
     sequelize :Sequelize;
 }
 
 const seq :seqObject = {
     sequelize: dbConfig,
     User: User,
-    Skills: Skills
+    Skills: Skills,
+    Worksheet: Worksheet
 }
 
 // seq.Worksheet = require(`${__dirname}/../models`).Worksheet;
 
 // const Worksheet = seq.Worksheet = require(`${__dirname}/../models`).Worksheet;
 
-if (true) {
+if (false) {
     seq.sequelize.sync({
         
     }).then(d => {

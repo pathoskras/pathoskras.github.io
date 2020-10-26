@@ -12,7 +12,8 @@ try {
     mail_auth = require('config.json').mail_auth;
 }
 catch (e) { }
-console.log("mail_auth is: ", mail_auth);
+// console.log("mail_auth is: ", mail_auth);
+
 var kras = {
     controllers: {
         kras: function (router) {

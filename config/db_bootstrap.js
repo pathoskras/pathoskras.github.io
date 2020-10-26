@@ -1,17 +1,17 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.seq = void 0;
-console.log("running bootstrap.ts");
 const index_1 = require("../models/index");
 const seq = {
     sequelize: index_1.dbConfig,
     User: index_1.User,
-    Skills: index_1.Skills
+    Skills: index_1.Skills,
+    Worksheet: index_1.Worksheet
 };
 exports.seq = seq;
 // seq.Worksheet = require(`${__dirname}/../models`).Worksheet;
 // const Worksheet = seq.Worksheet = require(`${__dirname}/../models`).Worksheet;
-if (true) {
+if (false) {
     seq.sequelize.sync({}).then(d => {
         // const [user, created] = 
         index_1.User.findOrCreate({
