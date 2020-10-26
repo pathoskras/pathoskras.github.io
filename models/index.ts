@@ -1,34 +1,38 @@
 import * as sequelize from 'sequelize';
-import {UserFactory} from "./user-model";
-import {SkillsFactory} from "./skills-model";
+import { UserFactory } from "./user-model";
+import { SkillsFactory } from "./skills-model";
 import { WorksheetFactory } from './worksheet';
+import _ from "lodash";
 
-// Adapted from https://medium.com/@enetoOlveda/use-sequelize-and-typescript-like-a-pro-with-out-the-legacy-decorators-fbaabed09472
-
-const env = process.env.NODE_ENV || 'development';
-const config = require(__dirname + '/../config/config.json')[env];
-
-export const dbConfig :sequelize.Sequelize = new sequelize.Sequelize(
-    (process.env.DB_NAME = config.database || "typescript_test"),
-    (process.env.DB_USER = config.username || "root"),
-    (process.env.DB_PASSWORD = config.password || ""),
-    {
-        port: Number(process.env.DB_PORT) || 3306,
-        host: process.env.DB_HOST || "localhost",
-        dialect: "mysql",
-        pool: {
-            min: 0,
-            max: 5,
-            acquire: 30000,
-            idle: 10000,
-        },
-        // logging: (env == "development"), // should be a function or false??
-        define: {
-            underscored: true
-        }
+// Default options
+let seqOptions :sequelize.Options = {
+    "database": process.env.DB_NAME || "typescript_test",
+    "username": process.env.DB_USER || "root",
+    "password": process.env.DB_PASSWORD || "",
+    "port": 3306,
+    "dialect": "mysql",
+    "define": {
+        "underscored": true
     }
-);
+}
+
+// Load options from config.json if one is provided
+const env = process.env.NODE_ENV || 'development';
+try {
+    let configOptions = require(__dirname + '/../config/config.json')[env];
+    seqOptions = _.merge(seqOptions, configOptions);
+} catch(e){ console.error("No config.json provided for Sequelize"); }
+
+// Do NOT log your password on production!!!
+if(env == 'development') { console.log("Initilizing Sequelize with options:", seqOptions); }
+
+// Set up all the models
+export const dbConfig :sequelize.Sequelize = new sequelize.Sequelize(seqOptions);
 
 export const User = UserFactory(dbConfig)
 export const Skills = SkillsFactory(dbConfig)
 export const Worksheet = WorksheetFactory(dbConfig)
+
+// Set up any associations on the models
+User.hasMany(Skills)
+Skills.belongsTo(User)

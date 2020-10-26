@@ -18,30 +18,45 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Worksheet = exports.Skills = exports.User = exports.dbConfig = void 0;
 const sequelize = __importStar(require("sequelize"));
 const user_model_1 = require("./user-model");
 const skills_model_1 = require("./skills-model");
 const worksheet_1 = require("./worksheet");
-// Adapted from https://medium.com/@enetoOlveda/use-sequelize-and-typescript-like-a-pro-with-out-the-legacy-decorators-fbaabed09472
-const env = process.env.NODE_ENV || 'development';
-const config = require(__dirname + '/../config/config.json')[env];
-exports.dbConfig = new sequelize.Sequelize((process.env.DB_NAME = config.database || "typescript_test"), (process.env.DB_USER = config.username || "root"), (process.env.DB_PASSWORD = config.password || ""), {
-    port: Number(process.env.DB_PORT) || 3306,
-    host: process.env.DB_HOST || "localhost",
-    dialect: "mysql",
-    pool: {
-        min: 0,
-        max: 5,
-        acquire: 30000,
-        idle: 10000,
-    },
-    // logging: (env == "development"), // should be a function or false??
-    define: {
-        underscored: true
+const lodash_1 = __importDefault(require("lodash"));
+// Default options
+let seqOptions = {
+    "database": process.env.DB_NAME || "typescript_test",
+    "username": process.env.DB_USER || "root",
+    "password": process.env.DB_PASSWORD || "",
+    "port": 3306,
+    "dialect": "mysql",
+    "define": {
+        "underscored": true
     }
-});
+};
+// Load options from config.json if one is provided
+const env = process.env.NODE_ENV || 'development';
+try {
+    let configOptions = require(__dirname + '/../config/config.json')[env];
+    seqOptions = lodash_1.default.merge(seqOptions, configOptions);
+}
+catch (e) {
+    console.error("No config.json provided for Sequelize");
+}
+// Do NOT log your password on production!!!
+if (env == 'development') {
+    console.log("Initilizing Sequelize with options:", seqOptions);
+}
+// Set up all the models
+exports.dbConfig = new sequelize.Sequelize(seqOptions);
 exports.User = user_model_1.UserFactory(exports.dbConfig);
 exports.Skills = skills_model_1.SkillsFactory(exports.dbConfig);
 exports.Worksheet = worksheet_1.WorksheetFactory(exports.dbConfig);
+// Set up any associations on the models
+exports.User.hasMany(exports.Skills);
+exports.Skills.belongsTo(exports.User);
