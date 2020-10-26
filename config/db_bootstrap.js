@@ -1,12 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.seq = void 0;
-const index_1 = require("../models/index");
+const models_1 = require("../models");
 const seq = {
-    sequelize: index_1.dbConfig,
-    User: index_1.User,
-    Skills: index_1.Skills,
-    Worksheet: index_1.Worksheet
+    sequelize: models_1.dbConfig,
+    User: models_1.User,
+    Skills: models_1.Skills,
+    Worksheet: models_1.Worksheet
 };
 exports.seq = seq;
 // seq.Worksheet = require(`${__dirname}/../models`).Worksheet;
@@ -14,7 +14,7 @@ exports.seq = seq;
 if (false) {
     seq.sequelize.sync({}).then(d => {
         // const [user, created] = 
-        index_1.User.findOrCreate({
+        models_1.User.findOrCreate({
             where: { email: 'blah@gmail.com' },
             defaults: {
                 email: "blah@gmail.com",

@@ -1,5 +1,5 @@
 import { Model, Sequelize } from "sequelize";
-import { dbConfig, User, Skills, Worksheet }from '../models/index'
+import { dbConfig, User, Skills, Worksheet } from '../models'
 import { SkillsStatic, WorksheetStatic, UserStatic } from "../models/models"
 
 interface seqObject {
