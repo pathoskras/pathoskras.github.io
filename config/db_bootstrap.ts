@@ -1,6 +1,5 @@
 import { Model, Sequelize } from "sequelize";
 import { dbConfig, User, Skills, Worksheet } from '../models'
-import { SkillsStatic, WorksheetStatic, UserStatic } from "../models/models"
 
 interface seqObject {
     [key: string] : Model | any | Sequelize; //<any> | UserStatic | SkillsStatic | WorksheetStatic;
@@ -13,10 +12,6 @@ const seq :seqObject = {
     Skills: Skills,
     Worksheet: Worksheet
 }
-
-// seq.Worksheet = require(`${__dirname}/../models`).Worksheet;
-
-// const Worksheet = seq.Worksheet = require(`${__dirname}/../models`).Worksheet;
 
 if (false) {
     seq.sequelize.sync({
