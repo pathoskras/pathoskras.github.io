@@ -28,7 +28,6 @@ const user_model_1 = require("./user-model");
 const skills_model_1 = require("./skills-model");
 const worksheet_1 = require("./worksheet");
 const lodash_1 = __importDefault(require("lodash"));
-// Default options
 let seqOptions = {
     "database": process.env.DB_NAME || "typescript_test",
     "username": process.env.DB_USER || "root",
@@ -39,7 +38,6 @@ let seqOptions = {
         "underscored": true
     }
 };
-// Load options from config.json if one is provided
 const env = process.env.NODE_ENV || 'development';
 try {
     let configOptions = require(__dirname + '/../config/config.json')[env];
@@ -48,16 +46,12 @@ try {
 catch (e) {
     console.error("No config.json provided for Sequelize");
 }
-// Do NOT log your password on production!!!
 if (env == 'development') {
     console.log("Initialising Sequelize with options:", seqOptions);
 }
-// Initialise Sequelize 
 exports.dbConfig = new sequelize.Sequelize(seqOptions);
-// Initialise models
 exports.User = user_model_1.UserFactory(exports.dbConfig);
 exports.Skills = skills_model_1.SkillsFactory(exports.dbConfig);
 exports.Worksheet = worksheet_1.WorksheetFactory(exports.dbConfig);
-// Set up any associations on the models
 exports.User.hasMany(exports.Skills);
 exports.Skills.belongsTo(exports.User);

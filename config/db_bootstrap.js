@@ -9,11 +9,8 @@ const seq = {
     Worksheet: models_1.Worksheet
 };
 exports.seq = seq;
-// seq.Worksheet = require(`${__dirname}/../models`).Worksheet;
-// const Worksheet = seq.Worksheet = require(`${__dirname}/../models`).Worksheet;
 if (false) {
     seq.sequelize.sync({}).then(d => {
-        // const [user, created] = 
         models_1.User.findOrCreate({
             where: { email: 'blah@gmail.com' },
             defaults: {

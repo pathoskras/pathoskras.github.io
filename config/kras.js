@@ -12,8 +12,7 @@ try {
     mail_auth = require('config.json').mail_auth;
 }
 catch (e) { }
-// console.log("mail_auth is: ", mail_auth);
-
+console.log("mail_auth is: ", mail_auth);
 var kras = {
     controllers: {
         kras: function (router) {
@@ -63,7 +62,6 @@ var kras = {
                             hash: router.path[0]
                         }
                     }).then((d) => {
-                        // console.log(d.dataValues);
                         Object.assign(data, JSON.parse(d.dataValues.data));
                         Object.assign(data, {
                             hash: d.dataValues.hash
@@ -116,7 +114,6 @@ var kras = {
             router.res.end("Ok lol I guess we sent some mail??");
         },
         saveDetails: function (router) {
-            // console.log(router.db);
             console.log("router.path is:", router.path);
             console.log("keys: ", Object.keys(router));
             console.log("db: ", Object.keys(router.db));
@@ -169,7 +166,6 @@ Thanks,
 PathOS Team.
 `
                     };
-                    // console.log("Don't send mail...");
                     if (fields.tickedEmailBox) {
                         if (fields.doctor) {
                             emailOptions.subject = `Your K-Ras notes from Dr. ${fields.doctor}`;
@@ -188,8 +184,6 @@ ${message}
 Please use this form to give us feedback on the K-Ras Resource:<br>
 <a href="https://forms.gle/jnqC2yFXgN9Zim8N9" target="_blank">https://forms.gle/jnqC2yFXgN9Zim8N9</a>
 `);
-                //<br><br>
-                // Data for debugging purposes: `+JSON.stringify(fields));
             });
         }
     }

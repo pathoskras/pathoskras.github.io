@@ -8,6 +8,7 @@
 
         "allowSyntheticDefaultImports":  true,
         "esModuleInterop": true,
+        "removeComments": true,
 
         "noImplicitAny": false,
         "noImplicitThis": false,

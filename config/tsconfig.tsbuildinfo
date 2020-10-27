@@ -927,6 +927,7 @@
       "module": 1,
       "allowSyntheticDefaultImports": true,
       "esModuleInterop": true,
+      "removeComments": true,
       "noImplicitAny": false,
       "noImplicitThis": false,
       "noImplicitReturns": false,
