@@ -1,103 +1,104 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.kras = void 0;
-const mustache = require("mustache");
-const nodemailer = require("nodemailer");
-const formidable = require("formidable");
-let mail_auth = {
-    "user": "username@gmail.com",
-    "pass": "password_here_lol"
+const path_1 = __importDefault(require("path"));
+const mustache_1 = __importDefault(require("mustache"));
+const nodemailer_1 = __importDefault(require("nodemailer"));
+const formidable_1 = __importDefault(require("formidable"));
+let mailAuth = {
+    user: 'username@gmail.com',
+    pass: 'password_here_lol'
 };
 try {
-    mail_auth = require('config.json').mail_auth;
+    mailAuth = require(path_1.default.resolve(__dirname, 'config.json')).mailAuth;
 }
 catch (e) { }
-console.log("mail_auth is: ", mail_auth);
-var kras = {
+const kras = {
     controllers: {
         kras: function (router) {
-            console.log("router.path is:", router.path);
-            console.log("keys: ", Object.keys(router));
-            console.log("db: ", Object.keys(router.db));
             router.readTemplate('wrapper.mustache', 'd3_inner', views => {
-                var data = {
+                const data = {
                     images: [
                         {
-                            image: "KRasEditPlusLabelsNoCaptionsOFF_Switch.png",
-                            name: "Inactive KRAS",
+                            image: 'KRasEditPlusLabelsNoCaptionsOFF_Switch.png',
+                            name: 'Inactive KRAS',
                             id: 1
                         },
                         {
-                            image: "KRasEditPlusLabelsNoCaptionsON_Switch.png",
-                            name: "Active KRAS",
+                            image: 'KRasEditPlusLabelsNoCaptionsON_Switch.png',
+                            name: 'Active KRAS',
                             id: 2
                         },
                         {
-                            image: "KRasEditPlusLabelsNoCaptionsSwitchingOFF.png",
-                            name: "KRAS inactivated by p120GAP",
+                            image: 'KRasEditPlusLabelsNoCaptionsSwitchingOFF.png',
+                            name: 'KRAS inactivated by p120GAP',
                             id: 3
                         },
                         {
-                            image: "KRasEditPlusLabelsNoCaptionsMUTANT_K_Ras.png",
-                            name: "Mutant KRAS",
+                            image: 'KRasEditPlusLabelsNoCaptionsMUTANT_K_Ras.png',
+                            name: 'Mutant KRAS',
                             id: 4
                         },
                         {
-                            image: "KRasEditPlusLabelsNoCaptionsCancerCellsDividing.png",
-                            name: "Tumour Cells Dividing",
+                            image: 'KRasEditPlusLabelsNoCaptionsCancerCellsDividing.png',
+                            name: 'Tumour Cells Dividing',
                             id: 5
                         },
                         {
-                            image: "KRas_AMG510WithLabels.png",
-                            name: "KRas AMG510",
+                            image: 'KRas_AMG510WithLabels.png',
+                            name: 'KRas AMG510',
                             id: 6
                         }
                     ]
                 };
                 data.imagesJson = JSON.stringify(data.images);
                 views.inner = views.kras;
-                if (router.path && router.path[0] && router.path[0] !== "") {
+                if (router.path && router.path[0] && router.path[0] !== '') {
                     router.db.Worksheet.findOne({
                         where: {
                             hash: router.path[0]
                         }
                     }).then((d) => {
-                        Object.assign(data, JSON.parse(d.dataValues.data));
+                        Object.assign(data, d.data);
                         Object.assign(data, {
-                            hash: d.dataValues.hash
+                            hash: d.hash
                         });
-                        console.log("data is...", data);
-                        var output = mustache.render(views.template, data, views);
+                        console.log('data is...', data);
+                        const output = mustache_1.default.render(views.template, data, views);
                         router.res.end(output);
                     }).catch(e => {
-                        console.log("ERROR?");
+                        console.log('ERROR?');
                         console.log(e);
                         router.res.end(JSON.stringify(e));
                     });
                 }
                 else {
-                    var output = mustache.render(views.template, data, views);
+                    const output = mustache_1.default.render(views.template, data, views);
                     router.res.end(output);
                 }
             });
         },
         mail: function (router) {
-            let transporter = nodemailer.createTransport({
+            const transporter = nodemailer_1.default.createTransport({
                 pool: true,
-                host: "smtp.gmail.com",
+                host: 'smtp.gmail.com',
                 port: 465,
                 secure: true,
-                auth: mail_auth
+                auth: mailAuth
             });
-            transporter.verify(function (error, success) {
+            transporter.verify(function (error) {
                 if (error) {
+                    console.log('Nodemailer error');
                     console.log(error);
                 }
                 else {
-                    console.log("Server is ready to take our messages");
+                    console.log('Nodemailer: Server is ready to take our messages');
                 }
             });
-            var mailOptions = {
+            const mailOptions = {
                 from: '7oclockco@gmail.com',
                 to: 'eohomguhetqnxffobm@awdrt.net',
                 subject: 'Sending Email using Node.js',
@@ -111,30 +112,27 @@ var kras = {
                     console.log('Email sent: ' + info.response);
                 }
             });
-            router.res.end("Ok lol I guess we sent some mail??");
+            router.res.end('Ok lol I guess we sent some mail??');
         },
         saveDetails: function (router) {
-            console.log("router.path is:", router.path);
-            console.log("keys: ", Object.keys(router));
-            console.log("db: ", Object.keys(router.db));
-            console.log("db: ", router.db.Worksheet);
-            const form = new formidable.IncomingForm();
-            form.parse(router.req, (err, fields, files) => {
+            const form = new formidable_1.default.IncomingForm();
+            form.parse(router.req, (err, fields) => {
                 if (err) {
-                    console.log("ERROR!", err);
+                    console.log('ERROR!', err);
                     router.res.end(err);
                 }
                 console.log("Here's all your fields!", fields);
-                var data = fields;
-                var blob = {
+                const data = fields;
+                const blob = {
                     email: fields.email,
                     firstName: fields.firstName,
                     lastName: fields.lastName,
                     doctor: fields.doctor,
                     data: JSON.stringify(data)
                 };
+                let hash = Math.random().toString(16).slice(2);
                 if (fields.hash) {
-                    var hash = fields.hash;
+                    hash = fields.hash;
                     blob.hash = fields.hash;
                     router.db.Worksheet.update(blob, {
                         where: {
@@ -143,13 +141,12 @@ var kras = {
                     });
                 }
                 else {
-                    var hash = Math.random().toString(16).slice(2);
                     blob.hash = hash;
                     router.db.Worksheet.create(blob);
                 }
-                var message = `<a href="/kras/${hash}">Link to saved data</a>. No email sent.`;
+                let message = `<a href="/kras/${hash}">Link to saved data</a>. No email sent.`;
                 try {
-                    var emailOptions = {
+                    const emailOptions = {
                         toAddress: fields.email,
                         body: `
 Hello!
@@ -175,12 +172,11 @@ PathOS Team.
                     }
                 }
                 catch (e) {
-                    console.log("Error sending mail.", e);
+                    console.log('Error sending mail.', e);
                 }
                 router.res.end(`Your hash is: ${hash}<br><br>
 ${message}
-                <br><br>
-
+<br><br>
 Please use this form to give us feedback on the K-Ras Resource:<br>
 <a href="https://forms.gle/jnqC2yFXgN9Zim8N9" target="_blank">https://forms.gle/jnqC2yFXgN9Zim8N9</a>
 `);
@@ -190,27 +186,28 @@ Please use this form to give us feedback on the K-Ras Resource:<br>
 };
 exports.kras = kras;
 function sendEmail(config) {
-    var options = {
-        toAddress: config.toAddress || "7oclockco@gmail.com",
-        subject: config.subject || "Your K-Ras notes",
-        body: config.body || ""
+    const options = {
+        toAddress: config.toAddress || '7oclockco@gmail.com',
+        subject: config.subject || 'Your K-Ras notes',
+        body: config.body || ''
     };
-    let transporter = nodemailer.createTransport({
+    const transporter = nodemailer_1.default.createTransport({
         pool: true,
-        host: "smtp.gmail.com",
+        host: 'smtp.gmail.com',
         port: 465,
         secure: true,
-        auth: mail_auth
+        auth: mailAuth
     });
-    transporter.verify(function (error, success) {
+    transporter.verify(function (error) {
         if (error) {
+            console.log('Nodemailer error');
             console.log(error);
         }
         else {
-            console.log("Server is ready to take our messages");
+            console.log('Nodemailer: Server is ready to take our messages');
         }
     });
-    var mailOptions = {
+    const mailOptions = {
         from: '7oclockco@gmail.com',
         to: options.toAddress,
         subject: options.subject,

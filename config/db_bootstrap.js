@@ -10,12 +10,12 @@ const seq = {
 };
 exports.seq = seq;
 if (false) {
-    seq.sequelize.sync({}).then(d => {
+    seq.sequelize.sync({}).then(() => {
         models_1.User.findOrCreate({
             where: { email: 'blah@gmail.com' },
             defaults: {
-                email: "blah@gmail.com",
-                name: "my name is blah"
+                email: 'blah@gmail.com',
+                name: 'my name is blah'
             }
         }).then(([user, created]) => {
             console.log(user.name);

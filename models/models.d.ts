@@ -1,6 +1,4 @@
-import { BuildOptions, Model } from "sequelize";
-
-
+import { BuildOptions, Model } from 'sequelize'
 
 export interface WorksheetAttributes {
     firstName: string;
@@ -19,8 +17,6 @@ export type WorksheetStatic = typeof Model & {
     new(values?: object, options?: BuildOptions): WorksheetModel;
 };
 
-
-
 export interface UserAttributes {
     name: string;
     email: string;
@@ -33,8 +29,6 @@ export class User extends Model<UserModel, UserAttributes> { }
 export type UserStatic = typeof Model & {
     new(values?: object, options?: BuildOptions): UserModel;
 };
-
-
 
 export interface SkillsAttributes {
     skill: string;
