@@ -1,19 +1,21 @@
 {
-    "compilerOptions": {
-        "target": "ES2020",
-        "module": "CommonJS",
-
-        "allowSyntheticDefaultImports":  true,
-        "esModuleInterop": true,
-        "removeComments": true,
-
-        "noImplicitAny": false,
-        "noImplicitThis": false,
-        "noImplicitReturns": false,
-        "noUnusedLocals": false
-    },
-    "files": [
-        "db_bootstrap.ts",
-        "config.ts"
-    ]
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "assumeChangesOnlyAffectDirectDependencies": true,
+    "incremental": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "removeComments": true,
+    "noImplicitAny": false,
+    "noImplicitThis": false,
+    "noImplicitReturns": false,
+    "noUnusedLocals": false
+  },
+  "files": [
+    "db_bootstrap.ts",
+    "kras.ts",
+    "config.ts"
+  ]
 }
