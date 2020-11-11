@@ -5,39 +5,49 @@ type Line = {
   points : Point[];
   color : string;
 }
-type Image = {
+type KrasImage = {
   id : number;
   image : string;
   lines : Line[];
   name : string;
 }
-declare let images: Image[]
+declare let images: KrasImage[]
 
 const md = new showdown.Converter({ openLinksInNewWindow: true })
 
 function welcome () {
   hideEverything()
 
-  $('#contentBox').html(md.makeHtml(`#KRas Interactive Resource
-    
-#What is K-Ras?
+  $('#contentBox').html(md.makeHtml(`##Welcome to the KRas Interactive Resource
 
-K-Ras is a protein that forms part of a cell signalling pathway. This pathway instructs your cells to grow and divide or to mature and take on specialised functions. To stop these pathways functioning when not needed, K-Ras is bound to a regulating switch that keeps it turned off. In order for K-Ras to send signals, it needs to be turned on. To do this, the regulating switch is swapped for an ‘on-switch’. K-Ras is then active and can send signals for cells to grow, divide or mature. When no longer required, the K-Ras protein is turned off again by cleaving the on-switch, converting it back to the inactive state. When K-Ras is switched off, it cannot send signals.
+#What is this Resource for?
+This interactive resource is to help explain how changes in your cell messaging systems can lead to
+cancer. It is specifically designed to assist those patients with cancer caused by alterations in a cell
+messenger known as KRas. This specific alteration is known as G12C KRas and your doctor may have
+spoken with you about this.
 
-#What Goes Wrong with K-Ras?
-Changes in the genetic code for K-Ras have the potential to cause normal cells to become cancerous. One such change leads to a swap of the amino acid glycine for cystine at position 12 in the K-Ras protein. This change in K-Ras is known as a ‘G12C’ mutation. A G12C mutation is acquired during a person's lifetime; it is not inherited. This change results in a K-Ras protein that is constantly switched on. The result is that affected cells are directed to grow and divide out of control, leading to tumour formation.
+#Why have we created this Resource?
+The purpose of this resource is to help patients better understand their particular cancer and how it
+is caused and how specific treatments work. We hope this will increase patient knowledge and
+confidence in making decisions about their treatment.
 
-#K-Ras and Cancer
-KRAS mutations occur in 17-25% of all human cancers. Furthermore, the G12C mutation accounts for about 44% of all KRAS mutations. Indeed, in non-small cell lung carcinoma, which is the most commonly occurring form of lung cancer, 13% of patients have this G12C mutation. The G12C mutation also occurs in 1-3% of colorectal and pancreatic cancer patients.
+#How does this Resource Work?
+This resource will be shown to you by your doctor or other clinical staff member.
 
-#Treating Mutant G12C K-Ras
-Despite a significant number of lung and colorectal cancer patients affected by the G12C mutation, developing effective treatments has proven challenging. It has been difficult to find an area on the surface of the K-Ras protein where a drug might get a foothold to disrupt the unchecked cell division. Recently, however, a couple of inhibitors have been developed that lock the G12C mutant K-Ras protein in the inactive state, without affecting the normal function of unmutated K-Ras. These inhibitors show great potential for the treatment of G12C mutant K-Ras cancers.
+The resource begins with some introductory information about KRas. This is followed by a video
+animation explaining KRas biology and what can go wrong in cancer. There is also a model, which
+shows how a treatment called AMG510 fits into altered KRas. Following is a series of six images that
+your clinician can write on to explain your personal KRas story. This personalized information will be
+sent to you by email, so that you can view it at a later time, show friends and family, even your GP.
 
-#Link to Protein Databank:
-[Mutant KRAS interacting with AMG 510](https://www.rcsb.org/pdb/explore/jmol.do?structureId=6oim&bionumber=1&jmolMode=HTML5)
+Finally, there is a list of terms and definitions and some useful links.
+
+#Who can I contact for further information about the Resource?
+Please contact Dr Maja Divjak ([maja.divjak@petermac.org](mailto:maja.divjak@petermac.org?subject=KRAS%20Annotation)) for further assistance.
 
 #The Role of K-Ras in Cancer video:`))
     .append('<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/pD5q4TlZW-M" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>')
+    .append('<br>')
 }
 
 let currentScreen = null
