@@ -22,32 +22,32 @@ const kras = {
           images: [
             {
               image: 'KRasEditPlusLabelsNoCaptionsOFF_Switch.png',
-              name: 'Inactive KRAS',
+              name: 'KRas Turned Off',
               id: 1
             },
             {
               image: 'KRasEditPlusLabelsNoCaptionsON_Switch.png',
-              name: 'Active KRAS',
+              name: 'Kras Turned On',
               id: 2
             },
             {
               image: 'KRasEditPlusLabelsNoCaptionsSwitchingOFF.png',
-              name: 'KRAS inactivated by p120GAP',
+              name: 'Turning Off KRas',
               id: 3
             },
             {
               image: 'KRasEditPlusLabelsNoCaptionsMUTANT_K_Ras.png',
-              name: 'Mutant KRAS',
+              name: 'Altered KRas',
               id: 4
             },
             {
               image: 'KRasEditPlusLabelsNoCaptionsCancerCellsDividing.png',
-              name: 'Tumour Cells Dividing',
+              name: 'Tumour Cells Multiplying',
               id: 5
             },
             {
               image: 'KRas_AMG510WithLabels.png',
-              name: 'KRas AMG510',
+              name: 'AGM 510 Keeps Altered KRas Turned Off',
               id: 6
             }
           ]

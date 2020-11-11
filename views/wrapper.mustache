@@ -27,6 +27,8 @@
         {{! <input placeholder="Placeholder"> }}
         <ul>
           <li><a href="#Welcome" onclick="welcome()">Welcome</a></li>
+          <li><a href="#Introduction" onclick="introduction()">Introduction</a></li>
+          <li><a href="#Video" onclick="video()">Video</a></li>
           {{#images}}
           <li>
             <a href="#{{image}}" onclick="openScreen({{id}})">{{name}}</a>
@@ -50,6 +52,7 @@
             <textarea name="text-3" id="text-3" class="bigText hidden" for="saveForm">{{text-3}}</textarea>
             <textarea name="text-4" id="text-4" class="bigText hidden" for="saveForm">{{text-4}}</textarea>
             <textarea name="text-5" id="text-5" class="bigText hidden" for="saveForm">{{text-5}}</textarea>
+            <textarea name="text-6" id="text-6" class="bigText hidden" for="saveForm">{{text-6}}</textarea>
           </div>
 
           <div id="emailForm" class="hidden">
