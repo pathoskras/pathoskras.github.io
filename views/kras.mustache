@@ -29,12 +29,13 @@
           <li><a href="#Welcome" class="selected" onclick="welcome()">Welcome</a></li>
           <li><a href="#Introduction" onclick="introduction()">Introduction</a></li>
           <li><a href="#Video" onclick="video()">Video</a></li>
+          <li><a href="#Images" onclick="toggleImageLinks()">Images</a></li>
           {{#images}}
-          <li>
+          <li class="hidden image">
             <a href="#{{image}}" onclick="openScreen({{id}})">{{name}}</a>
           </li>
           {{/images}}
-          <li><a href="#Email" onclick="email()">Email</a></li>
+          <li><a href="#Email" onclick="email()">Email to Patient</a></li>
         </ul>
       </div>
       <div class="col-md-10 col-xs-9">

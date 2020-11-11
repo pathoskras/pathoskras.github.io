@@ -146,6 +146,10 @@ function email () {
   d3.select('#emailForm').classed('hidden', false)
 }
 
+function toggleImageLinks () {
+  $('li.image').toggleClass("hidden")
+}
+
 function printVersion() {
   $("#wrapper").toggleClass("pdfMode");
 

@@ -148,6 +148,14 @@ img.bigImage {
           background: lightblue;
         }
       }
+      margin-right: 14px;
+      &.image {
+        margin-left: 14px;
+        margin-right: 0;
+        &.hidden {
+          display: none;
+        }
+      }
     }
   }
 }
