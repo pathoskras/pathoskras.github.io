@@ -29,7 +29,7 @@ const kras = {
                         },
                         {
                             image: 'KRasEditPlusLabelsNoCaptionsON_Switch.png',
-                            name: 'Kras Turned On',
+                            name: 'KRas Turned On',
                             id: 2
                         },
                         {
@@ -49,7 +49,7 @@ const kras = {
                         },
                         {
                             image: 'KRas_AMG510WithLabels.png',
-                            name: 'AGM 510 Keeps Altered KRas Turned Off',
+                            name: 'AMG 510 Keeps Altered KRas Turned Off',
                             id: 6
                         }
                     ]
