@@ -267,6 +267,7 @@ define("requestHandlers", ["require", "exports", "fs", "mustache", "path"], func
                 });
             }));
             // Load all the other partials we may need
+            // Todo: Check folder exists and is not empty?
             fsPromise.readdir(`${folder}/partials/`)
                 .then(function (d) {
                 d.forEach(function (filename) {
@@ -618,7 +619,7 @@ define("socket", ["require", "exports"], function (require, exports) {
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.socketInit = void 0;
     function socketInit(io, handle) {
-        console.log('Initialising Socket.io');
+        // console.log('Initialising Socket.io for site: ') // Which sites?
         Object.keys(handle.websites).forEach((siteName) => {
             io.of(`/${siteName}`).use((socket, next) => {
                 const host = socket.handshake.headers.host;

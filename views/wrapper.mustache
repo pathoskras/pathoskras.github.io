@@ -2,22 +2,23 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>KRAS Annotation</title>
-    <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>KRAS Annotation</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
 
-    <link rel="stylesheet" href="/drawerJs/drawerJs.css"/>
-	<link rel="stylesheet" href="/css/main.css">
-	<link rel="stylesheet" href="/canvas/canvas.css">
-	<link rel="stylesheet" href="/css/kras.css">
-    {{> styles }}
-    <script src="/js/vendor.min.js"></script>
-    {{! <script src="/drawerJs/drawerJs.standalone.js"></script> }}
-    <script src="/js/showdown.min.js"></script>
+  <link rel="stylesheet" href="/drawerJs/drawerJs.css" />
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/canvas/canvas.css">
+  <link rel="stylesheet" href="/css/kras.css">
+  {{> styles }}
+  <script src="/js/vendor.min.js"></script>
+  {{! <script src="/drawerJs/drawerJs.standalone.js"></script> }}
+  <script src="/js/showdown.min.js"></script>
 
 </head>
+
 <body>
   <div id="wrapper" class="container-fluid page">
     <div class="row">
@@ -90,7 +91,7 @@
 
   </div>
 
-{{!
+  {{!
   <div id="footer">
     <div>
       <img class="nav-button" src="/images/home.png">
@@ -104,23 +105,23 @@
 }}
 
 
-{{> scripts }}
+  {{> scripts }}
 
 
-<script type="text/javascript">
-let images = {{{ imagesJson }}}.reduce((acc, d) => {
-  const blob = d;
-  blob.lines = new Array();
-  acc[d.id] = blob;
-  return acc;
-}, {});
+  <script type="text/javascript">
+    let images = {{{ imagesJson }}}.reduce((acc, d) => {
+      const blob = d;
+      blob.lines = new Array();
+      acc[d.id] = blob;
+      return acc;
+    }, {});
 
-{{#lineData}}
-images = {{{ lineData }}}
-{{/lineData}}
-</script>
+    {{ #lineData }}
+    images = {{{ lineData }}}
+    {{/lineData}}
+  </script>
 
-<script type="text/javascript" src="/js/wrapper.js"></script>
+  <script type="text/javascript" src="/js/wrapper.js"></script>
 
 </body>
 
