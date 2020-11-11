@@ -194,7 +194,7 @@ PathOS Team.
         router.res.end(`Your hash is: ${hash}<br><br>
 ${message}
 <br><br>
-Please use this form to give us feedback on the K-Ras Resource:<br>
+Please use this form to give us feedback on the KRas Resource:<br>
 <a href="https://forms.gle/jnqC2yFXgN9Zim8N9" target="_blank">https://forms.gle/jnqC2yFXgN9Zim8N9</a>
 `)
         // <br><br>
