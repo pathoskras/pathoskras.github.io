@@ -31,7 +31,7 @@ Despite a significant number of lung and colorectal cancer patients affected by 
 [Mutant KRAS interacting with AMG 510](https://www.rcsb.org/pdb/explore/jmol.do?structureId=6oim&bionumber=1&jmolMode=HTML5)
 
 #The Role of K-Ras in Cancer video:`))
-.append('<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/pD5q4TlZW-M" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>')
+    .append('<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/pD5q4TlZW-M" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>')
 }
 
 let currentScreen = null

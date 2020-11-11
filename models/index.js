@@ -22,10 +22,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Worksheet = exports.Skills = exports.User = exports.dbConfig = void 0;
+exports.Worksheet = exports.dbConfig = void 0;
 const sequelize = __importStar(require("sequelize"));
-const user_model_1 = require("./user-model");
-const skills_model_1 = require("./skills-model");
 const worksheet_1 = require("./worksheet");
 const lodash_1 = __importDefault(require("lodash"));
 const path_1 = __importDefault(require("path"));
@@ -56,8 +54,4 @@ if (env === 'development') {
     console.log('Initialising Sequelize with options:', seqOptions);
 }
 exports.dbConfig = new sequelize.Sequelize(seqOptions);
-exports.User = user_model_1.UserFactory(exports.dbConfig);
-exports.Skills = skills_model_1.SkillsFactory(exports.dbConfig);
 exports.Worksheet = worksheet_1.WorksheetFactory(exports.dbConfig);
-exports.User.hasMany(exports.Skills);
-exports.Skills.belongsTo(exports.User);

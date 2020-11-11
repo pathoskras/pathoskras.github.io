@@ -1,0 +1,116 @@
+
+// From wrapper.mustache
+
+body,
+html {
+//  position: fixed;
+// width: 100vw;
+}
+div#footer {
+    background: white;
+    border-top: solid 1px black;
+    height: 15vh;
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+}
+#footer .nav-button {
+    background: white;
+    padding: 0.5vh;
+    width: 15vh;
+    height: 15vh;
+    margin-right: -5px;
+    cursor: pointer;
+}
+
+#footer .nav-button img {
+    object-fit: cover;
+}
+#footer .nav-button:hover {
+    border: solid 3px black;
+    background: red;
+}
+
+img.bigImage, textarea.bigText {
+    width: 70vw;
+}
+#noteBox {
+    margin-top: 550px;
+}
+#imageTitle {
+    text-align: center;
+}
+
+
+// From d3_inner.mustache
+
+#canvas {
+  // background: oldlace;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#ui {
+position: absolute;
+top: 0;
+left: 0;
+pointer-events: none;
+}
+#d3-background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.swatch {
+pointer-events: all;
+}
+.swatch.active {
+stroke-width: 2px;
+stroke: black;
+}
+.swatch {
+cursor: pointer;
+}
+.btn {
+pointer-events: all;
+
+font-family: FontAwesome;
+fill: #333;
+font-size: 32px;
+text-anchor: middle;
+
+-webkit-touch-callout: none;
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+}
+.btn:hover {
+fill: black;
+cursor: pointer;
+}
+
+.line {
+fill: none;
+stroke-width: 2px;
+stroke-linejoin: round;
+stroke-linecap: round;
+}
+
+#d3-drawer.hidden {
+  // display: none;
+}
+
+img.bigImage{
+  display: none;
+}
+#saveForm.bigText {
+  position: absolute;
+  bottom: 50;
+}
+#d3-background-image {
+  padding: 50px;
+  opacity: 0.65;
+  fit: cover;
+}

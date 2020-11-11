@@ -146,13 +146,18 @@
         "signature": "89bf2b7a601b73ea4311eda9c41f86a58994fec1bee3b87c4a14d68d9adcdcbd",
         "affectsGlobalScope": true
       },
+      "./src/js/d3_drawer.ts": {
+        "version": "685a323b6fe0bc315a8af089126b2f21e3371aca7634e86cf428313f4ce20cda",
+        "signature": "27103aaea974b9090e6eb0624313367ce047e7e3e1d61a603e0b80d189bf536f",
+        "affectsGlobalScope": true
+      },
       "./src/js/kras.ts": {
         "version": "c45ab0fcbed302907d88d8f240a563f529f03d627702da3cc98c54513810b7fd",
         "signature": "a025a33165ffe4bdbfc64fb8316377cf637e74f8da6de4467fc8c77c9eede98e",
         "affectsGlobalScope": true
       },
       "./src/js/wrapper.ts": {
-        "version": "0471d292ebf82426616a73be5c3e145b33a3ec721bd80a081d5dba425ffab2d5",
+        "version": "444d26b48fe33abe2cc3f7939dba83b4bc8e8f07cdd8b0d44679c213c241aa7f",
         "signature": "c56521137817c13e047f222b033f21ca911047cd6a075bf0d6c4baff48b26495",
         "affectsGlobalScope": true
       },
@@ -2238,6 +2243,7 @@
       "../../node_modules/jest-diff/build/types.d.ts",
       "../../node_modules/pretty-format/build/index.d.ts",
       "../../node_modules/pretty-format/build/types.d.ts",
+      "./src/js/d3_drawer.ts",
       [
         "./src/js/kras.ts",
         [
@@ -2429,33 +2435,9 @@
           },
           {
             "file": "./src/js/kras.ts",
-            "start": 3524,
-            "length": 6,
-            "messageText": "Cannot find name 'canvas'.",
-            "category": 1,
-            "code": 2304
-          },
-          {
-            "file": "./src/js/kras.ts",
             "start": 3583,
             "length": 5,
             "messageText": "Cannot find name 'cntxt'.",
-            "category": 1,
-            "code": 2304
-          },
-          {
-            "file": "./src/js/kras.ts",
-            "start": 3591,
-            "length": 6,
-            "messageText": "Cannot find name 'canvas'.",
-            "category": 1,
-            "code": 2304
-          },
-          {
-            "file": "./src/js/kras.ts",
-            "start": 3771,
-            "length": 6,
-            "messageText": "Cannot find name 'canvas'.",
             "category": 1,
             "code": 2304
           },
@@ -2466,38 +2448,6 @@
             "code": 2339,
             "category": 1,
             "messageText": "Property 'href' does not exist on type 'HTMLElement'."
-          },
-          {
-            "file": "./src/js/kras.ts",
-            "start": 4049,
-            "length": 6,
-            "messageText": "Cannot find name 'canvas'.",
-            "category": 1,
-            "code": 2304
-          },
-          {
-            "file": "./src/js/kras.ts",
-            "start": 4064,
-            "length": 6,
-            "messageText": "Cannot find name 'canvas'.",
-            "category": 1,
-            "code": 2304
-          },
-          {
-            "file": "./src/js/kras.ts",
-            "start": 4087,
-            "length": 6,
-            "messageText": "Cannot find name 'canvas'.",
-            "category": 1,
-            "code": 2304
-          },
-          {
-            "file": "./src/js/kras.ts",
-            "start": 4103,
-            "length": 6,
-            "messageText": "Cannot find name 'canvas'.",
-            "category": 1,
-            "code": 2304
           },
           {
             "file": "./src/js/kras.ts",
@@ -2548,91 +2498,111 @@
         [
           {
             "file": "./src/js/wrapper.ts",
-            "start": 3429,
-            "length": 12,
-            "messageText": "Cannot find name 'drawing_data'.",
-            "category": 1,
-            "code": 2304
-          },
-          {
-            "file": "./src/js/wrapper.ts",
-            "start": 3453,
+            "start": 3457,
             "length": 6,
-            "messageText": "Cannot find name 'images'.",
+            "messageText": "Cannot find name 'images'. Did you mean 'Image'?",
             "category": 1,
-            "code": 2304
+            "code": 2552,
+            "relatedInformation": [
+              {
+                "file": "../../../../.config/yarn/global/node_modules/typescript/lib/lib.dom.d.ts",
+                "start": 802015,
+                "length": 5,
+                "messageText": "'Image' is declared here.",
+                "category": 3,
+                "code": 2728
+              }
+            ]
           },
           {
             "file": "./src/js/wrapper.ts",
-            "start": 3483,
-            "length": 12,
-            "messageText": "Cannot find name 'drawing_data'.",
-            "category": 1,
-            "code": 2304
-          },
-          {
-            "file": "./src/js/wrapper.ts",
-            "start": 3631,
+            "start": 3635,
             "length": 6,
-            "messageText": "Cannot find name 'images'.",
+            "messageText": "Cannot find name 'images'. Did you mean 'Image'?",
             "category": 1,
-            "code": 2304
+            "code": 2552,
+            "relatedInformation": [
+              {
+                "file": "../../../../.config/yarn/global/node_modules/typescript/lib/lib.dom.d.ts",
+                "start": 802015,
+                "length": 5,
+                "messageText": "'Image' is declared here.",
+                "category": 3,
+                "code": 2728
+              }
+            ]
           },
           {
             "file": "./src/js/wrapper.ts",
-            "start": 3814,
-            "length": 12,
-            "messageText": "Cannot find name 'drawing_data'.",
-            "category": 1,
-            "code": 2304
-          },
-          {
-            "file": "./src/js/wrapper.ts",
-            "start": 3829,
+            "start": 3833,
             "length": 6,
-            "messageText": "Cannot find name 'images'.",
+            "messageText": "Cannot find name 'images'. Did you mean 'image'?",
             "category": 1,
-            "code": 2304
+            "code": 2552,
+            "relatedInformation": [
+              {
+                "file": "./src/js/wrapper.ts",
+                "start": 3852,
+                "length": 5,
+                "messageText": "'image' is declared here.",
+                "category": 3,
+                "code": 2728
+              }
+            ]
           },
           {
             "file": "./src/js/wrapper.ts",
-            "start": 3960,
-            "length": 5,
-            "messageText": "Cannot find name 'paint'.",
-            "category": 1,
-            "code": 2304
-          },
-          {
-            "file": "./src/js/wrapper.ts",
-            "start": 3966,
-            "length": 12,
-            "messageText": "Cannot find name 'drawing_data'.",
-            "category": 1,
-            "code": 2304
-          },
-          {
-            "file": "./src/js/wrapper.ts",
-            "start": 4237,
+            "start": 4241,
             "length": 4,
-            "messageText": "Cannot find name 'div2'.",
+            "messageText": "Cannot find name 'div2'. Did you mean 'div'?",
             "category": 1,
-            "code": 2304
+            "code": 2552,
+            "relatedInformation": [
+              {
+                "file": "./src/js/wrapper.ts",
+                "start": 4110,
+                "length": 3,
+                "messageText": "'div' is declared here.",
+                "category": 3,
+                "code": 2728
+              }
+            ]
           },
           {
             "file": "./src/js/wrapper.ts",
-            "start": 4290,
+            "start": 4294,
             "length": 4,
-            "messageText": "Cannot find name 'div2'.",
+            "messageText": "Cannot find name 'div2'. Did you mean 'div'?",
             "category": 1,
-            "code": 2304
+            "code": 2552,
+            "relatedInformation": [
+              {
+                "file": "./src/js/wrapper.ts",
+                "start": 4110,
+                "length": 3,
+                "messageText": "'div' is declared here.",
+                "category": 3,
+                "code": 2728
+              }
+            ]
           },
           {
             "file": "./src/js/wrapper.ts",
-            "start": 4397,
+            "start": 4401,
             "length": 4,
-            "messageText": "Cannot find name 'div2'.",
+            "messageText": "Cannot find name 'div2'. Did you mean 'div'?",
             "category": 1,
-            "code": 2304
+            "code": 2552,
+            "relatedInformation": [
+              {
+                "file": "./src/js/wrapper.ts",
+                "start": 4110,
+                "length": 3,
+                "messageText": "'div' is declared here.",
+                "category": 3,
+                "code": 2728
+              }
+            ]
           }
         ]
       ]

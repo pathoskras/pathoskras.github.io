@@ -1,6 +1,4 @@
 import * as sequelize from 'sequelize'
-import { UserFactory } from './user-model'
-import { SkillsFactory } from './skills-model'
 import { WorksheetFactory } from './worksheet'
 import _ from 'lodash'
 import path from 'path'
@@ -36,10 +34,4 @@ if (env === 'development') { console.log('Initialising Sequelize with options:',
 export const dbConfig: sequelize.Sequelize = new sequelize.Sequelize(seqOptions)
 
 // Initialise models
-export const User = UserFactory(dbConfig)
-export const Skills = SkillsFactory(dbConfig)
 export const Worksheet = WorksheetFactory(dbConfig)
-
-// Set up any associations on the models
-User.hasMany(Skills)
-Skills.belongsTo(User)

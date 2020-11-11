@@ -342,18 +342,8 @@
         "affectsGlobalScope": false
       },
       "./models.d.ts": {
-        "version": "3a078ddeef2e77982cbda825091b10984dc31dec5c2ff2eb79877b4771a6d3a8",
-        "signature": "3a078ddeef2e77982cbda825091b10984dc31dec5c2ff2eb79877b4771a6d3a8",
-        "affectsGlobalScope": false
-      },
-      "./user-model.ts": {
-        "version": "48a48b76775e0de8112a8f0cf8786d07e081c0d5757b5d01c50bf849aaaea743",
-        "signature": "f3f43b5e440aad36758add04b82eae6129dc0723eea342cda267c1e2e956ecbb",
-        "affectsGlobalScope": false
-      },
-      "./skills-model.ts": {
-        "version": "16ad6083d2106504d0e9af43db1bbd03c9ea389a07b2a0ed796252866a1192e2",
-        "signature": "559452aae699b080b0bee834a46d59a34c3c58bd04a49d66e20a5ed3f50a954c",
+        "version": "f7c1c872c214f5d2a91750bd6d0d3b017983c903099847c5c598588f49500c4d",
+        "signature": "f7c1c872c214f5d2a91750bd6d0d3b017983c903099847c5c598588f49500c4d",
         "affectsGlobalScope": false
       },
       "./worksheet.ts": {
@@ -427,8 +417,8 @@
         "affectsGlobalScope": true
       },
       "./index.ts": {
-        "version": "09dfad901d2b39d6dd072de0721ac0ae7cc8ea17cd7b32f9673e1e19d6ba4b89",
-        "signature": "4cb16b0d16e98a3dfcdab8de05e600911885e5f38fd84ba1744479fb0fd25356",
+        "version": "dea873941bf6e063e2f0bb004349692acaad1a0d9654edfa0ad0d6ce7ee71d9e",
+        "signature": "7ef7ef62af4c24091855f7fbcb50ef31ed8f08d4df6a606ef1468be4b4776ec5",
         "affectsGlobalScope": false
       },
       "../../../node_modules/@babel/types/lib/index.d.ts": {
@@ -1806,20 +1796,10 @@
         "../../../node_modules/@types/lodash/index.d.ts",
         "../../../node_modules/@types/node/path.d.ts",
         "../../../node_modules/sequelize/types/index.d.ts",
-        "./skills-model.ts",
-        "./user-model.ts",
         "./worksheet.ts"
       ],
       "./models.d.ts": [
         "../../../node_modules/sequelize/types/index.d.ts"
-      ],
-      "./skills-model.ts": [
-        "../../../node_modules/sequelize/types/index.d.ts",
-        "./models.d.ts"
-      ],
-      "./user-model.ts": [
-        "../../../node_modules/sequelize/types/index.d.ts",
-        "./models.d.ts"
       ],
       "./worksheet.ts": [
         "../../../node_modules/sequelize/types/index.d.ts",
@@ -2486,14 +2466,6 @@
       "./models.d.ts": [
         "../../../node_modules/sequelize/types/index.d.ts"
       ],
-      "./skills-model.ts": [
-        "../../../node_modules/sequelize/types/index.d.ts",
-        "./models.d.ts"
-      ],
-      "./user-model.ts": [
-        "../../../node_modules/sequelize/types/index.d.ts",
-        "./models.d.ts"
-      ],
       "./worksheet.ts": [
         "../../../node_modules/sequelize/types/index.d.ts",
         "./models.d.ts"
@@ -2723,8 +2695,6 @@
       "../../../node_modules/sequelize/types/type-helpers/set-required.d.ts",
       "./index.ts",
       "./models.d.ts",
-      "./skills-model.ts",
-      "./user-model.ts",
       "./worksheet.ts"
     ]
   },
