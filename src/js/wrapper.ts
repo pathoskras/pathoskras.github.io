@@ -17,6 +17,7 @@ const md = new showdown.Converter({ openLinksInNewWindow: true })
 
 function welcome () {
   hideEverything()
+  d3.select('a[href="#Welcome"]').classed('selected', true)
 
   $('#contentBox').html(md.makeHtml(`##Welcome to the KRas Interactive Resource
 
@@ -54,6 +55,7 @@ let currentScreen = null
 welcome()
 
 function hideEverything () {
+  d3.selectAll("ul li a").classed('selected', false)
   $('#contentBox').html('')
   d3.selectAll('.bigText').classed('hidden', true)
   d3.selectAll('.drawer').classed('hidden', true)
@@ -79,6 +81,8 @@ function hideEverything () {
 
 function openScreen (id) {
   hideEverything()
+  d3.select(`a[onclick="openScreen(${id})"]`).classed('selected', true)
+
   d3.select('#noteBox').classed('hidden', false)
   const blob = drawingData = images[id]
   const image = blob.image
@@ -102,6 +106,7 @@ function openScreen (id) {
 
 function introduction () {
   hideEverything()
+  d3.select('a[href="#Introduction"]').classed('selected', true)
 
   $('#contentBox').html(md.makeHtml(`##KRas Interactive Resource
     
@@ -129,6 +134,7 @@ Despite a significant number of lung and colorectal cancer patients affected by 
 
 function video () {
   hideEverything()
+  d3.select('a[href="#Video"]').classed('selected', true)
   $('#contentBox')
     .html(md.makeHtml(`##The Role of KRas in Cancer`))
     .append('<br>')
@@ -142,5 +148,6 @@ function video () {
 
 function email () {
   hideEverything()
+  d3.select('a[href="#Email"]').classed('selected', true)
   d3.select('#emailForm').classed('hidden', false)
 }
