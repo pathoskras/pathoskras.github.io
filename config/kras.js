@@ -19,7 +19,7 @@ catch (e) { }
 const kras = {
     controllers: {
         kras: function (router) {
-            router.readTemplate('wrapper.mustache', 'd3_inner', views => {
+            router.readTemplate('kras.mustache', 'd3_inner', views => {
                 const data = {
                     images: [
                         {

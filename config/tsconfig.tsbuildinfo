@@ -422,7 +422,7 @@
         "affectsGlobalScope": false
       },
       "./db_bootstrap.ts": {
-        "version": "f2f7aa8eafc5da0363c5d1f6284e50bf06541e7acac04efdfba65864b1d2272e",
+        "version": "f4a134290ca01a64b5fe0639bd37edb55bbc45a56e55e782d8c7bb0ca5cdbde7",
         "signature": "1dd02cb2bd51a9d366cbdf9aa98292a7c29dc381bd27c7b1cb264608f63b7e67",
         "affectsGlobalScope": false
       },
@@ -677,7 +677,7 @@
         "affectsGlobalScope": false
       },
       "./kras.ts": {
-        "version": "cac8bd5ecbfd29176b1a2c58a1e48096485cd935221a14bf0aae53b95d672dbe",
+        "version": "9c59d742eaace5ffcbcaadc15b51685b8d5e401466f9cede04559917a412c0aa",
         "signature": "3115da4369ebdc7fcb0915d3b10432e689db7e413b927f2eccbaa3016b6b049c",
         "affectsGlobalScope": false
       },
@@ -2726,27 +2726,7 @@
       "../../../node_modules/sequelize/types/lib/utils/validator-extras.d.ts",
       "../../../node_modules/sequelize/types/type-helpers/set-required.d.ts",
       "./config.ts",
-      [
-        "./db_bootstrap.ts",
-        [
-          {
-            "file": "./db_bootstrap.ts",
-            "start": 64,
-            "length": 4,
-            "messageText": "Module '\"../models\"' has no exported member 'User'.",
-            "category": 1,
-            "code": 2305
-          },
-          {
-            "file": "./db_bootstrap.ts",
-            "start": 70,
-            "length": 6,
-            "messageText": "Module '\"../models\"' has no exported member 'Skills'.",
-            "category": 1,
-            "code": 2305
-          }
-        ]
-      ],
+      "./db_bootstrap.ts",
       "./kras.ts",
       "../models/index.ts",
       "../models/models.d.ts",
