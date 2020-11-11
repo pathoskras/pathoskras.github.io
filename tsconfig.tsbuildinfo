@@ -147,18 +147,13 @@
         "affectsGlobalScope": true
       },
       "./src/js/d3_drawer.ts": {
-        "version": "685a323b6fe0bc315a8af089126b2f21e3371aca7634e86cf428313f4ce20cda",
-        "signature": "27103aaea974b9090e6eb0624313367ce047e7e3e1d61a603e0b80d189bf536f",
-        "affectsGlobalScope": true
-      },
-      "./src/js/kras.ts": {
-        "version": "c45ab0fcbed302907d88d8f240a563f529f03d627702da3cc98c54513810b7fd",
-        "signature": "a025a33165ffe4bdbfc64fb8316377cf637e74f8da6de4467fc8c77c9eede98e",
+        "version": "a6ac0122939240a0abefd1970c4356bd18abb62f52a0d446a51a6b2169e5eb2c",
+        "signature": "394641d93550209cd85801f5b19e5c386b2ec1930108839edd2b428e90db5cb1",
         "affectsGlobalScope": true
       },
       "./src/js/wrapper.ts": {
-        "version": "444d26b48fe33abe2cc3f7939dba83b4bc8e8f07cdd8b0d44679c213c241aa7f",
-        "signature": "c56521137817c13e047f222b033f21ca911047cd6a075bf0d6c4baff48b26495",
+        "version": "82dfbc12753276799c3b1de37af8d75318b3c462d6ebf2ed5d2accc3df230a34",
+        "signature": "d8278debb23d1b715ce0d5c5e47cf1b5819632118e710d35023cfb6beba0dadb",
         "affectsGlobalScope": true
       },
       "../../node_modules/@babel/types/lib/index.d.ts": {
@@ -2243,369 +2238,31 @@
       "../../node_modules/jest-diff/build/types.d.ts",
       "../../node_modules/pretty-format/build/index.d.ts",
       "../../node_modules/pretty-format/build/types.d.ts",
-      "./src/js/d3_drawer.ts",
       [
-        "./src/js/kras.ts",
+        "./src/js/d3_drawer.ts",
         [
           {
-            "file": "./src/js/kras.ts",
-            "start": 57,
-            "length": 10,
-            "code": 2339,
-            "category": 1,
-            "messageText": "Property 'paintBrush' does not exist on type 'JQuery<HTMLElement>'."
-          },
-          {
-            "file": "./src/js/kras.ts",
-            "start": 302,
-            "length": 14,
-            "code": 2339,
-            "category": 1,
-            "messageText": "Property '$loadParentDiv' does not exist on type '{}'."
-          },
-          {
-            "file": "./src/js/kras.ts",
-            "start": 321,
-            "length": 8,
-            "code": 2339,
-            "category": 1,
-            "messageText": "Property 'targetID' does not exist on type '{}'."
-          },
-          {
-            "file": "./src/js/kras.ts",
-            "start": 520,
-            "length": 7,
-            "messageText": "Cannot find name 'context'.",
-            "category": 1,
-            "code": 2304
-          },
-          {
-            "file": "./src/js/kras.ts",
-            "start": 572,
-            "length": 10,
-            "code": 2339,
-            "category": 1,
-            "messageText": "Property 'getContext' does not exist on type 'HTMLElement'."
-          },
-          {
-            "file": "./src/js/kras.ts",
-            "start": 597,
-            "length": 7,
-            "messageText": "Cannot find name 'context'.",
-            "category": 1,
-            "code": 2304
-          },
-          {
-            "file": "./src/js/kras.ts",
-            "start": 672,
-            "length": 7,
-            "messageText": "Cannot find name 'context'.",
-            "category": 1,
-            "code": 2304
-          },
-          {
-            "file": "./src/js/kras.ts",
-            "start": 695,
-            "length": 7,
-            "messageText": "Cannot find name 'context'.",
-            "category": 1,
-            "code": 2304
-          },
-          {
-            "file": "./src/js/kras.ts",
-            "start": 730,
-            "length": 7,
-            "messageText": "Cannot find name 'context'.",
-            "category": 1,
-            "code": 2304
-          },
-          {
-            "file": "./src/js/kras.ts",
-            "start": 753,
-            "length": 7,
-            "messageText": "Cannot find name 'context'.",
-            "category": 1,
-            "code": 2304
-          },
-          {
-            "file": "./src/js/kras.ts",
-            "start": 775,
-            "length": 7,
-            "messageText": "Cannot find name 'context'.",
-            "category": 1,
-            "code": 2304
-          },
-          {
-            "file": "./src/js/kras.ts",
-            "start": 806,
-            "length": 7,
-            "messageText": "Cannot find name 'context'.",
-            "category": 1,
-            "code": 2304
-          },
-          {
-            "file": "./src/js/kras.ts",
-            "start": 933,
-            "length": 9,
-            "code": 2339,
-            "category": 1,
-            "messageText": "Property 'toDataURL' does not exist on type 'HTMLElement'."
-          },
-          {
-            "file": "./src/js/kras.ts",
-            "start": 1174,
-            "length": 8,
+            "file": "./src/js/d3_drawer.ts",
+            "start": 1798,
+            "length": 4,
             "code": 2345,
             "category": 1,
-            "messageText": "Argument of type '() => void' is not assignable to parameter of type 'string'."
-          },
-          {
-            "file": "./src/js/kras.ts",
-            "start": 1258,
-            "length": 10,
-            "code": 2339,
-            "category": 1,
-            "messageText": "Property 'getContext' does not exist on type 'HTMLElement'."
-          },
-          {
-            "file": "./src/js/kras.ts",
-            "start": 1568,
-            "length": 4,
-            "messageText": "Subsequent variable declarations must have the same type.  Variable 'draw' must be of type 'any', but here has type 'number'.",
-            "category": 1,
-            "code": 2403,
-            "relatedInformation": [
-              {
-                "file": "./src/js/kras.ts",
-                "start": 1558,
-                "length": 4,
-                "messageText": "'draw' was also declared here.",
-                "category": 3,
-                "code": 6203
-              }
-            ]
-          },
-          {
-            "file": "./src/js/kras.ts",
-            "start": 2894,
-            "length": 7,
-            "messageText": "Object is possibly 'undefined'.",
-            "category": 1,
-            "code": 2532
-          },
-          {
-            "file": "./src/js/kras.ts",
-            "start": 2910,
-            "length": 7,
-            "messageText": "Object is possibly 'undefined'.",
-            "category": 1,
-            "code": 2532
-          },
-          {
-            "file": "./src/js/kras.ts",
-            "start": 3156,
-            "length": 7,
-            "messageText": "Object is possibly 'undefined'.",
-            "category": 1,
-            "code": 2532
-          },
-          {
-            "file": "./src/js/kras.ts",
-            "start": 3176,
-            "length": 7,
-            "messageText": "Object is possibly 'undefined'.",
-            "category": 1,
-            "code": 2532
-          },
-          {
-            "file": "./src/js/kras.ts",
-            "start": 3381,
-            "length": 7,
-            "messageText": "Object is possibly 'undefined'.",
-            "category": 1,
-            "code": 2532
-          },
-          {
-            "file": "./src/js/kras.ts",
-            "start": 3401,
-            "length": 7,
-            "messageText": "Object is possibly 'undefined'.",
-            "category": 1,
-            "code": 2532
-          },
-          {
-            "file": "./src/js/kras.ts",
-            "start": 3583,
-            "length": 5,
-            "messageText": "Cannot find name 'cntxt'.",
-            "category": 1,
-            "code": 2304
-          },
-          {
-            "file": "./src/js/kras.ts",
-            "start": 3818,
-            "length": 4,
-            "code": 2339,
-            "category": 1,
-            "messageText": "Property 'href' does not exist on type 'HTMLElement'."
-          },
-          {
-            "file": "./src/js/kras.ts",
-            "start": 4352,
-            "length": 5,
-            "messageText": "Cannot find name 'cntxt'.",
-            "category": 1,
-            "code": 2304
-          },
-          {
-            "file": "./src/js/kras.ts",
-            "start": 4610,
-            "length": 5,
-            "messageText": "Cannot find name 'cntxt'.",
-            "category": 1,
-            "code": 2304
-          },
-          {
-            "file": "./src/js/kras.ts",
-            "start": 5328,
-            "length": 6,
-            "messageText": "Expected 1 arguments, but got 0.",
-            "category": 1,
-            "code": 2554,
-            "relatedInformation": [
-              {
-                "file": "./src/js/kras.ts",
-                "start": 280,
-                "length": 7,
-                "messageText": "An argument for 'options' was not provided.",
-                "category": 3,
-                "code": 6210
-              }
-            ]
-          },
-          {
-            "file": "./src/js/kras.ts",
-            "start": 5514,
-            "length": 9,
-            "code": 2339,
-            "category": 1,
-            "messageText": "Property 'toDataURL' does not exist on type 'HTMLElement'."
+            "messageText": {
+              "messageText": "Argument of type 'Element' is not assignable to parameter of type 'ContainerElement'.",
+              "category": 1,
+              "code": 2345,
+              "next": [
+                {
+                  "messageText": "Type 'Element' is missing the following properties from type 'SVGSVGElement': contentScriptType, contentStyleType, currentScale, currentTranslate, and 139 more.",
+                  "category": 1,
+                  "code": 2740
+                }
+              ]
+            }
           }
         ]
       ],
-      [
-        "./src/js/wrapper.ts",
-        [
-          {
-            "file": "./src/js/wrapper.ts",
-            "start": 3457,
-            "length": 6,
-            "messageText": "Cannot find name 'images'. Did you mean 'Image'?",
-            "category": 1,
-            "code": 2552,
-            "relatedInformation": [
-              {
-                "file": "../../../../.config/yarn/global/node_modules/typescript/lib/lib.dom.d.ts",
-                "start": 802015,
-                "length": 5,
-                "messageText": "'Image' is declared here.",
-                "category": 3,
-                "code": 2728
-              }
-            ]
-          },
-          {
-            "file": "./src/js/wrapper.ts",
-            "start": 3635,
-            "length": 6,
-            "messageText": "Cannot find name 'images'. Did you mean 'Image'?",
-            "category": 1,
-            "code": 2552,
-            "relatedInformation": [
-              {
-                "file": "../../../../.config/yarn/global/node_modules/typescript/lib/lib.dom.d.ts",
-                "start": 802015,
-                "length": 5,
-                "messageText": "'Image' is declared here.",
-                "category": 3,
-                "code": 2728
-              }
-            ]
-          },
-          {
-            "file": "./src/js/wrapper.ts",
-            "start": 3833,
-            "length": 6,
-            "messageText": "Cannot find name 'images'. Did you mean 'image'?",
-            "category": 1,
-            "code": 2552,
-            "relatedInformation": [
-              {
-                "file": "./src/js/wrapper.ts",
-                "start": 3852,
-                "length": 5,
-                "messageText": "'image' is declared here.",
-                "category": 3,
-                "code": 2728
-              }
-            ]
-          },
-          {
-            "file": "./src/js/wrapper.ts",
-            "start": 4241,
-            "length": 4,
-            "messageText": "Cannot find name 'div2'. Did you mean 'div'?",
-            "category": 1,
-            "code": 2552,
-            "relatedInformation": [
-              {
-                "file": "./src/js/wrapper.ts",
-                "start": 4110,
-                "length": 3,
-                "messageText": "'div' is declared here.",
-                "category": 3,
-                "code": 2728
-              }
-            ]
-          },
-          {
-            "file": "./src/js/wrapper.ts",
-            "start": 4294,
-            "length": 4,
-            "messageText": "Cannot find name 'div2'. Did you mean 'div'?",
-            "category": 1,
-            "code": 2552,
-            "relatedInformation": [
-              {
-                "file": "./src/js/wrapper.ts",
-                "start": 4110,
-                "length": 3,
-                "messageText": "'div' is declared here.",
-                "category": 3,
-                "code": 2728
-              }
-            ]
-          },
-          {
-            "file": "./src/js/wrapper.ts",
-            "start": 4401,
-            "length": 4,
-            "messageText": "Cannot find name 'div2'. Did you mean 'div'?",
-            "category": 1,
-            "code": 2552,
-            "relatedInformation": [
-              {
-                "file": "./src/js/wrapper.ts",
-                "start": 4110,
-                "length": 3,
-                "messageText": "'div' is declared here.",
-                "category": 3,
-                "code": 2728
-              }
-            ]
-          }
-        ]
-      ]
+      "./src/js/wrapper.ts"
     ]
   },
   "version": "4.0.3"

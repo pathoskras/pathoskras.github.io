@@ -1,13 +1,19 @@
-/* global images drawing_data */
-
 console.log('Loaded wrapper.ts')
 
-const md = new showdown.Converter({ openLinksInNewWindow: true })
+type Point = [number, number]
+type Line = {
+  points : Point[];
+  color : string;
+}
+type Image = {
+  id : number;
+  image : string;
+  lines : Line[];
+  name : string;
+}
+declare let images: Image[]
 
-// var drawing_data = drawing_data || {},
-//     images = images || [];
-// let div2;
-// let paint;
+const md = new showdown.Converter({ openLinksInNewWindow: true })
 
 function welcome () {
   hideEverything()
@@ -47,8 +53,8 @@ function hideEverything () {
 
   if (currentScreen) {
     console.log('saving data for ' + currentScreen)
-    console.log(drawing_data.lines)
-    images[currentScreen].lines = drawing_data.lines.map(d => {
+    console.log(drawingData.lines)
+    images[currentScreen].lines = drawingData.lines.map(d => {
       return {
         points: d.points,
         color: d.color
@@ -64,13 +70,13 @@ function hideEverything () {
 function openScreen (id) {
   hideEverything()
   d3.select('#noteBox').classed('hidden', false)
-  const blob = drawing_data = images[id]
+  const blob = drawingData = images[id]
   const image = blob.image
   currentScreen = id
 
   d3.select('#imageTitle').classed('hidden', false).text(blob.name)
 
-  paint(drawing_data)
+  paint(drawingData)
 
   d3.select('.drawer').classed('hidden', false)
   d3.select('#d3-background-image').attr('src', `/images/${image}`)
@@ -80,17 +86,8 @@ function openScreen (id) {
     class: 'bigImage',
     src: `/images/${image}`
   })
-  div2 = d3.select('#contentBox').append('div')
-  { { !div2.append('h3').text('Notes:') } }
+  const div2 = d3.select('#contentBox').append('div')
   d3.select(`#text-${id}`).classed('hidden', false)
-
-  {
-    {
-      !div2.append('textarea').attrs({
-        class: 'bigText'
-      })
-    }
-  }
 }
 
 function email () {
