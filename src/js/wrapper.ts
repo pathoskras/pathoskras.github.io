@@ -15,11 +15,7 @@ declare let images: KrasImage[]
 
 const md = new showdown.Converter({ openLinksInNewWindow: true })
 
-function welcome () {
-  hideEverything()
-  d3.select('a[href="#Welcome"]').classed('selected', true)
-
-  $('#contentBox').html(md.makeHtml(`##Welcome to the KRas Interactive Resource
+const welcomeText = `##Welcome to the KRas Interactive Resource
 
 #What is this Resource for?
 This interactive resource is to help explain how changes in your cell messaging systems can lead to
@@ -45,7 +41,28 @@ Finally, there is a list of terms and definitions and some useful links.
 
 #Who can I contact for further information about the Resource?
 Please contact Dr Maja Divjak ([maja.divjak@petermac.org](mailto:maja.divjak@petermac.org?subject=KRAS%20Annotation)) for further assistance.
-`))
+`;
+const introductionText = `##Introduction to KRas
+    
+#What is KRas?
+
+KRas is a protein that forms part of a cell signalling pathway. This pathway instructs your cells to grow and divide or to mature and take on specialised functions. To stop these pathways functioning when not needed, KRas is bound to a regulating switch that keeps it turned off. In order for KRas to send signals, it needs to be turned on. To do this, the regulating switch is swapped for an ‘on-switch’. KRas is then active and can send signals for cells to grow, divide or mature. When no longer required, the KRas protein is turned off again by cleaving the on-switch, converting it back to the inactive state. When KRas is switched off, it cannot send signals.
+
+#What Goes Wrong with KRas?
+Changes in the genetic code for KRas have the potential to cause normal cells to become cancerous. One such change leads to a swap of the amino acid glycine for cystine at position 12 in the KRas protein. This change in KRas is known as a ‘G12C’ mutation. A G12C mutation is acquired during a person's lifetime; it is not inherited. This change results in a KRas protein that is constantly switched on. The result is that affected cells are directed to grow and divide out of control, leading to tumour formation.
+
+#KRas and Cancer
+KRAS mutations occur in 17-25% of all human cancers. Furthermore, the G12C mutation accounts for about 44% of all KRAS mutations. Indeed, in non-small cell lung carcinoma, which is the most commonly occurring form of lung cancer, 13% of patients have this G12C mutation. The G12C mutation also occurs in 1-3% of colorectal and pancreatic cancer patients.
+
+#Treating Mutant G12C KRas
+Despite a significant number of lung and colorectal cancer patients affected by the G12C mutation, developing effective treatments has proven challenging. It has been difficult to find an area on the surface of the KRas protein where a drug might get a foothold to disrupt the unchecked cell division. Recently, however, a couple of inhibitors have been developed that lock the G12C mutant KRas protein in the inactive state, without affecting the normal function of unmutated KRas. These inhibitors show great potential for the treatment of G12C mutant KRas cancers.
+`;
+
+function welcome () {
+  hideEverything()
+  d3.select('a[href="#Welcome"]').classed('selected', true)
+
+  $('#contentBox').html(md.makeHtml(welcomeText))
 }
 
 let currentScreen = null
@@ -105,21 +122,7 @@ function introduction () {
   hideEverything()
   d3.select('a[href="#Introduction"]').classed('selected', true)
 
-  $('#contentBox').html(md.makeHtml(`##Introduction to KRas
-    
-#What is KRas?
-
-KRas is a protein that forms part of a cell signalling pathway. This pathway instructs your cells to grow and divide or to mature and take on specialised functions. To stop these pathways functioning when not needed, KRas is bound to a regulating switch that keeps it turned off. In order for KRas to send signals, it needs to be turned on. To do this, the regulating switch is swapped for an ‘on-switch’. KRas is then active and can send signals for cells to grow, divide or mature. When no longer required, the KRas protein is turned off again by cleaving the on-switch, converting it back to the inactive state. When KRas is switched off, it cannot send signals.
-
-#What Goes Wrong with KRas?
-Changes in the genetic code for KRas have the potential to cause normal cells to become cancerous. One such change leads to a swap of the amino acid glycine for cystine at position 12 in the KRas protein. This change in KRas is known as a ‘G12C’ mutation. A G12C mutation is acquired during a person's lifetime; it is not inherited. This change results in a KRas protein that is constantly switched on. The result is that affected cells are directed to grow and divide out of control, leading to tumour formation.
-
-#KRas and Cancer
-KRAS mutations occur in 17-25% of all human cancers. Furthermore, the G12C mutation accounts for about 44% of all KRAS mutations. Indeed, in non-small cell lung carcinoma, which is the most commonly occurring form of lung cancer, 13% of patients have this G12C mutation. The G12C mutation also occurs in 1-3% of colorectal and pancreatic cancer patients.
-
-#Treating Mutant G12C KRas
-Despite a significant number of lung and colorectal cancer patients affected by the G12C mutation, developing effective treatments has proven challenging. It has been difficult to find an area on the surface of the KRas protein where a drug might get a foothold to disrupt the unchecked cell division. Recently, however, a couple of inhibitors have been developed that lock the G12C mutant KRas protein in the inactive state, without affecting the normal function of unmutated KRas. These inhibitors show great potential for the treatment of G12C mutant KRas cancers.
-`))
+  $('#contentBox').html(md.makeHtml(introductionText))
 
 }
 
@@ -142,3 +145,22 @@ function email () {
   d3.select('a[href="#Email"]').classed('selected', true)
   d3.select('#emailForm').classed('hidden', false)
 }
+
+function printVersion() {
+  $("#wrapper").toggleClass("pdfMode");
+
+  $("#contentBox")
+  .append('<div style="page-break-after:always">&nbsp;</div>')
+  .append(md.makeHtml(introductionText))
+  .append('<div style="page-break-after:always">&nbsp;</div>')
+
+  // d3.selectAll('.bigText').classed('hidden', false)
+  // d3.selectAll('.drawer').classed('hidden', false)
+  // d3.select('#noteBox').classed('hidden', false)
+  // d3.select('#emailForm').classed('hidden', false)
+  // d3.select('#imageTitle').classed('hidden', false)
+
+  // alert("Print version called!");
+  // openScreen(1)
+}
+

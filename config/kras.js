@@ -8,6 +8,7 @@ const path_1 = __importDefault(require("path"));
 const mustache_1 = __importDefault(require("mustache"));
 const nodemailer_1 = __importDefault(require("nodemailer"));
 const formidable_1 = __importDefault(require("formidable"));
+const puppeteer_1 = __importDefault(require("puppeteer"));
 let mailAuth = {
     user: 'username@gmail.com',
     pass: 'password_here_lol'
@@ -144,42 +145,47 @@ const kras = {
                     blob.hash = hash;
                     router.db.Worksheet.create(blob);
                 }
-                let message = `<a href="/kras/${hash}">Link to saved data</a>. No email sent.`;
-                try {
-                    const emailOptions = {
-                        toAddress: fields.email,
-                        body: `
-Hello!
-
-Thanks for using the PathOS K-Ras Resource.
-
-Your notes are here:
-https://pathos.co/kras/${hash}
-
-Please use this form to give us feedback on the K-Ras Resource:
-https://forms.gle/jnqC2yFXgN9Zim8N9
-
-Thanks,
-PathOS Team.
-`
-                    };
-                    if (fields.tickedEmailBox) {
-                        if (fields.doctor) {
-                            emailOptions.subject = `Your K-Ras notes from Dr. ${fields.doctor}`;
+                makePdf(hash).then(pdf => {
+                    let message = `<a href="/kras/${hash}">Link to saved data</a>. No email sent.
+<br>
+<a target="_blank" href="${pdf}">Download PDF</a>.
+`;
+                    try {
+                        const emailOptions = {
+                            toAddress: fields.email,
+                            body: `
+  Hello!
+  
+  Thanks for using the PathOS K-Ras Resource.
+  
+  Your notes are here:
+  https://pathos.co/kras/${hash}
+  
+  Please use this form to give us feedback on the K-Ras Resource:
+  https://forms.gle/jnqC2yFXgN9Zim8N9
+  
+  Thanks,
+  PathOS Team.
+  `
+                        };
+                        if (fields.tickedEmailBox) {
+                            if (fields.doctor) {
+                                emailOptions.subject = `Your K-Ras notes from Dr. ${fields.doctor}`;
+                            }
+                            sendEmail(emailOptions);
+                            message = `<a href="/kras/${hash}">Link sent to patient</a> at ${fields.email} using 7oclockco@gmail.com`;
                         }
-                        sendEmail(emailOptions);
-                        message = `<a href="/kras/${hash}">Link sent to patient</a> at ${fields.email} using 7oclockco@gmail.com`;
                     }
-                }
-                catch (e) {
-                    console.log('Error sending mail.', e);
-                }
-                router.res.end(`Your hash is: ${hash}<br><br>
-${message}
-<br><br>
-Please use this form to give us feedback on the KRas Resource:<br>
-<a href="https://forms.gle/jnqC2yFXgN9Zim8N9" target="_blank">https://forms.gle/jnqC2yFXgN9Zim8N9</a>
-`);
+                    catch (e) {
+                        console.log('Error sending mail.', e);
+                    }
+                    router.res.end(`Your hash is: ${hash}<br><br>
+  ${message}
+  <br><br>
+  Please use this form to give us feedback on the KRas Resource:<br>
+  <a href="https://forms.gle/jnqC2yFXgN9Zim8N9" target="_blank">https://forms.gle/jnqC2yFXgN9Zim8N9</a>
+  `);
+                });
             });
         }
     }
@@ -220,5 +226,39 @@ function sendEmail(config) {
         else {
             console.log('Email sent: ' + info.response);
         }
+    });
+}
+async function makePdf(hash) {
+    return new Promise((resolve, reject) => {
+        puppeteer_1.default.launch({}).then(browser => {
+            browser.newPage().then(page => {
+                page.setExtraHTTPHeaders({
+                    'test-host': 'pathos.david-ma.net'
+                }).then(() => {
+                    page.goto(`http://localhost:1337/kras/${hash}`, {
+                        waitUntil: 'domcontentloaded'
+                    }).then(() => {
+                        page.evaluate('printVersion()').then(() => {
+                            page.waitForTimeout(500).then(() => {
+                                const filepath = path_1.default.resolve(__dirname, '..', 'data', 'pdfs', `KRas-${hash}.pdf`);
+                                page.pdf({
+                                    path: filepath,
+                                    format: 'A4'
+                                }).then(() => {
+                                    browser.close();
+                                    resolve(`/pdfs/KRas-${hash}.pdf`);
+                                }).catch(error => {
+                                    console.error(error);
+                                    reject(error);
+                                });
+                            });
+                        });
+                    }).catch(error => {
+                        console.error(error);
+                        reject(error);
+                    });
+                });
+            });
+        });
     });
 }

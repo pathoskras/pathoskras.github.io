@@ -11,5 +11,4 @@ const seq :seqObject = {
   Worksheet: Worksheet
 }
 
-
 export { seq }

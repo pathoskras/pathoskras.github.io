@@ -342,8 +342,8 @@
         "affectsGlobalScope": false
       },
       "../models/models.d.ts": {
-        "version": "f7c1c872c214f5d2a91750bd6d0d3b017983c903099847c5c598588f49500c4d",
-        "signature": "f7c1c872c214f5d2a91750bd6d0d3b017983c903099847c5c598588f49500c4d",
+        "version": "586d2a502c46da4153306a19154fa72455ca7e0c2a8523d068d5703f9f34a3f9",
+        "signature": "586d2a502c46da4153306a19154fa72455ca7e0c2a8523d068d5703f9f34a3f9",
         "affectsGlobalScope": false
       },
       "../models/worksheet.ts": {
@@ -422,7 +422,7 @@
         "affectsGlobalScope": false
       },
       "./db_bootstrap.ts": {
-        "version": "f4a134290ca01a64b5fe0639bd37edb55bbc45a56e55e782d8c7bb0ca5cdbde7",
+        "version": "8504eaab1aa28e8d9bb5c8347f3c2a30ba9ce4cc89ea0adccf925bfa577df02a",
         "signature": "1dd02cb2bd51a9d366cbdf9aa98292a7c29dc381bd27c7b1cb264608f63b7e67",
         "affectsGlobalScope": false
       },
@@ -676,14 +676,39 @@
         "signature": "c87fdfbe484cb43964ca2ae19db5ac30e4f945826d1ade33c0d3d653006ddd22",
         "affectsGlobalScope": false
       },
+      "../../../node_modules/@types/puppeteer/index.d.ts": {
+        "version": "9816d0e2cca2ae2cf89ff9c58b037ac8894ae7a494a813a9d4d87eaa8e018dd6",
+        "signature": "9816d0e2cca2ae2cf89ff9c58b037ac8894ae7a494a813a9d4d87eaa8e018dd6",
+        "affectsGlobalScope": false
+      },
+      "../../../server/requesthandlers.ts": {
+        "version": "5fadc722168e59242974638e10a414ba90e8d241afed67f05e882255a77ff1e5",
+        "signature": "ca03bc3459a9c78ba13000ff0bb4cdb3a2e509a2739b9ef60a1458e581697380",
+        "affectsGlobalScope": false
+      },
+      "../../../node_modules/@types/engine.io/index.d.ts": {
+        "version": "2bc5a885dc91b4006192c477dfae4f2856e5809c6ffbf62cc242ac010f15ab51",
+        "signature": "2bc5a885dc91b4006192c477dfae4f2856e5809c6ffbf62cc242ac010f15ab51",
+        "affectsGlobalScope": false
+      },
+      "../../../node_modules/@types/socket.io/index.d.ts": {
+        "version": "7d666a6623022683b640930047127f754d79393a29c0f51f3447325f8435809f",
+        "signature": "7d666a6623022683b640930047127f754d79393a29c0f51f3447325f8435809f",
+        "affectsGlobalScope": false
+      },
+      "../../../server/thalia.d.ts": {
+        "version": "e4ddf882b347ae81a87996965838f2ab74b60935601df3bc42d494b244f338bd",
+        "signature": "e4ddf882b347ae81a87996965838f2ab74b60935601df3bc42d494b244f338bd",
+        "affectsGlobalScope": false
+      },
       "./kras.ts": {
-        "version": "b58afc0104cd49e068994c3402f01eabffe35e05475f196ad5268713a68ed30a",
-        "signature": "3115da4369ebdc7fcb0915d3b10432e689db7e413b927f2eccbaa3016b6b049c",
+        "version": "3d75f6cedf2d3083166d85a1c6a4b5bcdc20c5517b7be71784a03ac7ea39c9fe",
+        "signature": "00515849321b0ec5a71c1043d67a949e374c4671d3cdf77db14af8ecc38f592e",
         "affectsGlobalScope": false
       },
       "./config.ts": {
         "version": "0394066bba06e22ae69b73a40d28fea9c854c1aba775d413d05d2002186b94ae",
-        "signature": "6755171f2e76629f50f3b7d43bd7dc0de35289713a1812de795f58f2d29652bb",
+        "signature": "ee065286884381765a1e450dde266e2a996898f69f3bcfb17b60339ff2a768de",
         "affectsGlobalScope": false
       },
       "../../../node_modules/@babel/types/lib/index.d.ts": {
@@ -986,11 +1011,6 @@
         "signature": "310c4f4f0ea7174f45ff9451409dd6dbb7ffad13a368c8480ad79190c26038d7",
         "affectsGlobalScope": true
       },
-      "../../../node_modules/@types/engine.io/index.d.ts": {
-        "version": "2bc5a885dc91b4006192c477dfae4f2856e5809c6ffbf62cc242ac010f15ab51",
-        "signature": "2bc5a885dc91b4006192c477dfae4f2856e5809c6ffbf62cc242ac010f15ab51",
-        "affectsGlobalScope": false
-      },
       "../../../node_modules/@types/graceful-fs/index.d.ts": {
         "version": "cb6cf0480ee1aa9f706db1f6f5add596a1aa10e8c4beb1817f2318384ba684dc",
         "signature": "cb6cf0480ee1aa9f706db1f6f5add596a1aa10e8c4beb1817f2318384ba684dc",
@@ -1081,11 +1101,6 @@
         "signature": "7403a1397d48771d58d55c603d0c51aa3d4cd6467bca03140f085fdc432eb912",
         "affectsGlobalScope": false
       },
-      "../../../node_modules/@types/puppeteer/index.d.ts": {
-        "version": "9816d0e2cca2ae2cf89ff9c58b037ac8894ae7a494a813a9d4d87eaa8e018dd6",
-        "signature": "9816d0e2cca2ae2cf89ff9c58b037ac8894ae7a494a813a9d4d87eaa8e018dd6",
-        "affectsGlobalScope": false
-      },
       "../../../node_modules/@types/q/index.d.ts": {
         "version": "f9a2dd6a6084665f093ed0e9664b8e673be2a45e342a59dd4e0e4e552e68a9ad",
         "signature": "f9a2dd6a6084665f093ed0e9664b8e673be2a45e342a59dd4e0e4e552e68a9ad",
@@ -1094,11 +1109,6 @@
       "../../../node_modules/@types/showdown/index.d.ts": {
         "version": "2f5663a907b70a487ca1541607b72fb58a627d78d1a3b94ec6df15fa9a4266b3",
         "signature": "2f5663a907b70a487ca1541607b72fb58a627d78d1a3b94ec6df15fa9a4266b3",
-        "affectsGlobalScope": false
-      },
-      "../../../node_modules/@types/socket.io/index.d.ts": {
-        "version": "7d666a6623022683b640930047127f754d79393a29c0f51f3447325f8435809f",
-        "signature": "7d666a6623022683b640930047127f754d79393a29c0f51f3447325f8435809f",
         "affectsGlobalScope": false
       },
       "../../../node_modules/@types/socket.io-client/index.d.ts": {
@@ -1807,6 +1817,17 @@
       "../../../node_modules/sequelize/types/lib/utils/validator-extras.d.ts": [
         "../../../node_modules/@types/validator/index.d.ts"
       ],
+      "../../../server/requesthandlers.ts": [
+        "../../../node_modules/@types/mustache/index.d.ts",
+        "../../../node_modules/@types/node/fs.d.ts",
+        "../../../node_modules/@types/node/path.d.ts",
+        "../../../server/thalia.d.ts"
+      ],
+      "../../../server/thalia.d.ts": [
+        "../../../node_modules/@types/node/http.d.ts",
+        "../../../node_modules/@types/socket.io/index.d.ts",
+        "../../../server/requesthandlers.ts"
+      ],
       "./config.ts": [
         "../../../node_modules/@types/lodash/index.d.ts",
         "./kras.ts"
@@ -1819,6 +1840,8 @@
         "../../../node_modules/@types/formidable/index.d.ts",
         "../../../node_modules/@types/mustache/index.d.ts",
         "../../../node_modules/@types/node/path.d.ts",
+        "../../../node_modules/@types/puppeteer/index.d.ts",
+        "../../../server/thalia.d.ts",
         "../models/models.d.ts"
       ],
       "../models/index.ts": [
@@ -2488,8 +2511,19 @@
       "../../../node_modules/sequelize/types/lib/utils/validator-extras.d.ts": [
         "../../../node_modules/@types/validator/index.d.ts"
       ],
+      "../../../server/requesthandlers.ts": [
+        "../../../server/thalia.d.ts"
+      ],
+      "../../../server/thalia.d.ts": [
+        "../../../node_modules/@types/node/http.d.ts",
+        "../../../node_modules/@types/socket.io/index.d.ts",
+        "../../../server/requesthandlers.ts"
+      ],
       "./db_bootstrap.ts": [
         "../../../node_modules/sequelize/types/index.d.ts"
+      ],
+      "./kras.ts": [
+        "../../../server/thalia.d.ts"
       ],
       "../models/index.ts": [
         "../../../node_modules/sequelize/types/index.d.ts",
@@ -2725,6 +2759,8 @@
       "../../../node_modules/sequelize/types/lib/utils.d.ts",
       "../../../node_modules/sequelize/types/lib/utils/validator-extras.d.ts",
       "../../../node_modules/sequelize/types/type-helpers/set-required.d.ts",
+      "../../../server/requesthandlers.ts",
+      "../../../server/thalia.d.ts",
       "./config.ts",
       "./db_bootstrap.ts",
       "./kras.ts",

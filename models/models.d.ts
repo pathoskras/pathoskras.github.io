@@ -16,4 +16,3 @@ export class Worksheet extends Model<WorksheetModel, WorksheetAttributes> { }
 export type WorksheetStatic = typeof Model & {
     new(values?: object, options?: BuildOptions): WorksheetModel;
 };
-

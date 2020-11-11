@@ -342,8 +342,8 @@
         "affectsGlobalScope": false
       },
       "./models.d.ts": {
-        "version": "f7c1c872c214f5d2a91750bd6d0d3b017983c903099847c5c598588f49500c4d",
-        "signature": "f7c1c872c214f5d2a91750bd6d0d3b017983c903099847c5c598588f49500c4d",
+        "version": "586d2a502c46da4153306a19154fa72455ca7e0c2a8523d068d5703f9f34a3f9",
+        "signature": "586d2a502c46da4153306a19154fa72455ca7e0c2a8523d068d5703f9f34a3f9",
         "affectsGlobalScope": false
       },
       "./worksheet.ts": {

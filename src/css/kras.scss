@@ -2,7 +2,7 @@
 
 body,
 html {
-  position: fixed;
+  // position: fixed; // breaks pdf
   width: 100vw;
 }
 div#footer {
@@ -150,4 +150,15 @@ img.bigImage {
       }
     }
   }
+}
+
+
+#wrapper.pdfMode {
+  position: relative;
+  .sidebar {
+    display: none;
+    height: 0;
+  }
+  min-height: 3000px;
+  size: auto;
 }
