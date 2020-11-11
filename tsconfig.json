@@ -8,6 +8,11 @@
     "moduleResolution": "Node",
     "assumeChangesOnlyAffectDirectDependencies": true,
     "incremental": true,
+    "lib": [
+      "es6",
+      "dom.iterable",
+      "dom"
+    ],
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "removeComments": true,

@@ -1,13 +1,18 @@
-/* global images */
+/* global images drawing_data */
 
-console.log("Loaded wrapper.ts");
+console.log('Loaded wrapper.ts')
 
-const md = new showdown.Converter({ openLinksInNewWindow: true });
+const md = new showdown.Converter({ openLinksInNewWindow: true })
 
-function welcome() {
-  hideEverything();
+// var drawing_data = drawing_data || {},
+//     images = images || [];
+// let div2;
+// let paint;
 
-  $("#contentBox").html(md.makeHtml(`#KRas Interactive Resource
+function welcome () {
+  hideEverything()
+
+  $('#contentBox').html(md.makeHtml(`#KRas Interactive Resource
     
 #What is K-Ras?
 
@@ -25,72 +30,70 @@ Despite a significant number of lung and colorectal cancer patients affected by 
 #Link to Protein Databank:
 [Mutant KRAS interacting with AMG 510](https://www.rcsb.org/pdb/explore/jmol.do?structureId=6oim&bionumber=1&jmolMode=HTML5)
 
-#The Role of K-Ras in Cancer video:`)).append(`<iframe width="560" height="315" src="https://www.youtube.com/embed/pD5q4TlZW-M?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`);
+#The Role of K-Ras in Cancer video:`))
+.append('<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/pD5q4TlZW-M" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>')
 }
 
-let currentScreen = null;
-welcome();
+let currentScreen = null
+welcome()
 
-function hideEverything() {
-  $("#contentBox").html("");
-  d3.selectAll(".bigText").classed("hidden", true);
-  d3.selectAll(".drawer").classed("hidden", true);
-  d3.select("#noteBox").classed("hidden", true);
-  d3.select("#emailForm").classed("hidden", true);
-  d3.select("#imageTitle").classed("hidden", true);
+function hideEverything () {
+  $('#contentBox').html('')
+  d3.selectAll('.bigText').classed('hidden', true)
+  d3.selectAll('.drawer').classed('hidden', true)
+  d3.select('#noteBox').classed('hidden', true)
+  d3.select('#emailForm').classed('hidden', true)
+  d3.select('#imageTitle').classed('hidden', true)
 
   if (currentScreen) {
-    console.log("saving data for " + currentScreen);
-    console.log(drawing_data.lines);
+    console.log('saving data for ' + currentScreen)
+    console.log(drawing_data.lines)
     images[currentScreen].lines = drawing_data.lines.map(d => {
       return {
         points: d.points,
         color: d.color
-      };
-    });
+      }
+    })
 
-    $("#lineData").val(JSON.stringify(images));
+    $('#lineData').val(JSON.stringify(images))
   } else {
-    console.log("Not on a screen to save..?");
+    console.log('Not on a screen to save..?')
   }
-
 }
 
-function openScreen(id) {
-  hideEverything();
-  d3.select("#noteBox").classed("hidden", false);
-  const blob = drawing_data = images[id],
-    image = blob.image;
-  currentScreen = id;
+function openScreen (id) {
+  hideEverything()
+  d3.select('#noteBox').classed('hidden', false)
+  const blob = drawing_data = images[id]
+  const image = blob.image
+  currentScreen = id
 
-  d3.select("#imageTitle").classed("hidden", false).text(blob.name);
+  d3.select('#imageTitle').classed('hidden', false).text(blob.name)
 
-  paint(drawing_data);
+  paint(drawing_data)
 
-  d3.select(".drawer").classed("hidden", false);
-  d3.select("#d3-background-image").attr("src", `/images/${image}`);
+  d3.select('.drawer').classed('hidden', false)
+  d3.select('#d3-background-image').attr('src', `/images/${image}`)
 
-
-
-  var div = d3.select("#contentBox").append("div");
-  div.append("img").attrs({
-    class: "bigImage",
+  const div = d3.select('#contentBox').append('div')
+  div.append('img').attrs({
+    class: 'bigImage',
     src: `/images/${image}`
-  });
-  div2 = d3.select("#contentBox").append("div");
-  { { !div2.append("h3").text("Notes:"); } }
-  d3.select(`#text-${id}`).classed("hidden", false);
+  })
+  div2 = d3.select('#contentBox').append('div')
+  { { !div2.append('h3').text('Notes:') } }
+  d3.select(`#text-${id}`).classed('hidden', false)
 
   {
     {
-      !div2.append("textarea").attrs({
-        class: "bigText"
-      });
+      !div2.append('textarea').attrs({
+        class: 'bigText'
+      })
     }
   }
 }
 
-function email() {
-  hideEverything();
-  d3.select("#emailForm").classed("hidden", false);
+function email () {
+  hideEverything()
+  d3.select('#emailForm').classed('hidden', false)
 }

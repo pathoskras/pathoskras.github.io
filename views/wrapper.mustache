@@ -54,81 +54,93 @@
 	</style>
     {{> styles }}
     <script src="/js/vendor.min.js"></script>
-    <script src="/drawerJs/drawerJs.standalone.js"></script>
+    {{! <script src="/drawerJs/drawerJs.standalone.js"></script> }}
     <script src="/js/showdown.min.js"></script>
 
 </head>
-
 <body>
-    <div id="wrapper" class="container-fluid page">
-        <div class="row">
-            <div class="col-md-2 col-xs-3 sidebar">
-                <span>Kras mutation</span>
-                {{! <input placeholder="Placeholder"> }}
-                <ul>
-                    <li><a href="#Welcome" onclick="welcome()">Welcome</a></li>
-                    {{#images}}
-                    <li>
-                        <a href="#{{image}}" onclick="openScreen({{id}})">{{name}}</a>
-                    </li>
-                    {{/images}}
-                    <li><a href="#Email" onclick="email()">Email</a></li>
-                </ul>
+  <div id="wrapper" class="container-fluid page">
+    <div class="row">
+      <div class="col-md-2 col-xs-3 sidebar">
+        <span>Kras mutation</span>
+        {{! <input placeholder="Placeholder"> }}
+        <ul>
+          <li><a href="#Welcome" onclick="welcome()">Welcome</a></li>
+          {{#images}}
+          <li>
+            <a href="#{{image}}" onclick="openScreen({{id}})">{{name}}</a>
+          </li>
+          {{/images}}
+          <li><a href="#Email" onclick="email()">Email</a></li>
+        </ul>
+      </div>
+      <div class="col-md-10 col-xs-9">
+        <h1 id="imageTitle" class="hidden">Hello</h1>
+        {{> content }}
+        {{! Content goes here! }}
+        <form action="/saveDetails" id="saveForm" method="post">
+
+          <div id='contentBox'></div>
+
+          <div id="noteBox">
+            <h3>Notes:</h3>
+            <textarea name="text-1" id="text-1" class="bigText hidden" for="saveForm">{{text-1}}</textarea>
+            <textarea name="text-2" id="text-2" class="bigText hidden" for="saveForm">{{text-2}}</textarea>
+            <textarea name="text-3" id="text-3" class="bigText hidden" for="saveForm">{{text-3}}</textarea>
+            <textarea name="text-4" id="text-4" class="bigText hidden" for="saveForm">{{text-4}}</textarea>
+            <textarea name="text-5" id="text-5" class="bigText hidden" for="saveForm">{{text-5}}</textarea>
+          </div>
+
+          <div id="emailForm" class="hidden">
+            <table>
+              <tr>
+                <td>First Name:</td>
+                <td><input value="{{firstName}}" for="saveForm" id="firstName" name="firstName" value=""
+                    required="true"></td>
+              </tr>
+              <tr>
+                <td>Last Name:</td>
+                <td><input value="{{lastName}}" for="saveForm" id="lastName" name="lastName" value="" required="true">
+                </td>
+              </tr>
+              <tr>
+                <td>Email:</td>
+                <td><input value="{{email}}" for="saveForm" id="email" name="email" type="email" value=""
+                    required="true"></td>
+              </tr>
+              <tr>
+                <td>Doctor:</td>
+                <td><input value="{{doctor}}" for="saveForm" id="doctor" name="doctor" value="" required="true"></td>
+              </tr>
+              <tr>
+                <td>Send email:</td>
+                <td><input type="checkbox" for="saveForm" name="tickedEmailBox"></td>
+              </tr>
+            </table>
+            <input value="Save details" type="submit">
+            <div id="hiddenData" style="display: none;">
+              <textarea value="{{lineData}}" name="lineData" id="lineData" for="saveForm"></textarea>
+              <input value="{{hash}}" name="hash" for="saveForm">
             </div>
-            <div class="col-md-10 col-xs-9">
-                <h1 id="imageTitle" class="hidden">Hello</h1>
-                {{> content }}
-            {{! Content goes here! }}
-                <form action="/saveDetails" id="saveForm" method="post">
+          </div>
 
-                <div id='contentBox'></div>
-
-                <div id="noteBox">
-                    <h3>Notes:</h3>
-                    <textarea name="text-1" id="text-1" class="bigText hidden" for="saveForm">{{text-1}}</textarea>
-                    <textarea name="text-2" id="text-2" class="bigText hidden" for="saveForm">{{text-2}}</textarea>
-                    <textarea name="text-3" id="text-3" class="bigText hidden" for="saveForm">{{text-3}}</textarea>
-                    <textarea name="text-4" id="text-4" class="bigText hidden" for="saveForm">{{text-4}}</textarea>
-                    <textarea name="text-5" id="text-5" class="bigText hidden" for="saveForm">{{text-5}}</textarea>
-                </div>
-
-                <div id="emailForm" class="hidden">
-                    <table>
-                        <tr><td>First Name:</td>
-                        <td><input value="{{firstName}}" for="saveForm" id="firstName" name="firstName" value="" required="true"></td></tr>
-                        <tr><td>Last Name:</td>
-                        <td><input value="{{lastName}}" for="saveForm" id="lastName" name="lastName" value="" required="true"></td></tr>
-                        <tr><td>Email:</td>
-                        <td><input value="{{email}}" for="saveForm" id="email" name="email" type="email" value="" required="true"></td></tr>
-                        <tr><td>Doctor:</td>
-                        <td><input value="{{doctor}}" for="saveForm" id="doctor" name="doctor" value="" required="true"></td></tr>
-                        <tr><td>Send email:</td>
-                        <td><input type="checkbox" for="saveForm" name="tickedEmailBox"></td></tr>
-                    </table>
-                    <input value="Save details" type="submit">
-                    <div id="hiddenData" style="display: none;">
-                        <textarea value="{{lineData}}" name="lineData" id="lineData" for="saveForm"></textarea>
-                        <input value="{{hash}}" name="hash" for="saveForm">
-                    </div>
-                </div>
-
-                </form>
-            </div>
-        </div>
-    
+        </form>
+      </div>
     </div>
 
-{{!     
-    <div id="footer">
-        <div>
-            <img class="nav-button" src="/images/home.png">
-            {{#images} }
-            <img class="nav-button" src="/images/{{image} }">
-            {{/images} }
-            <img class="nav-button" src="/images/email.png">
+  </div>
 
-        </div>
+{{!
+  <div id="footer">
+    <div>
+      <img class="nav-button" src="/images/home.png">
+      {{#images} }
+      <img class="nav-button" src="/images/{{image} }">
+      {{/images} }
+      <img class="nav-button" src="/images/email.png">
+
     </div>
+  </div>
 }}
 
 
@@ -148,9 +160,7 @@ images = {{{ lineData }}}
 {{/lineData}}
 </script>
 
-<script type="text/javascript" src="/js/wrapper.js">
-
-</script>
+<script type="text/javascript" src="/js/wrapper.js"></script>
 
 </body>
 

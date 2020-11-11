@@ -1,11 +1,6 @@
 {
   "program": {
     "fileInfos": {
-      "../../../../.config/yarn/global/node_modules/typescript/lib/lib.es6.d.ts": {
-        "version": "721cec59c3fef87aaf480047d821fb758b3ec9482c4129a54631e6e25e432a31",
-        "signature": "721cec59c3fef87aaf480047d821fb758b3ec9482c4129a54631e6e25e432a31",
-        "affectsGlobalScope": false
-      },
       "../../../../.config/yarn/global/node_modules/typescript/lib/lib.es5.d.ts": {
         "version": "c9a1f03d6ba0fe3c871eb0dd81622e78fbb61ade70878b34d48a341a690c59e9",
         "signature": "c9a1f03d6ba0fe3c871eb0dd81622e78fbb61ade70878b34d48a341a690c59e9",
@@ -39,16 +34,6 @@
       "../../../../.config/yarn/global/node_modules/typescript/lib/lib.dom.iterable.d.ts": {
         "version": "fb0c09b697dc42afa84d1587e3c994a2f554d2a45635e4f0618768d16a86b69a",
         "signature": "fb0c09b697dc42afa84d1587e3c994a2f554d2a45635e4f0618768d16a86b69a",
-        "affectsGlobalScope": true
-      },
-      "../../../../.config/yarn/global/node_modules/typescript/lib/lib.webworker.importscripts.d.ts": {
-        "version": "7fac8cb5fc820bc2a59ae11ef1c5b38d3832c6d0dfaec5acdb5569137d09a481",
-        "signature": "7fac8cb5fc820bc2a59ae11ef1c5b38d3832c6d0dfaec5acdb5569137d09a481",
-        "affectsGlobalScope": true
-      },
-      "../../../../.config/yarn/global/node_modules/typescript/lib/lib.scripthost.d.ts": {
-        "version": "097a57355ded99c68e6df1b738990448e0bf170e606707df5a7c0481ff2427cd",
-        "signature": "097a57355ded99c68e6df1b738990448e0bf170e606707df5a7c0481ff2427cd",
         "affectsGlobalScope": true
       },
       "../../../../.config/yarn/global/node_modules/typescript/lib/lib.es2015.core.d.ts": {
@@ -162,12 +147,12 @@
         "affectsGlobalScope": true
       },
       "./src/js/kras.ts": {
-        "version": "6850fa123bfe65aff796e03c916dfd75d6a99c08ab43ee9f9256bb09df64f52d",
-        "signature": "4f133ec2945d32e94e8859ec3fb7eace356069f4b73fcfd187e5016d44071edf",
+        "version": "c45ab0fcbed302907d88d8f240a563f529f03d627702da3cc98c54513810b7fd",
+        "signature": "a025a33165ffe4bdbfc64fb8316377cf637e74f8da6de4467fc8c77c9eede98e",
         "affectsGlobalScope": true
       },
       "./src/js/wrapper.ts": {
-        "version": "e3c1d779f38acdc31d49fc75e68f6216b8bd09b112664735ab9e569ecdfdcb36",
+        "version": "0471d292ebf82426616a73be5c3e145b33a3ec721bd80a081d5dba425ffab2d5",
         "signature": "c56521137817c13e047f222b033f21ca911047cd6a075bf0d6c4baff48b26495",
         "affectsGlobalScope": true
       },
@@ -951,6 +936,11 @@
       "moduleResolution": 2,
       "assumeChangesOnlyAffectDirectDependencies": true,
       "incremental": true,
+      "lib": [
+        "lib.es2015.d.ts",
+        "lib.dom.iterable.d.ts",
+        "lib.dom.d.ts"
+      ],
       "allowSyntheticDefaultImports": true,
       "esModuleInterop": true,
       "removeComments": true,
@@ -2093,10 +2083,7 @@
       "../../../../.config/yarn/global/node_modules/typescript/lib/lib.es2018.regexp.d.ts",
       "../../../../.config/yarn/global/node_modules/typescript/lib/lib.es2020.bigint.d.ts",
       "../../../../.config/yarn/global/node_modules/typescript/lib/lib.es5.d.ts",
-      "../../../../.config/yarn/global/node_modules/typescript/lib/lib.es6.d.ts",
       "../../../../.config/yarn/global/node_modules/typescript/lib/lib.esnext.intl.d.ts",
-      "../../../../.config/yarn/global/node_modules/typescript/lib/lib.scripthost.d.ts",
-      "../../../../.config/yarn/global/node_modules/typescript/lib/lib.webworker.importscripts.d.ts",
       "../../node_modules/@babel/parser/typings/babel-parser.d.ts",
       "../../node_modules/@babel/types/lib/index.d.ts",
       "../../node_modules/@types/babel__core/index.d.ts",
@@ -2264,7 +2251,7 @@
           },
           {
             "file": "./src/js/kras.ts",
-            "start": 297,
+            "start": 302,
             "length": 14,
             "code": 2339,
             "category": 1,
@@ -2272,7 +2259,7 @@
           },
           {
             "file": "./src/js/kras.ts",
-            "start": 316,
+            "start": 321,
             "length": 8,
             "code": 2339,
             "category": 1,
@@ -2280,7 +2267,7 @@
           },
           {
             "file": "./src/js/kras.ts",
-            "start": 534,
+            "start": 520,
             "length": 7,
             "messageText": "Cannot find name 'context'.",
             "category": 1,
@@ -2288,7 +2275,7 @@
           },
           {
             "file": "./src/js/kras.ts",
-            "start": 586,
+            "start": 572,
             "length": 10,
             "code": 2339,
             "category": 1,
@@ -2296,7 +2283,7 @@
           },
           {
             "file": "./src/js/kras.ts",
-            "start": 614,
+            "start": 597,
             "length": 7,
             "messageText": "Cannot find name 'context'.",
             "category": 1,
@@ -2304,7 +2291,7 @@
           },
           {
             "file": "./src/js/kras.ts",
-            "start": 693,
+            "start": 672,
             "length": 7,
             "messageText": "Cannot find name 'context'.",
             "category": 1,
@@ -2312,7 +2299,7 @@
           },
           {
             "file": "./src/js/kras.ts",
-            "start": 719,
+            "start": 695,
             "length": 7,
             "messageText": "Cannot find name 'context'.",
             "category": 1,
@@ -2320,7 +2307,7 @@
           },
           {
             "file": "./src/js/kras.ts",
-            "start": 757,
+            "start": 730,
             "length": 7,
             "messageText": "Cannot find name 'context'.",
             "category": 1,
@@ -2328,7 +2315,7 @@
           },
           {
             "file": "./src/js/kras.ts",
-            "start": 780,
+            "start": 753,
             "length": 7,
             "messageText": "Cannot find name 'context'.",
             "category": 1,
@@ -2336,7 +2323,7 @@
           },
           {
             "file": "./src/js/kras.ts",
-            "start": 802,
+            "start": 775,
             "length": 7,
             "messageText": "Cannot find name 'context'.",
             "category": 1,
@@ -2344,7 +2331,7 @@
           },
           {
             "file": "./src/js/kras.ts",
-            "start": 836,
+            "start": 806,
             "length": 7,
             "messageText": "Cannot find name 'context'.",
             "category": 1,
@@ -2352,7 +2339,7 @@
           },
           {
             "file": "./src/js/kras.ts",
-            "start": 968,
+            "start": 933,
             "length": 9,
             "code": 2339,
             "category": 1,
@@ -2360,7 +2347,7 @@
           },
           {
             "file": "./src/js/kras.ts",
-            "start": 1226,
+            "start": 1174,
             "length": 8,
             "code": 2345,
             "category": 1,
@@ -2368,7 +2355,7 @@
           },
           {
             "file": "./src/js/kras.ts",
-            "start": 1310,
+            "start": 1258,
             "length": 10,
             "code": 2339,
             "category": 1,
@@ -2376,7 +2363,7 @@
           },
           {
             "file": "./src/js/kras.ts",
-            "start": 1631,
+            "start": 1568,
             "length": 4,
             "messageText": "Subsequent variable declarations must have the same type.  Variable 'draw' must be of type 'any', but here has type 'number'.",
             "category": 1,
@@ -2384,7 +2371,7 @@
             "relatedInformation": [
               {
                 "file": "./src/js/kras.ts",
-                "start": 1625,
+                "start": 1558,
                 "length": 4,
                 "messageText": "'draw' was also declared here.",
                 "category": 3,
@@ -2394,7 +2381,7 @@
           },
           {
             "file": "./src/js/kras.ts",
-            "start": 3059,
+            "start": 2894,
             "length": 7,
             "messageText": "Object is possibly 'undefined'.",
             "category": 1,
@@ -2402,7 +2389,7 @@
           },
           {
             "file": "./src/js/kras.ts",
-            "start": 3075,
+            "start": 2910,
             "length": 7,
             "messageText": "Object is possibly 'undefined'.",
             "category": 1,
@@ -2410,7 +2397,7 @@
           },
           {
             "file": "./src/js/kras.ts",
-            "start": 3345,
+            "start": 3156,
             "length": 7,
             "messageText": "Object is possibly 'undefined'.",
             "category": 1,
@@ -2418,7 +2405,7 @@
           },
           {
             "file": "./src/js/kras.ts",
-            "start": 3365,
+            "start": 3176,
             "length": 7,
             "messageText": "Object is possibly 'undefined'.",
             "category": 1,
@@ -2426,7 +2413,7 @@
           },
           {
             "file": "./src/js/kras.ts",
-            "start": 3587,
+            "start": 3381,
             "length": 7,
             "messageText": "Object is possibly 'undefined'.",
             "category": 1,
@@ -2434,7 +2421,7 @@
           },
           {
             "file": "./src/js/kras.ts",
-            "start": 3607,
+            "start": 3401,
             "length": 7,
             "messageText": "Object is possibly 'undefined'.",
             "category": 1,
@@ -2442,7 +2429,7 @@
           },
           {
             "file": "./src/js/kras.ts",
-            "start": 3753,
+            "start": 3524,
             "length": 6,
             "messageText": "Cannot find name 'canvas'.",
             "category": 1,
@@ -2450,7 +2437,7 @@
           },
           {
             "file": "./src/js/kras.ts",
-            "start": 3815,
+            "start": 3583,
             "length": 5,
             "messageText": "Cannot find name 'cntxt'.",
             "category": 1,
@@ -2458,7 +2445,7 @@
           },
           {
             "file": "./src/js/kras.ts",
-            "start": 3823,
+            "start": 3591,
             "length": 6,
             "messageText": "Cannot find name 'canvas'.",
             "category": 1,
@@ -2466,7 +2453,7 @@
           },
           {
             "file": "./src/js/kras.ts",
-            "start": 4011,
+            "start": 3771,
             "length": 6,
             "messageText": "Cannot find name 'canvas'.",
             "category": 1,
@@ -2474,7 +2461,7 @@
           },
           {
             "file": "./src/js/kras.ts",
-            "start": 4061,
+            "start": 3818,
             "length": 4,
             "code": 2339,
             "category": 1,
@@ -2482,7 +2469,7 @@
           },
           {
             "file": "./src/js/kras.ts",
-            "start": 4308,
+            "start": 4049,
             "length": 6,
             "messageText": "Cannot find name 'canvas'.",
             "category": 1,
@@ -2490,7 +2477,7 @@
           },
           {
             "file": "./src/js/kras.ts",
-            "start": 4323,
+            "start": 4064,
             "length": 6,
             "messageText": "Cannot find name 'canvas'.",
             "category": 1,
@@ -2498,7 +2485,7 @@
           },
           {
             "file": "./src/js/kras.ts",
-            "start": 4349,
+            "start": 4087,
             "length": 6,
             "messageText": "Cannot find name 'canvas'.",
             "category": 1,
@@ -2506,7 +2493,7 @@
           },
           {
             "file": "./src/js/kras.ts",
-            "start": 4365,
+            "start": 4103,
             "length": 6,
             "messageText": "Cannot find name 'canvas'.",
             "category": 1,
@@ -2514,7 +2501,7 @@
           },
           {
             "file": "./src/js/kras.ts",
-            "start": 4635,
+            "start": 4352,
             "length": 5,
             "messageText": "Cannot find name 'cntxt'.",
             "category": 1,
@@ -2522,7 +2509,7 @@
           },
           {
             "file": "./src/js/kras.ts",
-            "start": 4911,
+            "start": 4610,
             "length": 5,
             "messageText": "Cannot find name 'cntxt'.",
             "category": 1,
@@ -2530,7 +2517,7 @@
           },
           {
             "file": "./src/js/kras.ts",
-            "start": 5679,
+            "start": 5328,
             "length": 6,
             "messageText": "Expected 1 arguments, but got 0.",
             "category": 1,
@@ -2538,7 +2525,7 @@
             "relatedInformation": [
               {
                 "file": "./src/js/kras.ts",
-                "start": 273,
+                "start": 280,
                 "length": 7,
                 "messageText": "An argument for 'options' was not provided.",
                 "category": 3,
@@ -2548,7 +2535,7 @@
           },
           {
             "file": "./src/js/kras.ts",
-            "start": 5870,
+            "start": 5514,
             "length": 9,
             "code": 2339,
             "category": 1,
@@ -2561,7 +2548,7 @@
         [
           {
             "file": "./src/js/wrapper.ts",
-            "start": 3311,
+            "start": 3429,
             "length": 12,
             "messageText": "Cannot find name 'drawing_data'.",
             "category": 1,
@@ -2569,7 +2556,7 @@
           },
           {
             "file": "./src/js/wrapper.ts",
-            "start": 3336,
+            "start": 3453,
             "length": 6,
             "messageText": "Cannot find name 'images'.",
             "category": 1,
@@ -2577,7 +2564,7 @@
           },
           {
             "file": "./src/js/wrapper.ts",
-            "start": 3366,
+            "start": 3483,
             "length": 12,
             "messageText": "Cannot find name 'drawing_data'.",
             "category": 1,
@@ -2585,7 +2572,7 @@
           },
           {
             "file": "./src/js/wrapper.ts",
-            "start": 3516,
+            "start": 3631,
             "length": 6,
             "messageText": "Cannot find name 'images'.",
             "category": 1,
@@ -2593,7 +2580,7 @@
           },
           {
             "file": "./src/js/wrapper.ts",
-            "start": 3703,
+            "start": 3814,
             "length": 12,
             "messageText": "Cannot find name 'drawing_data'.",
             "category": 1,
@@ -2601,7 +2588,7 @@
           },
           {
             "file": "./src/js/wrapper.ts",
-            "start": 3718,
+            "start": 3829,
             "length": 6,
             "messageText": "Cannot find name 'images'.",
             "category": 1,
@@ -2609,7 +2596,7 @@
           },
           {
             "file": "./src/js/wrapper.ts",
-            "start": 3849,
+            "start": 3960,
             "length": 5,
             "messageText": "Cannot find name 'paint'.",
             "category": 1,
@@ -2617,7 +2604,7 @@
           },
           {
             "file": "./src/js/wrapper.ts",
-            "start": 3855,
+            "start": 3966,
             "length": 12,
             "messageText": "Cannot find name 'drawing_data'.",
             "category": 1,
@@ -2625,7 +2612,7 @@
           },
           {
             "file": "./src/js/wrapper.ts",
-            "start": 4131,
+            "start": 4237,
             "length": 4,
             "messageText": "Cannot find name 'div2'.",
             "category": 1,
@@ -2633,7 +2620,7 @@
           },
           {
             "file": "./src/js/wrapper.ts",
-            "start": 4185,
+            "start": 4290,
             "length": 4,
             "messageText": "Cannot find name 'div2'.",
             "category": 1,
@@ -2641,7 +2628,7 @@
           },
           {
             "file": "./src/js/wrapper.ts",
-            "start": 4294,
+            "start": 4397,
             "length": 4,
             "messageText": "Cannot find name 'div2'.",
             "category": 1,
