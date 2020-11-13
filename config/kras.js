@@ -9,6 +9,7 @@ const mustache_1 = __importDefault(require("mustache"));
 const nodemailer_1 = __importDefault(require("nodemailer"));
 const formidable_1 = __importDefault(require("formidable"));
 const puppeteer_1 = __importDefault(require("puppeteer"));
+const env = process.env.NODE_ENV || 'development';
 let mailAuth = {
     user: 'username@gmail.com',
     pass: 'password_here_lol'
@@ -67,7 +68,9 @@ const kras = {
                         Object.assign(data, {
                             hash: d.hash
                         });
-                        console.log('data is...', data);
+                        if (env === 'development') {
+                            console.log('data is...', data);
+                        }
                         const output = mustache_1.default.render(views.template, data, views);
                         router.res.end(output);
                     }).catch(e => {

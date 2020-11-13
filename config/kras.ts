@@ -6,6 +6,8 @@ import formidable from 'formidable'
 import puppeteer from 'puppeteer'
 import { Thalia } from '../../../server/thalia'
 
+const env = process.env.NODE_ENV || 'development'
+
 let mailAuth = { // eslint-disable-line
   user: 'username@gmail.com',
   pass: 'password_here_lol'
@@ -67,7 +69,7 @@ const kras : Thalia.WebsiteConfig = {
             Object.assign(data, {
               hash: d.hash
             })
-            console.log('data is...', data)
+            if (env === 'development') { console.log('data is...', data) }
             const output = mustache.render(views.template, data, views)
             router.res.end(output)
           }).catch(e => {

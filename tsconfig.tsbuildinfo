@@ -147,7 +147,7 @@
         "affectsGlobalScope": true
       },
       "./src/js/d3_drawer.ts": {
-        "version": "a6ac0122939240a0abefd1970c4356bd18abb62f52a0d446a51a6b2169e5eb2c",
+        "version": "b855eefb05336bc002560caa085fc3b29ca28ca0807bb8d2cf21b2f95e5eeb7e",
         "signature": "394641d93550209cd85801f5b19e5c386b2ec1930108839edd2b428e90db5cb1",
         "affectsGlobalScope": true
       },
@@ -2243,7 +2243,7 @@
         [
           {
             "file": "./src/js/d3_drawer.ts",
-            "start": 1798,
+            "start": 1838,
             "length": 4,
             "code": 2345,
             "category": 1,
