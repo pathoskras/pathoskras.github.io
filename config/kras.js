@@ -9,7 +9,7 @@ const mustache_1 = __importDefault(require("mustache"));
 const nodemailer_1 = __importDefault(require("nodemailer"));
 const formidable_1 = __importDefault(require("formidable"));
 const puppeteer_1 = __importDefault(require("puppeteer"));
-const env = process.env.NODE_ENV || 'development';
+console.log("Loading kras.ts");
 let mailAuth = {
     user: 'username@gmail.com',
     pass: 'password_here_lol'
@@ -17,7 +17,10 @@ let mailAuth = {
 try {
     mailAuth = require(path_1.default.resolve(__dirname, 'config.json')).mailAuth;
 }
-catch (e) { }
+catch (e) {
+    console.log("Error loading mailAuth");
+    console.log(e);
+}
 const kras = {
     controllers: {
         kras: function (router) {
@@ -68,9 +71,6 @@ const kras = {
                         Object.assign(data, {
                             hash: d.hash
                         });
-                        if (env === 'development') {
-                            console.log('data is...', data);
-                        }
                         const output = mustache_1.default.render(views.template, data, views);
                         router.res.end(output);
                     }).catch(e => {

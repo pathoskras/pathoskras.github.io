@@ -6,7 +6,9 @@ import formidable from 'formidable'
 import puppeteer from 'puppeteer'
 import { Thalia } from '../../../server/thalia'
 
-const env = process.env.NODE_ENV || 'development'
+console.log("Loading kras.ts")
+
+// const env = process.env.NODE_ENV || 'development'
 
 let mailAuth = { // eslint-disable-line
   user: 'username@gmail.com',
@@ -15,7 +17,10 @@ let mailAuth = { // eslint-disable-line
 
 try {
   mailAuth = require(path.resolve(__dirname, 'config.json')).mailAuth
-} catch (e) {}
+} catch (e) {
+  console.log("Error loading mailAuth")
+  console.log(e)
+}
 
 const kras : Thalia.WebsiteConfig = {
   controllers: {
@@ -69,7 +74,7 @@ const kras : Thalia.WebsiteConfig = {
             Object.assign(data, {
               hash: d.hash
             })
-            if (env === 'development') { console.log('data is...', data) }
+            // if (env === 'development') { console.log('data is...', data) }
             const output = mustache.render(views.template, data, views)
             router.res.end(output)
           }).catch(e => {
