@@ -10,6 +10,7 @@ type KrasImage = {
   image : string;
   lines : Line[];
   name : string;
+  legend: string;
 }
 declare let images: KrasImage[]
 
@@ -18,24 +19,15 @@ const md = new showdown.Converter({ openLinksInNewWindow: true })
 const welcomeText = `##Welcome to the KRas Interactive Resource
 
 #What is this Resource for?
-This interactive resource is to help explain how changes in your cell messaging systems can lead to
-cancer. It is specifically designed to assist those patients with cancer caused by alterations in a cell
-messenger known as KRas. This specific alteration is known as G12C KRas and your doctor may have
-spoken with you about this.
+This interactive resource is to help explain how changes in your cells can lead to cancer. It is specifically designed to assist those patients with cancer caused by alterations in a cell messenger known as KRas. This specific alteration is known as G12C KRas and your doctor may have spoken with you about this.
 
 #Why have we created this Resource?
-The purpose of this resource is to help patients better understand their particular cancer and how it
-is caused and how specific treatments work. We hope this will increase patient knowledge and
-confidence in making decisions about their treatment.
+The purpose of this resource is to help patients better understand their particular cancer and how it is caused and how specific treatments work. We hope this will increase patient knowledge and confidence in making decisions about their treatment.
 
 #How does this Resource Work?
 This resource will be shown to you by your doctor or other clinical staff member.
 
-The resource begins with some introductory information about KRas. This is followed by a video
-animation explaining KRas biology and what can go wrong in cancer. There is also a model, which
-shows how a treatment called AMG510 fits into altered KRas. Following is a series of six images that
-your clinician can write on to explain your personal KRas story. This personalized information will be
-sent to you by email, so that you can view it at a later time, show friends and family, even your GP.
+The resource begins with some introductory information about KRas. This is followed by a video animation explaining KRas biology and what can go wrong in cancer. There is also a model, which shows how a treatment called AMG510 fits into altered KRas. Following is a series of six images that your clinician can write on to explain your personal KRas story. This personalised information will be sent to you by email, so that you can view it at a later time, show friends and family, even your GP.
 
 Finally, there is a list of terms and definitions and some useful links.
 
@@ -61,7 +53,8 @@ Despite a significant number of lung and bowel cancer patients affected by the G
 3.	AACR Project GENIE: Powering Precision Medicine through an International Consortium. 2017. Cancer Discov. 7(8): 818-831
 4.	Jude Cannon, Karen Rex, Anne Y. Saiki et al. 2019. The clinical KRAS (G12C) inhibitor AMG 510 drives anti-tumour immunity. Nature. 575: 217-223
 `;
-const emailText = `##Terms and Definitions:
+
+const termsText = `##Terms and Definitions:
 #AMG 510:
 An experimental anti-cancer drug. It targets the G12C alteration in the KRas messenger, which is responsible for various forms of cancer
 
@@ -69,10 +62,10 @@ An experimental anti-cancer drug. It targets the G12C alteration in the KRas mes
 A disease where abnormal cells multiply without control and spread to other nearby body tissue and/or organs. Cancer cells can also spread to other parts of the body through the bloodstream and lymph systems
 
 #Cells:
-* the smallest, living parts of the body. Cells work together to form or build the body
-* a human is made up of millions of cells
-* cells multiply and reproduce themselves to make sure a body stays working
-* sometimes cells can be abnormal or damaged and these can be cancer cells
+* Cells are the smallest, living parts of the body. Cells work together to form or build the body
+* A human is made up of millions of cells
+* Cells multiply and reproduce themselves to make sure a body stays working
+* Sometimes cells can be abnormal or damaged and these can be cancer cells
 
 #KRas:
 A special messenger inside our cells that tells a cell when to multiply 
@@ -85,6 +78,7 @@ A long flattened gland located deep in the belly. A vital part of the digestive 
 
 #Useful Links:
 Genetics Home Reference. Your Guide to Understanding Genetic Conditions [https://ghr.nlm.nih.gov/gene/KRAS](https://ghr.nlm.nih.gov/gene/KRAS)
+
 Pathology Dictionary: KRAS [https://www.mypathologyreport.ca/kras/](https://www.mypathologyreport.ca/kras/)
 `
 
@@ -166,6 +160,11 @@ function openScreen (id) {
   })
   const div2 = d3.select('#contentBox').append('div')
   d3.select(`#text-${id}`).classed('hidden', false)
+
+  if($(`#text-${id}`).val() === "") {
+    d3.select(`#text-${id}`).text(drawingData.legend)
+  }
+
 }
 
 function introduction () {
@@ -194,13 +193,18 @@ function video () {
 
 }
 
+function terms() {
+  hideEverything()
+  d3.select('a[href="#Terms"]').classed('selected', true)
+  $('#contentBox').html()
+
+  drawBannerPage(termsText)
+}
+
 function email () {
   hideEverything()
   d3.select('a[href="#Email"]').classed('selected', true)
   d3.select('#emailForm').classed('hidden', false)
-
-  $("#emailExtraInfo")
-  .html(md.makeHtml(emailText))
 }
 
 function toggleImageLinks () {
@@ -232,7 +236,9 @@ function toggleImageLinks () {
       src: `/images/${data.image}`,
       class: "thumbnail"
     })
-    thumb.append("td").append("h3").text(data.name)
+  var desc = thumb.append("td")
+  desc.append("h3").text(data.name)
+  desc.append("p").text(data.legend)
   })
 
 }

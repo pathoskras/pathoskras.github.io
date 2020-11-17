@@ -15,6 +15,7 @@ type DrawingData = {
   image: string;
   lines: any[];
   name: string;
+  legend: string;
 }
 
 class Drawer {

@@ -32,31 +32,37 @@ const kras : Thalia.WebsiteConfig = {
             {
               image: 'KRasEditPlusLabelsNoCaptionsOFF_Switch.png',
               name: 'KRas Turned Off',
+              legend: 'The switch indicated in red keeps KRas turned off.',
               id: 1
             },
             {
               image: 'KRasEditPlusLabelsNoCaptionsON_Switch.png',
               name: 'KRas Turned On',
+              legend: 'The red off switch is swapped for the green on-switch, turning KRas on.',
               id: 2
             },
             {
               image: 'KRasEditPlusLabelsNoCaptionsSwitchingOFF.png',
               name: 'Turning Off KRas',
+              legend: 'The large orange molecule splits the on switch in KRas, converting it back to an off switch. This turns KRas off once again.',
               id: 3
             },
             {
               image: 'KRasEditPlusLabelsNoCaptionsMUTANT_K_Ras.png',
               name: 'Altered KRas',
+              legend: 'A defective alteration in KRas is indicated in purple. This alteration keeps the green on switch permanently in place and KRas constantly switched on.',
               id: 4
             },
             {
               image: 'KRasEditPlusLabelsNoCaptionsCancerCellsDividing.png',
               name: 'Tumour Cells Multiplying',
+              legend: 'If KRas is constantly switched on, this results in out of control cell multiplication.',
               id: 5
             },
             {
               image: 'KRas_AMG510WithLabels.png',
               name: 'AMG 510 Keeps Altered KRas Turned Off',
+              legend: 'New treatment AMG 510 fits into altered KRas, keeping the off switch in place, keeping altered KRas turned off.',
               id: 6
             }
           ]
