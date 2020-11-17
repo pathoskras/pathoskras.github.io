@@ -97,7 +97,7 @@ function drawBannerPage(text: string) : d3.Selection<HTMLDivElement, unknown, HT
 
 function welcome () {
   hideEverything()
-  d3.select('a[href="#Welcome"]').classed('selected', true)
+  d3.select('ul a[href="#Welcome"]').classed('selected', true)
   $('#contentBox').html()
 
   drawBannerPage(welcomeText)
@@ -184,9 +184,7 @@ function video () {
 
   $('#bannerPageInner')
     .html(md.makeHtml(`##The Role of KRas in Cancer`))
-    .append('<br>')
-    .append('<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/pD5q4TlZW-M" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>')
-    .append('<br>')
+    .append('<div class="iframe-container"><iframe class="responsive-iframe" src="https://www.youtube-nocookie.com/embed/pD5q4TlZW-M" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>')
     .append(md.makeHtml(`#Link to Protein Databank:
 [Mutant KRas interacting with AMG 510](https://www.rcsb.org/pdb/explore/jmol.do?structureId=6oim&bionumber=1&jmolMode=HTML5)
 `))
