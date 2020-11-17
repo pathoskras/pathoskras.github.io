@@ -66,6 +66,7 @@ function drawBannerPage(text: string) : d3.Selection<HTMLDivElement, unknown, HT
   var row = d3.select("#contentBox").append("div").classed("row", true)
   var result = row.append("div")
     .classed("col-xs-9", true)
+    .attr("id", "bannerPageInner")
     .html(md.makeHtml(text))
   row.append("div")
     .classed("col-xs-3", true)
@@ -139,14 +140,18 @@ function introduction () {
   hideEverything()
   d3.select('a[href="#Introduction"]').classed('selected', true)
 
-  $('#contentBox').html(md.makeHtml(introductionText))
+  drawBannerPage(introductionText)
 
 }
 
+// If you want the iframe to be responsive:
+// https://www.w3schools.com/howto/howto_css_responsive_iframes.asp
 function video () {
   hideEverything()
   d3.select('a[href="#Video"]').classed('selected', true)
-  $('#contentBox')
+  drawBannerPage("")
+
+  $('#bannerPageInner')
     .html(md.makeHtml(`##The Role of KRas in Cancer`))
     .append('<br>')
     .append('<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/pD5q4TlZW-M" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>')
