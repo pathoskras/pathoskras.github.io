@@ -61,6 +61,32 @@ Despite a significant number of lung and bowel cancer patients affected by the G
 3.	AACR Project GENIE: Powering Precision Medicine through an International Consortium. 2017. Cancer Discov. 7(8): 818-831
 4.	Jude Cannon, Karen Rex, Anne Y. Saiki et al. 2019. The clinical KRAS (G12C) inhibitor AMG 510 drives anti-tumour immunity. Nature. 575: 217-223
 `;
+const emailText = `##Terms and Definitions:
+#AMG 510:
+An experimental anti-cancer drug. It targets the G12C alteration in the KRas messenger, which is responsible for various forms of cancer
+
+#Cancer:
+A disease where abnormal cells multiply without control and spread to other nearby body tissue and/or organs. Cancer cells can also spread to other parts of the body through the bloodstream and lymph systems
+
+#Cells:
+* the smallest, living parts of the body. Cells work together to form or build the body
+* a human is made up of millions of cells
+* cells multiply and reproduce themselves to make sure a body stays working
+* sometimes cells can be abnormal or damaged and these can be cancer cells
+
+#KRas:
+A special messenger inside our cells that tells a cell when to multiply 
+
+#KRas, G12C:
+A defective alteration in KRas that tells a cell to multiply constantly
+
+#Pancreas/pancreatic cancer:
+A long flattened gland located deep in the belly. A vital part of the digestive system and critical controller of blood sugar levels. Pancreatic cancer occurs when malignant cells develop in part of the pancreas
+
+#Useful Links:
+Genetics Home Reference. Your Guide to Understanding Genetic Conditions [https://ghr.nlm.nih.gov/gene/KRAS](https://ghr.nlm.nih.gov/gene/KRAS)
+Pathology Dictionary: KRAS [https://www.mypathologyreport.ca/kras/](https://www.mypathologyreport.ca/kras/)
+`
 
 function drawBannerPage(text: string) : d3.Selection<HTMLDivElement, unknown, HTMLElement, any>{
   var row = d3.select("#contentBox").append("div").classed("row", true)
@@ -166,6 +192,9 @@ function email () {
   hideEverything()
   d3.select('a[href="#Email"]').classed('selected', true)
   d3.select('#emailForm').classed('hidden', false)
+
+  $("#emailExtraInfo")
+  .html(md.makeHtml(emailText))
 }
 
 function toggleImageLinks () {

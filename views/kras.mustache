@@ -42,9 +42,6 @@
         {{> content }}
         {{! Content goes here! }}
         <form action="/saveDetails" id="saveForm" method="post">
-
-          <div id='contentBox'></div>
-
           <div id="noteBox">
             <h3>Notes:</h3>
             <textarea name="text-1" id="text-1" class="bigText hidden" for="saveForm">{{text-1}}</textarea>
@@ -55,38 +52,50 @@
             <textarea name="text-6" id="text-6" class="bigText hidden" for="saveForm">{{text-6}}</textarea>
           </div>
 
-          <div id="emailForm" class="hidden">
-            <table>
-              <tr>
-                <td>First Name:</td>
-                <td><input value="{{firstName}}" for="saveForm" id="firstName" name="firstName" value=""
-                    required="true"></td>
-              </tr>
-              <tr>
-                <td>Last Name:</td>
-                <td><input value="{{lastName}}" for="saveForm" id="lastName" name="lastName" value="" required="true">
-                </td>
-              </tr>
-              <tr>
-                <td>Email:</td>
-                <td><input value="{{email}}" for="saveForm" id="email" name="email" type="email" value=""
-                    required="true"></td>
-              </tr>
-              <tr>
-                <td>Doctor:</td>
-                <td><input value="{{doctor}}" for="saveForm" id="doctor" name="doctor" value="" required="true"></td>
-              </tr>
-              <tr>
-                <td>Send email:</td>
-                <td><input type="checkbox" for="saveForm" name="tickedEmailBox"></td>
-              </tr>
-            </table>
-            <input value="Save details" type="submit">
-            <div id="hiddenData" style="display: none;">
-              <textarea value="{{lineData}}" name="lineData" id="lineData" for="saveForm"></textarea>
-              <input value="{{hash}}" name="hash" for="saveForm">
+          <div id="emailForm" class="row hidden">
+            <div class="col-xs-9">
+              <h1>Email to patient:</h1>
+              <div id="patientDetailForm">
+                <table>
+                  <tr>
+                    <td>First Name:</td>
+                    <td><input value="{{firstName}}" for="saveForm" id="firstName" name="firstName" value=""
+                        required="true"></td>
+                  </tr>
+                  <tr>
+                    <td>Last Name:</td>
+                    <td><input value="{{lastName}}" for="saveForm" id="lastName" name="lastName" value="" required="true">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Email:</td>
+                    <td><input value="{{email}}" for="saveForm" id="email" name="email" type="email" value=""
+                        required="true"></td>
+                  </tr>
+                  <tr>
+                    <td>Doctor:</td>
+                    <td><input value="{{doctor}}" for="saveForm" id="doctor" name="doctor" value="" required="true"></td>
+                  </tr>
+                  <tr>
+                    <td>Send email:</td>
+                    <td><input type="checkbox" for="saveForm" name="tickedEmailBox"></td>
+                  </tr>
+                </table>
+                <input value="Save details" type="submit">
+                <div id="hiddenData" style="display: none;">
+                  <textarea value="{{lineData}}" name="lineData" id="lineData" for="saveForm"></textarea>
+                  <input value="{{hash}}" name="hash" for="saveForm">
+                </div>
+              </div>
+
+              <div id="emailExtraInfo"></div>
+
+
             </div>
+            <div class="sideBanner col-xs-3"></div>
           </div>
+
+          <div id='contentBox'></div>
 
         </form>
       </div>
