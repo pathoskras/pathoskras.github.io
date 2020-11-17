@@ -191,3 +191,19 @@ div#patientDetailForm {
   border: solid 1px lightgrey;
   width: 50%;
 }
+
+.imageThumbDiv {
+  border: sold 1px lightgrey;
+  padding: 5px;
+  margin: 15px;
+  tr, td, h3 {
+    vertical-align: top;
+  }
+  h3 {
+    margin: 0 5;
+  }
+  img.thumbnail {
+    padding: 5px;
+    width: 200px;
+  }
+}

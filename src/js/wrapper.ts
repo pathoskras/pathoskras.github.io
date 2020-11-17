@@ -204,7 +204,37 @@ function email () {
 }
 
 function toggleImageLinks () {
-  $('li.image').toggleClass("hidden")
+  // $('li.image').toggleClass("hidden")
+  $('li.image').removeClass("hidden")
+  hideEverything()
+  drawBannerPage("")
+
+  d3.select('#bannerPageInner')
+    .append("h1")
+    .text("Images")
+
+  d3.select('#bannerPageInner')
+  .append("table")
+  .selectAll(".imageThumbDiv")
+  .data(Object.keys(images))
+  .enter()
+  .append("tr")
+  .classed("imageThumbDiv", true)
+  .each((d,i,arr) => {
+    var data = images[d]
+    var thumb = d3.select(arr[i])
+    thumb.append("td")
+    .append("a").attrs({
+      href: `#${data.image}`,
+      onclick: `openScreen(${i+1})`
+    })
+    .append("img").attrs({
+      src: `/images/${data.image}`,
+      class: "thumbnail"
+    })
+    thumb.append("td").append("h3").text(data.name)
+  })
+
 }
 
 function printVersion() {
