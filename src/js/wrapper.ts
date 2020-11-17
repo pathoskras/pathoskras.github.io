@@ -175,8 +175,6 @@ function introduction () {
 
 }
 
-// If you want the iframe to be responsive:
-// https://www.w3schools.com/howto/howto_css_responsive_iframes.asp
 function video () {
   hideEverything()
   d3.select('a[href="#Video"]').classed('selected', true)
@@ -188,7 +186,6 @@ function video () {
     .append(md.makeHtml(`#Link to Protein Databank:
 [Mutant KRas interacting with AMG 510](https://www.rcsb.org/pdb/explore/jmol.do?structureId=6oim&bionumber=1&jmolMode=HTML5)
 `))
-
 }
 
 function terms() {

@@ -152,7 +152,7 @@
         "affectsGlobalScope": true
       },
       "./src/js/wrapper.ts": {
-        "version": "5199a520a9b04843a34236d2720af7a57e55a22c7137d7e58968dc91f1b3b71d",
+        "version": "884bd776711c7b7e77651f5f4e3a81e9ad1067620fcea99117abafb09cf564dc",
         "signature": "5e9881f0b504539867b0cf2167c9ee5ca479605dc53df2e4bbef575daff177d3",
         "affectsGlobalScope": true
       },
