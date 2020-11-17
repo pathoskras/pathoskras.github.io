@@ -682,7 +682,7 @@
         "affectsGlobalScope": false
       },
       "../../../server/requesthandlers.ts": {
-        "version": "5fadc722168e59242974638e10a414ba90e8d241afed67f05e882255a77ff1e5",
+        "version": "0140c1e136a3c4db018bdc8f9ead521307868d0c1ba75d7662a496a135e21a0e",
         "signature": "ca03bc3459a9c78ba13000ff0bb4cdb3a2e509a2739b9ef60a1458e581697380",
         "affectsGlobalScope": false
       },
@@ -702,7 +702,7 @@
         "affectsGlobalScope": false
       },
       "./kras.ts": {
-        "version": "397c361cbe4f3d31314e7dc9061cdf764efdd5b312fd507c987cb2287ff5c4e5",
+        "version": "f6f227762ee8ff55a3ef106660bf863f6ffe1db26c94713e334ebe9cfbd9ba0f",
         "signature": "00515849321b0ec5a71c1043d67a949e374c4671d3cdf77db14af8ecc38f592e",
         "affectsGlobalScope": false
       },

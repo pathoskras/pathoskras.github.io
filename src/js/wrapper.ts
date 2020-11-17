@@ -43,26 +43,50 @@ Finally, there is a list of terms and definitions and some useful links.
 Please contact Dr Maja Divjak ([maja.divjak@petermac.org](mailto:maja.divjak@petermac.org?subject=KRAS%20Annotation)) for further assistance.
 `;
 const introductionText = `##Introduction to KRas
-    
 #What is KRas?
-
-KRas is a protein that forms part of a cell signalling pathway. This pathway instructs your cells to grow and divide or to mature and take on specialised functions. To stop these pathways functioning when not needed, KRas is bound to a regulating switch that keeps it turned off. In order for KRas to send signals, it needs to be turned on. To do this, the regulating switch is swapped for an ‘on-switch’. KRas is then active and can send signals for cells to grow, divide or mature. When no longer required, the KRas protein is turned off again by cleaving the on-switch, converting it back to the inactive state. When KRas is switched off, it cannot send signals.
+Cells are the basic building blocks of our body, making up our tissues and organs. The body constantly makes new cells to help us grow, replace worn out tissue and heal injuries. Normally, cells multiply and die in an orderly way, so that each new cell replaces one lost. There are special messengers that tell our cells how to do this. KRas is a messenger inside our cells that controls when cells multiply. When cells are not multiplying, KRas is switched off. When cells need to multiply, KRas is switched on and when no longer needed, it is switched off again.
 
 #What Goes Wrong with KRas?
-Changes in the genetic code for KRas have the potential to cause normal cells to become cancerous. One such change leads to a swap of the amino acid glycine for cystine at position 12 in the KRas protein. This change in KRas is known as a ‘G12C’ mutation. A G12C mutation is acquired during a person's lifetime; it is not inherited. This change results in a KRas protein that is constantly switched on. The result is that affected cells are directed to grow and divide out of control, leading to tumour formation.
+Alterations can occur in the KRas messenger. One particular alteration is known as a ‘G12C’ alteration. Your doctor may have mentioned this G12C alteration to you. The result of this alteration is that KRas is always switched on. The end result is that affected cells keep multiplying out of control, forming a mass or lump called a tumour.
 
-#KRas and Cancer
-KRAS mutations occur in 17-25% of all human cancers. Furthermore, the G12C mutation accounts for about 44% of all KRAS mutations. Indeed, in non-small cell lung carcinoma, which is the most commonly occurring form of lung cancer, 13% of patients have this G12C mutation. The G12C mutation also occurs in 1-3% of colorectal and pancreatic cancer patients.
+#G12C KRas and Cancer
+KRAS alterations occur in 15-20% of all human cancers and are most commonly seen in lung, bowel and pancreatic cancers (1, 2). Of the KRAS alterations, the G12C alteration is present in about 2% of all human cancers (3). In the most commonly occurring form of lung cancer, 11% of patients have this G12C alteration (3). In bowel and pancreatic cancer, about 1-3% of patients have this G12C alteration (2, 3).
 
-#Treating Mutant G12C KRas
-Despite a significant number of lung and colorectal cancer patients affected by the G12C mutation, developing effective treatments has proven challenging. It has been difficult to find an area on the surface of the KRas protein where a drug might get a foothold to disrupt the unchecked cell division. Recently, however, a couple of inhibitors have been developed that lock the G12C mutant KRas protein in the inactive state, without affecting the normal function of unmutated KRas. These inhibitors show great potential for the treatment of G12C mutant KRas cancers.
+#Treating G12C KRas
+Despite a significant number of lung and bowel cancer patients affected by the G12C alteration, developing effective treatments has proven challenging. It has been difficult to find an area on the surface of the KRas messenger where a drug might get a foothold to disrupt the unchecked multiplication of cells. Recently however, a couple of treatments have been developed that keep the G12C KRas messenger switched off, without affecting normal KRas. These treatments, including AMG 510, show great potential for the treatment of cancers caused by KRas G12C alterations (4).
+
+#References:
+1.	Ian A. Prior, Fiona E. Hood and James L. Hartley. 2020. The frequency of Ras mutations in cancer. Cancer Res. 80(14): 2969-2974
+2.	Andrew M. Waters and Channing J. Der. 2018. KRAS: The Critical Driver and Therapeutic Target for Pancreatic Cancer. Cold Spring Harb Perspect Med. 8(9): a031435
+3.	AACR Project GENIE: Powering Precision Medicine through an International Consortium. 2017. Cancer Discov. 7(8): 818-831
+4.	Jude Cannon, Karen Rex, Anne Y. Saiki et al. 2019. The clinical KRAS (G12C) inhibitor AMG 510 drives anti-tumour immunity. Nature. 575: 217-223
 `;
 
 function welcome () {
   hideEverything()
   d3.select('a[href="#Welcome"]').classed('selected', true)
 
-  $('#contentBox').html(md.makeHtml(welcomeText))
+  $('#contentBox').html()
+
+  var row = d3.select("#contentBox").append("div").classed("row", true)
+
+  row.append("div")
+    .classed("col-xs-9", true)
+    .html(md.makeHtml(welcomeText))
+
+  row.append("div")
+    .classed("col-xs-3", true)
+    .styles({
+      'background-image': "url(/images/KRasTitleImageNoTitleFrame14577.png)",
+      'background-size': 'cover',
+      'background-position': 'center',
+      'background-repeat': 'no-repeat',
+      'opacity': '0.85',
+      height: "100vh"
+    })
+    .attrs({
+    })
+    .append("p").text(" ")
 }
 
 let currentScreen = null
