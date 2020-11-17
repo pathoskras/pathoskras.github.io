@@ -62,31 +62,24 @@ Despite a significant number of lung and bowel cancer patients affected by the G
 4.	Jude Cannon, Karen Rex, Anne Y. Saiki et al. 2019. The clinical KRAS (G12C) inhibitor AMG 510 drives anti-tumour immunity. Nature. 575: 217-223
 `;
 
+function drawBannerPage(text: string) : d3.Selection<HTMLDivElement, unknown, HTMLElement, any>{
+  var row = d3.select("#contentBox").append("div").classed("row", true)
+  var result = row.append("div")
+    .classed("col-xs-9", true)
+    .html(md.makeHtml(text))
+  row.append("div")
+    .classed("col-xs-3", true)
+    .classed("sideBanner", true)
+
+  return result;
+}
+
 function welcome () {
   hideEverything()
   d3.select('a[href="#Welcome"]').classed('selected', true)
-
   $('#contentBox').html()
 
-  var row = d3.select("#contentBox").append("div").classed("row", true)
-
-  row.append("div")
-    .classed("col-xs-9", true)
-    .html(md.makeHtml(welcomeText))
-
-  row.append("div")
-    .classed("col-xs-3", true)
-    .styles({
-      'background-image': "url(/images/KRasTitleImageNoTitleFrame14577.png)",
-      'background-size': 'cover',
-      'background-position': 'center',
-      'background-repeat': 'no-repeat',
-      'opacity': '0.85',
-      height: "100vh"
-    })
-    .attrs({
-    })
-    .append("p").text(" ")
+  drawBannerPage(welcomeText)
 }
 
 let currentScreen = null
