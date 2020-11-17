@@ -147,13 +147,13 @@
         "affectsGlobalScope": true
       },
       "./src/js/d3_drawer.ts": {
-        "version": "b855eefb05336bc002560caa085fc3b29ca28ca0807bb8d2cf21b2f95e5eeb7e",
-        "signature": "394641d93550209cd85801f5b19e5c386b2ec1930108839edd2b428e90db5cb1",
+        "version": "fe160f741c4d5879a4c423de9dce1b87784df54b5d2e529e756455e591102994",
+        "signature": "ccbae822064263e4d6881fc3969cad721796f5385223d43ec358f94c9e405033",
         "affectsGlobalScope": true
       },
       "./src/js/wrapper.ts": {
-        "version": "7355e0677438f3da42acd139620504a7f36704cc08c2638311ab124eb74942b8",
-        "signature": "9506f40025497e0bba67f5cf64e24bcc0ea19cf05ca82ada2b7ad00c2b58a04c",
+        "version": "5b36576fe4a5b2ba7aa7a031426ac3b174935bbba53096d754e479a39bb19c18",
+        "signature": "9b86805b44093567e456ea9e7e3e12a390099c08f2a71e655b642830259f7859",
         "affectsGlobalScope": true
       },
       "../../node_modules/@babel/types/lib/index.d.ts": {
@@ -2243,7 +2243,7 @@
         [
           {
             "file": "./src/js/d3_drawer.ts",
-            "start": 1838,
+            "start": 2639,
             "length": 4,
             "code": 2345,
             "category": 1,

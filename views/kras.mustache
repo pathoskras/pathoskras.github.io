@@ -39,8 +39,14 @@
       </div>
       <div class="col-md-10 col-xs-9">
         <h1 id="imageTitle" class="hidden">Hello</h1>
-        {{> content }}
-        {{! Content goes here! }}
+
+        <div id="d3-drawer" class="drawer hidden" style='padding: 5px; margin: 10px;'>
+          <svg id="canvas" viewBox="0,0,960,610">
+            <g><image id='d3-background-image' width="960" height="600" y="10"></g>
+          </svg>
+          <svg id="ui" width="200px" height="200px"></svg>
+        </div>
+
         <form action="/saveDetails" id="saveForm" method="post">
           <div id="noteBox">
             <h3>Notes:</h3>
@@ -100,25 +106,11 @@
         </form>
       </div>
     </div>
-
   </div>
-
-  {{!
-  <div id="footer">
-    <div>
-      <img class="nav-button" src="/images/home.png">
-      {{#images} }
-      <img class="nav-button" src="/images/{{image} }">
-      {{/images} }
-      <img class="nav-button" src="/images/email.png">
-
-    </div>
-  </div>
-}}
-
 
   {{> scripts }}
 
+  <script type="text/javascript" src="/js/d3_drawer.js"></script>
 
   <script type="text/javascript">
     let images = {{{ imagesJson }}}.reduce((acc, d) => {

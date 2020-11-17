@@ -10,6 +10,47 @@ const renderLine = d3.line().x(function (d) {
   return d[1]
 }).curve(d3.curveBasis)
 
+type DrawingData = {
+  id: number;
+  image: string;
+  lines: any[];
+  name: string;
+}
+
+class Drawer {
+  backgroundImage: string;
+
+  constructor(data : DrawingData) {
+    this.paint(data);
+  }
+
+  /**
+   * Erase & redraw the lines.
+   */
+  paint (drawingData : DrawingData) {
+    d3.selectAll('#canvas g .line').remove()
+    const lines = d3.select('#canvas g').selectAll('.line').data(drawingData.lines)
+    lines.enter().append('path').attrs({
+      class: 'line',
+      stroke: function (d :any) {
+        return d.color
+      },
+      d: function (d :any) {
+        return renderLine(d.points)
+      }
+    }).each(function (d: any) {
+      d.elem = d3.select(this)
+      return d.elem
+    })
+    return lines.exit().remove()
+  }
+
+  drawImage = function() {
+    console.log("drawing image");
+  }
+}
+
+
 let drawingData = { // eslint-disable-line
   lines: []
 }
@@ -94,23 +135,6 @@ drag.on('end', function () {
 
 canvas.call(drag)
 
-function paint (drawingData) {
-  d3.selectAll('#canvas g .line').remove()
-  const lines = d3.select('#canvas g').selectAll('.line').data(drawingData.lines)
-  lines.enter().append('path').attrs({
-    class: 'line',
-    stroke: function (d :any) {
-      return d.color
-    },
-    d: function (d :any) {
-      return renderLine(d.points)
-    }
-  }).each(function (d: any) {
-    d.elem = d3.select(this)
-    return d.elem
-  })
-  return lines.exit().remove()
-}
 
 function redraw (specificLine ?: any) {
   let lines

@@ -137,21 +137,27 @@ function hideEverything () {
   }
 }
 
+var drawers = []
+
 function openScreen (id) {
   hideEverything()
   d3.select(`a[onclick="openScreen(${id})"]`).classed('selected', true)
-
   d3.select('#noteBox').classed('hidden', false)
-  const blob = drawingData = images[id]
+
+  let drawingData :DrawingData = images[id]
+  const blob = drawingData
   const image = blob.image
   currentScreen = id
 
   d3.select('#imageTitle').classed('hidden', false).text(blob.name)
 
-  paint(drawingData)
+  let drawer = drawers[id] || new Drawer(drawingData)
+  drawers[id] = drawer
+
+  drawer.paint(drawingData)
 
   d3.select('.drawer').classed('hidden', false)
-  d3.select('#d3-background-image').attr('src', `/images/${image}`)
+  d3.select('#d3-background-image').attr('href', `/images/${image}`)
 
   const div = d3.select('#contentBox').append('div')
   div.append('img').attrs({
