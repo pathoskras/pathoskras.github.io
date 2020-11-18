@@ -147,13 +147,13 @@
         "affectsGlobalScope": true
       },
       "./src/js/d3_drawer.ts": {
-        "version": "61763e840d26b8cabc4e84c5941bdbd2cc84898b7a7bc9234bec46e76f095186",
-        "signature": "805b9ff50176c7a53314df43e632b163ed2433a2e67df50c5a292aa10761b9bf",
+        "version": "d05baf3f1d880f4e8aea7727e87be75aa74ac8be2eb21a773b5e42b46d212f45",
+        "signature": "87cf2a22e0c832f1fb703ba746a5071c8c1c42da5a286f2b9900f00556bbb35b",
         "affectsGlobalScope": true
       },
       "./src/js/wrapper.ts": {
-        "version": "884bd776711c7b7e77651f5f4e3a81e9ad1067620fcea99117abafb09cf564dc",
-        "signature": "5e9881f0b504539867b0cf2167c9ee5ca479605dc53df2e4bbef575daff177d3",
+        "version": "2f618f451ca2f416c816e76f9c1c1e745e918f0d6b68790746d4e7ed57a11428",
+        "signature": "dfe939beb7b57796abb52f014ff75a4b0c0837afe0630e8bcba56fd8b4fbe3f5",
         "affectsGlobalScope": true
       },
       "../../node_modules/@babel/types/lib/index.d.ts": {
@@ -2243,7 +2243,7 @@
         [
           {
             "file": "./src/js/d3_drawer.ts",
-            "start": 2657,
+            "start": 1921,
             "length": 4,
             "code": 2345,
             "category": 1,
@@ -2253,12 +2253,20 @@
               "code": 2345,
               "next": [
                 {
-                  "messageText": "Type 'Element' is missing the following properties from type 'SVGSVGElement': contentScriptType, contentStyleType, currentScale, currentTranslate, and 139 more.",
+                  "messageText": "Type 'Element' is missing the following properties from type 'SVGGElement': transform, getBBox, getCTM, getScreenCTM, and 96 more.",
                   "category": 1,
                   "code": 2740
                 }
               ]
             }
+          },
+          {
+            "file": "./src/js/d3_drawer.ts",
+            "start": 3553,
+            "length": 6,
+            "messageText": "Cannot find name 'redraw'.",
+            "category": 1,
+            "code": 2304
           }
         ]
       ],

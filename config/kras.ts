@@ -6,7 +6,7 @@ import formidable from 'formidable'
 import puppeteer from 'puppeteer'
 import { Thalia } from '../../../server/thalia'
 
-console.log("Loading kras.ts")
+console.log('Loading kras.ts')
 
 // const env = process.env.NODE_ENV || 'development'
 
@@ -18,7 +18,7 @@ let mailAuth = { // eslint-disable-line
 try {
   mailAuth = require(path.resolve(__dirname, 'config.json')).mailAuth
 } catch (e) {
-  console.log("Error loading mailAuth")
+  console.log('Error loading mailAuth')
   console.log(e)
 }
 

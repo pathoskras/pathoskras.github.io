@@ -9,7 +9,7 @@ const mustache_1 = __importDefault(require("mustache"));
 const nodemailer_1 = __importDefault(require("nodemailer"));
 const formidable_1 = __importDefault(require("formidable"));
 const puppeteer_1 = __importDefault(require("puppeteer"));
-console.log("Loading kras.ts");
+console.log('Loading kras.ts');
 let mailAuth = {
     user: 'username@gmail.com',
     pass: 'password_here_lol'
@@ -18,7 +18,7 @@ try {
     mailAuth = require(path_1.default.resolve(__dirname, 'config.json')).mailAuth;
 }
 catch (e) {
-    console.log("Error loading mailAuth");
+    console.log('Error loading mailAuth');
     console.log(e);
 }
 const kras = {

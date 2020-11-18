@@ -20,18 +20,104 @@ type DrawingData = {
 
 class Drawer {
   backgroundImage: string;
+  id: number;
+  image: string;
+  // lines: any[];
+  name: string;
+  legend: string;
 
-  constructor(data : DrawingData) {
-    this.paint(data);
+  linesLayer :any
+
+  drawingData = { // eslint-disable-line
+    lines: []
+  }
+
+  activeLine = null
+  activeColor = '#333333'
+
+  constructor (data : DrawingData) {
+    this.id = data.id
+    this.drawingData.lines = data.lines
+    this.name = data.name
+    this.image = data.image
+    this.legend = data.legend
+  }
+  getDrawingData() {
+    return {
+      id: this.id,
+      image: this.image,
+      name: this.name,
+      legend: this.legend,
+      lines: this.drawingData.lines
+    }
+  }
+
+  showDrawer () {
+    console.log("Showing image!", this.id)
+    const drawer = this
+    const canvas = d3.select('#d3-drawer').append('svg').attrs({
+      id: 'canvas',
+      viewBox: '0,0,960,610'
+    })
+
+
+    console.log(this.image);
+    canvas.append('g').append('image').attrs({
+      id: 'd3-background-image',
+      width: 960,
+      height: 600,
+      y: 10,
+      href: `/images/${this.image}`
+    })
+
+    const ui = canvas.append('g').attrs({
+      id: 'drawer-ui'
+    })
+
+    drawer.drawUI(ui)
+
+    this.linesLayer = canvas.append('g')
+
+    const drag = d3.drag()
+
+    drag.on('start', function () {
+      drawer.activeLine = {
+        points: [],
+        color: drawer.activeColor
+      }
+      drawer.drawingData.lines.push(drawer.activeLine)
+      return drawer.redraw(drawer.activeLine)
+    })
+
+    drag.on('drag', function () {
+      drawer.activeLine.points.push(d3.mouse(this))
+      return drawer.redraw(drawer.activeLine)
+    })
+
+    drag.on('end', function () {
+      if (drawer.activeLine.points.length === 0) {
+        drawer.drawingData.lines.pop()
+      }
+      drawer.activeLine = null
+      return console.log(drawer.drawingData)
+    })
+
+    canvas.call(drag)
+
+    this.paint()
   }
 
   /**
    * Erase & redraw the lines.
    */
-  paint (drawingData : DrawingData) {
+  paint (drawingData ?: DrawingData) {
+    const drawingLines :any = drawingData ? drawingData.lines : this.drawingData.lines
+
     d3.selectAll('#canvas g .line').remove()
-    const lines = d3.select('#canvas g').selectAll('.line').data(drawingData.lines)
-    lines.enter().append('path').attrs({
+    const lines = d3.select('#canvas g')
+      .selectAll('.line')
+      .data(drawingLines)
+      .enter().append('path').attrs({
       class: 'line',
       stroke: function (d :any) {
         return d.color
@@ -46,123 +132,86 @@ class Drawer {
     return lines.exit().remove()
   }
 
-  drawImage = function() {
-    console.log("drawing image");
+  drawImage = function () {
+    console.log('drawing image')
   }
-}
 
+  drawUI = function (ui) {
+    const palette = ui.append('g').attrs({
+      transform: 'translate(' + (4 + SWATCH_D / 2) + ',' + (4 + SWATCH_D / 2) + ')'
+    })
 
-let drawingData = { // eslint-disable-line
-  lines: []
-}
+    const swatches = palette.selectAll('.swatch').data(['#333333', '#ffffff', '#1b9e77', '#d95f02', '#7570b3', '#e7298a', '#66a61e', '#e6ab02', '#a6761d', '#666666'])
 
-let activeLine = null
+    const trashBtn = ui.append('text')
+      .text('\uf1f8')
+      .classed('fa fa-trash', true)
+      .attrs({
+        class: 'btn',
+        dy: '0.35em',
+        transform: 'translate(940,20)'
+      }).on('click', function () {
+        this.drawingData.lines = []
+        return redraw()
+      })
 
-let activeColor = '#333333'
+    swatches.enter().append('circle').attrs({
+      stroke: 'grey',
+      class: 'swatch',
+      cx: function (d, i) {
+        return i * (SWATCH_D + 4) / 2
+      },
+      cy: function (d, i) {
+        if (i % 2) {
+          return SWATCH_D
+        } else {
+          return 0
+        }
+      },
+      r: SWATCH_D / 2,
+      fill: function (d) {
+        return d
+      }
+    }).on('click', function (d) {
+      this.activeColor = d
+      palette.selectAll('.swatch').classed('active', false)
+      return d3.select(this).classed('active', true)
+    })
 
-const canvas = d3.select('#canvas')
+    swatches.each(function (d) {
+      if (d === this.activeColor) {
+        return d3.select(this).classed('active', true)
+      }
+    })
+  }
 
-const linesLayer = canvas.append('g')
-
-const ui = d3.select('#ui')
-
-const palette = ui.append('g').attrs({
-  transform: 'translate(' + (4 + SWATCH_D / 2) + ',' + (4 + SWATCH_D / 2) + ')'
-})
-
-const swatches = palette.selectAll('.swatch').data(['#333333', '#ffffff', '#1b9e77', '#d95f02', '#7570b3', '#e7298a', '#66a61e', '#e6ab02', '#a6761d', '#666666'])
-
-const trashBtn = ui.append('text').html('&#xf1f8;').attrs({
-  class: 'btn',
-  dy: '0.35em',
-  transform: 'translate(940,20)'
-}).on('click', function () {
-  drawingData.lines = []
-  return redraw()
-})
-
-swatches.enter().append('circle').attrs({
-  stroke: 'grey',
-  class: 'swatch',
-  cx: function (d, i) {
-    return i * (SWATCH_D + 4) / 2
-  },
-  cy: function (d, i) {
-    if (i % 2) {
-      return SWATCH_D
+  redraw = function (specificLine ?: any) {
+    let lines
+    lines = this.linesLayer.selectAll('.line').data(this.drawingData.lines)
+    lines.enter().append('path').attrs({
+      class: 'line',
+      stroke: function (d) {
+        return d.color
+      }
+    }).each(function (d) {
+      d.elem = d3.select(this)
+      return d.elem
+    })
+    if (specificLine != null) {
+      specificLine.elem.attrs({
+        d: function (d) {
+          return renderLine(d.points)
+        }
+      })
     } else {
-      return 0
+      lines.attrs({
+        d: function (d) {
+          return renderLine(d.points)
+        }
+      })
     }
-  },
-  r: SWATCH_D / 2,
-  fill: function (d) {
-    return d
+    return lines.exit().remove()
   }
-}).on('click', function (d) {
-  activeColor = d
-  palette.selectAll('.swatch').classed('active', false)
-  return d3.select(this).classed('active', true)
-})
-
-swatches.each(function (d) {
-  if (d === activeColor) {
-    return d3.select(this).classed('active', true)
-  }
-})
-
-const drag = d3.drag()
-
-drag.on('start', function () {
-  activeLine = {
-    points: [],
-    color: activeColor
-  }
-  drawingData.lines.push(activeLine)
-  return redraw(activeLine)
-})
-
-drag.on('drag', function () {
-  activeLine.points.push(d3.mouse(this))
-  return redraw(activeLine)
-})
-
-drag.on('end', function () {
-  if (activeLine.points.length === 0) {
-    drawingData.lines.pop()
-  }
-  activeLine = null
-  return console.log(drawingData)
-})
-
-canvas.call(drag)
-
-
-function redraw (specificLine ?: any) {
-  let lines
-  lines = linesLayer.selectAll('.line').data(drawingData.lines)
-  lines.enter().append('path').attrs({
-    class: 'line',
-    stroke: function (d) {
-      return d.color
-    }
-  }).each(function (d) {
-    d.elem = d3.select(this)
-    return d.elem
-  })
-  if (specificLine != null) {
-    specificLine.elem.attrs({
-      d: function (d) {
-        return renderLine(d.points)
-      }
-    })
-  } else {
-    lines.attrs({
-      d: function (d) {
-        return renderLine(d.points)
-      }
-    })
-  }
-  return lines.exit().remove()
 }
 
-redraw()
+// redraw()

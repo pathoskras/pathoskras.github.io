@@ -16,6 +16,15 @@ declare let images: KrasImage[]
 
 const md = new showdown.Converter({ openLinksInNewWindow: true })
 
+const drawers = []
+
+Object.keys(images).forEach(function (image) {
+  const drawingData :DrawingData = images[image]
+  console.log('image', drawingData)
+  const drawer = new Drawer(drawingData)
+  drawers.push(drawer)
+})
+
 const welcomeText = `##Welcome to the KRas Interactive Resource
 
 #What is this Resource for?
@@ -33,7 +42,7 @@ Finally, there is a list of terms and definitions and some useful links.
 
 #Who can I contact for further information about the Resource?
 Please contact Dr Maja Divjak ([maja.divjak@petermac.org](mailto:maja.divjak@petermac.org?subject=KRAS%20Annotation)) for further assistance.
-`;
+`
 const introductionText = `##Introduction to KRas
 #What is KRas?
 Cells are the basic building blocks of our body, making up our tissues and organs. The body constantly makes new cells to help us grow, replace worn out tissue and heal injuries. Normally, cells multiply and die in an orderly way, so that each new cell replaces one lost. There are special messengers that tell our cells how to do this. KRas is a messenger inside our cells that controls when cells multiply. When cells are not multiplying, KRas is switched off. When cells need to multiply, KRas is switched on and when no longer needed, it is switched off again.
@@ -52,8 +61,7 @@ Despite a significant number of lung and bowel cancer patients affected by the G
 2.	Andrew M. Waters and Channing J. Der. 2018. KRAS: The Critical Driver and Therapeutic Target for Pancreatic Cancer. Cold Spring Harb Perspect Med. 8(9): a031435
 3.	AACR Project GENIE: Powering Precision Medicine through an International Consortium. 2017. Cancer Discov. 7(8): 818-831
 4.	Jude Cannon, Karen Rex, Anne Y. Saiki et al. 2019. The clinical KRAS (G12C) inhibitor AMG 510 drives anti-tumour immunity. Nature. 575: 217-223
-`;
-
+`
 const termsText = `##Terms and Definitions:
 #AMG 510:
 An experimental anti-cancer drug. It targets the G12C alteration in the KRas messenger, which is responsible for various forms of cancer
@@ -82,17 +90,17 @@ Genetics Home Reference. Your Guide to Understanding Genetic Conditions [https:/
 Pathology Dictionary: KRAS [https://www.mypathologyreport.ca/kras/](https://www.mypathologyreport.ca/kras/)
 `
 
-function drawBannerPage(text: string) : d3.Selection<HTMLDivElement, unknown, HTMLElement, any>{
-  var row = d3.select("#contentBox").append("div").classed("row", true)
-  var result = row.append("div")
-    .classed("col-xs-9", true)
-    .attr("id", "bannerPageInner")
+function drawBannerPage (text: string) : d3.Selection<HTMLDivElement, unknown, HTMLElement, any> {
+  const row = d3.select('#contentBox').append('div').classed('row', true)
+  const result = row.append('div')
+    .classed('col-xs-9', true)
+    .attr('id', 'bannerPageInner')
     .html(md.makeHtml(text))
-  row.append("div")
-    .classed("col-xs-3", true)
-    .classed("sideBanner", true)
+  row.append('div')
+    .classed('col-xs-3', true)
+    .classed('sideBanner', true)
 
-  return result;
+  return result
 }
 
 function welcome () {
@@ -107,7 +115,7 @@ let currentScreen = null
 welcome()
 
 function hideEverything () {
-  d3.selectAll("ul li a").classed('selected', false)
+  d3.selectAll('ul li a').classed('selected', false)
   $('#contentBox').html('')
   d3.selectAll('.bigText').classed('hidden', true)
   d3.selectAll('.drawer').classed('hidden', true)
@@ -117,8 +125,9 @@ function hideEverything () {
 
   if (currentScreen) {
     console.log('saving data for ' + currentScreen)
-    console.log(drawingData.lines)
-    images[currentScreen].lines = drawingData.lines.map(d => {
+    // console.log(drawingData.lines)
+    console.log(drawers[currentScreen].getDrawingData())
+    images[currentScreen].lines = drawers[currentScreen].getDrawingData().lines.map(d => {
       return {
         points: d.points,
         color: d.color
@@ -131,40 +140,26 @@ function hideEverything () {
   }
 }
 
-var drawers = []
-
 function openScreen (id) {
   hideEverything()
   d3.select(`a[onclick="openScreen(${id})"]`).classed('selected', true)
   d3.select('#noteBox').classed('hidden', false)
 
-  let drawingData :DrawingData = images[id]
-  const blob = drawingData
-  const image = blob.image
   currentScreen = id
 
-  d3.select('#imageTitle').classed('hidden', false).text(blob.name)
+  const drawer = drawers[id -1]
+  drawer.showDrawer()
 
-  let drawer = drawers[id] || new Drawer(drawingData)
-  drawers[id] = drawer
-
-  drawer.paint(drawingData)
 
   d3.select('.drawer').classed('hidden', false)
-  d3.select('#d3-background-image').attr('href', `/images/${image}`)
 
   const div = d3.select('#contentBox').append('div')
-  div.append('img').attrs({
-    class: 'bigImage',
-    src: `/images/${image}`
-  })
-  const div2 = d3.select('#contentBox').append('div')
+
   d3.select(`#text-${id}`).classed('hidden', false)
 
-  if($(`#text-${id}`).val() === "") {
-    d3.select(`#text-${id}`).text(drawingData.legend)
+  if ($(`#text-${id}`).val() === '') {
+    d3.select(`#text-${id}`).text(drawer.getDrawingData.legend)
   }
-
 }
 
 function introduction () {
@@ -172,23 +167,22 @@ function introduction () {
   d3.select('a[href="#Introduction"]').classed('selected', true)
 
   drawBannerPage(introductionText)
-
 }
 
 function video () {
   hideEverything()
   d3.select('a[href="#Video"]').classed('selected', true)
-  drawBannerPage("")
+  drawBannerPage('')
 
   $('#bannerPageInner')
-    .html(md.makeHtml(`##The Role of KRas in Cancer`))
+    .html(md.makeHtml('##The Role of KRas in Cancer'))
     .append('<div class="iframe-container"><iframe class="responsive-iframe" src="https://www.youtube-nocookie.com/embed/pD5q4TlZW-M" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>')
     .append(md.makeHtml(`#Link to Protein Databank:
 [Mutant KRas interacting with AMG 510](https://www.rcsb.org/pdb/explore/jmol.do?structureId=6oim&bionumber=1&jmolMode=HTML5)
 `))
 }
 
-function terms() {
+function terms () {
   hideEverything()
   d3.select('a[href="#Terms"]').classed('selected', true)
   $('#contentBox').html()
@@ -204,47 +198,46 @@ function email () {
 
 function toggleImageLinks () {
   // $('li.image').toggleClass("hidden")
-  $('li.image').removeClass("hidden")
+  $('li.image').removeClass('hidden')
   hideEverything()
-  drawBannerPage("")
+  drawBannerPage('')
 
   d3.select('#bannerPageInner')
-    .append("h1")
-    .text("Images")
+    .append('h1')
+    .text('Images')
 
   d3.select('#bannerPageInner')
-  .append("table")
-  .selectAll(".imageThumbDiv")
-  .data(Object.keys(images))
-  .enter()
-  .append("tr")
-  .classed("imageThumbDiv", true)
-  .each((d,i,arr) => {
-    var data = images[d]
-    var thumb = d3.select(arr[i])
-    thumb.append("td")
-    .append("a").attrs({
-      href: `#${data.image}`,
-      onclick: `openScreen(${i+1})`
+    .append('table')
+    .selectAll('.imageThumbDiv')
+    .data(Object.keys(images))
+    .enter()
+    .append('tr')
+    .classed('imageThumbDiv', true)
+    .each((d, i, arr) => {
+      const data = images[d]
+      const thumb = d3.select(arr[i])
+      thumb.append('td')
+        .append('a').attrs({
+          href: `#${data.image}`,
+          onclick: `openScreen(${i + 1})`
+        })
+        .append('img').attrs({
+          src: `/images/${data.image}`,
+          class: 'thumbnail'
+        })
+      const desc = thumb.append('td')
+      desc.append('h3').text(data.name)
+      desc.append('p').text(data.legend)
     })
-    .append("img").attrs({
-      src: `/images/${data.image}`,
-      class: "thumbnail"
-    })
-  var desc = thumb.append("td")
-  desc.append("h3").text(data.name)
-  desc.append("p").text(data.legend)
-  })
-
 }
 
-function printVersion() {
-  $("#wrapper").toggleClass("pdfMode");
+function printVersion () {
+  $('#wrapper').toggleClass('pdfMode')
 
-  $("#contentBox")
-  .append('<div style="page-break-after:always">&nbsp;</div>')
-  .append(md.makeHtml(introductionText))
-  .append('<div style="page-break-after:always">&nbsp;</div>')
+  $('#contentBox')
+    .append('<div style="page-break-after:always">&nbsp;</div>')
+    .append(md.makeHtml(introductionText))
+    .append('<div style="page-break-after:always">&nbsp;</div>')
 
   // d3.selectAll('.bigText').classed('hidden', false)
   // d3.selectAll('.drawer').classed('hidden', false)
@@ -255,4 +248,3 @@ function printVersion() {
   // alert("Print version called!");
   // openScreen(1)
 }
-
