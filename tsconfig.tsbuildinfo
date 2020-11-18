@@ -147,13 +147,13 @@
         "affectsGlobalScope": true
       },
       "./src/js/d3_drawer.ts": {
-        "version": "d05baf3f1d880f4e8aea7727e87be75aa74ac8be2eb21a773b5e42b46d212f45",
-        "signature": "87cf2a22e0c832f1fb703ba746a5071c8c1c42da5a286f2b9900f00556bbb35b",
+        "version": "32c9f9b0aa4918b022a758fba131ebef70ec5ec1db5130da571e28804103a57e",
+        "signature": "201f444195053a0f7584439c838d8ab4e31cede30ba89bcf7cdb08b4666f9342",
         "affectsGlobalScope": true
       },
       "./src/js/wrapper.ts": {
-        "version": "2f618f451ca2f416c816e76f9c1c1e745e918f0d6b68790746d4e7ed57a11428",
-        "signature": "dfe939beb7b57796abb52f014ff75a4b0c0837afe0630e8bcba56fd8b4fbe3f5",
+        "version": "f755a833b623090594569b09ced751ee3464d17e43f2121ac0b4886dab36c3f6",
+        "signature": "b4f9b7ebda3efef3b8a26dfe978f5216c1f93bcfff4eb88106c5bffe556c95f8",
         "affectsGlobalScope": true
       },
       "../../node_modules/@babel/types/lib/index.d.ts": {
@@ -2243,7 +2243,7 @@
         [
           {
             "file": "./src/js/d3_drawer.ts",
-            "start": 1921,
+            "start": 1986,
             "length": 4,
             "code": 2345,
             "category": 1,
@@ -2262,7 +2262,7 @@
           },
           {
             "file": "./src/js/d3_drawer.ts",
-            "start": 3553,
+            "start": 3618,
             "length": 6,
             "messageText": "Cannot find name 'redraw'.",
             "category": 1,

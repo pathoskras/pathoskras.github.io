@@ -42,6 +42,7 @@ class Drawer {
     this.image = data.image
     this.legend = data.legend
   }
+
   getDrawingData() {
     return {
       id: this.id,
@@ -50,6 +51,10 @@ class Drawer {
       legend: this.legend,
       lines: this.drawingData.lines
     }
+  }
+
+  closeDrawer() {
+    d3.select('#d3-drawer svg').remove()
   }
 
   showDrawer () {

@@ -16,14 +16,6 @@ declare let images: KrasImage[]
 
 const md = new showdown.Converter({ openLinksInNewWindow: true })
 
-const drawers = []
-
-Object.keys(images).forEach(function (image) {
-  const drawingData :DrawingData = images[image]
-  console.log('image', drawingData)
-  const drawer = new Drawer(drawingData)
-  drawers.push(drawer)
-})
 
 const welcomeText = `##Welcome to the KRas Interactive Resource
 
@@ -111,9 +103,23 @@ function welcome () {
   drawBannerPage(welcomeText)
 }
 
-let currentScreen = null
-welcome()
+const drawers :Drawer[] = []
+let drawer :Drawer = null
 
+Object.keys(images).forEach(function (image) {
+  const drawingData :DrawingData = images[image]
+  console.log('image', drawingData)
+  const drawer = new Drawer(drawingData)
+  drawers.push(drawer)
+})
+
+/**
+ * Hide any screen that is showing
+ * Hide all elements
+ * 
+ * Close any open drawers and save lines
+ * 
+ */
 function hideEverything () {
   d3.selectAll('ul li a').classed('selected', false)
   $('#contentBox').html('')
@@ -123,18 +129,24 @@ function hideEverything () {
   d3.select('#emailForm').classed('hidden', true)
   d3.select('#imageTitle').classed('hidden', true)
 
-  if (currentScreen) {
-    console.log('saving data for ' + currentScreen)
+  if (drawer) {
+    // console.log('saving data for ' + currentScreen)
     // console.log(drawingData.lines)
-    console.log(drawers[currentScreen].getDrawingData())
-    images[currentScreen].lines = drawers[currentScreen].getDrawingData().lines.map(d => {
-      return {
-        points: d.points,
-        color: d.color
-      }
-    })
+    // console.log(drawers[currentScreen].getDrawingData())
+    images[drawer.id].lines = drawer
+      .getDrawingData()
+      .lines
+      .map(d => {
+        return {
+          points: d.points,
+          color: d.color
+        }
+      })
 
     $('#lineData').val(JSON.stringify(images))
+
+    drawer.closeDrawer()
+
   } else {
     console.log('Not on a screen to save..?')
   }
@@ -145,11 +157,8 @@ function openScreen (id) {
   d3.select(`a[onclick="openScreen(${id})"]`).classed('selected', true)
   d3.select('#noteBox').classed('hidden', false)
 
-  currentScreen = id
-
-  const drawer = drawers[id -1]
+  drawer = drawers[id -1]
   drawer.showDrawer()
-
 
   d3.select('.drawer').classed('hidden', false)
 
@@ -158,7 +167,7 @@ function openScreen (id) {
   d3.select(`#text-${id}`).classed('hidden', false)
 
   if ($(`#text-${id}`).val() === '') {
-    d3.select(`#text-${id}`).text(drawer.getDrawingData.legend)
+    d3.select(`#text-${id}`).text(drawer.getDrawingData().legend)
   }
 }
 
@@ -248,3 +257,6 @@ function printVersion () {
   // alert("Print version called!");
   // openScreen(1)
 }
+
+welcome()
+
