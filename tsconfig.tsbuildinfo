@@ -147,12 +147,12 @@
         "affectsGlobalScope": true
       },
       "./src/js/d3_drawer.ts": {
-        "version": "32c9f9b0aa4918b022a758fba131ebef70ec5ec1db5130da571e28804103a57e",
-        "signature": "201f444195053a0f7584439c838d8ab4e31cede30ba89bcf7cdb08b4666f9342",
+        "version": "26f31555b5574821b7d2342c235b3a0d4dd9f4291ca3110524f16001420f8667",
+        "signature": "7eeba78cba01c19979039e46048259f1dfcae3518fb33cd12acd557d19758867",
         "affectsGlobalScope": true
       },
       "./src/js/wrapper.ts": {
-        "version": "f755a833b623090594569b09ced751ee3464d17e43f2121ac0b4886dab36c3f6",
+        "version": "2c3b89b9e60989b2bb49bbfe9e28c1d39f5dc0507c23495fd51f41b0319de103",
         "signature": "b4f9b7ebda3efef3b8a26dfe978f5216c1f93bcfff4eb88106c5bffe556c95f8",
         "affectsGlobalScope": true
       },
@@ -2243,26 +2243,7 @@
         [
           {
             "file": "./src/js/d3_drawer.ts",
-            "start": 1986,
-            "length": 4,
-            "code": 2345,
-            "category": 1,
-            "messageText": {
-              "messageText": "Argument of type 'Element' is not assignable to parameter of type 'ContainerElement'.",
-              "category": 1,
-              "code": 2345,
-              "next": [
-                {
-                  "messageText": "Type 'Element' is missing the following properties from type 'SVGGElement': transform, getBBox, getCTM, getScreenCTM, and 96 more.",
-                  "category": 1,
-                  "code": 2740
-                }
-              ]
-            }
-          },
-          {
-            "file": "./src/js/d3_drawer.ts",
-            "start": 3618,
+            "start": 3811,
             "length": 6,
             "messageText": "Cannot find name 'redraw'.",
             "category": 1,

@@ -53,6 +53,15 @@ class Drawer {
     }
   }
 
+  getLines() {
+    return this.drawingData.lines.map(d => {
+      return {
+        points: d.points,
+        color: d.color
+      }
+    })
+  }
+
   closeDrawer() {
     d3.select('#d3-drawer svg').remove()
   }
@@ -94,8 +103,8 @@ class Drawer {
       return drawer.redraw(drawer.activeLine)
     })
 
-    drag.on('drag', function () {
-      drawer.activeLine.points.push(d3.mouse(this))
+    drag.on('drag', function (this :d3.ContainerElement) {
+      drawer.activeLine.points.push(d3.mouse(this).map(d => Math.floor(d)))
       return drawer.redraw(drawer.activeLine)
     })
 

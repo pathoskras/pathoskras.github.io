@@ -53,12 +53,12 @@
         <form action="/saveDetails" id="saveForm" method="post">
           <div id="noteBox">
             <h3>Notes:</h3>
+            <textarea name="text-0" id="text-0" class="bigText hidden" for="saveForm">{{text-0}}</textarea>
             <textarea name="text-1" id="text-1" class="bigText hidden" for="saveForm">{{text-1}}</textarea>
             <textarea name="text-2" id="text-2" class="bigText hidden" for="saveForm">{{text-2}}</textarea>
             <textarea name="text-3" id="text-3" class="bigText hidden" for="saveForm">{{text-3}}</textarea>
             <textarea name="text-4" id="text-4" class="bigText hidden" for="saveForm">{{text-4}}</textarea>
             <textarea name="text-5" id="text-5" class="bigText hidden" for="saveForm">{{text-5}}</textarea>
-            <textarea name="text-6" id="text-6" class="bigText hidden" for="saveForm">{{text-6}}</textarea>
           </div>
 
           <div id="emailForm" class="row hidden">
@@ -116,15 +116,16 @@
   <script type="text/javascript" src="/js/d3_drawer.js"></script>
 
   <script type="text/javascript">
-    let images = {{{ imagesJson }}}.reduce((acc, d) => {
-      const blob = d;
+    let images = {{{ imagesJson }}}.map((blob) => {
       blob.lines = new Array();
-      acc[d.id] = blob;
-      return acc;
-    }, {});
+      return blob
+    });
 
     {{ #lineData }}
-    images = {{{ lineData }}}
+    let lineData = {{{ lineData }}}
+    lineData.forEach(function(line, i) {
+      images[i].lines = line
+    })
     {{/lineData}}
   </script>
 

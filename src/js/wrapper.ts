@@ -108,7 +108,6 @@ let drawer :Drawer = null
 
 Object.keys(images).forEach(function (image) {
   const drawingData :DrawingData = images[image]
-  console.log('image', drawingData)
   const drawer = new Drawer(drawingData)
   drawers.push(drawer)
 })
@@ -130,20 +129,12 @@ function hideEverything () {
   d3.select('#imageTitle').classed('hidden', true)
 
   if (drawer) {
-    // console.log('saving data for ' + currentScreen)
-    // console.log(drawingData.lines)
-    // console.log(drawers[currentScreen].getDrawingData())
-    images[drawer.id].lines = drawer
-      .getDrawingData()
-      .lines
-      .map(d => {
-        return {
-          points: d.points,
-          color: d.color
-        }
-      })
+    const lineData = drawers.reduce((acc, drawer, index) => {
+      acc[index] = drawer.getLines()
+      return acc
+    }, [])
 
-    $('#lineData').val(JSON.stringify(images))
+    $('#lineData').val(JSON.stringify(lineData))
 
     drawer.closeDrawer()
 
@@ -157,7 +148,7 @@ function openScreen (id) {
   d3.select(`a[onclick="openScreen(${id})"]`).classed('selected', true)
   d3.select('#noteBox').classed('hidden', false)
 
-  drawer = drawers[id -1]
+  drawer = drawers[id]
   drawer.showDrawer()
 
   d3.select('.drawer').classed('hidden', false)
