@@ -42,22 +42,25 @@ textarea.bigText {
 }
 #imageTitle {
   text-align: center;
+  position: absolute;
+  top: 0;
+  left: 50%;
 }
 
 // From d3_inner.mustache
 
-#canvas {
+// #canvas {
   // background: oldlace;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-#ui {
-  position: absolute;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-}
+  // position: absolute;
+  // top: 0;
+  // left: 0;
+// }
+// #ui {
+  // position: absolute;
+  // top: 0;
+  // left: 0;
+  // pointer-events: none;
+// }
 #d3-background-image {
   position: absolute;
   top: 0;
@@ -78,7 +81,7 @@ textarea.bigText {
 
   font-family: FontAwesome;
   fill: #333;
-  font-size: 32px;
+  font-size: 48px;
   text-anchor: middle;
 
   -webkit-touch-callout: none;

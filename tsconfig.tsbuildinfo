@@ -147,12 +147,12 @@
         "affectsGlobalScope": true
       },
       "./src/js/d3_drawer.ts": {
-        "version": "6f68472b709d027123a776ca59072d1fba713183facb5b753f696d9959ccf276",
-        "signature": "00a73d6adaa142b2d970e7480a2958fcefd8417f9d7182ad97bd2273698f18ef",
+        "version": "8036301bc3396eaa013d4358360fc9c469029a515e47f3ff54364a0e038e9236",
+        "signature": "cf1536cac305a1051943e3ec8b8c6fdc792cb26f7af59bd14ddf0637ff1bc26d",
         "affectsGlobalScope": true
       },
       "./src/js/wrapper.ts": {
-        "version": "b9df64f5d6bbb19a83ab2c508f6cde7739c31f626ddef2fe0342f8441edba152",
+        "version": "4c79aee993cdf78e94452c430fd0e4cf351ff9b4679539eecbf5566e9718d619",
         "signature": "b4f9b7ebda3efef3b8a26dfe978f5216c1f93bcfff4eb88106c5bffe556c95f8",
         "affectsGlobalScope": true
       },

@@ -125,7 +125,7 @@ function hideEverything () {
   d3.selectAll('.drawer').classed('hidden', true)
   d3.select('#noteBox').classed('hidden', true)
   d3.select('#emailForm').classed('hidden', true)
-  d3.select('#imageTitle').classed('hidden', true)
+  // d3.select('#imageTitle').classed('hidden', true)
 
   if (drawer) {
     const lineData = drawers.reduce((acc, drawer, index) => {

@@ -70,15 +70,17 @@ class Drawer {
   }
 
   closeDrawer () {
-    d3.select('#d3-drawer svg').remove()
+    d3.select('#d3-drawer svg#canvas').remove()
   }
 
   showDrawer () {
     const drawer = this
-    const canvas = d3.select('#d3-drawer').append('svg').attrs({
-      id: 'canvas',
-      viewBox: '0,0,960,610'
-    })
+    const canvas = d3.select('#d3-drawer')
+      .append('svg')
+      .attrs({
+        id: 'canvas',
+        viewBox: '0,0,960,600'
+      })
 
     this.backgroundImageGroup = canvas.append('g').attrs({
       id: 'backgroundImageGroup'
@@ -90,11 +92,11 @@ class Drawer {
       href: `/images/${this.image}`
     })
 
-    const ui = canvas.append('g').attrs({
-      id: 'drawer-ui'
-    })
+    // const ui = canvas.append('g').attrs({
+    //   id: 'drawer-ui'
+    // })
 
-    drawer.drawUI(ui)
+    drawer.activateUI()
 
     this.linesLayer = canvas.append('g').attrs({
       id: 'linesLayer'
@@ -158,75 +160,48 @@ class Drawer {
     console.log('drawing image')
   }
 
-  drawUI = function (ui) {
+  activateUI = function () {
+    console.log("Activating UI")
+
     const drawer = this
-    const palette = ui.append('g').attrs({
-      transform: 'translate(' + (4 + SWATCH_D / 2) + ',' + (4 + SWATCH_D / 2) + ')'
-    })
-
-    const swatches = palette.selectAll('.swatch')
+    const ui = d3.select("#drawer-ui")
+    ui.select("#imageTitle").text(drawer.name)
+  
+    const swatches = ui.selectAll('.swatch')
       .data(['#333333', '#ffffff', '#1b9e77', '#d95f02', '#7570b3', '#e7298a', '#66a61e', '#e6ab02', '#a6761d', '#666666'])
-      .enter().append('circle').attrs({
-        stroke: 'grey',
-        class: 'swatch',
-        cx: function (d, i) {
-          return i * (SWATCH_D + 4) / 2
-        },
-        cy: function (d, i) {
-          if (i % 2) {
-            return SWATCH_D
-          } else {
-            return 0
-          }
-        },
-        r: SWATCH_D / 2,
-        fill: function (d) {
-          return d
+      .on('click', function (color) {
+        setColor(color)
+        return color
+      })
+
+    drawer.activeColor = $("#colorInput").val()
+
+    d3.select("#colorInput").on('change', function(d){
+      var color = $("#colorInput").val()
+      setColor(color)
+    })
+
+    function setColor(color) {
+      drawer.activeColor = color
+      $("#colorInput").val(color)
+      ui.selectAll('.swatch').classed('active', false)
+      swatches.each(function (d, i, arr) {
+        if (d === drawer.activeColor) {
+          return d3.select(arr[i]).classed('active', true)
         }
-      }).on('click', function (d) {
-        drawer.activeColor = d
-        palette.selectAll('.swatch').classed('active', false)
-        return d3.select(this).classed('active', true)
       })
+    }
 
-    swatches.each(function (d, i, arr) {
-      if (d === drawer.activeColor) {
-        return d3.select(arr[i]).classed('active', true)
-      }
+    d3.select(".btn").on('click', function () {
+      drawer.drawingData.lines = []
+      return drawer.paintLines()
     })
-
-    /*
-    d3.select("#d3-drawer").append('input').attrs({
-      name: "asdf",
-      type: "range",
-      min: 0.5,
-      max: 20,
-      value: 1,
-      step: 0.5,
-      style: "width:120px"
-    }).append("div").append("div").attrs({
-      pseudo: "-webkit-slider-runnable-track",
-      id: "track"
-    }).append("div").attrs({
-      id: "thumb"
-    })
-*/
-
-    const trashBtn = ui.append('text')
-      .text('\uf1f8')
-      .classed('btn', true)
-      .attrs({
-        dy: '0.35em',
-        transform: 'translate(940,20)'
-      }).on('click', function () {
-        drawer.drawingData.lines = []
-        return drawer.paintLines()
-      })
   }
 
   redraw = function (specificLine ?: DrawnLine) {
-    const lines = this.linesLayer.selectAll('.line')
-      .data(this.drawingData.lines)
+    var drawer = this
+    const lines = drawer.linesLayer.selectAll('.line')
+      .data(drawer.drawingData.lines)
       .enter()
       .append('path')
       .attrs({
@@ -234,8 +209,8 @@ class Drawer {
         stroke: function (d) {
           return d.color
         }
-      }).each(function (d) {
-        d.elem = d3.select(this)
+      }).each(function (d, i, arr) {
+        d.elem = d3.select(arr[i])
         return d.elem
       })
     if (specificLine && specificLine.elem) {
