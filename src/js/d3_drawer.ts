@@ -126,13 +126,13 @@ class Drawer {
 
     this.backgroundImageGroup.call(drag)
 
-    this.paint()
+    this.paintLines()
   }
 
   /**
    * Erase & redraw the lines.
    */
-  paint (drawingData ?: DrawingData) {
+  paintLines (drawingData ?: DrawingData) {
     const drawingLines :DrawnLine[] = drawingData ? drawingData.lines : this.drawingData.lines
 
     d3.selectAll('#canvas g .line').remove()
@@ -184,29 +184,43 @@ class Drawer {
           return d
         }
       }).on('click', function (d) {
-        d3.event.stopPropagation()
         drawer.activeColor = d
         palette.selectAll('.swatch').classed('active', false)
         return d3.select(this).classed('active', true)
       })
 
     swatches.each(function (d, i, arr) {
-      console.log(d)
       if (d === drawer.activeColor) {
         return d3.select(arr[i]).classed('active', true)
       }
     })
 
+    /*
+    d3.select("#d3-drawer").append('input').attrs({
+      name: "asdf",
+      type: "range",
+      min: 0.5,
+      max: 20,
+      value: 1,
+      step: 0.5,
+      style: "width:120px"
+    }).append("div").append("div").attrs({
+      pseudo: "-webkit-slider-runnable-track",
+      id: "track"
+    }).append("div").attrs({
+      id: "thumb"
+    })
+*/
+
     const trashBtn = ui.append('text')
       .text('\uf1f8')
-      .classed('fa fa-trash', true)
+      .classed('btn', true)
       .attrs({
-        class: 'btn',
         dy: '0.35em',
         transform: 'translate(940,20)'
       }).on('click', function () {
-        this.drawingData.lines = []
-        return this.redraw()
+        drawer.drawingData.lines = []
+        return drawer.paintLines()
       })
   }
 
