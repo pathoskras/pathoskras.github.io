@@ -16,7 +16,6 @@ declare let images: KrasImage[]
 
 const md = new showdown.Converter({ openLinksInNewWindow: true })
 
-
 const welcomeText = `##Welcome to the KRas Interactive Resource
 
 #What is this Resource for?
@@ -115,9 +114,9 @@ Object.keys(images).forEach(function (image) {
 /**
  * Hide any screen that is showing
  * Hide all elements
- * 
+ *
  * Close any open drawers and save lines
- * 
+ *
  */
 function hideEverything () {
   d3.selectAll('ul li a').classed('selected', false)
@@ -137,7 +136,6 @@ function hideEverything () {
     $('#lineData').val(JSON.stringify(lineData))
 
     drawer.closeDrawer()
-
   } else {
     console.log('Not on a screen to save..?')
   }
@@ -250,4 +248,3 @@ function printVersion () {
 }
 
 welcome()
-
