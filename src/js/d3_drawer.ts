@@ -21,6 +21,7 @@ type DrawingData = {
 type DrawnLine = {
   points: [number, number][];
   color: string;
+  width: number;
   elem ?: d3.Selection<SVGPathElement, DrawnLine, HTMLElement, any>;
 }
 
@@ -40,8 +41,9 @@ class Drawer {
     lines: []
   }
 
-  activeLine = null
-  activeColor = '#333333'
+  activeLine : DrawnLine = null
+  activeColor :string = '#333333'
+  strokeWidth :number = 2
 
   constructor (data : DrawingData) {
     this.id = data.id
@@ -65,6 +67,7 @@ class Drawer {
     return this.drawingData.lines.map(d => {
       return {
         points: d.points,
+        width: d.width,
         color: d.color
       }
     })
@@ -107,6 +110,7 @@ class Drawer {
     drag.on('start', function (this :d3.ContainerElement) {
       drawer.activeLine = {
         points: [],
+        width: drawer.strokeWidth,
         color: drawer.activeColor
       }
       drawer.drawingData.lines.push(drawer.activeLine)
@@ -114,7 +118,7 @@ class Drawer {
     })
 
     drag.on('drag', function (this :d3.ContainerElement) {
-      drawer.activeLine.points.push(d3.mouse(this).map(d => Math.floor(d)))
+      drawer.activeLine.points.push(d3.mouse(this).map(d => Math.floor(d)) as [number,number])
       return drawer.redraw(drawer.activeLine)
     })
 
@@ -147,6 +151,7 @@ class Drawer {
         d.elem = d3.select(arr[i])
         return {
           class: 'line',
+          'stroke-width': d.width,
           stroke: d.color,
           d: renderLine(d.points)
         }
@@ -178,6 +183,7 @@ class Drawer {
       })
 
     drawer.activeColor = $('#colorInput').val()
+    drawer.strokeWidth = $('#lineWidthInput').val()
 
     d3.select('#colorInput').on('change', function (d) {
       const color = $('#colorInput').val()
@@ -195,6 +201,11 @@ class Drawer {
       })
     }
 
+    d3.select('#lineWidthInput').on('change', function(d){
+      drawer.strokeWidth = $('#lineWidthInput').val()
+      d3.select("#strokeWidth p").text(`${drawer.strokeWidth}px width`)
+    })
+
     d3.select('.btn').on('click', function () {
       drawer.drawingData.lines = []
       return drawer.paintLines()
@@ -211,9 +222,8 @@ class Drawer {
         d.elem = d3.select(arr[i])
         return {
           class: 'line',
-          stroke: function (d) {
-            return d.color
-          }
+          'stroke-width': d.width,
+          stroke: d.color
         }
       })
       // .each(function (d, i, arr) {
