@@ -8,7 +8,8 @@ const renderLine = d3.line().x(function (d) {
   return d[0]
 }).y(function (d) {
   return d[1]
-}).curve(d3.curveBasis)
+}).curve(d3.curveCatmullRom)
+// https://bl.ocks.org/d3noob/ced1b9b18bd8192d2c898884033b5529
 
 type DrawingData = {
   id: number;
