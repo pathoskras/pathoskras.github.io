@@ -13,7 +13,7 @@ const renderLine = d3.line().x(function (d) {
 type DrawingData = {
   id: number;
   image: string;
-  lines: any[];
+  lines: DrawnLine[];
   name: string;
   legend: string;
 }
@@ -21,21 +21,22 @@ type DrawingData = {
 type DrawnLine = {
   points: [number, number][];
   color: string;
-  elem ?: any;
+  elem ?: d3.Selection<SVGPathElement, DrawnLine, HTMLElement, any>;
 }
 
 class Drawer {
   backgroundImage: string;
   id: number;
   image: string;
-  // lines: any[];
   name: string;
   legend: string;
 
-  linesLayer :any;
+  linesLayer : d3.Selection<SVGGElement, unknown, HTMLElement, any>;
   backgroundImageGroup :any;
 
-  drawingData = { // eslint-disable-line
+  drawingData : {
+    lines: DrawnLine[]
+  } = {
     lines: []
   }
 
@@ -140,18 +141,21 @@ class Drawer {
     const lines = d3.select('#canvas g')
       .selectAll('.line')
       .data(drawingLines)
-      .enter().append('path').attrs({
-        class: 'line',
-        stroke: function (d :DrawnLine) {
-          return d.color
-        },
-        d: function (d :DrawnLine) {
-          return renderLine(d.points)
+      .enter()
+      .append('path')
+      .attrs((d, i, arr) => {
+        d.elem = d3.select(arr[i])
+        return {
+          class: 'line',
+          stroke: d.color,
+          d: renderLine(d.points)
         }
-      }).each(function (d: DrawnLine) {
-        d.elem = d3.select(this)
-        return d.elem
       })
+      // .each(function (d: DrawnLine) {
+      //   d.elem = d3.select(this)
+      //   return d.elem
+      // })
+
     return lines.exit().remove()
   }
 
@@ -160,12 +164,12 @@ class Drawer {
   }
 
   activateUI = function () {
-    console.log("Activating UI")
+    console.log('Activating UI')
 
     const drawer = this
-    const ui = d3.select("#drawer-ui")
-    ui.select("#imageTitle").text(drawer.name)
-  
+    const ui = d3.select('#drawer-ui')
+    ui.select('#imageTitle').text(drawer.name)
+
     const swatches = ui.selectAll('.swatch')
       .data(['#333333', '#ffffff', '#1b9e77', '#d95f02', '#7570b3', '#e7298a', '#66a61e', '#e6ab02', '#a6761d', '#666666'])
       .on('click', function (color) {
@@ -173,16 +177,16 @@ class Drawer {
         return color
       })
 
-    drawer.activeColor = $("#colorInput").val()
+    drawer.activeColor = $('#colorInput').val()
 
-    d3.select("#colorInput").on('change', function(d){
-      var color = $("#colorInput").val()
+    d3.select('#colorInput').on('change', function (d) {
+      const color = $('#colorInput').val()
       setColor(color)
     })
 
-    function setColor(color) {
+    function setColor (color) {
       drawer.activeColor = color
-      $("#colorInput").val(color)
+      $('#colorInput').val(color)
       ui.selectAll('.swatch').classed('active', false)
       swatches.each(function (d, i, arr) {
         if (d === drawer.activeColor) {
@@ -191,27 +195,31 @@ class Drawer {
       })
     }
 
-    d3.select(".btn").on('click', function () {
+    d3.select('.btn').on('click', function () {
       drawer.drawingData.lines = []
       return drawer.paintLines()
     })
   }
 
   redraw = function (specificLine ?: DrawnLine) {
-    var drawer = this
-    const lines = drawer.linesLayer.selectAll('.line')
+    const drawer :Drawer = this
+    const lines = drawer.linesLayer.selectAll<SVGLineElement, DrawnLine>('.line')
       .data(drawer.drawingData.lines)
       .enter()
       .append('path')
-      .attrs({
-        class: 'line',
-        stroke: function (d) {
-          return d.color
-        }
-      }).each(function (d, i, arr) {
+      .attrs((d, i, arr) => {
         d.elem = d3.select(arr[i])
-        return d.elem
+        return {
+          class: 'line',
+          stroke: function (d) {
+            return d.color
+          }
+        }
       })
+      // .each(function (d, i, arr) {
+      //   d.elem = d3.select(arr[i])
+      //   return d.elem
+      // })
     if (specificLine && specificLine.elem) {
       specificLine.elem.attrs({
         d: function (d) {

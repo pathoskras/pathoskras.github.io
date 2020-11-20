@@ -147,8 +147,8 @@
         "affectsGlobalScope": true
       },
       "./src/js/d3_drawer.ts": {
-        "version": "adf2fd9bf3b88cf2a3eb562cdcaae5aff5962d76dfeb9b2912e25ca1052d3f67",
-        "signature": "cf1536cac305a1051943e3ec8b8c6fdc792cb26f7af59bd14ddf0637ff1bc26d",
+        "version": "02b1146719da72393ba7e4ffe6ef4851277e9459c8320d1a16e94810e89e12ca",
+        "signature": "b3dace00e28f5c6271d71dcabef8c9d42e6e4108134f1a2955d0e8a8a61a53b9",
         "affectsGlobalScope": true
       },
       "./src/js/wrapper.ts": {
