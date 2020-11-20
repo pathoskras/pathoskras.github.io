@@ -131,7 +131,6 @@ const kras = {
                     console.log('ERROR!', err);
                     router.res.end(err);
                 }
-                console.log("Here's all your fields!", fields);
                 const data = fields;
                 const blob = {
                     email: fields.email,
@@ -152,10 +151,18 @@ const kras = {
                 }
                 else {
                     blob.hash = hash;
-                    router.db.Worksheet.create(blob);
+                    try {
+                        router.db.Worksheet.create(blob);
+                    }
+                    catch (e) {
+                        console.log('Error creating worksheet');
+                        console.error(e);
+                    }
                 }
+                let message = `<a href="/kras/${hash}">Link to saved data</a>. No email sent.
+`;
                 makePdf(hash).then(pdf => {
-                    let message = `<a href="/kras/${hash}">Link to saved data</a>. No email sent.
+                    message = `<a href="/kras/${hash}">Link to saved data</a>. No email sent.
 <br>
 <a target="_blank" href="${pdf}">Download PDF</a>.
 `;
@@ -188,6 +195,15 @@ const kras = {
                     catch (e) {
                         console.log('Error sending mail.', e);
                     }
+                    router.res.end(`Your hash is: ${hash}<br><br>
+  ${message}
+  <br><br>
+  Please use this form to give us feedback on the KRas Resource:<br>
+  <a href="https://forms.gle/jnqC2yFXgN9Zim8N9" target="_blank">https://forms.gle/jnqC2yFXgN9Zim8N9</a>
+  `);
+                }).catch(e => {
+                    console.log("Error making PDF");
+                    console.error(e);
                     router.res.end(`Your hash is: ${hash}<br><br>
   ${message}
   <br><br>
@@ -268,6 +284,9 @@ async function makePdf(hash) {
                     });
                 });
             });
+        }).catch(error => {
+            console.error(error);
+            reject(error);
         });
     });
 }
