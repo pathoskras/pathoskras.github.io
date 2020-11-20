@@ -79,16 +79,15 @@ class Drawer {
       .append('svg')
       .attrs({
         id: 'canvas',
-        viewBox: '0,0,960,600'
+        viewBox: '0,0,1920,1080'
       })
 
     this.backgroundImageGroup = canvas.append('g').attrs({
       id: 'backgroundImageGroup'
     }).append('image').attrs({
       id: 'd3-background-image',
-      width: 960,
-      height: 600,
-      y: 10,
+      width: 1920,
+      height: 1080,
       href: `/images/${this.image}`
     })
 
