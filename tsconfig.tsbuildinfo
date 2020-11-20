@@ -147,13 +147,18 @@
         "affectsGlobalScope": true
       },
       "./src/js/d3_drawer.ts": {
-        "version": "b88214668712f22e5d234760c981b1534667621012747eb48ab7c47536bf79a2",
-        "signature": "27364296cf8cc4baf7a4c1f1a0b6d5dec9e6ab692d1082f0158aa94f9ecbd958",
+        "version": "215ba6d5d546dff9aea787b76fb40becf8abb6c48f019a2c604d12d278b1e1ea",
+        "signature": "30a90e9e079ce7e6ad02323e97aeb8846bdf8d362f4bc0cc64b24bca6c47ad94",
+        "affectsGlobalScope": true
+      },
+      "./src/js/simplify.ts": {
+        "version": "884d42f3336fbb22f2d85fefe671211245136e89ebf27b0d92a40124ccf788cf",
+        "signature": "5d5bd65249476b1bcb1dd977d96361c03a44c4b7049b3800fa3a80c3ac224cd6",
         "affectsGlobalScope": true
       },
       "./src/js/wrapper.ts": {
-        "version": "4c79aee993cdf78e94452c430fd0e4cf351ff9b4679539eecbf5566e9718d619",
-        "signature": "b4f9b7ebda3efef3b8a26dfe978f5216c1f93bcfff4eb88106c5bffe556c95f8",
+        "version": "f37128b0c65b5f4d226ac6d3dea0dc32e2677ff3ff63fc295d3a6e93aec5efa7",
+        "signature": "2de8d7cdf9693587946372285012bc5a4c9e8c552057a9236a8da087cc3603fb",
         "affectsGlobalScope": true
       },
       "../../node_modules/@babel/types/lib/index.d.ts": {
@@ -177,8 +182,8 @@
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/babel__template/index.d.ts": {
-        "version": "3e0a34f7207431d967dc32d593d1cda0c23975e9484bc8895b39d96ffca4a0d8",
-        "signature": "3e0a34f7207431d967dc32d593d1cda0c23975e9484bc8895b39d96ffca4a0d8",
+        "version": "3051751533eee92572241b3cef28333212401408c4e7aa21718714b793c0f4ed",
+        "signature": "3051751533eee92572241b3cef28333212401408c4e7aa21718714b793c0f4ed",
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/babel__core/index.d.ts": {
@@ -417,8 +422,8 @@
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/node/assert.d.ts": {
-        "version": "d0c575d48d6dad75648017ff18762eb97f9398cc9486541b3070e79ce12719e6",
-        "signature": "d0c575d48d6dad75648017ff18762eb97f9398cc9486541b3070e79ce12719e6",
+        "version": "ce71d002806f66f9b2ee0d440ade1af5231c40902f85d2e45517c5ddd7744fab",
+        "signature": "ce71d002806f66f9b2ee0d440ade1af5231c40902f85d2e45517c5ddd7744fab",
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/node/base.d.ts": {
@@ -907,8 +912,8 @@
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/xml2js/index.d.ts": {
-        "version": "232a20dbd107baa091280c321f417c715f328a5b2d896bec7399630ff85270f7",
-        "signature": "232a20dbd107baa091280c321f417c715f328a5b2d896bec7399630ff85270f7",
+        "version": "7a7404d4a96b8d81b0e6697eb7455138ba0b34fa41f91004d12b58f42244043c",
+        "signature": "7a7404d4a96b8d81b0e6697eb7455138ba0b34fa41f91004d12b58f42244043c",
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/yargs-parser/index.d.ts": {
@@ -2239,6 +2244,7 @@
       "../../node_modules/pretty-format/build/index.d.ts",
       "../../node_modules/pretty-format/build/types.d.ts",
       "./src/js/d3_drawer.ts",
+      "./src/js/simplify.ts",
       "./src/js/wrapper.ts"
     ]
   },

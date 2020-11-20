@@ -1,18 +1,6 @@
 console.log('Loaded wrapper.ts')
 
-type Point = [number, number]
-type Line = {
-  points : Point[];
-  color : string;
-}
-type KrasImage = {
-  id : number;
-  image : string;
-  lines : Line[];
-  name : string;
-  legend: string;
-}
-declare let images: KrasImage[]
+declare let images: DrawingData[]
 
 const md = new showdown.Converter({ openLinksInNewWindow: true })
 

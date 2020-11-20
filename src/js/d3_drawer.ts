@@ -121,13 +121,18 @@ class Drawer {
     })
 
     drag.on('drag', function (this :d3.ContainerElement) {
-      drawer.activeLine.points.push(d3.mouse(this).map(d => Math.floor(d)) as [number,number])
+      drawer.activeLine.points.push(d3.mouse(this).map(d => Math.floor(d)) as [number, number])
       return drawer.redraw(drawer.activeLine)
     })
 
     drag.on('end', function () {
       if (drawer.activeLine.points.length === 0) {
         drawer.drawingData.lines.pop()
+      } else {
+        const rawPoints = drawer.activeLine.points.length
+        drawer.activeLine.points = simplify(drawer.activeLine.points, 1.5, true)
+        console.log(`Simplified line from ${rawPoints} points to ${drawer.activeLine.points.length} points`)
+        drawer.redraw(drawer.activeLine)
       }
       drawer.activeLine = null
       return console.log(drawer.drawingData)
