@@ -8,7 +8,6 @@
   <title>KRAS Annotation</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
 
-  <link rel="stylesheet" href="/drawerJs/drawerJs.css" />
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/canvas/canvas.css">
   <link rel="stylesheet" href="/css/kras.css">
@@ -43,14 +42,18 @@
 
         <div id="d3-drawer" class="drawer hidden">
           <div id="drawer-ui">
-            <svg viewBox="0,0,150,50" style="width:150px;padding-top: 15px;">
+            <svg id="pallete" viewBox="0,0,150,50">
               <g transform="translate(15,15)">
                 <circle stroke="grey" class="swatch active" cx="0" cy="0" r="11" fill="#333333"></circle><circle stroke="grey" class="swatch" cx="13" cy="22" r="11" fill="#ffffff"></circle><circle stroke="grey" class="swatch" cx="26" cy="0" r="11" fill="#1b9e77"></circle><circle stroke="grey" class="swatch" cx="39" cy="22" r="11" fill="#d95f02"></circle><circle stroke="grey" class="swatch" cx="52" cy="0" r="11" fill="#7570b3"></circle><circle stroke="grey" class="swatch" cx="65" cy="22" r="11" fill="#e7298a"></circle><circle stroke="grey" class="swatch" cx="78" cy="0" r="11" fill="#66a61e"></circle><circle stroke="grey" class="swatch" cx="91" cy="22" r="11" fill="#e6ab02"></circle><circle stroke="grey" class="swatch" cx="104" cy="0" r="11" fill="#a6761d"></circle><circle stroke="grey" class="swatch" cx="117" cy="22" r="11" fill="#666666"></circle></g>
             </svg>
 
             <input id="colorInput" name="colorInput" value="#333333" type="color" style="width:60px;height:60px;">
-            <input name="lineWidthInput" type="range" min="0.5" max="20" value="1" step="0.5" style="width:120px;padding:15px;">
 
+            <div id="strokeWidth">
+              <label>2px width</label>
+              <input name="lineWidthInput" type="range" min="0.5" max="20" value="2" step="0.5">
+            </div>
+ 
             <h1 id="imageTitle"></h1>
 
             <text class="btn" dy="0.35em" style="float:right;"></text>

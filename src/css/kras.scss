@@ -5,6 +5,12 @@ html {
   // position: fixed; // breaks pdf
   width: 100vw;
 }
+
+.hidden {
+  display: none;
+  visibility: hidden;
+}
+
 div#footer {
   background: white;
   border-top: solid 1px black;
@@ -47,55 +53,6 @@ textarea.bigText {
   left: 50%;
 }
 
-// From d3_inner.mustache
-
-// #canvas {
-  // background: oldlace;
-  // position: absolute;
-  // top: 0;
-  // left: 0;
-// }
-// #ui {
-  // position: absolute;
-  // top: 0;
-  // left: 0;
-  // pointer-events: none;
-// }
-#d3-background-image {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-.swatch {
-  pointer-events: all;
-}
-.swatch.active {
-  stroke-width: 2px;
-  stroke: black;
-}
-.swatch {
-  cursor: pointer;
-}
-.btn {
-  pointer-events: all;
-
-  font-family: FontAwesome;
-  fill: #333;
-  font-size: 48px;
-  text-anchor: middle;
-
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-.btn:hover {
-  fill: black;
-  cursor: pointer;
-}
-
 .line {
   fill: none;
   stroke-width: 2px;
@@ -103,18 +60,66 @@ textarea.bigText {
   stroke-linecap: round;
 }
 
-#d3-drawer.hidden {
-  // display: none;
-}
-
 #d3-drawer {
-  // width: 100%;
-  // height: 100%;
+  margin: 0 -15px;
   #d3-background-image {
-    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 50px;
+    opacity: 0.65;
+  }
+
+  #drawer-ui {
+    #pallete {
+      width: 150px;
+      
+      .swatch {
+        pointer-events: all;
+      }
+      .swatch.active {
+        stroke-width: 2px;
+        stroke: black;
+      }
+      .swatch {
+        cursor: pointer;
+      }
+    }
+    #colorInput {
+      margin: 5px;
+    }
+
+    #strokeWidth {
+      width: 120px;
+      display: inline-block;
+      #lineWidthInput {
+        width: 120px;
+      }
+    }
+
+    .btn {
+      margin-right: 10px;
+
+      pointer-events: all;
+
+      font-family: FontAwesome;
+      fill: #333;
+      font-size: 48px;
+      text-anchor: middle;
+
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+    .btn:hover {
+      fill: black;
+      cursor: pointer;
+    }
   }
 }
-
 
 img.bigImage {
   display: none;
@@ -123,12 +128,6 @@ img.bigImage {
   position: absolute;
   bottom: 50;
 }
-#d3-background-image {
-  padding: 50px;
-  opacity: 0.65;
-  // fit: cover;
-}
-
 
 .sidebar {
   height: 100vh;
