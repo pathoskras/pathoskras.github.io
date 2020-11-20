@@ -18,8 +18,10 @@ type DrawingData = {
   legend: string;
 }
 
+type Point = [number, number]
+
 type DrawnLine = {
-  points: [number, number][];
+  points: Point[];
   color: string;
   width: number;
   elem ?: d3.Selection<SVGPathElement, DrawnLine, HTMLElement, any>;
@@ -43,7 +45,7 @@ class Drawer {
 
   activeLine : DrawnLine = null
   activeColor :string = '#333333'
-  strokeWidth :number = 2
+  strokeWidth :number = 5
 
   constructor (data : DrawingData) {
     this.id = data.id
@@ -63,7 +65,8 @@ class Drawer {
     }
   }
 
-  getLines () {
+  getLines () : DrawnLine[] {
+    // Strip out elements
     return this.drawingData.lines.map(d => {
       return {
         points: d.points,
@@ -201,9 +204,9 @@ class Drawer {
       })
     }
 
-    d3.select('#lineWidthInput').on('change', function(d){
+    d3.select('#lineWidthInput').on('change', function (d) {
       drawer.strokeWidth = $('#lineWidthInput').val()
-      d3.select("#strokeWidth p").text(`${drawer.strokeWidth}px width`)
+      d3.select('#strokeWidth p').text(`${drawer.strokeWidth}px width`)
     })
 
     d3.select('.btn').on('click', function () {
