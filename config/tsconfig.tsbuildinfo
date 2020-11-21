@@ -702,7 +702,7 @@
         "affectsGlobalScope": false
       },
       "./kras.ts": {
-        "version": "20e96022b00d8a175a34056c74d53fff480d995f226e24ed3d1be5d515ff1c34",
+        "version": "2b984711731e6833cd908d4643564951224837756f797dcaabe613c1a9cdcc83",
         "signature": "00515849321b0ec5a71c1043d67a949e374c4671d3cdf77db14af8ecc38f592e",
         "affectsGlobalScope": false
       },

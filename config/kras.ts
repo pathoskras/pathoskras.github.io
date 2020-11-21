@@ -297,10 +297,12 @@ async function makePdf (hash: string): Promise<string> {
             waitUntil: 'domcontentloaded'
           }).then(() => {
             page.evaluate('printVersion()').then(() => {
-              page.waitForTimeout(500).then(() => {
+              page.waitForTimeout(2500).then(() => {
                 const filepath: string = path.resolve(__dirname, '..', 'data', 'pdfs', `KRas-${hash}.pdf`)
                 page.pdf({
                   path: filepath,
+                  printBackground: true,
+                  landscape: true,
                   format: 'A4'
                 }).then(() => {
                   browser.close()

@@ -173,9 +173,19 @@ img.bigImage {
 
 #wrapper.pdfMode {
   position: relative;
-  .sidebar {
+  .sidebar, .sideBanner {
     display: none;
     height: 0;
+  }
+  .mainContent {
+    width: 100%;
+  }
+  .canvas {
+    page-break-after: always;
+    opacity: 0.65;
+  }
+  .pagebreak {
+    page-break-after: always;
   }
   min-height: 3000px;
   size: auto;

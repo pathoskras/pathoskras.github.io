@@ -218,12 +218,30 @@ function toggleImageLinks () {
 }
 
 function printVersion () {
+  console.log("Print mode")
+
   $('#wrapper').toggleClass('pdfMode')
+  $("#bannerPageInner").remove()
 
   $('#contentBox')
+    .append(md.makeHtml(welcomeText))
     .append('<div style="page-break-after:always">&nbsp;</div>')
     .append(md.makeHtml(introductionText))
     .append('<div style="page-break-after:always">&nbsp;</div>')
+
+  d3.select("#d3-drawer").classed("hidden", false)
+  d3.select("#drawer-ui").remove()
+
+  const box = d3.select("#contentBox");
+  drawers.forEach(drawer => {
+
+    var div = box.append("div")
+    div.append("h1").text(drawer.name)
+    drawer.printDrawer(div)
+    div.append("p").text(drawer.legend)
+
+    box.append("div").classed("pagebreak", true).html('&nbsp;')
+  })
 
   // d3.selectAll('.bigText').classed('hidden', false)
   // d3.selectAll('.drawer').classed('hidden', false)

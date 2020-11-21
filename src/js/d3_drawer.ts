@@ -78,7 +78,29 @@ class Drawer {
   }
 
   closeDrawer () {
-    d3.select('#d3-drawer svg#canvas').remove()
+    d3.select('#d3-drawer svg.canvas').remove()
+  }
+
+  printDrawer (elem: d3.Selection<d3.BaseType, unknown, HTMLElement, any>) {
+    const canvas = elem.append("svg")
+      .attrs({
+        class: 'canvas',
+        viewBox: '0,0,1920,1080'
+      })
+    this.backgroundImageGroup = canvas.append('g').attrs({
+      id: 'backgroundImageGroup'
+    }).append('image').attrs({
+      id: 'd3-background-image',
+      width: 1920,
+      height: 1080,
+      href: `/images/${this.image}`
+    })
+
+    this.linesLayer = canvas.append('g').attrs({
+      id: 'linesLayer'
+    })
+
+    this.paintLines()
   }
 
   showDrawer () {
@@ -86,7 +108,7 @@ class Drawer {
     const canvas = d3.select('#d3-drawer')
       .append('svg')
       .attrs({
-        id: 'canvas',
+        class: 'canvas',
         viewBox: '0,0,1920,1080'
       })
 
@@ -150,8 +172,8 @@ class Drawer {
   paintLines (drawingData ?: DrawingData) {
     const drawingLines :DrawnLine[] = drawingData ? drawingData.lines : this.drawingData.lines
 
-    d3.selectAll('#canvas g .line').remove()
-    const lines = d3.select('#canvas g')
+    this.linesLayer.selectAll('.line').remove()
+    const lines = this.linesLayer
       .selectAll('.line')
       .data(drawingLines)
       .enter()

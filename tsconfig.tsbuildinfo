@@ -147,8 +147,8 @@
         "affectsGlobalScope": true
       },
       "./src/js/d3_drawer.ts": {
-        "version": "cb2f443cf6582ad0ef033fe1b11b6c0bd989db46fa3cff48fabc77d001e7113f",
-        "signature": "30a90e9e079ce7e6ad02323e97aeb8846bdf8d362f4bc0cc64b24bca6c47ad94",
+        "version": "d00290ca8ef9f8ac73e2b4c2ec2faade79f62f0222727f7d9fa8d89486d0697e",
+        "signature": "eafb0e4e355a0e83f4619db81d19eb7e186fefbbd9829f8eaf0a4a2d17d5eb46",
         "affectsGlobalScope": true
       },
       "./src/js/simplify.ts": {
@@ -157,7 +157,7 @@
         "affectsGlobalScope": true
       },
       "./src/js/wrapper.ts": {
-        "version": "f37128b0c65b5f4d226ac6d3dea0dc32e2677ff3ff63fc295d3a6e93aec5efa7",
+        "version": "54eb0929cf08c7a9bea52b92896a5ad28d41b781a6d00e92ac60e11481fbe870",
         "signature": "2de8d7cdf9693587946372285012bc5a4c9e8c552057a9236a8da087cc3603fb",
         "affectsGlobalScope": true
       },
