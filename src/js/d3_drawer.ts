@@ -82,15 +82,15 @@ class Drawer {
   }
 
   printDrawer (elem: d3.Selection<d3.BaseType, unknown, HTMLElement, any>) {
-    const canvas = elem.append("svg")
+    const canvas = elem.append('svg')
       .attrs({
         class: 'canvas',
         viewBox: '0,0,1920,1080'
       })
     this.backgroundImageGroup = canvas.append('g').attrs({
-      id: 'backgroundImageGroup'
+      class: 'backgroundImageGroup'
     }).append('image').attrs({
-      id: 'd3-background-image',
+      class: 'd3-background-image',
       width: 1920,
       height: 1080,
       href: `/images/${this.image}`
@@ -113,9 +113,9 @@ class Drawer {
       })
 
     this.backgroundImageGroup = canvas.append('g').attrs({
-      id: 'backgroundImageGroup'
+      class: 'backgroundImageGroup'
     }).append('image').attrs({
-      id: 'd3-background-image',
+      class: 'd3-background-image',
       width: 1920,
       height: 1080,
       href: `/images/${this.image}`

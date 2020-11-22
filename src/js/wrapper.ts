@@ -34,8 +34,8 @@ KRAS alterations occur in 15-20% of all human cancers and are most commonly seen
 
 #Treating G12C KRas
 Despite a significant number of lung and bowel cancer patients affected by the G12C alteration, developing effective treatments has proven challenging. It has been difficult to find an area on the surface of the KRas messenger where a drug might get a foothold to disrupt the unchecked multiplication of cells. Recently however, a couple of treatments have been developed that keep the G12C KRas messenger switched off, without affecting normal KRas. These treatments, including AMG 510, show great potential for the treatment of cancers caused by KRas G12C alterations (4).
-
-#References:
+`
+const references = `#References:
 1.	Ian A. Prior, Fiona E. Hood and James L. Hartley. 2020. The frequency of Ras mutations in cancer. Cancer Res. 80(14): 2969-2974
 2.	Andrew M. Waters and Channing J. Der. 2018. KRAS: The Critical Driver and Therapeutic Target for Pancreatic Cancer. Cold Spring Harb Perspect Med. 8(9): a031435
 3.	AACR Project GENIE: Powering Precision Medicine through an International Consortium. 2017. Cancer Discov. 7(8): 818-831
@@ -152,7 +152,7 @@ function introduction () {
   hideEverything()
   d3.select('a[href="#Introduction"]').classed('selected', true)
 
-  drawBannerPage(introductionText)
+  drawBannerPage(introductionText + '\n' + references)
 }
 
 function video () {
@@ -217,40 +217,78 @@ function toggleImageLinks () {
     })
 }
 
+let pageCount = 1
+
+function drawHeader (elem :d3.Selection<HTMLElement, unknown, HTMLElement, any>) {
+  const header = elem.insert('div').classed('printHeader row', true)
+
+  header.append('div').classed('col-xs-3', true)
+    .append('img').attrs({
+      class: 'headerLogo',
+      src: '/images/petermac_logo.png'
+    })
+
+  header.append('div')
+    .classed('col-xs-6', true)
+    .styles({
+      'text-align': 'center'
+    })
+    .append('h1')
+    .styles({
+      'text-align': 'center'
+    })
+    .text('Interactive KRas Resource')
+
+  header.append('div')
+    .classed('col-xs-3', true)
+    .styles({
+      'text-align': 'right'
+    })
+    .append('h4')
+    .text(`Page ${pageCount++} of 8`)
+}
+
 function printVersion () {
-  console.log("Print mode")
+  console.log('Print mode')
 
   $('#wrapper').toggleClass('pdfMode')
-  $("#bannerPageInner").remove()
+  $('#bannerPageInner').remove()
 
-  $('#contentBox')
-    .append(md.makeHtml(welcomeText))
-    .append('<div style="page-break-after:always">&nbsp;</div>')
-    .append(md.makeHtml(introductionText))
-    .append('<div style="page-break-after:always">&nbsp;</div>')
+  const frontPage = d3.select('#contentBox')
+    .append('div').classed('printPage', true)
 
-  d3.select("#d3-drawer").classed("hidden", false)
-  d3.select("#drawer-ui").remove()
+  drawHeader(frontPage)
 
-  const box = d3.select("#contentBox");
+  let row = frontPage.append('div').classed('row', true)
+  row.append('div').classed('col-xs-6', true)
+    .html(md.makeHtml(welcomeText))
+
+  row.append('div').classed('col-xs-6', true)
+    .html(md.makeHtml(introductionText))
+
+  const nextPage = d3.select('#contentBox')
+    .append('div').classed('printPage', true)
+
+  drawHeader(nextPage)
+
+  row = nextPage.append('div').classed('row', true)
+  row.append('div').classed('col-xs-6', true)
+    .html(md.makeHtml(termsText))
+
+  row.append('div').classed('col-xs-6', true)
+    .html(md.makeHtml(references))
+
+  d3.select('#d3-drawer').classed('hidden', false)
+  d3.select('#drawer-ui').remove()
+
+  const box = d3.select('#d3-drawer')
   drawers.forEach(drawer => {
-
-    var div = box.append("div")
-    div.append("h1").text(drawer.name)
+    const div = box.append('div').classed('printPage', true)
+    drawHeader(div)
+    div.append('h1').text(drawer.name)
     drawer.printDrawer(div)
-    div.append("p").text(drawer.legend)
-
-    box.append("div").classed("pagebreak", true).html('&nbsp;')
+    div.append('p').text(drawer.legend)
   })
-
-  // d3.selectAll('.bigText').classed('hidden', false)
-  // d3.selectAll('.drawer').classed('hidden', false)
-  // d3.select('#noteBox').classed('hidden', false)
-  // d3.select('#emailForm').classed('hidden', false)
-  // d3.select('#imageTitle').classed('hidden', false)
-
-  // alert("Print version called!");
-  // openScreen(1)
 }
 
 welcome()

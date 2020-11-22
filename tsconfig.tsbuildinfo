@@ -147,7 +147,7 @@
         "affectsGlobalScope": true
       },
       "./src/js/d3_drawer.ts": {
-        "version": "d00290ca8ef9f8ac73e2b4c2ec2faade79f62f0222727f7d9fa8d89486d0697e",
+        "version": "bf2b2e0e180310f1beba9457282a0119424027f3dfa4fbdfd8d59daaf62a985a",
         "signature": "eafb0e4e355a0e83f4619db81d19eb7e186fefbbd9829f8eaf0a4a2d17d5eb46",
         "affectsGlobalScope": true
       },
@@ -157,8 +157,8 @@
         "affectsGlobalScope": true
       },
       "./src/js/wrapper.ts": {
-        "version": "54eb0929cf08c7a9bea52b92896a5ad28d41b781a6d00e92ac60e11481fbe870",
-        "signature": "2de8d7cdf9693587946372285012bc5a4c9e8c552057a9236a8da087cc3603fb",
+        "version": "24c4f3dd0f287bb31de1301f214e341742f04c54d029e28cff719c082f0e2c15",
+        "signature": "a51ef8dcb853db02f36aa71f8827fd0e1eabec4a15a834044fc91b8c49908470",
         "affectsGlobalScope": true
       },
       "../../node_modules/@babel/types/lib/index.d.ts": {

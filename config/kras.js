@@ -202,7 +202,7 @@ const kras = {
   <a href="https://forms.gle/jnqC2yFXgN9Zim8N9" target="_blank">https://forms.gle/jnqC2yFXgN9Zim8N9</a>
   `);
                 }).catch(e => {
-                    console.log("Error making PDF");
+                    console.log('Error making PDF');
                     console.error(e);
                     router.res.end(`Your hash is: ${hash}<br><br>
   ${message}
@@ -264,13 +264,19 @@ async function makePdf(hash) {
                         waitUntil: 'domcontentloaded'
                     }).then(() => {
                         page.evaluate('printVersion()').then(() => {
-                            page.waitForTimeout(2500).then(() => {
+                            page.waitForTimeout(500).then(() => {
                                 const filepath = path_1.default.resolve(__dirname, '..', 'data', 'pdfs', `KRas-${hash}.pdf`);
                                 page.pdf({
                                     path: filepath,
                                     printBackground: true,
                                     landscape: true,
-                                    format: 'A4'
+                                    format: 'A4',
+                                    margin: {
+                                        top: '1cm',
+                                        right: '1cm',
+                                        bottom: '1cm',
+                                        left: '1cm'
+                                    }
                                 }).then(() => {
                                     browser.close();
                                     resolve(`/pdfs/KRas-${hash}.pdf`);
