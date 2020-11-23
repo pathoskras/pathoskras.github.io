@@ -5,11 +5,11 @@ declare let images: DrawingData[]
 const md = new showdown.Converter({ openLinksInNewWindow: true })
 
 const welcomeText = `##Welcome to the KRas Interactive Resource
-
 #What is this Resource for?
-This interactive resource is to help explain how changes in your cells can lead to cancer. It is specifically designed to assist those patients with cancer caused by alterations in a cell messenger known as KRas. This specific alteration is known as G12C KRas and your doctor may have spoken with you about this.
+This interactive resource is to help explain how changes in your cells can lead to cancer. It is specifically designed to assist those patients with cancer caused by alterations in a cell messenger known as KRas. This specific alteration is known as G12C KRas and your doctor may have spoken
+with you about this.
 
-#Why have we created this Resource?
+#Why have we Created this Resource?
 The purpose of this resource is to help patients better understand their particular cancer and how it is caused and how specific treatments work. We hope this will increase patient knowledge and confidence in making decisions about their treatment.
 
 #How does this Resource Work?
@@ -19,8 +19,9 @@ The resource begins with some introductory information about KRas. This is follo
 
 Finally, there is a list of terms and definitions and some useful links.
 
-#Who can I contact for further information about the Resource?
-Please contact Dr Maja Divjak ([maja.divjak@petermac.org](mailto:maja.divjak@petermac.org?subject=KRAS%20Annotation)) for further assistance.
+#Who Created this Resource?
+This interactive resource was designed and constructed at the Peter MacCallum Cancer Centre by David Ma, Bioinformatics Software Engineer. The text, video animation and images were created by Dr Maja Divjak, Biomedical Animator.
+If you have queries about the design of this resource, please contact Dr Maja Divjak via [maja.divjak@petermac.org](mailto:maja.divjak@petermac.org?subject=KRAS%20Annotation) for further assistance. Please note that Dr Divjak cannot answer queries relating to your diagnosis or treatment. Please ask your doctor for assistance with this.
 `
 const introductionText = `##Introduction to KRas
 #What is KRas?
@@ -30,10 +31,15 @@ Cells are the basic building blocks of our body, making up our tissues and organ
 Alterations can occur in the KRas messenger. One particular alteration is known as a ‘G12C’ alteration. Your doctor may have mentioned this G12C alteration to you. The result of this alteration is that KRas is always switched on. The end result is that affected cells keep multiplying out of control, forming a mass or lump called a tumour.
 
 #G12C KRas and Cancer
-KRAS alterations occur in 15-20% of all human cancers and are most commonly seen in lung, bowel and pancreatic cancers (1, 2). Of the KRAS alterations, the G12C alteration is present in about 2% of all human cancers (3). In the most commonly occurring form of lung cancer, 11% of patients have this G12C alteration (3). In bowel and pancreatic cancer, about 1-3% of patients have this G12C alteration (2, 3).
+* The G12C alteration is present in about 2% of all cancers (1).
+* In the most commonly occurring form of lung cancer, 11% of patients have this G12C alteration (1).
+* In bowel and pancreatic cancer, about 1-3% of patients have this G12C alteration (1, 2).
 
 #Treating G12C KRas
-Despite a significant number of lung and bowel cancer patients affected by the G12C alteration, developing effective treatments has proven challenging. It has been difficult to find an area on the surface of the KRas messenger where a drug might get a foothold to disrupt the unchecked multiplication of cells. Recently however, a couple of treatments have been developed that keep the G12C KRas messenger switched off, without affecting normal KRas. These treatments, including AMG 510, show great potential for the treatment of cancers caused by KRas G12C alterations (4).
+Even though a significant number of lung and bowel cancer patients are affected by the G12C alteration, developing effective treatments has proven challenging. Recently however, a couple of treatments have been developed that keep the G12C KRas messenger switched off, without affecting normal KRas. These treatments, including AMG 510, have shown anti-cancer activity in clinical trials and could offer effective treatment options for patients who have previously had few choices (3).
+
+#Clinical Trials Treating G12C KRas
+At the Peter MacCallum Cancer Centre we are conducting clinical trials for G12C KRas patients to assess the effectiveness of treatments such as AMG 510. Your clinician will explain how these clinical trials work and whether you are suitable to take part.
 `
 const references = `#References:
 1.	Ian A. Prior, Fiona E. Hood and James L. Hartley. 2020. The frequency of Ras mutations in cancer. Cancer Res. 80(14): 2969-2974
@@ -45,23 +51,35 @@ const termsText = `##Terms and Definitions:
 #AMG 510:
 An experimental anti-cancer drug. It targets the G12C alteration in the KRas messenger, which is responsible for various forms of cancer
 
+#Bowel/bowel cancer:
+The bowel is the intestines (like a tube) that run between the stomach and anus and is made up of the small bowel (small intestine) and the large bowel (colon and rectum). Bowel cancer is cancer in any part of the large bowel. It is sometimes known as colorectal cancer and might also be called colon cancer or rectal cancer, depending on where it starts. Cancer of the small bowel is very rare – it is called small bowel cancer or small intestine cancer.
+
 #Cancer:
-A disease where abnormal cells multiply without control and spread to other nearby body tissue and/or organs. Cancer cells can also spread to other parts of the body through the bloodstream and lymph systems
+A disease where abnormal cells multiply without control and spread to other nearby body tissue
+and/or organs. Cancer cells can also spread to other parts of the body through the bloodstream and
+lymph systems
 
 #Cells:
-* Cells are the smallest, living parts of the body. Cells work together to form or build the body
+* The smallest, living parts of the body. Cells work together to form or build the body
 * A human is made up of millions of cells
 * Cells multiply and reproduce themselves to make sure a body stays working
 * Sometimes cells can be abnormal or damaged and these can be cancer cells
 
 #KRas:
-A special messenger inside our cells that tells a cell when to multiply 
+A special messenger inside our cells that tells a cell when to multiply
 
 #KRas, G12C:
 A defective alteration in KRas that tells a cell to multiply constantly
 
-#Pancreas/pancreatic cancer:
-A long flattened gland located deep in the belly. A vital part of the digestive system and critical controller of blood sugar levels. Pancreatic cancer occurs when malignant cells develop in part of the pancreas
+#Lung/lung cancer:
+The lungs are a pair of breathing organs located in the chest, which transport oxygen into the blood
+and remove carbon dioxide. There is a left and right lung. Lung cancer occurs when abnormal cells
+develop in part of the lung.
+Pancreas/pancreatic cancer:
+
+The pancreas is a long flattened gland located deep in the belly. A vital part of the digestive system
+and critical controller of blood sugar levels. Pancreatic cancer occurs when abnormal cells develop in
+part of the pancreas
 
 #Useful Links:
 Genetics Home Reference. Your Guide to Understanding Genetic Conditions [https://ghr.nlm.nih.gov/gene/KRAS](https://ghr.nlm.nih.gov/gene/KRAS)
