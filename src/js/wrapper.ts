@@ -42,10 +42,9 @@ Even though a significant number of lung and bowel cancer patients are affected 
 At the Peter MacCallum Cancer Centre we are conducting clinical trials for G12C KRas patients to assess the effectiveness of treatments such as AMG 510. Your clinician will explain how these clinical trials work and whether you are suitable to take part.
 `
 const references = `#References:
-1.	Ian A. Prior, Fiona E. Hood and James L. Hartley. 2020. The frequency of Ras mutations in cancer. Cancer Res. 80(14): 2969-2974
-2.	Andrew M. Waters and Channing J. Der. 2018. KRAS: The Critical Driver and Therapeutic Target for Pancreatic Cancer. Cold Spring Harb Perspect Med. 8(9): a031435
-3.	AACR Project GENIE: Powering Precision Medicine through an International Consortium. 2017. Cancer Discov. 7(8): 818-831
-4.	Jude Cannon, Karen Rex, Anne Y. Saiki et al. 2019. The clinical KRAS (G12C) inhibitor AMG 510 drives anti-tumour immunity. Nature. 575: 217-223
+1. AACR Project GENIE: Powering Precision Medicine through an International Consortium. 2017. Cancer Discov. 7(8): 818-831
+2. Andrew M. Waters and Channing J. Der. 2018. KRAS: The Critical Driver and Therapeutic Target for Pancreatic Cancer. Cold Spring Harb Perspect Med. 8(9): a031435
+3. Jude Cannon, Karen Rex, Anne Y. Saiki et al. 2019. The clinical KRAS (G12C) inhibitor AMG 510 drives anti-tumour immunity. Nature. 575: 217-223
 `
 const termsText = `##Terms and Definitions:
 #AMG 510:
@@ -72,14 +71,11 @@ A special messenger inside our cells that tells a cell when to multiply
 A defective alteration in KRas that tells a cell to multiply constantly
 
 #Lung/lung cancer:
-The lungs are a pair of breathing organs located in the chest, which transport oxygen into the blood
-and remove carbon dioxide. There is a left and right lung. Lung cancer occurs when abnormal cells
-develop in part of the lung.
-Pancreas/pancreatic cancer:
+The lungs are a pair of breathing organs located in the chest, which transport oxygen into the blood and remove carbon dioxide. There is a left and right lung. Lung cancer occurs when abnormal cells develop in part of the lung.
 
-The pancreas is a long flattened gland located deep in the belly. A vital part of the digestive system
-and critical controller of blood sugar levels. Pancreatic cancer occurs when abnormal cells develop in
-part of the pancreas
+#Pancreas/pancreatic cancer:
+
+The pancreas is a long flattened gland located deep in the belly. A vital part of the digestive system and critical controller of blood sugar levels. Pancreatic cancer occurs when abnormal cells develop in part of the pancreas
 
 #Useful Links:
 Genetics Home Reference. Your Guide to Understanding Genetic Conditions [https://ghr.nlm.nih.gov/gene/KRAS](https://ghr.nlm.nih.gov/gene/KRAS)

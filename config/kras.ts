@@ -192,13 +192,12 @@ const kras : Thalia.WebsiteConfig = {
               body: `
   Hello!
   
-  Thanks for using the PathOS K-Ras Resource.
+  Thanks for using the PathOS KRas Resource.
   
   Your notes are here:
-  https://pathos.co/kras/${hash}
-  
-  Please use this form to give us feedback on the K-Ras Resource:
-  https://forms.gle/jnqC2yFXgN9Zim8N9
+  https://www.pathos.co/kras/${hash}
+
+  <a target="_blank" href="https://www.pathos.co/kras/${pdf}">Download PDF</a>.
   
   Thanks,
   PathOS Team.
@@ -208,7 +207,7 @@ const kras : Thalia.WebsiteConfig = {
 
             if (fields.tickedEmailBox) {
               if (fields.doctor) {
-                emailOptions.subject = `Your K-Ras notes from Dr. ${fields.doctor}`
+                emailOptions.subject = `Your KRas notes from Dr. ${fields.doctor}`
               }
               sendEmail(emailOptions)
               message = `<a href="/kras/${hash}">Link sent to patient</a> at ${fields.email} using 7oclockco@gmail.com`
@@ -219,9 +218,6 @@ const kras : Thalia.WebsiteConfig = {
 
           router.res.end(`Your hash is: ${hash}<br><br>
   ${message}
-  <br><br>
-  Please use this form to give us feedback on the KRas Resource:<br>
-  <a href="https://forms.gle/jnqC2yFXgN9Zim8N9" target="_blank">https://forms.gle/jnqC2yFXgN9Zim8N9</a>
   `)
         }).catch(e => {
           console.log('Error making PDF')
@@ -229,9 +225,6 @@ const kras : Thalia.WebsiteConfig = {
 
           router.res.end(`Your hash is: ${hash}<br><br>
   ${message}
-  <br><br>
-  Please use this form to give us feedback on the KRas Resource:<br>
-  <a href="https://forms.gle/jnqC2yFXgN9Zim8N9" target="_blank">https://forms.gle/jnqC2yFXgN9Zim8N9</a>
   `)
         })
       })
