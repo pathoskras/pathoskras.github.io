@@ -170,25 +170,28 @@ const kras = {
                         const emailOptions = {
                             toAddress: fields.email,
                             body: `
-  Hello!
+Hello!
   
-  Thanks for using the PathOS KRas Resource.
+Thanks for using the PathOS KRas Resource.
   
-  Your notes are here:
-  https://www.pathos.co/kras/${hash}
+Your notes are here:
+https://www.pathos.co/kras/${hash}
 
-  <a target="_blank" href="https://www.pathos.co/kras/${pdf}">Download PDF</a>.
+PDF: https://www.pathos.co${pdf}
   
-  Thanks,
-  PathOS Team.
-  `
+Thanks,
+PathOS Team.
+`
                         };
                         if (fields.tickedEmailBox) {
                             if (fields.doctor) {
                                 emailOptions.subject = `Your KRas notes from Dr. ${fields.doctor}`;
                             }
                             sendEmail(emailOptions);
-                            message = `<a href="/kras/${hash}">Link sent to patient</a> at ${fields.email} using 7oclockco@gmail.com`;
+                            message = `<a href="/kras/${hash}">Link sent to patient</a> at ${fields.email} using 7oclockco@gmail.com
+<br>
+<a target="_blank" href="${pdf}">Download PDF</a>.
+`;
                         }
                     }
                     catch (e) {
