@@ -697,8 +697,8 @@
         "affectsGlobalScope": false
       },
       "../../../server/thalia.d.ts": {
-        "version": "e4ddf882b347ae81a87996965838f2ab74b60935601df3bc42d494b244f338bd",
-        "signature": "e4ddf882b347ae81a87996965838f2ab74b60935601df3bc42d494b244f338bd",
+        "version": "615f3c180465b32b8075bf9c573a8d1a4986359b7323581e64a61612a7024925",
+        "signature": "615f3c180465b32b8075bf9c573a8d1a4986359b7323581e64a61612a7024925",
         "affectsGlobalScope": false
       },
       "./kras.ts": {

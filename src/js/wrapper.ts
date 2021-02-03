@@ -219,7 +219,7 @@ function toggleImageLinks () {
       thumb.append('td')
         .append('a').attrs({
           href: `#${data.image}`,
-          onclick: `openScreen(${i + 1})`
+          onclick: `openScreen(${i})`
         })
         .append('img').attrs({
           src: `/images/${data.image}`,
