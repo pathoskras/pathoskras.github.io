@@ -176,11 +176,24 @@ function video () {
 
   $('#bannerPageInner')
     .html(md.makeHtml('##The Role of KRas in Cancer'))
-    .append(`<div class="iframe-container"><iframe class="responsive-iframe" src="https://player.vimeo.com/video/506864719" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+    .append(`
+    <div class="iframe-container">
+      <iframe id="kras-video" class="responsive-iframe" src="https://player.vimeo.com/video/506864719" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+      <iframe id="kras-video-captions" class="hidden responsive-iframe" src="https://player.vimeo.com/video/506463421" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+    </div>
     <p><a href="https://vimeo.com/506864719">The Role of KRas in Cancer</a> from <a href="https://vimeo.com/majadivjak">Maja Divjak</a> on <a href="https://vimeo.com">Vimeo</a>.</p>`)
     .append(md.makeHtml(`#Link to Protein Databank:
 [Mutant KRas interacting with AMG 510](https://www.rcsb.org/pdb/explore/jmol.do?structureId=6oim&bionumber=1&jmolMode=HTML5)
 `))
+
+  d3.select("#bannerPageInner").append("input")
+  .attrs({
+    type: "button",
+    value: "Toggle Captions"
+  }).on("click", function(){
+    $("#kras-video-captions").toggleClass("hidden");
+    $("#kras-video").toggleClass("hidden");
+  })
 }
 
 function terms () {
