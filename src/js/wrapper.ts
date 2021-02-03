@@ -227,7 +227,13 @@ function toggleImageLinks () {
           class: 'thumbnail'
         })
       const desc = thumb.append('td')
-      desc.append('h3').text(data.name)
+      desc.append('h3')
+        .style("margin-top", 0)
+        .append('a').attrs({
+          href: `#${data.image}`,
+          onclick: `openScreen(${i})`
+        })
+        .text(data.name)
       desc.append('p').text(data.legend)
     })
 }
