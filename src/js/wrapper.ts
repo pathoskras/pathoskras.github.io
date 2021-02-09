@@ -25,7 +25,9 @@ If you have queries about the design of this resource, please contact Dr Maja Di
 `
 const introductionText = `##Introduction to KRas
 #What is KRas?
-Cells are the basic building blocks of our body, making up our tissues and organs. The body constantly makes new cells to help us grow, replace worn out tissue and heal injuries. Normally, cells multiply and die in an orderly way, so that each new cell replaces one lost. There are special messengers that tell our cells how to do this. KRas is a messenger inside our cells that controls when cells multiply. When cells are not multiplying, KRas is switched off. When cells need to multiply, KRas is switched on and when no longer needed, it is switched off again.
+Cells are the basic building blocks of our body, making up our tissues and organs. The body constantly makes new cells to help us grow, replace worn out tissue and heal injuries. Normally, cells multiply and die in an orderly way, so that each new cell replaces one lost.
+
+There are special messengers that tell our cells how to do this. KRas is a messenger inside our cells that controls when cells multiply. When cells are not multiplying, KRas is switched off. When cells need to multiply, KRas is switched on and when no longer needed, it is switched off again.
 
 #What Goes Wrong with KRas?
 Alterations can occur in the KRas messenger. One particular alteration is known as a ‘G12C’ alteration. Your doctor may have mentioned this G12C alteration to you. The result of this alteration is that KRas is always switched on. The end result is that affected cells keep multiplying out of control, forming a mass or lump called a tumour.
