@@ -73,7 +73,17 @@ const kras = {
                             hash: router.path[0]
                         }
                     }).then((d) => {
-                        Object.assign(data, d.data);
+                        try {
+                            if (typeof d.data === 'string') {
+                                Object.assign(data, JSON.parse(d.data));
+                            }
+                            else {
+                                Object.assign(data, d.data);
+                            }
+                        }
+                        catch (e) {
+                            console.error(`Error loading kras hash: ${router.path[0]}`);
+                        }
                         Object.assign(data, {
                             hash: d.hash
                         });
@@ -131,18 +141,18 @@ const kras = {
                     console.log('ERROR!', err);
                     router.res.end(err);
                 }
-                const data = fields;
                 const blob = {
-                    email: fields.email,
-                    firstName: fields.firstName,
-                    lastName: fields.lastName,
-                    doctor: fields.doctor,
-                    data: JSON.stringify(data)
+                    email: typeof fields.email === 'string' ? fields.email : fields.email[0],
+                    firstName: typeof fields.firstName === 'string' ? fields.firstName : fields.firstName[0],
+                    lastName: typeof fields.lastName === 'string' ? fields.lastName : fields.lastName[0],
+                    doctor: typeof fields.doctor === 'string' ? fields.doctor : fields.doctor[0],
+                    hash: "placeholder",
+                    data: fields
                 };
                 let hash = Math.random().toString(16).slice(2);
                 if (fields.hash) {
                     hash = fields.hash;
-                    blob.hash = fields.hash;
+                    blob.hash = typeof fields.hash === 'string' ? fields.hash : fields.hash[0];
                     router.db.Worksheet.update(blob, {
                         where: {
                             hash: blob.hash

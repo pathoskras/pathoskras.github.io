@@ -6,7 +6,7 @@ export interface WorksheetAttributes {
     email: string;
     doctor: string;
     hash: string;
-    data: string;
+    data: object;
     id?: number;
     createdAt?: Date;
     updatedAt?: Date;
