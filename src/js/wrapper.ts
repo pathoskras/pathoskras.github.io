@@ -48,7 +48,7 @@ const references = `#References:
 2. Andrew M. Waters and Channing J. Der. 2018. KRAS: The Critical Driver and Therapeutic Target for Pancreatic Cancer. Cold Spring Harb Perspect Med. 8(9): a031435
 3. Jude Cannon, Karen Rex, Anne Y. Saiki et al. 2019. The clinical KRAS (G12C) inhibitor AMG 510 drives anti-tumour immunity. Nature. 575: 217-223
 `
-const termsText = `##Terms and Definitions:
+const termsText1 = `##Terms and Definitions:
 #AMG 510:
 An experimental anti-cancer drug. It targets the G12C alteration in the KRas messenger, which is responsible for various forms of cancer
 
@@ -72,7 +72,9 @@ A special messenger inside our cells that tells a cell when to multiply
 #KRas, G12C:
 A defective alteration in KRas that tells a cell to multiply constantly
 
-#Lung/lung cancer:
+`
+
+const termsText2 = `#Lung/lung cancer:
 The lungs are a pair of breathing organs located in the chest, which transport oxygen into the blood and remove carbon dioxide. There is a left and right lung. Lung cancer occurs when abnormal cells develop in part of the lung.
 
 #Pancreas/pancreatic cancer:
@@ -85,20 +87,24 @@ Genetics Home Reference. Your Guide to Understanding Genetic Conditions [https:/
 Pathology Dictionary: KRAS [https://www.mypathologyreport.ca/kras/](https://www.mypathologyreport.ca/kras/)
 `
 
-function drawBannerPage (text: string) : d3.Selection<HTMLDivElement, unknown, HTMLElement, any> {
+function drawBannerPage(
+  text: string,
+  text2?: string
+): d3.Selection<HTMLDivElement, unknown, HTMLElement, any> {
+  if (text2) text += text2
+
   const row = d3.select('#contentBox').append('div').classed('row', true)
-  const result = row.append('div')
+  const result = row
+    .append('div')
     .classed('col-xs-9', true)
     .attr('id', 'bannerPageInner')
     .html(md.makeHtml(text))
-  row.append('div')
-    .classed('col-xs-3', true)
-    .classed('sideBanner', true)
+  row.append('div').classed('col-xs-3', true).classed('sideBanner', true)
 
   return result
 }
 
-function welcome () {
+function welcome() {
   hideEverything()
   d3.select('ul a[href="#Welcome"]').classed('selected', true)
   $('#contentBox').html()
@@ -106,11 +112,11 @@ function welcome () {
   drawBannerPage(welcomeText)
 }
 
-const drawers :Drawer[] = []
-let drawer :Drawer = null
+const drawers: Drawer[] = []
+let drawer: Drawer = null
 
 Object.keys(images).forEach(function (image) {
-  const drawingData :DrawingData = images[image]
+  const drawingData: DrawingData = images[image]
   const drawer = new Drawer(drawingData)
   drawers.push(drawer)
 })
@@ -122,7 +128,7 @@ Object.keys(images).forEach(function (image) {
  * Close any open drawers and save lines
  *
  */
-function hideEverything () {
+function hideEverything() {
   d3.selectAll('ul li a').classed('selected', false)
   $('#contentBox').html('')
   d3.selectAll('.bigText').classed('hidden', true)
@@ -145,7 +151,7 @@ function hideEverything () {
   }
 }
 
-function openScreen (id) {
+function openScreen(id) {
   hideEverything()
   d3.select(`a[onclick="openScreen(${id})"]`).classed('selected', true)
   d3.select('#noteBox').classed('hidden', false)
@@ -164,21 +170,22 @@ function openScreen (id) {
   }
 }
 
-function introduction () {
+function introduction() {
   hideEverything()
   d3.select('a[href="#Introduction"]').classed('selected', true)
 
   drawBannerPage(introductionText + '\n' + references)
 }
 
-function video () {
+function video() {
   hideEverything()
   d3.select('a[href="#Video"]').classed('selected', true)
   drawBannerPage('')
 
   $('#bannerPageInner')
     .html(md.makeHtml('##The Role of KRas in Cancer'))
-    .append(`
+    .append(
+      `
     <p>The following video shows how KRas works inside your cells to control cell multiplication and what can go wrong when KRas has a tiny defect.</p>
 
     <p>The molecules you will see are scientifically accurate and this is actually how they look. However, the colours are not accurate and are chosen for their artistic beauty only.</p>
@@ -187,69 +194,79 @@ function video () {
       <iframe id="kras-video" class="responsive-iframe" src="https://player.vimeo.com/video/506864719" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
       <iframe id="kras-video-captions" class="hidden responsive-iframe" src="https://player.vimeo.com/video/516611480" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
     </div>
-    <p><a href="https://vimeo.com/506864719">The Role of KRas in Cancer</a> from <a href="https://vimeo.com/majadivjak">Maja Divjak</a> on <a href="https://vimeo.com">Vimeo</a>.</p>`)
-    .append(md.makeHtml(`#Link to Protein Databank:
+    <p><a href="https://vimeo.com/506864719">The Role of KRas in Cancer</a> from <a href="https://vimeo.com/majadivjak">Maja Divjak</a> on <a href="https://vimeo.com">Vimeo</a>.</p>`
+    )
+    .append(
+      md.makeHtml(`#Link to Protein Databank:
 [Mutant KRas interacting with AMG 510](https://www.rcsb.org/pdb/explore/jmol.do?structureId=6oim&bionumber=1&jmolMode=HTML5)
-`))
+`)
+    )
 
-  d3.select("#bannerPageInner").append("input")
-  .attrs({
-    type: "button",
-    value: "Toggle Video"
-  }).on("click", function(){
-    $("#kras-video-captions").toggleClass("hidden");
-    $("#kras-video").toggleClass("hidden");
-  })
+  d3.select('#bannerPageInner')
+    .append('input')
+    .attrs({
+      type: 'button',
+      value: 'Toggle Video',
+    })
+    .on('click', function () {
+      $('#kras-video-captions').toggleClass('hidden')
+      $('#kras-video').toggleClass('hidden')
+    })
 }
 
-function terms () {
+function terms() {
   hideEverything()
   d3.select('a[href="#Terms"]').classed('selected', true)
   $('#contentBox').html()
 
-  drawBannerPage(termsText)
-  var div = d3.select("#lunglungcancer")
-    .append("div").styles({
-      float: 'right',
-      'text-align': 'center'
-    })
-  div.append('a').attrs({
-    src: 'https://en.wikipedia.org/wiki/File:Pancreas_and_nearby_organs.jpg',
-    target: '_blank'
+  drawBannerPage(termsText1, termsText2)
+  var div = d3.select('#lunglungcancer').append('div').styles({
+    float: 'right',
+    'text-align': 'center',
   })
-    .append("img").attrs({
-      src: "/images/Pancreas_and_nearby_organs.jpg"
-    }).styles({
-      height: '250px'
+  div
+    .append('a')
+    .attrs({
+      src: 'https://en.wikipedia.org/wiki/File:Pancreas_and_nearby_organs.jpg',
+      target: '_blank',
     })
-  div.append("p")
-    .text("Don Bliss - ")
+    .append('img')
+    .attrs({
+      src: '/images/Pancreas_and_nearby_organs.jpg',
+    })
+    .styles({
+      height: '250px',
+    })
+  div
+    .append('p')
+    .text('Don Bliss - ')
     .styles({
       'font-weight': 100,
-      'font-size': '14px'
-    }).append("a").attrs({
+      'font-size': '14px',
+    })
+    .append('a')
+    .attrs({
       target: '_blank',
-      href: 'https://en.wikipedia.org/wiki/National_Cancer_Institute'
-    }).text('National Cancer Institute')
+      href: 'https://en.wikipedia.org/wiki/National_Cancer_Institute',
+    })
+    .text('National Cancer Institute')
   // pancreaspancreaticcancer
   // Pancreas_and_nearby_organs.jpg
 }
 
-function email () {
+function email() {
   hideEverything()
   d3.select('a[href="#Email"]').classed('selected', true)
   d3.select('#emailForm').classed('hidden', false)
 }
 
-function toggleImageLinks () {
+function toggleImageLinks() {
   // $('li.image').toggleClass("hidden")
   $('li.image').removeClass('hidden')
   hideEverything()
   drawBannerPage('')
 
-  d3.select('#bannerPageInner')
-    .append('h1')
-    .text('Images')
+  d3.select('#bannerPageInner').append('h1').text('Images')
 
   d3.select('#bannerPageInner')
     .append('table')
@@ -261,21 +278,26 @@ function toggleImageLinks () {
     .each((d, i, arr) => {
       const data = images[d]
       const thumb = d3.select(arr[i])
-      thumb.append('td')
-        .append('a').attrs({
+      thumb
+        .append('td')
+        .append('a')
+        .attrs({
           href: `#${data.image}`,
-          onclick: `openScreen(${i})`
+          onclick: `openScreen(${i})`,
         })
-        .append('img').attrs({
+        .append('img')
+        .attrs({
           src: `/images/${data.image}`,
-          class: 'thumbnail'
+          class: 'thumbnail',
         })
       const desc = thumb.append('td')
-      desc.append('h3')
-        .style("margin-top", 0)
-        .append('a').attrs({
+      desc
+        .append('h3')
+        .style('margin-top', 0)
+        .append('a')
+        .attrs({
           href: `#${data.image}`,
-          onclick: `openScreen(${i})`
+          onclick: `openScreen(${i})`,
         })
         .text(data.name)
       desc.append('p').text(data.legend)
@@ -284,70 +306,88 @@ function toggleImageLinks () {
 
 let pageCount = 1
 
-function drawHeader (elem :d3.Selection<HTMLElement, unknown, HTMLElement, any>) {
+function drawHeader(
+  elem: d3.Selection<HTMLElement, unknown, HTMLElement, any>
+) {
   const header = elem.insert('div').classed('printHeader row', true)
 
-  header.append('div').classed('col-xs-3', true)
-    .append('img').attrs({
-      class: 'headerLogo',
-      src: '/images/petermac_logo.png'
-    })
+  header.append('div').classed('col-xs-3', true).append('img').attrs({
+    class: 'headerLogo',
+    src: '/images/petermac_logo.png',
+  })
 
-  header.append('div')
+  header
+    .append('div')
     .classed('col-xs-6', true)
     .styles({
-      'text-align': 'center'
+      'text-align': 'center',
     })
     .append('h1')
     .styles({
-      'text-align': 'center'
+      'text-align': 'center',
     })
     .text('Interactive KRas Resource')
 
-  header.append('div')
+  header
+    .append('div')
     .classed('col-xs-3', true)
     .styles({
-      'text-align': 'right'
+      'text-align': 'right',
     })
     .append('h4')
     .text(`Page ${pageCount++} of 8`)
 }
 
-function printVersion () {
+function printVersion() {
   console.log('Print mode')
 
   $('#wrapper').toggleClass('pdfMode')
   $('#bannerPageInner').remove()
 
-  const frontPage = d3.select('#contentBox')
-    .append('div').classed('printPage', true)
+  const frontPage = d3
+    .select('#contentBox')
+    .append('div')
+    .classed('printPage', true)
 
   drawHeader(frontPage)
 
   let row = frontPage.append('div').classed('row', true)
-  row.append('div').classed('col-xs-6', true)
-    .html(md.makeHtml(welcomeText))
+  row.append('div').classed('col-xs-6', true).html(md.makeHtml(welcomeText))
 
-  row.append('div').classed('col-xs-6', true)
+  row
+    .append('div')
+    .classed('col-xs-6', true)
     .html(md.makeHtml(introductionText))
 
-  const nextPage = d3.select('#contentBox')
-    .append('div').classed('printPage', true)
+  const nextPage = d3
+    .select('#contentBox')
+    .append('div')
+    .classed('printPage', true)
 
   drawHeader(nextPage)
 
   row = nextPage.append('div').classed('row', true)
-  row.append('div').classed('col-xs-6', true)
-    .html(md.makeHtml(termsText))
+  row.append('div').classed('col-xs-6', true).html(md.makeHtml(termsText1))
 
-  row.append('div').classed('col-xs-6', true)
-    .html(md.makeHtml(references))
+  const col2 = row.append('div').classed('col-xs-6', true)
+  col2
+    .append('img')
+    .attrs({
+      src: '/images/Pancreas_and_nearby_organs.jpg',
+    })
+    .styles({
+      height: '250px',
+      float: 'right',
+    })
+  col2.append('div').html(md.makeHtml(termsText2))
+
+  col2.append('div').html(md.makeHtml(references))
 
   d3.select('#d3-drawer').classed('hidden', false)
   d3.select('#drawer-ui').remove()
 
   const box = d3.select('#d3-drawer')
-  drawers.forEach(drawer => {
+  drawers.forEach((drawer) => {
     const div = box.append('div').classed('printPage', true)
     drawHeader(div)
     div.append('h1').text(drawer.name)
