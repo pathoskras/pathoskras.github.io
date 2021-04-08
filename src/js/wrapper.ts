@@ -9,7 +9,7 @@ const welcomeText = `##Welcome to the KRas Interactive Resource
 This interactive resource is to help explain how changes in your cells can lead to cancer. It is specifically designed to assist those patients with cancer caused by alterations in a cell messenger known as KRas. This specific alteration is known as G12C KRas and your doctor may have spoken
 with you about this.
 
-#Why have we Created this Resource?
+#Why have we created this Resource?
 The purpose of this resource is to help patients better understand their particular cancer and how it is caused and how specific treatments work. We hope this will increase patient knowledge and confidence in making decisions about their treatment.
 
 #How does this Resource Work?
@@ -19,7 +19,7 @@ The resource begins with some introductory information about KRas. This is follo
 
 Finally, there is a list of terms and definitions and some useful links.
 
-#Who Created this Resource?
+#Who created this Resource?
 This interactive resource was designed and constructed at the Peter MacCallum Cancer Centre by David Ma, Bioinformatics Software Engineer. The text, video animation and images were created by Dr Maja Divjak, Biomedical Animator.
 If you have queries about the design of this resource, please contact Dr Maja Divjak via [maja.divjak@petermac.org](mailto:maja.divjak@petermac.org?subject=KRAS%20Annotation) for further assistance. Please note that Dr Divjak cannot answer queries relating to your diagnosis or treatment. Please ask your doctor for assistance with this.
 `
@@ -179,9 +179,13 @@ function video () {
   $('#bannerPageInner')
     .html(md.makeHtml('##The Role of KRas in Cancer'))
     .append(`
+    <p>The following video shows how KRas works inside your cells to control cell multiplication and what can go wrong when KRas has a tiny defect.</p>
+
+    <p>The molecules you will see are scientifically accurate and this is actually how they look. However, the colours are not accurate and are chosen for their artistic beauty only.</p>
+
     <div class="iframe-container">
       <iframe id="kras-video" class="responsive-iframe" src="https://player.vimeo.com/video/506864719" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-      <iframe id="kras-video-captions" class="hidden responsive-iframe" src="https://player.vimeo.com/video/506463421" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+      <iframe id="kras-video-captions" class="hidden responsive-iframe" src="https://player.vimeo.com/video/516611480" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
     </div>
     <p><a href="https://vimeo.com/506864719">The Role of KRas in Cancer</a> from <a href="https://vimeo.com/majadivjak">Maja Divjak</a> on <a href="https://vimeo.com">Vimeo</a>.</p>`)
     .append(md.makeHtml(`#Link to Protein Databank:
@@ -191,7 +195,7 @@ function video () {
   d3.select("#bannerPageInner").append("input")
   .attrs({
     type: "button",
-    value: "Toggle Captions"
+    value: "Toggle Video"
   }).on("click", function(){
     $("#kras-video-captions").toggleClass("hidden");
     $("#kras-video").toggleClass("hidden");
@@ -204,6 +208,31 @@ function terms () {
   $('#contentBox').html()
 
   drawBannerPage(termsText)
+  var div = d3.select("#lunglungcancer")
+    .append("div").styles({
+      float: 'right',
+      'text-align': 'center'
+    })
+  div.append('a').attrs({
+    src: 'https://en.wikipedia.org/wiki/File:Pancreas_and_nearby_organs.jpg',
+    target: '_blank'
+  })
+    .append("img").attrs({
+      src: "/images/Pancreas_and_nearby_organs.jpg"
+    }).styles({
+      height: '250px'
+    })
+  div.append("p")
+    .text("Don Bliss - ")
+    .styles({
+      'font-weight': 100,
+      'font-size': '14px'
+    }).append("a").attrs({
+      target: '_blank',
+      href: 'https://en.wikipedia.org/wiki/National_Cancer_Institute'
+    }).text('National Cancer Institute')
+  // pancreaspancreaticcancer
+  // Pancreas_and_nearby_organs.jpg
 }
 
 function email () {

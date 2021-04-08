@@ -36,7 +36,7 @@ const kras : Thalia.WebsiteConfig = {
               id: 0
             },
             {
-              image: 'KRasEditPlusLabelsNoCaptionsON_Switch.png',
+              image: 'KRasEditPlusLabelsNoCaptionsON_SwitchPlusWatermark.png',
               name: 'KRas Turned On',
               legend: 'The red off switch is swapped for the green on-switch, turning KRas on.',
               id: 1
@@ -60,7 +60,7 @@ const kras : Thalia.WebsiteConfig = {
               id: 4
             },
             {
-              image: 'KRas_AMG510WithLabels.png',
+              image: 'KRas_AMG510WithLabelsPlusWatermark.png',
               name: 'AMG 510 Keeps Altered KRas Turned Off',
               legend: 'New treatment AMG 510 fits into altered KRas, keeping the off switch in place, keeping altered KRas turned off.',
               id: 5
@@ -307,7 +307,7 @@ async function makePdf (hash: string): Promise<string> {
                   path: filepath,
                   printBackground: true,
                   landscape: true,
-                  format: 'A4',
+                  // format: 'A4',
                   margin: {
                     top: '1cm',
                     right: '1cm',
