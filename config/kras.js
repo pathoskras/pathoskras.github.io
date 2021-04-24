@@ -9,7 +9,6 @@ const mustache_1 = __importDefault(require("mustache"));
 const nodemailer_1 = __importDefault(require("nodemailer"));
 const formidable_1 = __importDefault(require("formidable"));
 const puppeteer_1 = __importDefault(require("puppeteer"));
-console.log('Loading kras.ts');
 let mailAuth = {
     user: 'username@gmail.com',
     pass: 'password_here_lol'
@@ -264,7 +263,7 @@ async function makePdf(hash) {
         puppeteer_1.default.launch({}).then(browser => {
             browser.newPage().then(page => {
                 page.setExtraHTTPHeaders({
-                    'test-host': 'pathos.david-ma.net'
+                    'x-host': 'pathos.co'
                 }).then(() => {
                     page.goto(`http://localhost:1337/kras/${hash}`, {
                         waitUntil: 'domcontentloaded'

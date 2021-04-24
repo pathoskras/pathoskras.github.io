@@ -311,14 +311,14 @@ function drawHeader(
 ) {
   const header = elem.insert('div').classed('printHeader row', true)
 
-  header.append('div').classed('col-xs-3', true).append('img').attrs({
+  header.append('div').classed('col-xs-2', true).append('img').attrs({
     class: 'headerLogo',
     src: '/images/petermac_logo.png',
   })
 
   header
     .append('div')
-    .classed('col-xs-6', true)
+    .classed('col-xs-8', true)
     .styles({
       'text-align': 'center',
     })
@@ -330,7 +330,7 @@ function drawHeader(
 
   header
     .append('div')
-    .classed('col-xs-3', true)
+    .classed('col-xs-2', true)
     .styles({
       'text-align': 'right',
     })

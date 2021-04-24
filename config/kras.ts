@@ -6,7 +6,7 @@ import formidable from 'formidable'
 import puppeteer from 'puppeteer'
 import { Thalia } from '../../../server/thalia'
 
-console.log('Loading kras.ts')
+// console.log('Loading kras.ts')
 
 // const env = process.env.NODE_ENV || 'development'
 
@@ -295,7 +295,7 @@ async function makePdf (hash: string): Promise<string> {
     }).then(browser => {
       browser.newPage().then(page => {
         page.setExtraHTTPHeaders({
-          'test-host': 'pathos.david-ma.net'
+          'x-host': 'pathos.co'
         }).then(() => {
           page.goto(`http://localhost:1337/kras/${hash}`, {
             waitUntil: 'domcontentloaded'
