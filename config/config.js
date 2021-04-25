@@ -17,9 +17,9 @@ const pathos = {
         {
             domains: ['www.pathos.co', 'pathos.co'],
             filter: 'PathOS',
-            message: 'Error, server might be down or proxy settings might be wrong. You can try visiting the server directly at: http://115.146.85.170:8123/PathOS/',
-            host: '115.146.85.170',
-            port: 8123
+            message: 'Error, server might be down or proxy settings might be wrong. You can try visiting the server directly at: http://115.146.86.36:8080/PathOS/',
+            host: '115.146.86.36',
+            port: 8080
         }
     ]
 };

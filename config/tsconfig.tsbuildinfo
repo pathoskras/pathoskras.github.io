@@ -707,7 +707,7 @@
         "affectsGlobalScope": false
       },
       "./config.ts": {
-        "version": "63c970ee92c054dd11e03b5edcc8249fb2d957345560f5ce1e7888a5af01bfde",
+        "version": "172410cbf501fc096f6ccb3ab0184c74105dc04f1bd8fd078a16af7f11c70b0f",
         "signature": "ee065286884381765a1e450dde266e2a996898f69f3bcfb17b60339ff2a768de",
         "affectsGlobalScope": false
       },
@@ -1145,8 +1145,6 @@
       "noImplicitThis": false,
       "noImplicitReturns": false,
       "noUnusedLocals": false,
-      "preserveWatchOutput": true,
-      "watch": true,
       "configFilePath": "./tsconfig.json"
     },
     "referencedMap": {
