@@ -276,10 +276,10 @@ async function makePdf(hash) {
                                     printBackground: true,
                                     landscape: true,
                                     margin: {
-                                        top: '1cm',
-                                        right: '1cm',
-                                        bottom: '1cm',
-                                        left: '1cm'
+                                        top: '0.9cm',
+                                        right: '0.9cm',
+                                        bottom: '0.9cm',
+                                        left: '0.9cm'
                                     }
                                 }).then(() => {
                                     browser.close();

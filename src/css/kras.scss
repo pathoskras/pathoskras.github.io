@@ -184,13 +184,19 @@ img.bigImage {
     #introductiontokras {
       display: none;
     }
-    ul, ol {
+    ul,
+    ol {
       padding-left: 20px;
     }
     h1 {
       margin-top: 10px;
       margin-bottom: 5px;
     }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+
     padding: 0 15px;
     .printHeader {
       vertical-align: bottom;
@@ -198,7 +204,7 @@ img.bigImage {
       // margin-top: 4cm;
       border-bottom: solid 1px black;
       .headerLogo {
-        width: 150px;
+        width: 130px;
         margin-bottom: 10px;
       }
       h1 {

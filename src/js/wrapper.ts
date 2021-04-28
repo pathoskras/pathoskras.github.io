@@ -41,8 +41,8 @@ Alterations can occur in the KRas messenger. One particular alteration is known 
 Even though a significant number of lung and bowel cancer patients are affected by the G12C alteration, developing effective treatments has proven challenging. Recently however, a couple of treatments have been developed that keep the G12C KRas messenger switched off, without affecting normal KRas. These treatments, including AMG 510, have shown anti-cancer activity in clinical trials and could offer effective treatment options for patients who have previously had few choices (3).
 
 #Clinical Trials Treating G12C KRas
-At the Peter MacCallum Cancer Centre we are conducting clinical trials for G12C KRas patients to assess the effectiveness of treatments such as AMG 510. Your clinician will explain how these clinical trials work and whether you are suitable to take part.
-`
+At the Peter MacCallum Cancer Centre we are conducting clinical trials for G12C KRas patients to assess the effectiveness of treatments such as AMG 510. Your clinician will explain how these clinical trials work and whether you are suitable to take part.`
+
 const references = `#References:
 1. AACR Project GENIE: Powering Precision Medicine through an International Consortium. 2017. Cancer Discov. 7(8): 818-831
 2. Andrew M. Waters and Channing J. Der. 2018. KRAS: The Critical Driver and Therapeutic Target for Pancreatic Cancer. Cold Spring Harb Perspect Med. 8(9): a031435
