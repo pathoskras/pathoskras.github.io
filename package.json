@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "Wrapper for PathOS Variant System, also contains PathOS side projects",
   "main": "server/thalia.js",
-  "repository": "https://github.com/david-ma/kras.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/david-ma/kras.git"
+  },
   "author": "David Ma <github@david-ma.net>",
   "license": "MIT",
   "scripts": {
@@ -17,7 +20,12 @@
     "mariadb": "^2.5.1",
     "mime": "^2.4.6",
     "mustache": "^4.0.1",
+    "nodemailer": "^6.6.1",
     "sequelize": "^6.3.5",
     "socket.io": "^2.3.0"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/david-ma/kras/issues"
+  },
+  "homepage": "https://github.com/david-ma/kras#readme"
 }
