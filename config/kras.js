@@ -27,37 +27,37 @@ const kras = {
                 const data = {
                     images: [
                         {
-                            image: 'KRasEditPlusLabelsNoCaptionsOFF_Switch.png',
+                            image: 'KRasEditPlusLabelsOFF_SwitchPlusWatermarkNewFont.png',
                             name: 'KRas turned off',
                             legend: 'The switch indicated in red keeps KRas turned off.',
                             id: 0
                         },
                         {
-                            image: 'KRasEditPlusLabelsNoCaptionsON_SwitchPlusWatermark.png',
+                            image: 'KRasEditPlusLabelsON_SwitchPlusWatermarkNewFont.png',
                             name: 'KRas turned on',
                             legend: 'The red off switch is swapped for the green on-switch, turning KRas on.',
                             id: 1
                         },
                         {
-                            image: 'KRasEditPlusLabelsNoCaptionsSwitchingOFF.png',
+                            image: 'KRasEditPlusLabelsSwitchingOFF_PlusWatermarkNewFont.png',
                             name: 'Turning off KRas',
                             legend: 'The large orange molecule splits the on switch in KRas, converting it back to an off switch. This turns KRas off once again.',
                             id: 2
                         },
                         {
-                            image: 'KRasEditPlusLabelsNoCaptionsMUTANT_K_Ras.png',
+                            image: 'KRasEditPlusLabelsMUTANT_K_RasPlusWatermarkNewFont.png',
                             name: 'Faulty KRas',
                             legend: 'A defect or fault in KRas is indicated in purple. This defect keeps the green on switch permanently in place and KRas constantly switched on.',
                             id: 3
                         },
                         {
-                            image: 'KRasEditPlusLabelsNoCaptionsCancerCellsDividing.png',
+                            image: 'KRasEditPlusLabelsCancerCellsDividingPlusWatermarkNewFont.png',
                             name: 'Tumour cells dividing',
                             legend: 'If KRas is constantly switched on, this results in out of control cell division.',
                             id: 4
                         },
                         {
-                            image: 'KRas_AMG510WithLabelsPlusWatermark.png',
+                            image: 'KRas_AMG510WithLabelsPlusWatermarkNewFont.png',
                             name: 'AMG 510 keeps faulty KRas turned off',
                             legend: 'New treatment AMG 510 fits into faulty KRas, keeping the off switch in place, keeping faulty KRas turned off.',
                             id: 5
