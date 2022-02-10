@@ -43,7 +43,7 @@ Even though a significant number of lung and bowel cancer patients are affected 
 #Clinical trials treating G12C KRas
 At the Peter MacCallum Cancer Centre we are conducting clinical trials for G12C KRas patients to assess the effectiveness of treatments such as AMG 510. Your clinician will explain how these clinical trials work and whether you are suitable to take part.`
 
-const references = `#References:
+const references = `#References
 1. AACR Project GENIE: Powering Precision Medicine through an International Consortium. 2017. Cancer Discov. 7(8): 818-831
 2. Andrew M. Waters and Channing J. Der. 2018. KRAS: The Critical Driver and Therapeutic Target for Pancreatic Cancer. Cold Spring Harb Perspect Med. 8(9): a031435
 3. Jude Cannon, Karen Rex, Anne Y. Saiki et al. 2019. The clinical KRAS (G12C) inhibitor AMG 510 drives anti-tumour immunity. Nature. 575: 217-223
@@ -188,20 +188,20 @@ function video() {
       `
     <p>The following video shows how KRas works inside your cells to control cell division and what can go wrong when KRas has a tiny defect.</p>
 
-    <p>The proteins you will see are scientifically accurate and are actually shaped like that. However, in reality, the proteins are not coloured- we have used colour only to identify the different proteins.</p>
+    <p>The proteins you can see are scientifically accurate and are actually shaped like that. However, in reality, the proteins are not coloured- we have used colour only to identify the different proteins.</p>
 
     <div class="iframe-container">
       <iframe id="kras-video" class="responsive-iframe" src="https://player.vimeo.com/video/506864719" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
       <iframe id="kras-video-captions" class="hidden responsive-iframe" src="https://player.vimeo.com/video/516611480" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
     </div>
-    <p><a href="https://vimeo.com/506864719">The Role of KRas in Cancer</a> from <a href="https://vimeo.com/majadivjak">Maja Divjak</a> on <a href="https://vimeo.com">Vimeo</a>.</p>`
+    <p><a href="https://vimeo.com/506864719">The Role of KRas in Cancer</a> (<a href="https://vimeo.com/516611480">with captions</a>) from <a href="https://vimeo.com/majadivjak">Maja Divjak</a> on <a href="https://vimeo.com">Vimeo</a>.</p>`
     )
 
   d3.select('#bannerPageInner')
     .append('input')
     .attrs({
       type: 'button',
-      value: 'Toggle Video',
+      value: 'Toggle Video Captions',
     })
     .on('click', function () {
       $('#kras-video-captions').toggleClass('hidden')
@@ -218,6 +218,7 @@ function terms() {
   var div = d3.select('#lunglungcancer').append('div').styles({
     float: 'right',
     'text-align': 'center',
+    'max-width': '400px',
   })
   div
     .append('a')
@@ -227,24 +228,20 @@ function terms() {
     })
     .append('img')
     .attrs({
-      src: '/images/Pancreas_and_nearby_organs.jpg',
+      src: '/images/torso.png',
     })
     .styles({
-      height: '250px',
+      height: '400px',
     })
   div
     .append('p')
-    .text('Don Bliss - ')
+    .text(
+      'From the MSD Manual Consumer Version (Known as the Merck Manual in the US and Canada and the MSD Manual in the rest of the world), edited by Sandy Falk. Copyright 2022 by Merck Sharp & Dohme Corp., a subsidiary of Merck & Co., Inc., Kenilworth, NJ. Available at http://www.msdmanuals.com/home. Accessed Feb 2022.'
+    )
     .styles({
       'font-weight': 100,
-      'font-size': '14px',
+      'font-size': '10px',
     })
-    .append('a')
-    .attrs({
-      target: '_blank',
-      href: 'https://en.wikipedia.org/wiki/National_Cancer_Institute',
-    })
-    .text('National Cancer Institute')
   // pancreaspancreaticcancer
   // Pancreas_and_nearby_organs.jpg
 }
