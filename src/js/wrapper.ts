@@ -62,7 +62,7 @@ lymph systems.
 
 #Cells:
 * The smallest, living parts of the body. Cells work together to form or build the body.
-* A human is made up of millions of cells.
+* A human is made up of trillions of cells.
 * Cells multiply and reproduce themselves to make sure a body stays working.
 * Sometimes cells can be abnormal or damaged and these can be cancer cells.
 
@@ -96,10 +96,13 @@ function drawBannerPage(
   const row = d3.select('#contentBox').append('div').classed('row', true)
   const result = row
     .append('div')
-    .classed('col-xs-9', true)
+    .classed('col-sm-9 col-xs-12', true)
     .attr('id', 'bannerPageInner')
     .html(md.makeHtml(text))
-  row.append('div').classed('col-xs-3', true).classed('sideBanner', true)
+  row
+    .append('div')
+    .classed('col-sm-3 hidden-xs', true)
+    .classed('sideBanner', true)
 
   return result
 }
@@ -221,17 +224,14 @@ function terms() {
     'max-width': '400px',
   })
   div
-    .append('a')
-    .attrs({
-      src: 'https://en.wikipedia.org/wiki/File:Pancreas_and_nearby_organs.jpg',
-      target: '_blank',
-    })
     .append('img')
     .attrs({
       src: '/images/torso.png',
     })
     .styles({
       height: '400px',
+      'max-width': '100%',
+      'object-fit': 'cover',
     })
   div
     .append('p')
@@ -365,9 +365,10 @@ function printVersion() {
   col2
     .append('img')
     .attrs({
-      src: '/images/Pancreas_and_nearby_organs.jpg',
+      src: '/images/torso.png',
     })
     .styles({
+      'margin-top': '5px',
       height: '250px',
       float: 'right',
     })
