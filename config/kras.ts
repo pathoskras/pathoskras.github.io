@@ -142,7 +142,12 @@ const kras : Thalia.WebsiteConfig = {
       router.res.end('Ok lol I guess we sent some mail??')
     },
 
-    saveDetails: function (router) {
+    saveDetails: function(router) {
+      console.log("Warning, someone is trying to use the KRAS app")
+      router.res.end(`Sorry saving data and emailing is currently not available.<br>If you need a PDF copy of this website, Please download and use this: <a href="https://pathos.co/pdfs/example.pdf">https://pathos.co/pdfs/example.pdf</a>`)
+    },
+
+    brokenSaveDetails: function (router) {
       // console.log(router.db);
       // console.log('router.path is:', router.path)
       // console.log('keys: ', Object.keys(router))
