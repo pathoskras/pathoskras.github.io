@@ -11,4 +11,6 @@ const seq :seqObject = {
   Worksheet: Worksheet
 }
 
+// seq.sequelize.sync({ force: true })
+
 export { seq }

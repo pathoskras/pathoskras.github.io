@@ -133,11 +133,11 @@ const kras = {
             });
             router.res.end('Ok lol I guess we sent some mail??');
         },
-        saveDetails: function (router) {
+        failsafeSaveDetails: function (router) {
             console.log("Warning, someone is trying to use the KRAS app");
             router.res.end(`Sorry saving data and emailing is currently not available.<br>If you need a PDF copy of this website, Please download and use this: <a href="https://pathos.co/pdfs/example.pdf">https://pathos.co/pdfs/example.pdf</a>`);
         },
-        brokenSaveDetails: function (router) {
+        saveDetails: function (router) {
             const form = new formidable_1.default.IncomingForm();
             form.parse(router.req, (err, fields) => {
                 if (err) {

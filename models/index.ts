@@ -8,11 +8,7 @@ let seqOptions: sequelize.Options = {
   database: process.env.DB_NAME || 'typescript_test',
   username: process.env.DB_USER || 'root',
   password: process.env.DB_PASSWORD || '',
-  port: 3306,
-  dialect: 'mariadb',
-  // timezone: 'Australia/Melbourne',
   dialectOptions: {
-    timezone: 'Australia/Melbourne',
     decimalNumbers: true
   },
   define: {
@@ -35,3 +31,4 @@ export const dbConfig: sequelize.Sequelize = new sequelize.Sequelize(seqOptions)
 
 // Initialise models
 export const Worksheet = WorksheetFactory(dbConfig)
+

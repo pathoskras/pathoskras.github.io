@@ -31,10 +31,7 @@ let seqOptions = {
     database: process.env.DB_NAME || 'typescript_test',
     username: process.env.DB_USER || 'root',
     password: process.env.DB_PASSWORD || '',
-    port: 3306,
-    dialect: 'mariadb',
     dialectOptions: {
-        timezone: 'Australia/Melbourne',
         decimalNumbers: true
     },
     define: {
