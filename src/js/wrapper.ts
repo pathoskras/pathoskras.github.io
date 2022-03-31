@@ -38,10 +38,10 @@ Defects or faults can occur in the KRas messenger. One particular defect is know
 * In bowel and pancreatic cancer, about 1-3% of patients have this G12C alteration (1, 2).
 
 #Treating G12C KRas
-Even though a significant number of lung and bowel cancer patients are affected by the G12C alteration, developing effective treatments has proven challenging. Recently however, a couple of treatments have been developed that keep the G12C KRas messenger switched off, without affecting normal KRas. These treatments, including AMG 510, have shown anti-cancer activity in clinical trials and could offer effective treatment options for patients who have previously had few choices (3).
+Even though a significant number of lung and bowel cancer patients are affected by the G12C alteration, developing effective treatments has proven challenging. Recently however, a few treatments have been developed that keep the G12C KRas messenger switched off, without affecting normal KRas. These treatments have shown anti-cancer activity in clinical trials and could offer effective treatment options for patients who have previously had few choices (3).
 
 #Clinical trials treating G12C KRas
-At the Peter MacCallum Cancer Centre we are conducting clinical trials for G12C KRas patients to assess the effectiveness of treatments such as AMG 510. Your clinician will explain how these clinical trials work and whether you are suitable to take part.`
+At the Peter MacCallum Cancer Centre we are conducting clinical trials for G12C KRas patients to assess the effectiveness of treatments that keep the G12C KRas messenger switched off. Your clinician will explain how these clinical trials work and whether you are suitable to take part.`
 
 const references = `#References
 1. AACR Project GENIE: Powering Precision Medicine through an International Consortium. 2017. Cancer Discov. 7(8): 818-831
@@ -49,9 +49,6 @@ const references = `#References
 3. Jude Cannon, Karen Rex, Anne Y. Saiki et al. 2019. The clinical KRAS (G12C) inhibitor AMG 510 drives anti-tumour immunity. Nature. 575: 217-223
 `
 const termsText1 = `##Terms and definitions
-#AMG 510:
-An anti-cancer treatment currently being tested in clinical trials. It targets the G12C alteration in the KRas messenger, which is responsible for various forms of cancer.
-
 #Bowel/bowel cancer:
 The bowel is the intestines (like a tube) that run between the stomach and anus and is made up of the small bowel (small intestine) and the large bowel (colon and rectum). Bowel cancer is cancer in any part of the large bowel. It is sometimes known as colorectal cancer and might also be called colon cancer or rectal cancer, depending on where it starts. Cancer of the small bowel is very rare – it is called small bowel cancer or small intestine cancer.
 
@@ -72,6 +69,8 @@ A special messenger inside our cells that tells a cell when to divide.
 #KRas, G12C:
 A defective alteration in KRas that tells a cell to divide constantly.
 
+#KRas, G12C treatments:
+Anti-cancer treatments that target the G12C alteration in the KRas messenger, which is responsible for various forms of cancer. These treatments are currently being tested in clinical trials.
 `
 
 const termsText2 = `#Lung/lung cancer:

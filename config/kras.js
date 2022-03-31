@@ -58,8 +58,8 @@ const kras = {
                         },
                         {
                             image: 'KRas_AMG510WithLabelsPlusWatermarkNewFont.png',
-                            name: 'AMG 510 keeps faulty KRas turned off',
-                            legend: 'New treatment AMG 510 fits into faulty KRas, keeping the off switch in place, keeping faulty KRas turned off.',
+                            name: 'New treatments keep faulty KRas turned off',
+                            legend: 'New treatments fit into faulty KRas, keeping the off switch in place, keeping faulty KRas turned off.',
                             id: 5
                         }
                     ]
