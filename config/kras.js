@@ -66,7 +66,7 @@ const kras = {
                 };
                 data.imagesJson = JSON.stringify(data.images);
                 views.inner = views.kras;
-                if (router.path && router.path[0] && router.path[0] !== '') {
+                if (router.path && router.path[0] && router.path[0] !== '' && router.db) {
                     router.db.Worksheet.findOne({
                         where: {
                             hash: router.path[0]

@@ -12,10 +12,10 @@ const pathos = {
         '/oberyn': 'https://docs.google.com/presentation/d/e/2PACX-1vRbVjtvKU_jFcqWVnYxXQrHdB30Y2Q0oxp1IGDgBu4X_9I3Gm3Q2mTU2SAKl4wcp6A7OT7lIwQgmV1t/pub?start=false&loop=false&delayms=3000'
     },
     data: true,
-    domains: ['www.pathos.co', 'pathos.co'],
+    domains: ['www.pathos.co', 'pathos.co', 'backup.pathos.co'],
     proxies: [
         {
-            domains: ['www.pathos.co', 'pathos.co'],
+            domains: ['www.pathos.co', 'pathos.co', 'backup.pathos.co'],
             filter: 'PathOS',
             message: 'Error, server might be down or proxy settings might be wrong. You can try visiting the server directly at: http://115.146.86.36:8080/PathOS/',
             host: '115.146.86.36',
