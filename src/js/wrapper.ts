@@ -218,7 +218,7 @@ function terms() {
   $('#contentBox').html()
 
   drawBannerPage(termsText1, termsText2)
-  var div = d3.select('#lunglungcancer').append('div').styles({
+  var div = d3.select('#cells').append('div').styles({
     float: 'right',
     'text-align': 'center',
     'max-width': '400px',
