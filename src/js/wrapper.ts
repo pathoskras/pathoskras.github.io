@@ -278,7 +278,8 @@ function toggleImageLinks() {
         })
         .append('img')
         .attrs({
-          src: `/images/${data.image}`,
+          // src: `/images/${data.image}`,
+          src: `${data.thumbnail}`,
           class: 'thumbnail',
         })
       const desc = thumb.append('td')

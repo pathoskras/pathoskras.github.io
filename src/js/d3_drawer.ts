@@ -14,6 +14,8 @@ const renderLine = d3.line().x(function (d) {
 type DrawingData = {
   id: number;
   image: string;
+  smugmug: string;
+  thumbnail: string;
   lines: DrawnLine[];
   name: string;
   legend: string;
@@ -32,6 +34,8 @@ class Drawer {
   backgroundImage: string;
   id: number;
   image: string;
+  smugmug: string;
+  thumbnail: string;
   name: string;
   legend: string;
 
@@ -53,6 +57,8 @@ class Drawer {
     this.drawingData.lines = data.lines
     this.name = data.name
     this.image = data.image
+    this.smugmug = data.smugmug
+    this.thumbnail = data.thumbnail
     this.legend = data.legend
   }
 
@@ -118,7 +124,8 @@ class Drawer {
       class: 'd3-background-image',
       width: 1920,
       height: 1080,
-      href: `/images/${this.image}`
+      // href: `/images/${this.image}`
+      href: `${this.smugmug}`
     })
 
     // const ui = canvas.append('g').attrs({
