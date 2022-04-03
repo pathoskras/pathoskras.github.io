@@ -9,6 +9,8 @@ const mustache_1 = __importDefault(require("mustache"));
 const nodemailer_1 = __importDefault(require("nodemailer"));
 const formidable_1 = __importDefault(require("formidable"));
 const puppeteer_1 = __importDefault(require("puppeteer"));
+const env = process.env.NODE_ENV || 'development';
+const port = process.argv.find(e => e.match(/^\d{0,5}$/)) || '1337';
 let mailAuth = {
     user: 'username@gmail.com',
     pass: 'password_here_lol'
@@ -276,12 +278,20 @@ function sendEmail(config) {
 }
 async function makePdf(hash) {
     return new Promise((resolve, reject) => {
-        puppeteer_1.default.launch({}).then(browser => {
+        let puppeteerOptions = {};
+        if (env === "pi") {
+            puppeteerOptions = {
+                headless: true,
+                executablePath: '/usr/bin/chromium-browser',
+                args: ['--no-sandbox', '--disable-setuid-sandbox']
+            };
+        }
+        puppeteer_1.default.launch(puppeteerOptions).then(browser => {
             browser.newPage().then(page => {
                 page.setExtraHTTPHeaders({
                     'x-host': 'pathos.co'
                 }).then(() => {
-                    page.goto(`http://localhost:1337/kras/${hash}`, {
+                    page.goto(`http://localhost:${port}/kras/${hash}`, {
                         waitUntil: 'domcontentloaded'
                     }).then(() => {
                         page.evaluate('printVersion()').then(() => {

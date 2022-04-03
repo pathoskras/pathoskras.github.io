@@ -8,7 +8,8 @@ import { Thalia } from '../../../server/thalia'
 
 // console.log('Loading kras.ts')
 
-// const env = process.env.NODE_ENV || 'development'
+const env = process.env.NODE_ENV || 'development'
+const port = process.argv.find(e => e.match(/^\d{0,5}$/)) || '1337'
 
 let mailAuth = { // eslint-disable-line
   user: 'username@gmail.com',
@@ -305,16 +306,25 @@ async function makePdf (hash: string): Promise<string> {
   // const browser = await puppeteer.launch()
   // const page = await browser.newPage()
   return new Promise((resolve, reject) => {
-    puppeteer.launch({
+    let puppeteerOptions = {
       // headless: true,
       // slowMo: 0,
       // devtools: true
-    }).then(browser => {
+    }
+    if( env === "pi" ) {
+      puppeteerOptions = {
+        headless: true,
+        executablePath: '/usr/bin/chromium-browser',
+        args: ['--no-sandbox', '--disable-setuid-sandbox']
+      }
+    }
+
+    puppeteer.launch(puppeteerOptions).then(browser => {
       browser.newPage().then(page => {
         page.setExtraHTTPHeaders({
           'x-host': 'pathos.co'
         }).then(() => {
-          page.goto(`http://localhost:1337/kras/${hash}`, {
+          page.goto(`http://localhost:${port}/kras/${hash}`, {
             waitUntil: 'domcontentloaded'
           }).then(() => {
             page.evaluate('printVersion()').then(() => {
