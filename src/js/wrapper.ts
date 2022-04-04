@@ -2,6 +2,8 @@ console.log('Loaded wrapper.ts')
 
 declare let images: DrawingData[]
 
+lazyLoadHiddenImages(images);
+
 const md = new showdown.Converter({ openLinksInNewWindow: true })
 
 const welcomeText = `##Welcome to the KRas Interactive Resource
@@ -387,6 +389,25 @@ function printVersion() {
     drawer.printDrawer(div)
     div.append('p').text(drawer.legend)
   })
+}
+
+function lazyLoadHiddenImages(images :DrawingData[]) {
+  try {
+    const div = d3.select("#hiddenImages")
+    div.append("div").selectAll("img").data(images).enter().append("img").attrs({
+      src: (d) => d.thumbnail,
+    });
+    if(window.location.href === "https://www.pathos.co/kras/" || window.location.href === "https://www.pathos.co/kras") {
+      div.append("div").selectAll("img").data(images).enter().append("img").attrs({
+        src: (d) => d.smugmug,
+      })
+    }
+    div.append("div").selectAll("img").data(images).enter().append("img").attrs({
+      src: (d) => d.large,
+    })
+  } catch (e) {
+    console.error(e)
+  }
 }
 
 welcome()

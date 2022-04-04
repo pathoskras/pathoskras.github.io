@@ -15,6 +15,7 @@ type DrawingData = {
   id: number;
   image: string;
   smugmug: string;
+  large: string;
   thumbnail: string;
   lines: DrawnLine[];
   name: string;
@@ -35,6 +36,7 @@ class Drawer {
   id: number;
   image: string;
   smugmug: string;
+  large: string;
   thumbnail: string;
   name: string;
   legend: string;
@@ -58,6 +60,7 @@ class Drawer {
     this.name = data.name
     this.image = data.image
     this.smugmug = data.smugmug
+    this.large = data.large
     this.thumbnail = data.thumbnail
     this.legend = data.legend
   }
@@ -99,7 +102,8 @@ class Drawer {
       class: 'd3-background-image',
       width: 1920,
       height: 1080,
-      href: `/images/${this.image}`
+      href: `${this.large}`
+      // href: `/images/${this.image}`
     })
 
     this.linesLayer = canvas.append('g').attrs({

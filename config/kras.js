@@ -31,6 +31,7 @@ const kras = {
                         {
                             image: 'KRasEditPlusLabelsOFF_SwitchPlusWatermarkNewFont.png',
                             smugmug: 'https://photos.smugmug.com/photos/i-9D27hvg/0/175fb517/O/i-9D27hvg.png',
+                            large: 'https://photos.smugmug.com/photos/i-9D27hvg/0/175fb517/L/i-9D27hvg.png',
                             thumbnail: 'https://photos.smugmug.com/photos/i-9D27hvg/0/175fb517/S/i-9D27hvg-S.png',
                             name: 'KRas turned off',
                             legend: 'The switch indicated in red keeps KRas turned off.',
@@ -39,6 +40,7 @@ const kras = {
                         {
                             image: 'KRasEditPlusLabelsON_SwitchPlusWatermarkNewFont.png',
                             smugmug: 'https://photos.smugmug.com/photos/i-CVr9K9F/0/2d06e038/O/i-CVr9K9F.png',
+                            large: 'https://photos.smugmug.com/photos/i-CVr9K9F/0/2d06e038/XL/i-CVr9K9F-XL.png',
                             thumbnail: 'https://photos.smugmug.com/photos/i-CVr9K9F/0/2d06e038/S/i-CVr9K9F-S.png',
                             name: 'KRas turned on',
                             legend: 'The red off switch is swapped for the green on-switch, turning KRas on.',
@@ -47,6 +49,7 @@ const kras = {
                         {
                             image: 'KRasEditPlusLabelsSwitchingOFF_PlusWatermarkNewFont.png',
                             smugmug: 'https://photos.smugmug.com/photos/i-NfhJBQL/0/475035ae/O/i-NfhJBQL.png',
+                            large: 'https://photos.smugmug.com/photos/i-NfhJBQL/0/475035ae/XL/i-NfhJBQL-XL.png',
                             thumbnail: 'https://photos.smugmug.com/photos/i-NfhJBQL/0/475035ae/S/i-NfhJBQL-S.png',
                             name: 'Turning off KRas',
                             legend: 'The large orange molecule splits the on switch in KRas, converting it back to an off switch. This turns KRas off once again.',
@@ -55,6 +58,7 @@ const kras = {
                         {
                             image: 'KRasEditPlusLabelsMUTANT_K_RasPlusWatermarkNewFont.png',
                             smugmug: 'https://photos.smugmug.com/photos/i-jg8H773/0/4bf0d847/O/i-jg8H773.png',
+                            large: 'https://photos.smugmug.com/photos/i-jg8H773/0/4bf0d847/XL/i-jg8H773-XL.png',
                             thumbnail: 'https://photos.smugmug.com/photos/i-jg8H773/0/4bf0d847/S/i-jg8H773-S.png',
                             name: 'Faulty KRas',
                             legend: 'A defect or fault in KRas is indicated in purple. This defect keeps the green on switch permanently in place and KRas constantly switched on.',
@@ -63,6 +67,7 @@ const kras = {
                         {
                             image: 'KRasEditPlusLabelsCancerCellsDividingPlusWatermarkNewFont.png',
                             smugmug: 'https://photos.smugmug.com/photos/i-gkj3Xzw/0/64e4301b/O/i-gkj3Xzw.png',
+                            large: 'https://photos.smugmug.com/photos/i-gkj3Xzw/0/64e4301b/XL/i-gkj3Xzw-XL.png',
                             thumbnail: 'https://photos.smugmug.com/photos/i-gkj3Xzw/0/64e4301b/S/i-gkj3Xzw-S.png',
                             name: 'Tumour cells dividing',
                             legend: 'If KRas is constantly switched on, this results in out of control cell division.',
@@ -71,6 +76,7 @@ const kras = {
                         {
                             image: 'KRas_AMG510WithLabelsPlusWatermarkNewFont.png',
                             smugmug: 'https://photos.smugmug.com/photos/i-dVLKfFM/0/686896d3/O/i-dVLKfFM.png',
+                            large: 'https://photos.smugmug.com/photos/i-dVLKfFM/0/686896d3/XL/i-dVLKfFM-XL.png',
                             thumbnail: 'https://photos.smugmug.com/photos/i-dVLKfFM/0/686896d3/S/i-dVLKfFM-S.png',
                             name: 'New treatments keep faulty KRas turned off',
                             legend: 'New treatments fit into faulty KRas, keeping the off switch in place, keeping faulty KRas turned off.',
@@ -292,7 +298,7 @@ async function makePdf(hash) {
                     'x-host': 'pathos.co'
                 }).then(() => {
                     page.goto(`http://localhost:${port}/kras/${hash}`, {
-                        waitUntil: 'domcontentloaded'
+                        waitUntil: 'networkidle0'
                     }).then(() => {
                         page.evaluate('printVersion()').then(() => {
                             page.waitForTimeout(500).then(() => {
