@@ -200,8 +200,15 @@ const kras = {
 <a target="_blank" href="${pdf}">Download PDF</a>.
 `;
                     try {
+                        const filepath = path_1.default.resolve(__dirname, '..', 'data', 'pdfs', `KRas-${hash}.pdf`);
                         const emailOptions = {
                             toAddress: fields.email,
+                            attachments: [
+                                {
+                                    filename: 'KRas_notes.pdf',
+                                    path: filepath
+                                }
+                            ],
                             body: `
 Hello!
   
@@ -246,9 +253,11 @@ PathOS Team.
 };
 exports.kras = kras;
 function sendEmail(config) {
+    console.log("Sending email with config", config);
     const options = {
         toAddress: config.toAddress || '7oclockco@gmail.com',
         subject: config.subject || 'Your K-Ras notes',
+        attachments: config.attachments || [],
         body: config.body || ''
     };
     const transporter = nodemailer_1.default.createTransport({
@@ -271,7 +280,8 @@ function sendEmail(config) {
         from: '7oclockco@gmail.com',
         to: options.toAddress,
         subject: options.subject,
-        text: options.body
+        text: options.body,
+        attachments: options.attachments
     };
     transporter.sendMail(mailOptions, function (error, info) {
         if (error) {

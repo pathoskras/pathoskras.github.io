@@ -219,8 +219,16 @@ const kras : Thalia.WebsiteConfig = {
 `
 
           try {
+            const filepath: string = path.resolve(__dirname, '..', 'data', 'pdfs', `KRas-${hash}.pdf`)
+
             const emailOptions :any = {
               toAddress: fields.email,
+              attachments: [
+                {
+                  filename: 'KRas_notes.pdf',
+                  path: filepath
+                }
+              ],
               body: `
 Hello!
   
@@ -269,9 +277,12 @@ PathOS Team.
 }
 
 function sendEmail (config) {
+  console.log("Sending email with config", config)
+
   const options = {
     toAddress: config.toAddress || '7oclockco@gmail.com',
     subject: config.subject || 'Your K-Ras notes',
+    attachments: config.attachments || [],
     body: config.body || ''
   }
 
@@ -296,7 +307,8 @@ function sendEmail (config) {
     from: '7oclockco@gmail.com',
     to: options.toAddress,
     subject: options.subject,
-    text: options.body
+    text: options.body,
+    attachments: options.attachments
   }
 
   transporter.sendMail(mailOptions, function (error, info) {
