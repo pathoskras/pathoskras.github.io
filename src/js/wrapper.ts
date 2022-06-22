@@ -347,6 +347,11 @@ function printVersion() {
 
   let row = frontPage.append('div').classed('row', true)
   row.append('div').classed('col-xs-6', true).html(md.makeHtml(welcomeText))
+    .append('div')
+    .html(`<a href="https://vimeo.com/506864719" rel="noopener noreferrer" target="_blank"><h1 style="margin:0;" id="theroleofkrasincancerhttpsvimeocom506864719">The Role of KRas in Cancer</h1>
+    <img src="/images/VimeoPreview.png" alt=""><p style="margin-top:0;">https://vimeo.com/506864719</p></a>`)
+    .style('text-align', 'center')
+    .style('margin-top', '-10px')
 
   row
     .append('div')
