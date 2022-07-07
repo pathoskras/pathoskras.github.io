@@ -23,6 +23,20 @@ catch (e) {
     console.log(e);
 }
 const kras = {
+    publish: {
+        dist: [
+            "favicon.ico",
+            "css/main.css",
+            "css/canvas.css",
+            "css/kras.css",
+            "css/font-awesome.min.css",
+            "js/vendor.min.js",
+            "js/showdown.min.js",
+            "js/simplify.js",
+            "js/d3_drawer.js",
+            "js/wrapper.js",
+        ]
+    },
     controllers: {
         kras: function (router) {
             router.readTemplate('kras.mustache', 'd3_inner', views => {

@@ -329,15 +329,17 @@ function drawHeader(
       'text-align': 'right',
     })
     .append('h4')
-    .text(`Page ${pageCount++} of 8`)
+    .text(`Page ${pageCount++} of 9`)
 }
 
 function printVersion() {
   console.log('Print mode')
 
+// Clean up web version things
   $('#wrapper').toggleClass('pdfMode')
   $('#bannerPageInner').remove()
 
+// Front page
   const frontPage = d3
     .select('#contentBox')
     .append('div')
@@ -347,17 +349,31 @@ function printVersion() {
 
   let row = frontPage.append('div').classed('row', true)
   row.append('div').classed('col-xs-6', true).html(md.makeHtml(welcomeText))
-    .append('div')
-    .html(`<a href="https://vimeo.com/506864719" rel="noopener noreferrer" target="_blank"><h1 style="margin:0;" id="theroleofkrasincancerhttpsvimeocom506864719">The Role of KRas in Cancer</h1>
-    <img src="/images/VimeoPreview.png" alt=""><p style="margin-top:0;">https://vimeo.com/506864719</p></a>`)
-    .style('text-align', 'center')
-    .style('margin-top', '-10px')
 
   row
     .append('div')
     .classed('col-xs-6', true)
     .html(md.makeHtml(introductionText))
 
+// Video Page
+  const videoPage = d3
+    .select('#contentBox')
+    .append('div')
+    .classed('printPage', true)
+
+  drawHeader(videoPage)
+
+  row = videoPage.append('div').classed('row', true)
+    row.append('div').classed("col-xs-6", true)
+    .html(`<a href="https://vimeo.com/506864719" rel="noopener noreferrer" target="_blank"><h1 style="font-size:24px;">The Role of KRas in Cancer</h1>
+    <img src="/images/VimeoPreview.png" style="width: 100%;" alt=""><p style="font-size:20px;">https://vimeo.com/506864719</p></a>`)
+    .style('text-align', 'center')
+    row.append('div').classed("col-xs-6", true)
+    .html(`<a href="https://vimeo.com/516611480" rel="noopener noreferrer" target="_blank"><h1 style="font-size:24px;">The Role of KRas in Cancer with captions</h1>
+    <img src="/images/VimeoPreview.png" style="width: 100%;" alt=""><p style="font-size:20px;">https://vimeo.com/516611480</p></a>`)
+    .style('text-align', 'center')
+
+// Terms and Definitions Page
   const nextPage = d3
     .select('#contentBox')
     .append('div')
@@ -416,3 +432,7 @@ function lazyLoadHiddenImages(images :DrawingData[]) {
 }
 
 welcome()
+
+if(window.location.hash === '#printVersion') {
+  printVersion()
+}
