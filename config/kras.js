@@ -331,6 +331,9 @@ async function makePdf(hash) {
                                     reject(error);
                                 });
                             });
+                        }).catch(error => {
+                            console.error(error);
+                            reject(error);
                         });
                     }).catch(error => {
                         console.error(error);

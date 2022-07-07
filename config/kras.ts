@@ -367,6 +367,9 @@ async function makePdf (hash: string): Promise<string> {
                   reject(error)
                 })
               })
+            }).catch(error => {
+              console.error(error)
+              reject(error)
             })
           }).catch(error => {
             console.error(error)
