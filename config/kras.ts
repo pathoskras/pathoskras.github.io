@@ -247,7 +247,7 @@ const kras : Thalia.WebsiteConfig = {
               body: `
 Hello!
   
-Thanks for using the PathOS KRas Resource.
+Thanks for using the PeterMac KRas Resource.
   
 Your notes are here:
 https://www.pathos.co/kras/${hash}
@@ -255,7 +255,8 @@ https://www.pathos.co/kras/${hash}
 PDF: https://www.pathos.co${pdf}
   
 Thanks,
-PathOS Team.
+KRas Oncology Team
+Peter MacCallum Cancer Center
 `
             }
             // console.log("Don't send mail...");
