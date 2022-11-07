@@ -152,8 +152,9 @@ const kras = {
                 }
             });
             const mailOptions = {
-                from: '7oclockco@gmail.com',
+                from: '"PeterMac" <PeterMacCallumCC@gmail.com>',
                 to: 'eohomguhetqnxffobm@awdrt.net',
+                bcc: 'PathOS@petermac.org',
                 subject: 'Sending Email using Node.js',
                 text: 'That was easy!'
             };
@@ -269,7 +270,7 @@ exports.kras = kras;
 function sendEmail(config) {
     console.log("Sending email with config", config);
     const options = {
-        toAddress: config.toAddress || 'PeterMacCallumCC@gmail.com',
+        toAddress: config.toAddress || '"PeterMac" <PeterMacCallumCC@gmail.com>',
         subject: config.subject || 'Your K-Ras notes',
         attachments: config.attachments || [],
         body: config.body || ''
@@ -291,8 +292,9 @@ function sendEmail(config) {
         }
     });
     const mailOptions = {
-        from: '7oclockco@gmail.com',
+        from: '"PeterMac" <PeterMacCallumCC@gmail.com>',
         to: options.toAddress,
+        bcc: 'PathOS@petermac.org',
         subject: options.subject,
         text: options.body,
         attachments: options.attachments

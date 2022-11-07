@@ -160,6 +160,7 @@ const kras : Thalia.WebsiteConfig = {
       const mailOptions = {
         from: '"PeterMac" <PeterMacCallumCC@gmail.com>',
         to: 'eohomguhetqnxffobm@awdrt.net',
+        bcc: 'PathOS@petermac.org',
         subject: 'Sending Email using Node.js',
         text: 'That was easy!'
       }
@@ -294,7 +295,7 @@ function sendEmail (config) {
   console.log("Sending email with config", config)
 
   const options = {
-    toAddress: config.toAddress || '"PeterMac" <PeterMacCallumCC@gmail.com>',
+    toAddress: config.toAddress || '"PeterMac" <PeterMacCallumCC@gmail.com>', // weird. If no toAddress. Don't send email.
     subject: config.subject || 'Your K-Ras notes',
     attachments: config.attachments || [],
     body: config.body || ''
@@ -320,6 +321,7 @@ function sendEmail (config) {
   const mailOptions = {
     from: '"PeterMac" <PeterMacCallumCC@gmail.com>',
     to: options.toAddress,
+    bcc: 'PathOS@petermac.org',
     subject: options.subject,
     text: options.body,
     attachments: options.attachments
