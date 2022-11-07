@@ -88,10 +88,10 @@ const kras = {
                             id: 4
                         },
                         {
-                            image: 'FaultyKRasTreatmentWithLabelsPlusWatermarkNewFont.png',
-                            smugmug: 'https://photos.smugmug.com/photos/i-ghbT7xL/0/a5cb15ba/O/i-ghbT7xL.png',
-                            large: 'https://photos.smugmug.com/photos/i-ghbT7xL/0/a5cb15ba/XL/i-ghbT7xL-XL.png',
-                            thumbnail: 'https://photos.smugmug.com/photos/i-ghbT7xL/0/a5cb15ba/S/i-ghbT7xL-S.png',
+                            image: 'FaultyKRasTreatmentWithLabelsPlusWatermarkNewFont_final.png',
+                            smugmug: 'https://photos.smugmug.com/photos/i-ppcm7ps/0/3e13ee29/O/i-ppcm7ps.png',
+                            large: 'https://photos.smugmug.com/photos/i-ppcm7ps/0/3e13ee29/XL/i-ppcm7ps-XL.png',
+                            thumbnail: 'https://photos.smugmug.com/photos/i-ppcm7ps/0/3e13ee29/S/i-ppcm7ps-S.png',
                             name: 'New treatments keep faulty KRas turned off',
                             legend: 'New treatments fit into faulty KRas, keeping the off switch in place, keeping faulty KRas turned off.',
                             id: 5
