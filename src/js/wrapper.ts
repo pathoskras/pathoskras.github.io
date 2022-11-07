@@ -365,11 +365,11 @@ function printVersion() {
 
   row = videoPage.append('div').classed('row', true)
     row.append('div').classed("col-xs-6", true)
-    .html(`<a href="https://vimeo.com/506864719" rel="noopener noreferrer" target="_blank"><h1 style="font-size:24px;">The Role of KRas in Cancer</h1>
+    .html(`<a href="https://vimeo.com/506864719" rel="noopener noreferrer" target="_blank"><h1 style="font-size:20px;">The Role of KRas in Cancer</h1>
     <img src="/images/VimeoPreview.png" style="width: 100%;" alt=""><p style="font-size:20px;">https://vimeo.com/506864719</p></a>`)
     .style('text-align', 'center')
     row.append('div').classed("col-xs-6", true)
-    .html(`<a href="https://vimeo.com/516611480" rel="noopener noreferrer" target="_blank"><h1 style="font-size:24px;">The Role of KRas in Cancer with captions</h1>
+    .html(`<a href="https://vimeo.com/516611480" rel="noopener noreferrer" target="_blank"><h1 style="font-size:20px;">The Role of KRas in Cancer with captions</h1>
     <img src="/images/VimeoPreview.png" style="width: 100%;" alt=""><p style="font-size:20px;">https://vimeo.com/516611480</p></a>`)
     .style('text-align', 'center')
 
