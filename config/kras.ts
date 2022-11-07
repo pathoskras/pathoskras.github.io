@@ -90,7 +90,7 @@ const kras : Thalia.WebsiteConfig = {
               id: 4
             },
             {
-              image: 'FaultyKRasTreatmentWithLabelsPlusWatermarkNewFont.png',
+              image: 'FaultyKRasTreatmentWithLabelsPlusWatermarkNewFont_final.png',
               smugmug: 'https://photos.smugmug.com/photos/i-ghbT7xL/0/a5cb15ba/O/i-ghbT7xL.png',
               large: 'https://photos.smugmug.com/photos/i-ghbT7xL/0/a5cb15ba/XL/i-ghbT7xL-XL.png',
               thumbnail: 'https://photos.smugmug.com/photos/i-ghbT7xL/0/a5cb15ba/S/i-ghbT7xL-S.png',
