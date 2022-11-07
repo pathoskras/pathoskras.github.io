@@ -236,7 +236,7 @@ PDF: https://www.pathos.co${pdf}
   
 Thanks,
 KRas Oncology Team
-Peter MacCallum Cancer Center
+Peter MacCallum Cancer Centre
 `
                         };
                         if (fields.tickedEmailBox) {
