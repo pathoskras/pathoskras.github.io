@@ -242,7 +242,7 @@ PathOS Team.
                                 emailOptions.subject = `Your KRas notes from Dr. ${fields.doctor}`;
                             }
                             sendEmail(emailOptions);
-                            message = `<a href="/kras/${hash}">Link sent to patient</a> at ${fields.email} using 7oclockco@gmail.com
+                            message = `<a href="/kras/${hash}">Link sent to patient</a> at ${fields.email} using PeterMacCallumCC@gmail.com
 <br>
 <a target="_blank" href="${pdf}">Download PDF</a>.
 `;
@@ -269,7 +269,7 @@ exports.kras = kras;
 function sendEmail(config) {
     console.log("Sending email with config", config);
     const options = {
-        toAddress: config.toAddress || '7oclockco@gmail.com',
+        toAddress: config.toAddress || 'PeterMacCallumCC@gmail.com',
         subject: config.subject || 'Your K-Ras notes',
         attachments: config.attachments || [],
         body: config.body || ''

@@ -158,7 +158,7 @@ const kras : Thalia.WebsiteConfig = {
       })
 
       const mailOptions = {
-        from: '7oclockco@gmail.com',
+        from: '"PeterMac" <PeterMacCallumCC@gmail.com>',
         to: 'eohomguhetqnxffobm@awdrt.net',
         subject: 'Sending Email using Node.js',
         text: 'That was easy!'
@@ -264,7 +264,7 @@ PathOS Team.
                 emailOptions.subject = `Your KRas notes from Dr. ${fields.doctor}`
               }
               sendEmail(emailOptions)
-              message = `<a href="/kras/${hash}">Link sent to patient</a> at ${fields.email} using 7oclockco@gmail.com
+              message = `<a href="/kras/${hash}">Link sent to patient</a> at ${fields.email} using PeterMacCallumCC@gmail.com
 <br>
 <a target="_blank" href="${pdf}">Download PDF</a>.
 `
@@ -294,7 +294,7 @@ function sendEmail (config) {
   console.log("Sending email with config", config)
 
   const options = {
-    toAddress: config.toAddress || '7oclockco@gmail.com',
+    toAddress: config.toAddress || '"PeterMac" <PeterMacCallumCC@gmail.com>',
     subject: config.subject || 'Your K-Ras notes',
     attachments: config.attachments || [],
     body: config.body || ''
@@ -318,7 +318,7 @@ function sendEmail (config) {
   })
 
   const mailOptions = {
-    from: '7oclockco@gmail.com',
+    from: '"PeterMac" <PeterMacCallumCC@gmail.com>',
     to: options.toAddress,
     subject: options.subject,
     text: options.body,
