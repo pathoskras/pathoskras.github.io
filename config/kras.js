@@ -135,13 +135,11 @@ const kras = {
             });
         },
         showMail: function (router) {
-            router.readTemplate('404.mustache', ['email', 'd3_inner'], function (views, stuff) {
-                console.log("views:", views);
-                console.log("Stuff?", stuff);
+            router.readTemplate('404.mustache', 'email', function (views) {
                 router.res.end(mustache_1.default.render(views.content, {}, views));
             });
         },
-        mail: function (router) {
+        testMail: function (router) {
             const transporter = nodemailer_1.default.createTransport({
                 pool: true,
                 host: 'smtp.gmail.com',
@@ -164,19 +162,10 @@ const kras = {
                 const mailOptions = {
                     from: '"PeterMac" <PeterMacCallumCC@gmail.com>',
                     to: 'mspzetxqymmwcirlwm@tmmcv.net',
-                    bcc: 'PathOS@petermac.org',
                     subject: 'Sending Email using Node.js',
                     html: mustache_1.default.render(views.template, data, views)
                 };
-                transporter.sendMail(mailOptions, function (error, info) {
-                    if (error) {
-                        console.log(error);
-                    }
-                    else {
-                        console.log('Email sent: ' + info.response);
-                    }
-                });
-                router.res.end('Ok lol I guess we sent some mail??');
+                router.res.end(mustache_1.default.render(views.template, data, views));
             });
         },
         failsafeSaveDetails: function (router) {

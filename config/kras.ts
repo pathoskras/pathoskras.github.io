@@ -138,15 +138,11 @@ const kras : Thalia.WebsiteConfig = {
       })
     },
     showMail : function(router) {
-      
-      router.readTemplate('404.mustache', ['email', 'd3_inner'], function(views, stuff) {
-        console.log("views:", views)
-        console.log("Stuff?", stuff)
+      router.readTemplate('404.mustache', 'email', function(views) {
         router.res.end(mustache.render(views.content, {}, views))
-        // router.res.end('hey')
       })
     },
-    mail: function (router) {
+    testMail: function (router) {
       // Test function. Not used for anything
 
       const transporter = nodemailer.createTransport({
@@ -175,21 +171,23 @@ const kras : Thalia.WebsiteConfig = {
   
         const mailOptions = {
           from: '"PeterMac" <PeterMacCallumCC@gmail.com>',
-          to: 'mspzetxqymmwcirlwm@tmmcv.net',
-          bcc: 'PathOS@petermac.org',
+          to: 'mspzetxqymmwcirlwm@tmmcv.net', // Use a new 10minutemail.com address for testing
+          // bcc: 'PathOS@petermac.org', // Don't BCC the test mail
           subject: 'Sending Email using Node.js',
           html: mustache.render(views.template, data, views)
         }
   
-        transporter.sendMail(mailOptions, function (error, info) {
-          if (error) {
-            console.log(error)
-          } else {
-            console.log('Email sent: ' + info.response)
-          }
-        })
+        // Disable sending the mail
+        // transporter.sendMail(mailOptions, function (error, info) {
+        //   if (error) {
+        //     console.log(error)
+        //   } else {
+        //     console.log('Email sent: ' + info.response)
+        //   }
+        // })
   
-        router.res.end('Ok lol I guess we sent some mail??')
+        // router.res.end('Ok lol I guess we sent some mail??')
+        router.res.end(mustache.render(views.template, data, views))
       })
 
     },
