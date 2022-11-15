@@ -134,6 +134,13 @@ const kras = {
                 }
             });
         },
+        showMail: function (router) {
+            router.readTemplate('404.mustache', ['email', 'd3_inner'], function (views, stuff) {
+                console.log("views:", views);
+                console.log("Stuff?", stuff);
+                router.res.end(mustache_1.default.render(views.content, {}, views));
+            });
+        },
         mail: function (router) {
             const transporter = nodemailer_1.default.createTransport({
                 pool: true,
@@ -142,31 +149,35 @@ const kras = {
                 secure: true,
                 auth: mailAuth
             });
-            transporter.verify(function (error) {
-                if (error) {
-                    console.log('Nodemailer error');
-                    console.log(error);
-                }
-                else {
-                    console.log('Nodemailer: Server is ready to take our messages');
-                }
+            router.readTemplate('email.mustache', 'email.mustache', function (views) {
+                console.log("reading the email template...", views);
+                transporter.verify(function (error) {
+                    if (error) {
+                        console.log('Nodemailer error');
+                        console.log(error);
+                    }
+                    else {
+                        console.log('Nodemailer: Server is ready to take our messages');
+                    }
+                });
+                const data = {};
+                const mailOptions = {
+                    from: '"PeterMac" <PeterMacCallumCC@gmail.com>',
+                    to: 'mspzetxqymmwcirlwm@tmmcv.net',
+                    bcc: 'PathOS@petermac.org',
+                    subject: 'Sending Email using Node.js',
+                    html: mustache_1.default.render(views.template, data, views)
+                };
+                transporter.sendMail(mailOptions, function (error, info) {
+                    if (error) {
+                        console.log(error);
+                    }
+                    else {
+                        console.log('Email sent: ' + info.response);
+                    }
+                });
+                router.res.end('Ok lol I guess we sent some mail??');
             });
-            const mailOptions = {
-                from: '"PeterMac" <PeterMacCallumCC@gmail.com>',
-                to: 'eohomguhetqnxffobm@awdrt.net',
-                bcc: 'PathOS@petermac.org',
-                subject: 'Sending Email using Node.js',
-                text: 'That was easy!'
-            };
-            transporter.sendMail(mailOptions, function (error, info) {
-                if (error) {
-                    console.log(error);
-                }
-                else {
-                    console.log('Email sent: ' + info.response);
-                }
-            });
-            router.res.end('Ok lol I guess we sent some mail??');
         },
         failsafeSaveDetails: function (router) {
             console.log("Warning, someone is trying to use the KRAS app");
@@ -241,7 +252,7 @@ Peter MacCallum Cancer Centre
                         };
                         if (fields.tickedEmailBox) {
                             if (fields.doctor) {
-                                emailOptions.subject = `Your KRas notes from Dr. ${fields.doctor}`;
+                                emailOptions.subject = `Your personal KRas notes from Dr. ${fields.doctor}`;
                             }
                             sendEmail(emailOptions);
                             message = `<a href="/kras/${hash}">Link sent to patient</a> at ${fields.email} using PeterMacCallumCC@gmail.com
