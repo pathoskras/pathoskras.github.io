@@ -252,12 +252,10 @@ const kras = {
                                 ],
                                 html: mustache_1.default.render(views.content, data, views),
                             };
-                            if (fields.tickedEmailBox) {
-                                if (fields.doctor) {
-                                    emailOptions.subject = `Your personal KRas notes from Dr. ${fields.doctor}`;
-                                }
-                                sendEmail(emailOptions);
+                            if (fields.doctor) {
+                                emailOptions.subject = `Your personal KRas notes from Dr. ${fields.doctor}`;
                             }
+                            sendEmail(emailOptions);
                             router.res.end(mustache_1.default.render(views.content, {
                                 ...data,
                                 website: ` has been sent to your email: ${fields.email}`,

@@ -322,13 +322,11 @@ const kras: Thalia.WebsiteConfig = {
                 html: mustache.render(views.content, data, views),
               }
 
-              if (fields.tickedEmailBox) {
-                if (fields.doctor) {
-                  emailOptions.subject = `Your personal KRas notes from Dr. ${fields.doctor}`
-                }
-
-                sendEmail(emailOptions)
+              if (fields.doctor) {
+                emailOptions.subject = `Your personal KRas notes from Dr. ${fields.doctor}`
               }
+
+              sendEmail(emailOptions)
 
               router.res.end(
                 mustache.render(
