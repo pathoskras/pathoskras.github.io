@@ -292,14 +292,7 @@ const kras: Thalia.WebsiteConfig = {
           }
         }
 
-        let message = `<a href="/kras/${hash}">Link to saved data</a>. No email sent.
-`
         makePdf(hash).then((pdf) => {
-          message = `<a href="/kras/${hash}">Link to saved data</a>. No email sent.
-<br>
-<a target="_blank" href="${pdf}">Download PDF</a>.
-`
-
           try {
             const filepath: string = path.resolve(
               __dirname,
@@ -335,13 +328,18 @@ const kras: Thalia.WebsiteConfig = {
                 }
 
                 sendEmail(emailOptions)
-                message = `<a href="/kras/${hash}">Link sent to patient</a> at ${fields.email} using PeterMacCallumCC@gmail.com
-  <br>
-  <a target="_blank" href="${pdf}">Download PDF</a>.
-  `
               }
 
-              router.res.end(mustache.render(views.content, data, views))
+              router.res.end(
+                mustache.render(
+                  views.content,
+                  {
+                    ...data,
+                    website: ` has been sent to your email: ${fields.email}`,
+                  },
+                  views
+                )
+              )
             })
           } catch (e) {
             console.log('Error sending mail.', e)

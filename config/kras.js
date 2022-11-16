@@ -231,13 +231,7 @@ const kras = {
                         console.error(e);
                     }
                 }
-                let message = `<a href="/kras/${hash}">Link to saved data</a>. No email sent.
-`;
                 makePdf(hash).then((pdf) => {
-                    message = `<a href="/kras/${hash}">Link to saved data</a>. No email sent.
-<br>
-<a target="_blank" href="${pdf}">Download PDF</a>.
-`;
                     try {
                         const filepath = path_1.default.resolve(__dirname, '..', 'data', 'pdfs', `KRas-${hash}.pdf`);
                         router.readTemplate('404.mustache', 'email', function (views) {
@@ -263,12 +257,11 @@ const kras = {
                                     emailOptions.subject = `Your personal KRas notes from Dr. ${fields.doctor}`;
                                 }
                                 sendEmail(emailOptions);
-                                message = `<a href="/kras/${hash}">Link sent to patient</a> at ${fields.email} using PeterMacCallumCC@gmail.com
-  <br>
-  <a target="_blank" href="${pdf}">Download PDF</a>.
-  `;
                             }
-                            router.res.end(mustache_1.default.render(views.content, data, views));
+                            router.res.end(mustache_1.default.render(views.content, {
+                                ...data,
+                                website: ` has been sent to your email: ${fields.email}`,
+                            }, views));
                         });
                     }
                     catch (e) {
