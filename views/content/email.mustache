@@ -28,6 +28,10 @@
     }
   </style>
   <style>
+    html {
+      background-color: #f0f0f0;
+    }
+
     .baseLayer {
       background-color: #f0f0f0;
       padding: 15px;
@@ -39,13 +43,13 @@
       margin: auto;
 
       text-align: center;
+    }
 
-      img.logo {
-        background: white;
-        padding: 15px;
-        max-width: 250px;
-        margin: auto;
-      }
+    img.logo {
+      background: white;
+      padding: 15px;
+      width: 250px;
+      margin: auto;
     }
 
     .banner {
@@ -66,24 +70,24 @@
 <body>
   <div class="baseLayer">
     <div class="emailLayer">
-
-      <img class="logo" src="https://www.pathos.co/images/petermac_logo.png" alt="Peter Mac Logo">
-
       <div class="banner">
         <h1>Your personal KRas report {{ website }}</h1>
       </div>
 
       <div class="main">
-        <p>Hello {{ name }},</p>
+        <p>Hello {{ name }}</p>
         <p>Thank you very much for participating in our study to assess the Interactive KRas Resource. We have attached
           your personal KRas report as a PDF to this email. You can also access your report online at our <a
             href="https://pathos.co/kras/{{hash}}">website</a>.
         </p>
         <p>Please feel free to share this information with your family
-          and friends, and even your GP.</p>
+          and friends and even your GP.</p>
         <p>Thank you again for your participation and best wishes.</p>
-        <p style="margin-bottom: 0;">The KRas Oncology Team,</p>
+        <p style="margin-bottom: 5px;">The KRas Oncology Team</p>
         <p style="margin-top: 0;">Peter MacCallum Cancer Centre</p>
+        <img class="logo" style="width: 200px;" src="https://www.pathos.co/images/petermac_logo.png"
+          alt="Peter Mac Logo">
+
       </div>
 
     </div>

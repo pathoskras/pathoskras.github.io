@@ -25,7 +25,6 @@ catch (e) {
 const kras = {
     publish: {
         dist: [
-            'favicon.ico',
             'css/main.css',
             'css/canvas.css',
             'css/kras.css',
