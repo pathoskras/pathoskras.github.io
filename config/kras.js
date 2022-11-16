@@ -228,66 +228,48 @@ const kras = {
 `;
                     try {
                         const filepath = path_1.default.resolve(__dirname, '..', 'data', 'pdfs', `KRas-${hash}.pdf`);
-                        const emailOptions = {
-                            toAddress: fields.email,
-                            attachments: [
-                                {
-                                    filename: 'KRas_notes.pdf',
-                                    path: filepath
+                        router.readTemplate('404.mustache', 'email', function (views) {
+                            const data = {
+                                name: blob.firstName,
+                                hash: hash,
+                            };
+                            const emailOptions = {
+                                from: '"PeterMac" <PeterMacCallumCC@gmail.com>',
+                                to: fields.email,
+                                bcc: 'PathOS@petermac.org',
+                                subject: 'Your personal KRas notes',
+                                attachments: [
+                                    {
+                                        filename: 'KRas_notes.pdf',
+                                        path: filepath
+                                    }
+                                ],
+                                html: mustache_1.default.render(views.content, data, views)
+                            };
+                            if (fields.tickedEmailBox) {
+                                if (fields.doctor) {
+                                    emailOptions.subject = `Your personal KRas notes from Dr. ${fields.doctor}`;
                                 }
-                            ],
-                            body: `
-Hello!
-  
-Thanks for using the PeterMac KRas Resource.
-  
-Your notes are here:
-https://www.pathos.co/kras/${hash}
-
-PDF: https://www.pathos.co${pdf}
-  
-Thanks,
-KRas Oncology Team
-Peter MacCallum Cancer Centre
-`
-                        };
-                        if (fields.tickedEmailBox) {
-                            if (fields.doctor) {
-                                emailOptions.subject = `Your personal KRas notes from Dr. ${fields.doctor}`;
+                                sendEmail(emailOptions);
+                                message = `<a href="/kras/${hash}">Link sent to patient</a> at ${fields.email} using PeterMacCallumCC@gmail.com
+  <br>
+  <a target="_blank" href="${pdf}">Download PDF</a>.
+  `;
                             }
-                            sendEmail(emailOptions);
-                            message = `<a href="/kras/${hash}">Link sent to patient</a> at ${fields.email} using PeterMacCallumCC@gmail.com
-<br>
-<a target="_blank" href="${pdf}">Download PDF</a>.
-`;
-                        }
+                            router.res.end(mustache_1.default.render(views.content, data, views));
+                        });
                     }
                     catch (e) {
                         console.log('Error sending mail.', e);
                     }
-                    router.res.end(`Your hash is: ${hash}<br><br>
-  ${message}
-  `);
-                }).catch(e => {
-                    console.log('Error making PDF');
-                    console.error(e);
-                    router.res.end(`Your hash is: ${hash}<br><br>
-  ${message}
-  `);
                 });
             });
         }
     }
 };
 exports.kras = kras;
-function sendEmail(config) {
-    console.log("Sending email with config", config);
-    const options = {
-        toAddress: config.toAddress || '"PeterMac" <PeterMacCallumCC@gmail.com>',
-        subject: config.subject || 'Your K-Ras notes',
-        attachments: config.attachments || [],
-        body: config.body || ''
-    };
+function sendEmail(emailOptions) {
+    console.log(`Sending email to ${emailOptions.to}`);
     const transporter = nodemailer_1.default.createTransport({
         pool: true,
         host: 'smtp.gmail.com',
@@ -304,15 +286,7 @@ function sendEmail(config) {
             console.log('Nodemailer: Server is ready to take our messages');
         }
     });
-    const mailOptions = {
-        from: '"PeterMac" <PeterMacCallumCC@gmail.com>',
-        to: options.toAddress,
-        bcc: 'PathOS@petermac.org',
-        subject: options.subject,
-        text: options.body,
-        attachments: options.attachments
-    };
-    transporter.sendMail(mailOptions, function (error, info) {
+    transporter.sendMail(emailOptions, function (error, info) {
         if (error) {
             console.log(error);
         }

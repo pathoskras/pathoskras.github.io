@@ -254,55 +254,46 @@ const kras : Thalia.WebsiteConfig = {
           try {
             const filepath: string = path.resolve(__dirname, '..', 'data', 'pdfs', `KRas-${hash}.pdf`)
 
-            const emailOptions :any = {
-              toAddress: fields.email,
-              attachments: [
-                {
-                  filename: 'KRas_notes.pdf',
-                  path: filepath
-                }
-              ],
-              body: `
-Hello!
-  
-Thanks for using the PeterMac KRas Resource.
-  
-Your notes are here:
-https://www.pathos.co/kras/${hash}
+            router.readTemplate('404.mustache', 'email', function(views) {
 
-PDF: https://www.pathos.co${pdf}
-  
-Thanks,
-KRas Oncology Team
-Peter MacCallum Cancer Centre
-`
-            }
-            // console.log("Don't send mail...");
-
-            if (fields.tickedEmailBox) {
-              if (fields.doctor) {
-                emailOptions.subject = `Your personal KRas notes from Dr. ${fields.doctor}`
+              const data = {
+                name: blob.firstName,
+                hash: hash,
               }
-              sendEmail(emailOptions)
-              message = `<a href="/kras/${hash}">Link sent to patient</a> at ${fields.email} using PeterMacCallumCC@gmail.com
-<br>
-<a target="_blank" href="${pdf}">Download PDF</a>.
-`
-            }
+
+              const emailOptions :any = {
+                from: '"PeterMac" <PeterMacCallumCC@gmail.com>',
+                to: fields.email,
+                bcc: 'PathOS@petermac.org',
+                subject: 'Your personal KRas notes',
+                attachments: [
+                  {
+                    filename: 'KRas_notes.pdf',
+                    path: filepath
+                  }
+                ],
+                html: mustache.render(views.content, data, views)
+              }
+
+              if (fields.tickedEmailBox) {
+                if (fields.doctor) {
+                  emailOptions.subject = `Your personal KRas notes from Dr. ${fields.doctor}`
+                }
+
+                sendEmail(emailOptions)
+                message = `<a href="/kras/${hash}">Link sent to patient</a> at ${fields.email} using PeterMacCallumCC@gmail.com
+  <br>
+  <a target="_blank" href="${pdf}">Download PDF</a>.
+  `
+              }
+
+              router.res.end(mustache.render(views.content, data, views))
+            })
+
           } catch (e) {
             console.log('Error sending mail.', e)
           }
 
-          router.res.end(`Your hash is: ${hash}<br><br>
-  ${message}
-  `)
-        }).catch(e => {
-          console.log('Error making PDF')
-          console.error(e)
-
-          router.res.end(`Your hash is: ${hash}<br><br>
-  ${message}
-  `)
         })
       })
     }
@@ -310,15 +301,8 @@ Peter MacCallum Cancer Centre
 
 }
 
-function sendEmail (config) {
-  console.log("Sending email with config", config)
-
-  const options = {
-    toAddress: config.toAddress || '"PeterMac" <PeterMacCallumCC@gmail.com>', // weird. If no toAddress. Don't send email.
-    subject: config.subject || 'Your K-Ras notes',
-    attachments: config.attachments || [],
-    body: config.body || ''
-  }
+function sendEmail (emailOptions) {
+  console.log(`Sending email to ${emailOptions.to}`)
 
   const transporter = nodemailer.createTransport({
     pool: true,
@@ -337,16 +321,7 @@ function sendEmail (config) {
     }
   })
 
-  const mailOptions = {
-    from: '"PeterMac" <PeterMacCallumCC@gmail.com>',
-    to: options.toAddress,
-    bcc: 'PathOS@petermac.org',
-    subject: options.subject,
-    text: options.body,
-    attachments: options.attachments
-  }
-
-  transporter.sendMail(mailOptions, function (error, info) {
+  transporter.sendMail(emailOptions, function (error, info) {
     if (error) {
       console.log(error)
     } else {
