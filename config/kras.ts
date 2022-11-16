@@ -139,7 +139,9 @@ const kras : Thalia.WebsiteConfig = {
     },
     showMail : function(router) {
       router.readTemplate('404.mustache', 'email', function(views) {
-        router.res.end(mustache.render(views.content, {}, views))
+        router.res.end(mustache.render(views.content, {
+          name: 'Patient Name'
+        }, views))
       })
     },
     testMail: function (router) {
@@ -153,7 +155,7 @@ const kras : Thalia.WebsiteConfig = {
         auth: mailAuth
       })
 
-      router.readTemplate('email.mustache', 'email.mustache', function(views) {
+      router.readTemplate('404.mustache', 'email', function(views) {
         console.log("reading the email template...", views);
 
         transporter.verify(function (error) {
@@ -166,28 +168,28 @@ const kras : Thalia.WebsiteConfig = {
         })
 
         const data = {
-
+          name: 'Patient Name',
         }
   
         const mailOptions = {
           from: '"PeterMac" <PeterMacCallumCC@gmail.com>',
-          to: 'mspzetxqymmwcirlwm@tmmcv.net', // Use a new 10minutemail.com address for testing
+          to: 'evjxzipazddmhsnpgg@tmmbt.com', // Use a new 10minutemail.com address for testing
           // bcc: 'PathOS@petermac.org', // Don't BCC the test mail
           subject: 'Sending Email using Node.js',
-          html: mustache.render(views.template, data, views)
+          html: mustache.render(views.content, data, views)
         }
   
         // Disable sending the mail
-        // transporter.sendMail(mailOptions, function (error, info) {
-        //   if (error) {
-        //     console.log(error)
-        //   } else {
-        //     console.log('Email sent: ' + info.response)
-        //   }
-        // })
+        transporter.sendMail(mailOptions, function (error, info) {
+          if (error) {
+            console.log(error)
+          } else {
+            console.log('Email sent: ' + info.response)
+          }
+        })
   
         // router.res.end('Ok lol I guess we sent some mail??')
-        router.res.end(mustache.render(views.template, data, views))
+        router.res.end(mustache.render(views.content, data, views))
       })
 
     },

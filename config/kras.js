@@ -136,7 +136,9 @@ const kras = {
         },
         showMail: function (router) {
             router.readTemplate('404.mustache', 'email', function (views) {
-                router.res.end(mustache_1.default.render(views.content, {}, views));
+                router.res.end(mustache_1.default.render(views.content, {
+                    name: 'Patient Name'
+                }, views));
             });
         },
         testMail: function (router) {
@@ -147,7 +149,7 @@ const kras = {
                 secure: true,
                 auth: mailAuth
             });
-            router.readTemplate('email.mustache', 'email.mustache', function (views) {
+            router.readTemplate('404.mustache', 'email', function (views) {
                 console.log("reading the email template...", views);
                 transporter.verify(function (error) {
                     if (error) {
@@ -158,14 +160,24 @@ const kras = {
                         console.log('Nodemailer: Server is ready to take our messages');
                     }
                 });
-                const data = {};
+                const data = {
+                    name: 'Patient Name',
+                };
                 const mailOptions = {
                     from: '"PeterMac" <PeterMacCallumCC@gmail.com>',
-                    to: 'mspzetxqymmwcirlwm@tmmcv.net',
+                    to: 'evjxzipazddmhsnpgg@tmmbt.com',
                     subject: 'Sending Email using Node.js',
-                    html: mustache_1.default.render(views.template, data, views)
+                    html: mustache_1.default.render(views.content, data, views)
                 };
-                router.res.end(mustache_1.default.render(views.template, data, views));
+                transporter.sendMail(mailOptions, function (error, info) {
+                    if (error) {
+                        console.log(error);
+                    }
+                    else {
+                        console.log('Email sent: ' + info.response);
+                    }
+                });
+                router.res.end(mustache_1.default.render(views.content, data, views));
             });
         },
         failsafeSaveDetails: function (router) {

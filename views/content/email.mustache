@@ -10,8 +10,8 @@
   <style>
     html {
       line-height: 1.15;
+      font-family: Arial, Helvetica, sans-serif;
     }
-
 
     body {
       margin: 0;
@@ -37,14 +37,26 @@
       max-width: 680px;
       background: white;
       margin: auto;
-      padding: 15px;
 
       text-align: center;
 
       img {
-        max-width: 200px;
+        padding: 15px;
+        max-width: 250px;
         margin: auto;
       }
+    }
+
+    .banner {
+      color: white;
+      background-color: #4b5563;
+      width: 100%;
+      padding: 5px 0;
+    }
+
+    .main {
+      padding: 15px;
+      text-align: left;
     }
   </style>
   {{ >styles }}
@@ -56,16 +68,22 @@
 
       <img class="logo" src="https://www.pathos.co/images/petermac_logo.png" alt="Peter Mac Logo">
 
-      <h1>Hello World</h1>
+      <div class="banner">
+        <h1>Your personal KRas report</h1>
+      </div>
 
-      <p>Voluptate ipsum voluptate duis velit magna esse veniam deserunt ad consectetur. Reprehenderit non ullamco
-        tempor
-        quis esse velit nulla irure dolor ullamco mollit esse. Enim pariatur proident fugiat cupidatat excepteur fugiat
-        velit. Ullamco magna enim quis do labore ad tempor consectetur enim ullamco eu id. Mollit non excepteur nulla
-        anim
-        et id. Aliqua excepteur veniam officia fugiat esse cillum aliquip eiusmod cillum. Consectetur pariatur ut
-        excepteur
-        ut ad consequat dolor.</p>
+      <div class="main">
+        <p>Hello {{ name }},</p>
+        <p>Thank you very much for participating in our study to assess the Interactive KRas Resource. We have attached
+          your personal KRas report as a PDF to this email. You can also access your report online at our <a href="https://pathos.co/kras/{{hash}}">website</a>.
+        </p>
+        <p>Please feel free to share this information with your family
+          and friends, and even your GP.</p>
+        <p>Thank you again for your participation and best wishes.</p>
+        <p style="margin-bottom: 0;">The KRas Oncology Team,</p>
+        <p style="margin-top: 0;">Peter MacCallum Cancer Centre</p>
+      </div>
+
     </div>
 
 
