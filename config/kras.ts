@@ -27,7 +27,6 @@ try {
 const kras: Thalia.WebsiteConfig = {
   publish: {
     dist: [
-      'favicon.ico',
       'css/main.css',
       'css/canvas.css',
       'css/kras.css',
