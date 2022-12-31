@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>KRas Annotation</title>
+
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Kras Annotation">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/canvas/canvas.css">
+  <link rel="stylesheet" href="/css/kras.css">
+  <link rel="stylesheet" href="/css/font-awesome.min.css">
+  <style>html{line-height:1.15;font-family:Arial,Helvetica,sans-serif}body{margin:0}main{display:block}h1{font-size:2em;margin:.67em 0}html{background-color:#f0f0f0}.baseLayer{background-color:#f0f0f0;padding:15px}.emailLayer{max-width:680px;background:#fff;margin:auto;text-align:center}img.logo{background:#fff;width:250px;margin:auto}.banner{color:#fff;background-color:#4b5563;width:100%;padding:5px 0}.main{padding:15px;text-align:left}</style>  <script src="/js/vendor.min.js"></script>
+  <script src="/js/showdown.min.js"></script>
+
+
+  <link rel="apple-touch-icon" sizes="57x57" href="/images/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/images/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/images/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/images/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/images/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/images/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/images/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/images/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/images/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/images/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/icons/favicon-16x16.png">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/images/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+</head>
+
+<body>
+  <div id="wrapper" class="container-fluid page">
+    <div class="row">
+      <div class="col-md-2 col-xs-3 sidebar">
+        <a href="#Welcome" onclick="welcome()"><img class="pmac_logo" src="/images/petermac_logo.png"></a>
+        <ul>
+          <li><a href="#Welcome" class="selected" onclick="welcome()">Welcome</a></li>
+          <li><a href="#Introduction" onclick="introduction()">Introduction</a></li>
+          <li><a href="#Video" onclick="video()">Video</a></li>
+          <li><a href="#Images" onclick="toggleImageLinks()">Images</a></li>
+          <li class="hidden image">
+            <a href="#KRasEditPlusLabelsOFF_SwitchPlusWatermarkNewFont.png" onclick="openScreen(0)">KRas turned off</a>
+          </li>
+          <li class="hidden image">
+            <a href="#KRasEditPlusLabelsON_SwitchPlusWatermarkNewFont.png" onclick="openScreen(1)">KRas turned on</a>
+          </li>
+          <li class="hidden image">
+            <a href="#KRasEditPlusLabelsSwitchingOFF_PlusWatermarkNewFont.png" onclick="openScreen(2)">Turning off KRas</a>
+          </li>
+          <li class="hidden image">
+            <a href="#KRasEditPlusLabelsMUTANT_K_RasPlusWatermarkNewFont.png" onclick="openScreen(3)">Faulty KRas</a>
+          </li>
+          <li class="hidden image">
+            <a href="#KRasEditPlusLabelsCancerCellsDividingPlusWatermarkNewFont.png" onclick="openScreen(4)">Tumour cells dividing</a>
+          </li>
+          <li class="hidden image">
+            <a href="#FaultyKRasTreatmentWithLabelsPlusWatermarkNewFont_final.png" onclick="openScreen(5)">New treatments keep faulty KRas turned off</a>
+          </li>
+          <li><a href="#Terms" onclick="terms()">Terms and Definitions</a></li>
+          <li><a href="#Email" onclick="email()">Email to Patient</a></li>
+          <li><a href="#Reload" onclick="reload()">Reload page</a></li>
+        </ul>
+      </div>
+      <div class="col-md-10 col-xs-9 mainContent">
+
+        <div id='contentBox'></div>
+
+        <div id="d3-drawer" class="drawer hidden">
+          <div id="drawer-ui">
+            <svg id="pallete" viewBox="0,0,150,50">
+              <g transform="translate(15,15)">
+                <circle stroke="grey" class="swatch active" cx="0" cy="0" r="11" fill="#333333"></circle><circle stroke="grey" class="swatch" cx="13" cy="22" r="11" fill="#ffffff"></circle><circle stroke="grey" class="swatch" cx="26" cy="0" r="11" fill="#1b9e77"></circle><circle stroke="grey" class="swatch" cx="39" cy="22" r="11" fill="#d95f02"></circle><circle stroke="grey" class="swatch" cx="52" cy="0" r="11" fill="#7570b3"></circle><circle stroke="grey" class="swatch" cx="65" cy="22" r="11" fill="#e7298a"></circle><circle stroke="grey" class="swatch" cx="78" cy="0" r="11" fill="#66a61e"></circle><circle stroke="grey" class="swatch" cx="91" cy="22" r="11" fill="#e6ab02"></circle><circle stroke="grey" class="swatch" cx="104" cy="0" r="11" fill="#a6761d"></circle><circle stroke="grey" class="swatch" cx="117" cy="22" r="11" fill="#666666"></circle></g>
+            </svg>
+
+            <input id="colorInput" name="colorInput" value="#333333" type="color" style="width:60px;height:60px;">
+
+            <div id="strokeWidth">
+              <p>5px width</p>
+              <input id="lineWidthInput" name="lineWidthInput" type="range" min="0.5" max="50" value="5" step="0.5">
+            </div>
+ 
+            <h1 id="imageTitle"></h1>
+
+            <text class="btn" dy="0.35em" style="float:right;"></text>
+          </div>
+        </div>
+
+        <form action="/saveDetails" id="saveForm" method="post">
+          <div id="noteBox">
+            <h3>Notes:</h3>
+            <textarea name="text-0" id="text-0" class="bigText hidden" for="saveForm"></textarea>
+            <textarea name="text-1" id="text-1" class="bigText hidden" for="saveForm"></textarea>
+            <textarea name="text-2" id="text-2" class="bigText hidden" for="saveForm"></textarea>
+            <textarea name="text-3" id="text-3" class="bigText hidden" for="saveForm"></textarea>
+            <textarea name="text-4" id="text-4" class="bigText hidden" for="saveForm"></textarea>
+            <textarea name="text-5" id="text-5" class="bigText hidden" for="saveForm"></textarea>
+          </div>
+
+          <div id="emailForm" class="row hidden">
+            <div class="col-xs-9">
+              <h1>Email to patient</h1>
+              <p>Please fill in this form to send the information from this Resource to your email.</p>
+              <div id="patientDetailForm">
+                <table>
+                  <tr>
+                    <td>First Name:</td>
+                    <td><input value="" for="saveForm" id="firstName" name="firstName" value=""
+                        required="true"></td>
+                  </tr>
+                  <tr>
+                    <td>Last Name:</td>
+                    <td><input value="" for="saveForm" id="lastName" name="lastName" value="" required="true">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Email:</td>
+                    <td><input value="" for="saveForm" id="email" name="email" type="email" value=""
+                        required="true"></td>
+                  </tr>
+                  <tr>
+                    <td>Doctor:</td>
+                    <td><input value="" for="saveForm" id="doctor" name="doctor" value="" required="true"></td>
+                  </tr>
+                </table>
+                <input value="Save details" type="submit">
+                <div id="hiddenData" style="display: none;">
+                  <textarea value="" name="lineData" id="lineData" for="saveForm"></textarea>
+                  <input value="" name="hash" for="saveForm">
+                </div>
+              </div>
+
+              <div id="emailExtraInfo">
+                <p>The information you receive will include a PDF similar to that shown below:</p>
+                <img src="/images/pdf-example.png" style="width: 50%;">
+              </div>
+
+
+            </div>
+            <div class="sideBanner col-xs-3">
+              <div id="hiddenImages"></div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+  <script type="text/javascript" src="/js/simplify.js"></script>
+  <script type="text/javascript" src="/js/d3_drawer.js"></script>
+
+  <script type="text/javascript">
+    let images = [{"image":"KRasEditPlusLabelsOFF_SwitchPlusWatermarkNewFont.png","smugmug":"https://photos.smugmug.com/photos/i-9D27hvg/0/175fb517/O/i-9D27hvg.png","large":"https://photos.smugmug.com/photos/i-9D27hvg/0/175fb517/L/i-9D27hvg.png","thumbnail":"https://photos.smugmug.com/photos/i-9D27hvg/0/175fb517/S/i-9D27hvg-S.png","name":"KRas turned off","legend":"The switch indicated in red keeps KRas turned off.","id":0},{"image":"KRasEditPlusLabelsON_SwitchPlusWatermarkNewFont.png","smugmug":"https://photos.smugmug.com/photos/i-CVr9K9F/0/2d06e038/O/i-CVr9K9F.png","large":"https://photos.smugmug.com/photos/i-CVr9K9F/0/2d06e038/XL/i-CVr9K9F-XL.png","thumbnail":"https://photos.smugmug.com/photos/i-CVr9K9F/0/2d06e038/S/i-CVr9K9F-S.png","name":"KRas turned on","legend":"The red off switch is swapped for the green on-switch, turning KRas on.","id":1},{"image":"KRasEditPlusLabelsSwitchingOFF_PlusWatermarkNewFont.png","smugmug":"https://photos.smugmug.com/photos/i-NfhJBQL/0/475035ae/O/i-NfhJBQL.png","large":"https://photos.smugmug.com/photos/i-NfhJBQL/0/475035ae/XL/i-NfhJBQL-XL.png","thumbnail":"https://photos.smugmug.com/photos/i-NfhJBQL/0/475035ae/S/i-NfhJBQL-S.png","name":"Turning off KRas","legend":"The large orange molecule splits the on switch in KRas, converting it back to an off switch. This turns KRas off once again.","id":2},{"image":"KRasEditPlusLabelsMUTANT_K_RasPlusWatermarkNewFont.png","smugmug":"https://photos.smugmug.com/photos/i-jg8H773/0/4bf0d847/O/i-jg8H773.png","large":"https://photos.smugmug.com/photos/i-jg8H773/0/4bf0d847/XL/i-jg8H773-XL.png","thumbnail":"https://photos.smugmug.com/photos/i-jg8H773/0/4bf0d847/S/i-jg8H773-S.png","name":"Faulty KRas","legend":"A defect or fault in KRas is indicated in purple. This defect keeps the green on switch permanently in place and KRas constantly switched on.","id":3},{"image":"KRasEditPlusLabelsCancerCellsDividingPlusWatermarkNewFont.png","smugmug":"https://photos.smugmug.com/photos/i-gkj3Xzw/0/64e4301b/O/i-gkj3Xzw.png","large":"https://photos.smugmug.com/photos/i-gkj3Xzw/0/64e4301b/XL/i-gkj3Xzw-XL.png","thumbnail":"https://photos.smugmug.com/photos/i-gkj3Xzw/0/64e4301b/S/i-gkj3Xzw-S.png","name":"Tumour cells dividing","legend":"If KRas is constantly switched on, this results in out of control cell division.","id":4},{"image":"FaultyKRasTreatmentWithLabelsPlusWatermarkNewFont_final.png","smugmug":"https://photos.smugmug.com/photos/i-ppcm7ps/0/3e13ee29/O/i-ppcm7ps.png","large":"https://photos.smugmug.com/photos/i-ppcm7ps/0/3e13ee29/XL/i-ppcm7ps-XL.png","thumbnail":"https://photos.smugmug.com/photos/i-ppcm7ps/0/3e13ee29/S/i-ppcm7ps-S.png","name":"New treatments keep faulty KRas turned off","legend":"New treatments fit into faulty KRas, keeping the off switch in place, keeping faulty KRas turned off.","id":5}].map((blob) => {
+      blob.lines = new Array();
+      return blob
+    });
+
+  </script>
+
+  <script>
+    function reload() {
+      if( confirm('This will clear all your data.') ) {
+        window.location.href = 'https://pathos.co/kras'
+      }
+    }
+  </script>
+
+  <script type="text/javascript" src="/js/wrapper.js"></script>
+
+</body>
+
+</html>

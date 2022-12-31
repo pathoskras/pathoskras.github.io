@@ -9,6 +9,9 @@ const mustache_1 = __importDefault(require("mustache"));
 const nodemailer_1 = __importDefault(require("nodemailer"));
 const formidable_1 = __importDefault(require("formidable"));
 const puppeteer_1 = __importDefault(require("puppeteer"));
+const node_fs_1 = require("node:fs");
+const node_buffer_1 = require("node:buffer");
+const lodash_1 = __importDefault(require("lodash"));
 const env = process.env.NODE_ENV || 'development';
 const port = process.argv.find((e) => e.match(/^\d{0,5}$/)) || '1337';
 let mailAuth = {
@@ -22,6 +25,64 @@ catch (e) {
     console.log('Error loading mailAuth');
     console.log(e);
 }
+const imageData = {
+    images: [
+        {
+            image: 'KRasEditPlusLabelsOFF_SwitchPlusWatermarkNewFont.png',
+            smugmug: 'https://photos.smugmug.com/photos/i-9D27hvg/0/175fb517/O/i-9D27hvg.png',
+            large: 'https://photos.smugmug.com/photos/i-9D27hvg/0/175fb517/L/i-9D27hvg.png',
+            thumbnail: 'https://photos.smugmug.com/photos/i-9D27hvg/0/175fb517/S/i-9D27hvg-S.png',
+            name: 'KRas turned off',
+            legend: 'The switch indicated in red keeps KRas turned off.',
+            id: 0,
+        },
+        {
+            image: 'KRasEditPlusLabelsON_SwitchPlusWatermarkNewFont.png',
+            smugmug: 'https://photos.smugmug.com/photos/i-CVr9K9F/0/2d06e038/O/i-CVr9K9F.png',
+            large: 'https://photos.smugmug.com/photos/i-CVr9K9F/0/2d06e038/XL/i-CVr9K9F-XL.png',
+            thumbnail: 'https://photos.smugmug.com/photos/i-CVr9K9F/0/2d06e038/S/i-CVr9K9F-S.png',
+            name: 'KRas turned on',
+            legend: 'The red off switch is swapped for the green on-switch, turning KRas on.',
+            id: 1,
+        },
+        {
+            image: 'KRasEditPlusLabelsSwitchingOFF_PlusWatermarkNewFont.png',
+            smugmug: 'https://photos.smugmug.com/photos/i-NfhJBQL/0/475035ae/O/i-NfhJBQL.png',
+            large: 'https://photos.smugmug.com/photos/i-NfhJBQL/0/475035ae/XL/i-NfhJBQL-XL.png',
+            thumbnail: 'https://photos.smugmug.com/photos/i-NfhJBQL/0/475035ae/S/i-NfhJBQL-S.png',
+            name: 'Turning off KRas',
+            legend: 'The large orange molecule splits the on switch in KRas, converting it back to an off switch. This turns KRas off once again.',
+            id: 2,
+        },
+        {
+            image: 'KRasEditPlusLabelsMUTANT_K_RasPlusWatermarkNewFont.png',
+            smugmug: 'https://photos.smugmug.com/photos/i-jg8H773/0/4bf0d847/O/i-jg8H773.png',
+            large: 'https://photos.smugmug.com/photos/i-jg8H773/0/4bf0d847/XL/i-jg8H773-XL.png',
+            thumbnail: 'https://photos.smugmug.com/photos/i-jg8H773/0/4bf0d847/S/i-jg8H773-S.png',
+            name: 'Faulty KRas',
+            legend: 'A defect or fault in KRas is indicated in purple. This defect keeps the green on switch permanently in place and KRas constantly switched on.',
+            id: 3,
+        },
+        {
+            image: 'KRasEditPlusLabelsCancerCellsDividingPlusWatermarkNewFont.png',
+            smugmug: 'https://photos.smugmug.com/photos/i-gkj3Xzw/0/64e4301b/O/i-gkj3Xzw.png',
+            large: 'https://photos.smugmug.com/photos/i-gkj3Xzw/0/64e4301b/XL/i-gkj3Xzw-XL.png',
+            thumbnail: 'https://photos.smugmug.com/photos/i-gkj3Xzw/0/64e4301b/S/i-gkj3Xzw-S.png',
+            name: 'Tumour cells dividing',
+            legend: 'If KRas is constantly switched on, this results in out of control cell division.',
+            id: 4,
+        },
+        {
+            image: 'FaultyKRasTreatmentWithLabelsPlusWatermarkNewFont_final.png',
+            smugmug: 'https://photos.smugmug.com/photos/i-ppcm7ps/0/3e13ee29/O/i-ppcm7ps.png',
+            large: 'https://photos.smugmug.com/photos/i-ppcm7ps/0/3e13ee29/XL/i-ppcm7ps-XL.png',
+            thumbnail: 'https://photos.smugmug.com/photos/i-ppcm7ps/0/3e13ee29/S/i-ppcm7ps-S.png',
+            name: 'New treatments keep faulty KRas turned off',
+            legend: 'New treatments fit into faulty KRas, keeping the off switch in place, keeping faulty KRas turned off.',
+            id: 5,
+        },
+    ],
+};
 const kras = {
     publish: {
         dist: [
@@ -37,69 +98,32 @@ const kras = {
         ],
     },
     controllers: {
+        publishToKras: function (router) {
+            router.readTemplate({
+                template: 'kras.mustache',
+                content: 'email',
+                callback: (views) => {
+                    const data = lodash_1.default.cloneDeep(imageData);
+                    data.imagesJson = JSON.stringify(data.images);
+                    views.inner = views.kras;
+                    const output = mustache_1.default.render(views.template, data, views);
+                    const buffer = new Uint8Array(node_buffer_1.Buffer.from(output));
+                    node_fs_1.writeFile(path_1.default.resolve(__dirname, '..', 'public', 'kras', 'index.html'), buffer, (err) => {
+                        if (err) {
+                            console.log(err);
+                            router.res.end(err);
+                        }
+                        router.res.end('Wrote the file to public/kras/index.html');
+                    });
+                },
+            });
+        },
         kras: function (router) {
             router.readTemplate({
                 template: 'kras.mustache',
                 content: 'email',
                 callback: (views) => {
-                    const data = {
-                        images: [
-                            {
-                                image: 'KRasEditPlusLabelsOFF_SwitchPlusWatermarkNewFont.png',
-                                smugmug: 'https://photos.smugmug.com/photos/i-9D27hvg/0/175fb517/O/i-9D27hvg.png',
-                                large: 'https://photos.smugmug.com/photos/i-9D27hvg/0/175fb517/L/i-9D27hvg.png',
-                                thumbnail: 'https://photos.smugmug.com/photos/i-9D27hvg/0/175fb517/S/i-9D27hvg-S.png',
-                                name: 'KRas turned off',
-                                legend: 'The switch indicated in red keeps KRas turned off.',
-                                id: 0,
-                            },
-                            {
-                                image: 'KRasEditPlusLabelsON_SwitchPlusWatermarkNewFont.png',
-                                smugmug: 'https://photos.smugmug.com/photos/i-CVr9K9F/0/2d06e038/O/i-CVr9K9F.png',
-                                large: 'https://photos.smugmug.com/photos/i-CVr9K9F/0/2d06e038/XL/i-CVr9K9F-XL.png',
-                                thumbnail: 'https://photos.smugmug.com/photos/i-CVr9K9F/0/2d06e038/S/i-CVr9K9F-S.png',
-                                name: 'KRas turned on',
-                                legend: 'The red off switch is swapped for the green on-switch, turning KRas on.',
-                                id: 1,
-                            },
-                            {
-                                image: 'KRasEditPlusLabelsSwitchingOFF_PlusWatermarkNewFont.png',
-                                smugmug: 'https://photos.smugmug.com/photos/i-NfhJBQL/0/475035ae/O/i-NfhJBQL.png',
-                                large: 'https://photos.smugmug.com/photos/i-NfhJBQL/0/475035ae/XL/i-NfhJBQL-XL.png',
-                                thumbnail: 'https://photos.smugmug.com/photos/i-NfhJBQL/0/475035ae/S/i-NfhJBQL-S.png',
-                                name: 'Turning off KRas',
-                                legend: 'The large orange molecule splits the on switch in KRas, converting it back to an off switch. This turns KRas off once again.',
-                                id: 2,
-                            },
-                            {
-                                image: 'KRasEditPlusLabelsMUTANT_K_RasPlusWatermarkNewFont.png',
-                                smugmug: 'https://photos.smugmug.com/photos/i-jg8H773/0/4bf0d847/O/i-jg8H773.png',
-                                large: 'https://photos.smugmug.com/photos/i-jg8H773/0/4bf0d847/XL/i-jg8H773-XL.png',
-                                thumbnail: 'https://photos.smugmug.com/photos/i-jg8H773/0/4bf0d847/S/i-jg8H773-S.png',
-                                name: 'Faulty KRas',
-                                legend: 'A defect or fault in KRas is indicated in purple. This defect keeps the green on switch permanently in place and KRas constantly switched on.',
-                                id: 3,
-                            },
-                            {
-                                image: 'KRasEditPlusLabelsCancerCellsDividingPlusWatermarkNewFont.png',
-                                smugmug: 'https://photos.smugmug.com/photos/i-gkj3Xzw/0/64e4301b/O/i-gkj3Xzw.png',
-                                large: 'https://photos.smugmug.com/photos/i-gkj3Xzw/0/64e4301b/XL/i-gkj3Xzw-XL.png',
-                                thumbnail: 'https://photos.smugmug.com/photos/i-gkj3Xzw/0/64e4301b/S/i-gkj3Xzw-S.png',
-                                name: 'Tumour cells dividing',
-                                legend: 'If KRas is constantly switched on, this results in out of control cell division.',
-                                id: 4,
-                            },
-                            {
-                                image: 'FaultyKRasTreatmentWithLabelsPlusWatermarkNewFont_final.png',
-                                smugmug: 'https://photos.smugmug.com/photos/i-ppcm7ps/0/3e13ee29/O/i-ppcm7ps.png',
-                                large: 'https://photos.smugmug.com/photos/i-ppcm7ps/0/3e13ee29/XL/i-ppcm7ps-XL.png',
-                                thumbnail: 'https://photos.smugmug.com/photos/i-ppcm7ps/0/3e13ee29/S/i-ppcm7ps-S.png',
-                                name: 'New treatments keep faulty KRas turned off',
-                                legend: 'New treatments fit into faulty KRas, keeping the off switch in place, keeping faulty KRas turned off.',
-                                id: 5,
-                            },
-                        ],
-                    };
+                    const data = lodash_1.default.cloneDeep(imageData);
                     data.imagesJson = JSON.stringify(data.images);
                     views.inner = views.kras;
                     if (router.path &&
