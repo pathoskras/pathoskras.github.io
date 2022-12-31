@@ -40,144 +40,153 @@ const kras: Thalia.WebsiteConfig = {
   },
   controllers: {
     kras: function (router) {
-      router.readTemplate('kras.mustache', 'd3_inner', (views) => {
-        const data: any = {
-          images: [
-            {
-              image: 'KRasEditPlusLabelsOFF_SwitchPlusWatermarkNewFont.png',
-              smugmug:
-                'https://photos.smugmug.com/photos/i-9D27hvg/0/175fb517/O/i-9D27hvg.png',
-              large:
-                'https://photos.smugmug.com/photos/i-9D27hvg/0/175fb517/L/i-9D27hvg.png',
-              thumbnail:
-                'https://photos.smugmug.com/photos/i-9D27hvg/0/175fb517/S/i-9D27hvg-S.png',
-              name: 'KRas turned off',
-              legend: 'The switch indicated in red keeps KRas turned off.',
-              id: 0,
-            },
-            {
-              image: 'KRasEditPlusLabelsON_SwitchPlusWatermarkNewFont.png',
-              smugmug:
-                'https://photos.smugmug.com/photos/i-CVr9K9F/0/2d06e038/O/i-CVr9K9F.png',
-              large:
-                'https://photos.smugmug.com/photos/i-CVr9K9F/0/2d06e038/XL/i-CVr9K9F-XL.png',
-              thumbnail:
-                'https://photos.smugmug.com/photos/i-CVr9K9F/0/2d06e038/S/i-CVr9K9F-S.png',
-              name: 'KRas turned on',
-              legend:
-                'The red off switch is swapped for the green on-switch, turning KRas on.',
-              id: 1,
-            },
-            {
-              image: 'KRasEditPlusLabelsSwitchingOFF_PlusWatermarkNewFont.png',
-              smugmug:
-                'https://photos.smugmug.com/photos/i-NfhJBQL/0/475035ae/O/i-NfhJBQL.png',
-              large:
-                'https://photos.smugmug.com/photos/i-NfhJBQL/0/475035ae/XL/i-NfhJBQL-XL.png',
-              thumbnail:
-                'https://photos.smugmug.com/photos/i-NfhJBQL/0/475035ae/S/i-NfhJBQL-S.png',
-              name: 'Turning off KRas',
-              legend:
-                'The large orange molecule splits the on switch in KRas, converting it back to an off switch. This turns KRas off once again.',
-              id: 2,
-            },
-            {
-              image: 'KRasEditPlusLabelsMUTANT_K_RasPlusWatermarkNewFont.png',
-              smugmug:
-                'https://photos.smugmug.com/photos/i-jg8H773/0/4bf0d847/O/i-jg8H773.png',
-              large:
-                'https://photos.smugmug.com/photos/i-jg8H773/0/4bf0d847/XL/i-jg8H773-XL.png',
-              thumbnail:
-                'https://photos.smugmug.com/photos/i-jg8H773/0/4bf0d847/S/i-jg8H773-S.png',
-              name: 'Faulty KRas',
-              legend:
-                'A defect or fault in KRas is indicated in purple. This defect keeps the green on switch permanently in place and KRas constantly switched on.',
-              id: 3,
-            },
-            {
-              image:
-                'KRasEditPlusLabelsCancerCellsDividingPlusWatermarkNewFont.png',
-              smugmug:
-                'https://photos.smugmug.com/photos/i-gkj3Xzw/0/64e4301b/O/i-gkj3Xzw.png',
-              large:
-                'https://photos.smugmug.com/photos/i-gkj3Xzw/0/64e4301b/XL/i-gkj3Xzw-XL.png',
-              thumbnail:
-                'https://photos.smugmug.com/photos/i-gkj3Xzw/0/64e4301b/S/i-gkj3Xzw-S.png',
-              name: 'Tumour cells dividing',
-              legend:
-                'If KRas is constantly switched on, this results in out of control cell division.',
-              id: 4,
-            },
-            {
-              image:
-                'FaultyKRasTreatmentWithLabelsPlusWatermarkNewFont_final.png',
-              smugmug:
-                'https://photos.smugmug.com/photos/i-ppcm7ps/0/3e13ee29/O/i-ppcm7ps.png',
-              large:
-                'https://photos.smugmug.com/photos/i-ppcm7ps/0/3e13ee29/XL/i-ppcm7ps-XL.png',
-              thumbnail:
-                'https://photos.smugmug.com/photos/i-ppcm7ps/0/3e13ee29/S/i-ppcm7ps-S.png',
-              name: 'New treatments keep faulty KRas turned off',
-              legend:
-                'New treatments fit into faulty KRas, keeping the off switch in place, keeping faulty KRas turned off.',
-              id: 5,
-            },
-          ],
-        }
-        data.imagesJson = JSON.stringify(data.images)
+      router.readTemplate({
+        template: 'kras.mustache',
+        content: 'email',
+        callback: (views) => {
+          const data: any = {
+            images: [
+              {
+                image: 'KRasEditPlusLabelsOFF_SwitchPlusWatermarkNewFont.png',
+                smugmug:
+                  'https://photos.smugmug.com/photos/i-9D27hvg/0/175fb517/O/i-9D27hvg.png',
+                large:
+                  'https://photos.smugmug.com/photos/i-9D27hvg/0/175fb517/L/i-9D27hvg.png',
+                thumbnail:
+                  'https://photos.smugmug.com/photos/i-9D27hvg/0/175fb517/S/i-9D27hvg-S.png',
+                name: 'KRas turned off',
+                legend: 'The switch indicated in red keeps KRas turned off.',
+                id: 0,
+              },
+              {
+                image: 'KRasEditPlusLabelsON_SwitchPlusWatermarkNewFont.png',
+                smugmug:
+                  'https://photos.smugmug.com/photos/i-CVr9K9F/0/2d06e038/O/i-CVr9K9F.png',
+                large:
+                  'https://photos.smugmug.com/photos/i-CVr9K9F/0/2d06e038/XL/i-CVr9K9F-XL.png',
+                thumbnail:
+                  'https://photos.smugmug.com/photos/i-CVr9K9F/0/2d06e038/S/i-CVr9K9F-S.png',
+                name: 'KRas turned on',
+                legend:
+                  'The red off switch is swapped for the green on-switch, turning KRas on.',
+                id: 1,
+              },
+              {
+                image:
+                  'KRasEditPlusLabelsSwitchingOFF_PlusWatermarkNewFont.png',
+                smugmug:
+                  'https://photos.smugmug.com/photos/i-NfhJBQL/0/475035ae/O/i-NfhJBQL.png',
+                large:
+                  'https://photos.smugmug.com/photos/i-NfhJBQL/0/475035ae/XL/i-NfhJBQL-XL.png',
+                thumbnail:
+                  'https://photos.smugmug.com/photos/i-NfhJBQL/0/475035ae/S/i-NfhJBQL-S.png',
+                name: 'Turning off KRas',
+                legend:
+                  'The large orange molecule splits the on switch in KRas, converting it back to an off switch. This turns KRas off once again.',
+                id: 2,
+              },
+              {
+                image: 'KRasEditPlusLabelsMUTANT_K_RasPlusWatermarkNewFont.png',
+                smugmug:
+                  'https://photos.smugmug.com/photos/i-jg8H773/0/4bf0d847/O/i-jg8H773.png',
+                large:
+                  'https://photos.smugmug.com/photos/i-jg8H773/0/4bf0d847/XL/i-jg8H773-XL.png',
+                thumbnail:
+                  'https://photos.smugmug.com/photos/i-jg8H773/0/4bf0d847/S/i-jg8H773-S.png',
+                name: 'Faulty KRas',
+                legend:
+                  'A defect or fault in KRas is indicated in purple. This defect keeps the green on switch permanently in place and KRas constantly switched on.',
+                id: 3,
+              },
+              {
+                image:
+                  'KRasEditPlusLabelsCancerCellsDividingPlusWatermarkNewFont.png',
+                smugmug:
+                  'https://photos.smugmug.com/photos/i-gkj3Xzw/0/64e4301b/O/i-gkj3Xzw.png',
+                large:
+                  'https://photos.smugmug.com/photos/i-gkj3Xzw/0/64e4301b/XL/i-gkj3Xzw-XL.png',
+                thumbnail:
+                  'https://photos.smugmug.com/photos/i-gkj3Xzw/0/64e4301b/S/i-gkj3Xzw-S.png',
+                name: 'Tumour cells dividing',
+                legend:
+                  'If KRas is constantly switched on, this results in out of control cell division.',
+                id: 4,
+              },
+              {
+                image:
+                  'FaultyKRasTreatmentWithLabelsPlusWatermarkNewFont_final.png',
+                smugmug:
+                  'https://photos.smugmug.com/photos/i-ppcm7ps/0/3e13ee29/O/i-ppcm7ps.png',
+                large:
+                  'https://photos.smugmug.com/photos/i-ppcm7ps/0/3e13ee29/XL/i-ppcm7ps-XL.png',
+                thumbnail:
+                  'https://photos.smugmug.com/photos/i-ppcm7ps/0/3e13ee29/S/i-ppcm7ps-S.png',
+                name: 'New treatments keep faulty KRas turned off',
+                legend:
+                  'New treatments fit into faulty KRas, keeping the off switch in place, keeping faulty KRas turned off.',
+                id: 5,
+              },
+            ],
+          }
+          data.imagesJson = JSON.stringify(data.images)
 
-        views.inner = views.kras
-        if (
-          router.path &&
-          router.path[0] &&
-          router.path[0] !== '' &&
-          router.db
-        ) {
-          router.db.Worksheet.findOne({
-            where: {
-              hash: router.path[0],
-            },
-          })
-            .then((d: WorksheetModel) => {
-              try {
-                if (typeof d.data === 'string') {
-                  Object.assign(data, JSON.parse(d.data))
-                } else {
-                  Object.assign(data, d.data)
+          views.inner = views.kras
+          if (
+            router.path &&
+            router.path[0] &&
+            router.path[0] !== '' &&
+            router.db
+          ) {
+            router.db.Worksheet.findOne({
+              where: {
+                hash: router.path[0],
+              },
+            })
+              .then((d: WorksheetModel) => {
+                try {
+                  if (typeof d.data === 'string') {
+                    Object.assign(data, JSON.parse(d.data))
+                  } else {
+                    Object.assign(data, d.data)
+                  }
+                } catch (e) {
+                  console.error(`Error loading kras hash: ${router.path[0]}`)
                 }
-              } catch (e) {
-                console.error(`Error loading kras hash: ${router.path[0]}`)
-              }
 
-              Object.assign(data, {
-                hash: d.hash,
+                Object.assign(data, {
+                  hash: d.hash,
+                })
+                // if (env === 'development') { console.log('data is...', data) }
+                const output = mustache.render(views.template, data, views)
+                router.res.end(output)
               })
-              // if (env === 'development') { console.log('data is...', data) }
-              const output = mustache.render(views.template, data, views)
-              router.res.end(output)
-            })
-            .catch((e) => {
-              console.log('ERROR?')
-              console.log(e)
-              router.res.end(JSON.stringify(e))
-            })
-        } else {
-          const output = mustache.render(views.template, data, views)
-          router.res.end(output)
-        }
+              .catch((e) => {
+                console.log('ERROR?')
+                console.log(e)
+                router.res.end(JSON.stringify(e))
+              })
+          } else {
+            const output = mustache.render(views.template, data, views)
+            router.res.end(output)
+          }
+        },
       })
     },
     showMail: function (router) {
-      router.readTemplate('404.mustache', 'email', function (views) {
-        router.res.end(
-          mustache.render(
-            views.content,
-            {
-              name: 'Patient Name',
-            },
-            views
+      router.readTemplate({
+        template: '404.mustache',
+        content: 'email',
+        callback: function (views) {
+          router.res.end(
+            mustache.render(
+              views.content,
+              {
+                name: 'Patient Name',
+              },
+              views
+            )
           )
-        )
+        },
       })
     },
     testMail: function (router) {
@@ -191,41 +200,45 @@ const kras: Thalia.WebsiteConfig = {
         auth: mailAuth,
       })
 
-      router.readTemplate('404.mustache', 'email', function (views) {
-        console.log('reading the email template...', views)
+      router.readTemplate({
+        template: '404.mustache',
+        content: 'email',
+        callback: function (views) {
+          console.log('reading the email template...', views)
 
-        transporter.verify(function (error) {
-          if (error) {
-            console.log('Nodemailer error')
-            console.log(error)
-          } else {
-            console.log('Nodemailer: Server is ready to take our messages')
+          transporter.verify(function (error) {
+            if (error) {
+              console.log('Nodemailer error')
+              console.log(error)
+            } else {
+              console.log('Nodemailer: Server is ready to take our messages')
+            }
+          })
+
+          const data = {
+            name: 'Patient Name',
           }
-        })
 
-        const data = {
-          name: 'Patient Name',
-        }
-
-        const mailOptions = {
-          from: '"PeterMac" <PeterMacCallumCC@gmail.com>',
-          to: 'evjxzipazddmhsnpgg@tmmbt.com', // Use a new 10minutemail.com address for testing
-          // bcc: 'PathOS@petermac.org', // Don't BCC the test mail
-          subject: 'Sending Email using Node.js',
-          html: mustache.render(views.content, data, views),
-        }
-
-        // Disable sending the mail
-        transporter.sendMail(mailOptions, function (error, info) {
-          if (error) {
-            console.log(error)
-          } else {
-            console.log('Email sent: ' + info.response)
+          const mailOptions = {
+            from: '"PeterMac" <PeterMacCallumCC@gmail.com>',
+            to: 'evjxzipazddmhsnpgg@tmmbt.com', // Use a new 10minutemail.com address for testing
+            // bcc: 'PathOS@petermac.org', // Don't BCC the test mail
+            subject: 'Sending Email using Node.js',
+            html: mustache.render(views.content, data, views),
           }
-        })
 
-        // router.res.end('Ok lol I guess we sent some mail??')
-        router.res.end(mustache.render(views.content, data, views))
+          // Disable sending the mail
+          transporter.sendMail(mailOptions, function (error, info) {
+            if (error) {
+              console.log(error)
+            } else {
+              console.log('Email sent: ' + info.response)
+            }
+          })
+
+          // router.res.end('Ok lol I guess we sent some mail??')
+          router.res.end(mustache.render(views.content, data, views))
+        },
       })
     },
 
@@ -301,42 +314,46 @@ const kras: Thalia.WebsiteConfig = {
               `KRas-${hash}.pdf`
             )
 
-            router.readTemplate('404.mustache', 'email', function (views) {
-              const data = {
-                name: blob.firstName,
-                hash: hash,
-              }
+            router.readTemplate({
+              template: '404.mustache',
+              content: 'email',
+              callback: function (views) {
+                const data = {
+                  name: blob.firstName,
+                  hash: hash,
+                }
 
-              const emailOptions: any = {
-                from: '"PeterMac" <PeterMacCallumCC@gmail.com>',
-                to: fields.email,
-                bcc: 'PathOS@petermac.org',
-                subject: 'Your personal KRas notes',
-                attachments: [
-                  {
-                    filename: 'KRas_notes.pdf',
-                    path: filepath,
-                  },
-                ],
-                html: mustache.render(views.content, data, views),
-              }
+                const emailOptions: any = {
+                  from: '"PeterMac" <PeterMacCallumCC@gmail.com>',
+                  to: fields.email,
+                  bcc: 'PathOS@petermac.org',
+                  subject: 'Your personal KRas notes',
+                  attachments: [
+                    {
+                      filename: 'KRas_notes.pdf',
+                      path: filepath,
+                    },
+                  ],
+                  html: mustache.render(views.content, data, views),
+                }
 
-              if (fields.doctor) {
-                emailOptions.subject = `Your personal KRas notes from Dr. ${fields.doctor}`
-              }
+                if (fields.doctor) {
+                  emailOptions.subject = `Your personal KRas notes from Dr. ${fields.doctor}`
+                }
 
-              sendEmail(emailOptions)
+                sendEmail(emailOptions)
 
-              router.res.end(
-                mustache.render(
-                  views.content,
-                  {
-                    ...data,
-                    website: ` has been sent to your email: ${fields.email}`,
-                  },
-                  views
+                router.res.end(
+                  mustache.render(
+                    views.content,
+                    {
+                      ...data,
+                      website: ` has been sent to your email: ${fields.email}`,
+                    },
+                    views
+                  )
                 )
-              )
+              },
             })
           } catch (e) {
             console.log('Error sending mail.', e)

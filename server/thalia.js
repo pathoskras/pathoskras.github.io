@@ -224,13 +224,13 @@ define("requestHandlers", ["require", "exports", "fs", "mustache", "path", "sass
                 handle.websites[site].readAllViews = function (cb) {
                     readAllViews(path.resolve(baseUrl, 'views')).then((d) => cb(d));
                 };
-                handle.websites[site].readTemplate = function (template, content, cb) {
-                    readTemplate(template, path.resolve(baseUrl, 'views'), content)
+                handle.websites[site].readTemplate = function (options) {
+                    readMustache(options.template, path.resolve(baseUrl, 'views'), options.content)
                         .catch((e) => {
                         console.error('error here?', e);
-                        cb(e);
+                        options.callback(e);
                     })
-                        .then((d) => cb(d));
+                        .then((d) => options.callback(d));
                 };
                 readAllViews(path.resolve(baseUrl, 'views')).then((views) => {
                     handle.websites[site].views = views;
@@ -284,7 +284,7 @@ define("requestHandlers", ["require", "exports", "fs", "mustache", "path", "sass
     };
     exports.handle = handle;
     handle.addWebsite('default', {});
-    async function readTemplate(template, folder, content = '') {
+    async function readMustache(template, folder, content = '') {
         return new Promise((resolve, reject) => {
             const promises = [];
             const filenames = ['template', 'content'];
