@@ -1,0 +1,271 @@
+body,
+html {
+  width: 100vw;
+}
+
+.hidden {
+  display: none;
+  visibility: hidden;
+}
+
+div#footer {
+  background: white;
+  border-top: solid 1px black;
+  height: 15vh;
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+}
+
+#footer .nav-button {
+  background: white;
+  padding: 0.5vh;
+  width: 15vh;
+  height: 15vh;
+  margin-right: -5px;
+  cursor: pointer;
+}
+
+#footer .nav-button img {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+#footer .nav-button:hover {
+  border: solid 3px black;
+  background: red;
+}
+
+textarea.bigText {
+  width: 80vw;
+  height: 100px;
+}
+
+#noteBox {
+  bottom: 0;
+  position: fixed;
+}
+
+.line {
+  fill: none;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+#d3-drawer {
+  margin: 0 -15px;
+}
+#d3-drawer .d3-background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 50px;
+  opacity: 0.65;
+}
+#d3-drawer #drawer-ui #pallete {
+  width: 150px;
+}
+#d3-drawer #drawer-ui #pallete .swatch {
+  pointer-events: all;
+}
+#d3-drawer #drawer-ui #pallete .swatch.active {
+  stroke-width: 2px;
+  stroke: black;
+}
+#d3-drawer #drawer-ui #pallete .swatch {
+  cursor: pointer;
+}
+#d3-drawer #drawer-ui #colorInput {
+  margin: 5px;
+}
+#d3-drawer #drawer-ui #strokeWidth {
+  width: 120px;
+  display: inline-block;
+}
+#d3-drawer #drawer-ui #strokeWidth p {
+  text-align: center;
+  margin: auto;
+}
+#d3-drawer #drawer-ui #strokeWidth #lineWidthInput {
+  width: 120px;
+}
+#d3-drawer #drawer-ui #imageTitle {
+  display: inline-block;
+  margin-top: 20px;
+  margin-left: 15px;
+  font-size: 32px;
+  vertical-align: top;
+}
+#d3-drawer #drawer-ui .btn {
+  margin-right: 10px;
+  pointer-events: all;
+  font-family: FontAwesome;
+  fill: #333;
+  font-size: 48px;
+  text-anchor: middle;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+#d3-drawer #drawer-ui .btn:hover {
+  fill: black;
+  cursor: pointer;
+}
+
+img.bigImage {
+  display: none;
+}
+
+#saveForm.bigText {
+  position: absolute;
+  bottom: 50;
+}
+
+.sidebar {
+  height: 100vh;
+  border-right: solid 1px grey;
+}
+.sidebar ul {
+  list-style: none;
+  padding-left: 0;
+}
+.sidebar ul li {
+  font-size: 20px;
+  margin-bottom: 3px;
+  border-radius: 2px;
+  margin-right: 14px;
+}
+.sidebar ul li a {
+  text-decoration: none;
+  padding: 2px;
+  display: block;
+}
+.sidebar ul li a.selected {
+  background: lightcyan;
+}
+.sidebar ul li a:hover {
+  background: lightblue;
+}
+.sidebar ul li.image {
+  margin-left: 14px;
+  margin-right: 0;
+}
+.sidebar ul li.image.hidden {
+  display: none;
+}
+
+#wrapper.pdfMode {
+  font-size: 12px;
+  position: relative;
+  min-height: 3000px;
+  size: auto;
+}
+#wrapper.pdfMode .sidebar,
+#wrapper.pdfMode .sideBanner {
+  display: none;
+  height: 0;
+}
+#wrapper.pdfMode .mainContent {
+  width: 100%;
+}
+#wrapper.pdfMode .printPage {
+  padding: 0 15px;
+  page-break-after: always;
+}
+#wrapper.pdfMode .printPage #welcometothekrasinteractiveresource,
+#wrapper.pdfMode .printPage #introductiontokras {
+  display: none;
+}
+#wrapper.pdfMode .printPage ul,
+#wrapper.pdfMode .printPage ol {
+  padding-left: 20px;
+}
+#wrapper.pdfMode .printPage h1 {
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+#wrapper.pdfMode .printPage p:last-child {
+  margin-bottom: 0;
+}
+#wrapper.pdfMode .printPage .printHeader {
+  vertical-align: bottom;
+  border-bottom: solid 1px black;
+}
+#wrapper.pdfMode .printPage .printHeader .headerLogo {
+  width: 130px;
+  margin-bottom: 10px;
+}
+#wrapper.pdfMode .printPage .printHeader h1 {
+  font-size: 30px;
+  margin: 0;
+}
+#wrapper.pdfMode .printPage .printHeader h4 {
+  margin: 0;
+  padding-top: 15px;
+  vertical-align: bottom;
+  bottom: 0;
+}
+
+.pmac_logo {
+  width: 100%;
+  padding: 15px;
+}
+
+.sideBanner {
+  background-image: url(https://photos.smugmug.com/photos/i-2BwtRTD/0/4bb50414/O/i-2BwtRTD.png);
+  background-size: cover;
+  background-position: 75%;
+  background-repeat: no-repeat;
+  opacity: 0.85;
+  height: 100vh;
+}
+
+div#patientDetailForm {
+  padding: 5px;
+  border: solid 1px lightgrey;
+  width: 50%;
+}
+div#patientDetailForm td {
+  padding: 2px 20px 2px 0;
+}
+
+.imageThumbDiv {
+  border: sold 1px lightgrey;
+  padding: 5px;
+  margin: 15px;
+}
+.imageThumbDiv tr,
+.imageThumbDiv td,
+.imageThumbDiv h3 {
+  vertical-align: top;
+}
+.imageThumbDiv h3 {
+  margin: 0 5;
+}
+.imageThumbDiv img.thumbnail {
+  padding: 5px;
+  width: 200px;
+}
+
+.iframe-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding-top: 56.25%;
+  /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+}
+.iframe-container .responsive-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#hiddenImages {
+  display: none;
+}

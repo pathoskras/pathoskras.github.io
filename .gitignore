@@ -3,5 +3,3 @@ dist/
 data/
 config/config.json
 *.tsbuildinfo
-
-docs
