@@ -233,6 +233,7 @@ const kras: Thalia.WebsiteConfig = {
         port: 465,
         secure: true, // use TLS
         auth: mailAuth,
+        tls: { rejectUnauthorized: false },
       })
 
       router.readTemplate({
@@ -408,6 +409,7 @@ function sendEmail(emailOptions) {
     port: 465,
     secure: true, // use TLS
     auth: mailAuth,
+    tls: { rejectUnauthorized: false },
   })
 
   transporter.verify(function (error) {

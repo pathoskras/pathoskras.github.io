@@ -184,6 +184,7 @@ const kras = {
                 port: 465,
                 secure: true,
                 auth: mailAuth,
+                tls: { rejectUnauthorized: false },
             });
             router.readTemplate({
                 template: '404.mustache',
@@ -318,6 +319,7 @@ function sendEmail(emailOptions) {
         port: 465,
         secure: true,
         auth: mailAuth,
+        tls: { rejectUnauthorized: false },
     });
     transporter.verify(function (error) {
         if (error) {
