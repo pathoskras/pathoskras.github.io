@@ -108,7 +108,7 @@ const kras = {
                     views.inner = views.kras;
                     const output = mustache_1.default.render(views.template, data, views);
                     const buffer = new Uint8Array(node_buffer_1.Buffer.from(output));
-                    node_fs_1.writeFile(path_1.default.resolve(__dirname, '..', 'public', 'kras', 'index.html'), buffer, (err) => {
+                    (0, node_fs_1.writeFile)(path_1.default.resolve(__dirname, '..', 'public', 'kras', 'index.html'), buffer, (err) => {
                         if (err) {
                             console.log(err);
                             router.res.end(err);
