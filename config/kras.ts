@@ -6,7 +6,7 @@ import formidable from 'formidable'
 import puppeteer from 'puppeteer'
 import { Thalia } from '../../../server/thalia'
 
-import { writeFile } from 'node:fs'
+import { writeFile } from 'fs'
 import { Buffer } from 'node:buffer'
 import _ from 'lodash'
 

@@ -9,7 +9,7 @@ const mustache_1 = __importDefault(require("mustache"));
 const nodemailer_1 = __importDefault(require("nodemailer"));
 const formidable_1 = __importDefault(require("formidable"));
 const puppeteer_1 = __importDefault(require("puppeteer"));
-const node_fs_1 = require("node:fs");
+const fs_1 = require("fs");
 const node_buffer_1 = require("node:buffer");
 const lodash_1 = __importDefault(require("lodash"));
 const env = process.env.NODE_ENV || 'development';
@@ -108,7 +108,7 @@ const kras = {
                     views.inner = views.kras;
                     const output = mustache_1.default.render(views.template, data, views);
                     const buffer = new Uint8Array(node_buffer_1.Buffer.from(output));
-                    (0, node_fs_1.writeFile)(path_1.default.resolve(__dirname, '..', 'public', 'kras', 'index.html'), buffer, (err) => {
+                    (0, fs_1.writeFile)(path_1.default.resolve(__dirname, '..', 'public', 'kras', 'index.html'), buffer, (err) => {
                         if (err) {
                             console.log(err);
                             router.res.end(err);
