@@ -126,36 +126,71 @@ const kras: Thalia.WebsiteConfig = {
   },
   controllers: {
     publishToKras: function (router) {
-      // I want to write the kras file to the public folder
-      router.readTemplate({
-        template: 'kras.mustache',
-        content: 'email',
-        callback: (views) => {
-          const data: any = _.cloneDeep(imageData)
-          data.imagesJson = JSON.stringify(data.images)
+      // I want to write the kras.mustache file to the public folder as public/kras/index.html
+      // And email.mustache to public/emailSent/index.html
 
-          views.inner = views.kras
+      var promises = [
+        new Promise((resolve, reject) => {
+          router.readTemplate({
+            template: 'kras.mustache',
+            content: 'email',
+            callback: (views) => {
+              const data: any = _.cloneDeep(imageData)
+              data.imagesJson = JSON.stringify(data.images)
+              views.inner = views.kras
+              const output = mustache.render(views.template, data, views)
+              const buffer = new Uint8Array(Buffer.from(output))
 
-          const output = mustache.render(views.template, data, views)
+              writeFile(
+                path.resolve(__dirname, '..', 'public', 'kras', 'index.html'),
+                buffer,
+                (err) => {
+                  if (err) {
+                    console.log(err)
+                    // router.res.end(err)
+                    reject(err)
+                  }
 
-          const buffer = new Uint8Array(Buffer.from(output))
+                  // router.res.end
+                  resolve('Wrote the file to public/kras/index.html')
+                }
+              )
+            },
+          })
+        }),
+        new Promise((resolve, reject) => {
+          router.readTemplate({
+            template: 'email.mustache',
+            content: 'email',
+            callback: (views) => {
+              const data: any = {}
+              const output = mustache.render(views.template, data, views)
 
-          writeFile(
-            path.resolve(__dirname, '..', 'public', 'kras', 'index.html'),
-            buffer,
-            (err) => {
-              if (err) {
-                console.log(err)
-                router.res.end(err)
-              }
+              const buffer = new Uint8Array(Buffer.from(output))
 
-              router.res.end('Wrote the file to public/kras/index.html')
-            }
-          )
+              writeFile(
+                path.resolve(__dirname, '..', 'public', 'emailSent', 'index.html'),
+                buffer,
+                (err) => {
+                  if (err) {
+                    console.log(err)
+                    reject(err)
+                  }
+                  resolve('Wrote the file to public/kras/index.html')
+                }
+              )
+            },
+          })
+        }),
+      ]
 
-          // router.res.end(output)
-        },
-      })
+      Promise.all(promises)
+        .then((values) => {
+          router.res.end(values.join('\n'))
+        })
+        .catch((err) => {
+          router.res.end(err)
+        })
     },
     kras: function (router) {
       router.readTemplate({
@@ -285,6 +320,22 @@ const kras: Thalia.WebsiteConfig = {
       )
     },
 
+    emailSent: function (router) {
+      router.readTemplate({
+        template: '404.mustache',
+        content: 'email',
+        callback: function (views) {
+          router.res.end(mustache.render(views.content, {}, views))
+        },
+      })
+    },
+    saveDetailsJSON: function (router) {
+
+      const form = new formidable.IncomingForm()
+      console.log(form)
+      router.res.end("okay form saved I guess")
+    },
+
     saveDetails: function (router) {
       // console.log(router.db);
       // console.log('router.path is:', router.path)
@@ -401,6 +452,7 @@ const kras: Thalia.WebsiteConfig = {
 }
 
 function sendEmail(emailOptions) {
+  return
   console.log(`Sending email to ${emailOptions.to}`)
 
   const transporter = nodemailer.createTransport({

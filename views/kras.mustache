@@ -123,6 +123,7 @@
                   </tr>
                 </table>
                 <input value="Save details" type="submit">
+                {{!-- <input id="saveDetailsButton" value="Save details" type="button" onclick="sendFormAsJson()"> --}}
                 <div id="hiddenData" style="display: none;">
                   <textarea value="{{lineData}}" name="lineData" id="lineData" for="saveForm"></textarea>
                   <input value="{{hash}}" name="hash" for="saveForm">
@@ -169,6 +170,25 @@
       if( confirm('This will clear all your data.') ) {
         window.location.href = 'https://pathos.co/kras'
       }
+    }
+
+    function sendFormAsJson() {
+      console.log("Sending form as JSON");
+      d3.select("#saveDetailsButton").attr("disabled", true)
+        .attr("value", "Saving, please do not exit...");
+
+      let form = document.getElementById('saveForm');
+      let data = new FormData(form);
+      let xhr = new XMLHttpRequest();
+      xhr.open('POST', '/saveDetailsJSON', true);
+      xhr.send(data);
+      xhr.onload = function() {
+        if (xhr.status === 200) {
+          alert('Your details have been saved. You will receive an email shortly.');
+        } else {
+          alert('There was a problem saving your details. Please try again.');
+        }
+      };
     }
   </script>
 

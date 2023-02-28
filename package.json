@@ -24,6 +24,9 @@
     "sequelize": "^6.17.0",
     "socket.io": "^2.3.0"
   },
+  "devDependencies": {
+    "@types/node": "^18.14.1"
+  },
   "bugs": {
     "url": "https://github.com/david-ma/kras/issues"
   },

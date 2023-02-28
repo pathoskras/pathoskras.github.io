@@ -131,7 +131,9 @@
                     <td><input value="" for="saveForm" id="doctor" name="doctor" value="" required="true"></td>
                   </tr>
                 </table>
-                <input value="Save details" type="submit">
+                <input id="saveDetailsButton" value="Save details" type="button" onclick="sendFormAsJson()">
+
+                <!-- <input value="Save details" type="submit"> -->
                 <div id="hiddenData" style="display: none;">
                   <textarea value="" name="lineData" id="lineData" for="saveForm"></textarea>
                   <input value="" name="hash" for="saveForm">
@@ -154,7 +156,25 @@
     </div>
   </div>
 
+  <script>
+      function getParameterByName(name, url = window.location.href) {
+        name = name.replace(/[\[\]]/g, '\\$&');
+        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+          results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, ' '));
+      }
 
+      var name = getParameterByName('name');
+      var hash = getParameterByName('hash');
+
+      console.log('Name', name)
+      console.log('Hash', hash)
+
+      if (name !== null && name !== 'null') document.getElementById("name").innerHTML = name;
+      if (hash !== null && hash !== 'null') document.getElementById("websiteWithHash").href = "https://pathos.co/kras/" + hash;
+    </script>
   <script type="text/javascript" src="/js/simplify.js"></script>
   <script type="text/javascript" src="/js/d3_drawer.js"></script>
 
@@ -171,6 +191,25 @@
       if( confirm('This will clear all your data.') ) {
         window.location.href = 'https://pathos.co/kras'
       }
+    }
+
+    function sendFormAsJson() {
+      console.log("Sending form as JSON");
+      d3.select("#saveDetailsButton").attr("disabled", true)
+        .attr("value", "Saving, please do not exit...");
+
+      let form = document.getElementById('saveForm');
+      let data = new FormData(form);
+      let xhr = new XMLHttpRequest();
+      xhr.open('POST', '/saveDetailsJSON', true);
+      xhr.send(data);
+      xhr.onload = function() {
+        if (xhr.status === 200) {
+          alert('Your details have been saved. You will receive an email shortly.');
+        } else {
+          alert('There was a problem saving your details. Please try again.');
+        }
+      };
     }
   </script>
 

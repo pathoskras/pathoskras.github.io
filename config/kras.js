@@ -99,23 +99,52 @@ const kras = {
     },
     controllers: {
         publishToKras: function (router) {
-            router.readTemplate({
-                template: 'kras.mustache',
-                content: 'email',
-                callback: (views) => {
-                    const data = lodash_1.default.cloneDeep(imageData);
-                    data.imagesJson = JSON.stringify(data.images);
-                    views.inner = views.kras;
-                    const output = mustache_1.default.render(views.template, data, views);
-                    const buffer = new Uint8Array(node_buffer_1.Buffer.from(output));
-                    (0, fs_1.writeFile)(path_1.default.resolve(__dirname, '..', 'public', 'kras', 'index.html'), buffer, (err) => {
-                        if (err) {
-                            console.log(err);
-                            router.res.end(err);
-                        }
-                        router.res.end('Wrote the file to public/kras/index.html');
+            var promises = [
+                new Promise((resolve, reject) => {
+                    router.readTemplate({
+                        template: 'kras.mustache',
+                        content: 'email',
+                        callback: (views) => {
+                            const data = lodash_1.default.cloneDeep(imageData);
+                            data.imagesJson = JSON.stringify(data.images);
+                            views.inner = views.kras;
+                            const output = mustache_1.default.render(views.template, data, views);
+                            const buffer = new Uint8Array(node_buffer_1.Buffer.from(output));
+                            (0, fs_1.writeFile)(path_1.default.resolve(__dirname, '..', 'public', 'kras', 'index.html'), buffer, (err) => {
+                                if (err) {
+                                    console.log(err);
+                                    reject(err);
+                                }
+                                resolve('Wrote the file to public/kras/index.html');
+                            });
+                        },
                     });
-                },
+                }),
+                new Promise((resolve, reject) => {
+                    router.readTemplate({
+                        template: 'email.mustache',
+                        content: 'email',
+                        callback: (views) => {
+                            const data = {};
+                            const output = mustache_1.default.render(views.template, data, views);
+                            const buffer = new Uint8Array(node_buffer_1.Buffer.from(output));
+                            (0, fs_1.writeFile)(path_1.default.resolve(__dirname, '..', 'public', 'emailSent', 'index.html'), buffer, (err) => {
+                                if (err) {
+                                    console.log(err);
+                                    reject(err);
+                                }
+                                resolve('Wrote the file to public/kras/index.html');
+                            });
+                        },
+                    });
+                }),
+            ];
+            Promise.all(promises)
+                .then((values) => {
+                router.res.end(values.join('\n'));
+            })
+                .catch((err) => {
+                router.res.end(err);
             });
         },
         kras: function (router) {
@@ -225,6 +254,20 @@ const kras = {
             console.log('Warning, someone is trying to use the KRAS app');
             router.res.end(`Sorry saving data and emailing is currently not available.<br>If you need a PDF copy of this website, Please download and use this: <a href="https://pathos.co/pdfs/example.pdf">https://pathos.co/pdfs/example.pdf</a>`);
         },
+        emailSent: function (router) {
+            router.readTemplate({
+                template: '404.mustache',
+                content: 'email',
+                callback: function (views) {
+                    router.res.end(mustache_1.default.render(views.content, {}, views));
+                },
+            });
+        },
+        saveDetailsJSON: function (router) {
+            const form = new formidable_1.default.IncomingForm();
+            console.log(form);
+            router.res.end("okay form saved I guess");
+        },
         saveDetails: function (router) {
             const form = new formidable_1.default.IncomingForm();
             form.parse(router.req, (err, fields) => {
@@ -312,6 +355,7 @@ const kras = {
 };
 exports.kras = kras;
 function sendEmail(emailOptions) {
+    return;
     console.log(`Sending email to ${emailOptions.to}`);
     const transporter = nodemailer_1.default.createTransport({
         pool: true,
