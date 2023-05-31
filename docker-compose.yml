@@ -1,0 +1,11 @@
+services:
+  web:
+    build: .
+    security_opt:
+      - seccomp:unconfined
+      # - seccomp:chrome.json
+    ports:
+      - "1336:1337"
+    environment:
+      - env=pi
+
