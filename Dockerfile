@@ -13,16 +13,19 @@ WORKDIR /usr/app/Thalia
 RUN yarn install --ignore-scripts
 
 WORKDIR /usr/app/Thalia/websites
+
 RUN git clone https://github.com/pathoskras/pathoskras.github.io.git kras
 WORKDIR /usr/app/Thalia/websites/kras
 RUN yarn install --ignore-scripts
 
 
 WORKDIR /usr/app/Thalia
+COPY . websites/kras
 
-RUN yarn add sqlite3
+# RUN yarn add sqlite3
+RUN yarn add pg
 
-
+ENV NODE_ENV=postgres
 COPY small_config.json /usr/app/Thalia/websites/kras/config/config.json
 EXPOSE 1337
 

@@ -11,6 +11,9 @@ const seq :seqObject = {
   Worksheet: Worksheet
 }
 
-// seq.sequelize.sync({ force: true })
+seq.sequelize.sync({ force: false })
+.then(() => {
+  console.log('Database & tables created!')
+})
 
 export { seq }
