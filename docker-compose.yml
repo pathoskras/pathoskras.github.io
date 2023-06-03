@@ -14,10 +14,13 @@ services:
       interval: 30s
       timeout: 60s
       retries: 5
-      start_period: 10s
+      start_period: 15s
+    restart: always
 
   web:
     build: .
+    volumes:
+      - pdfs:/usr/app/Thalia/websites/kras/data/pdfs
     security_opt:
       - seccomp:unconfined
     ports:
@@ -27,6 +30,8 @@ services:
     depends_on:
       db:
         condition: service_healthy
+    restart: always
 
 volumes:
   postgresqldata:
+  pdfs:

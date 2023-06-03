@@ -25,12 +25,13 @@ RUN yarn add pg
 
 COPY . websites/kras
 
+USER root
+RUN chown -R chrome:chrome /usr/app/Thalia/websites/kras/data/pdfs
+RUN chmod 755 /usr/app/Thalia/websites/kras/data/pdfs
+
 ENV NODE_ENV=postgres
 COPY small_config.json /usr/app/Thalia/websites/kras/config/config.json
 EXPOSE 1337
-
-RUN chown -R chrome:chrome /usr/app/Thalia/websites/kras/data/pdfs
-RUN chmod 755 /usr/app/Thalia/websites/kras/data/pdfs
 
 USER chrome
 
