@@ -293,11 +293,15 @@ function printVersion() {
         .classed('printPage', true);
     drawHeader(videoPage);
     row = videoPage.append('div').classed('row', true);
-    row.append('div').classed("col-xs-6", true)
+    row
+        .append('div')
+        .classed('col-xs-6', true)
         .html(`<a href="https://vimeo.com/506864719" rel="noopener noreferrer" target="_blank"><h1 style="font-size:16px;">The Role of KRas in Cancer</h1>
     <img src="/images/VimeoPreview.png" style="width: 100%;" alt=""><p style="font-size:20px;">https://vimeo.com/506864719</p></a>`)
         .style('text-align', 'center');
-    row.append('div').classed("col-xs-6", true)
+    row
+        .append('div')
+        .classed('col-xs-6', true)
         .html(`<a href="https://vimeo.com/516611480" rel="noopener noreferrer" target="_blank"><h1 style="font-size:16px;">The Role of KRas in Cancer with captions</h1>
     <img src="/images/VimeoPreview.png" style="width: 100%;" alt=""><p style="font-size:20px;">https://vimeo.com/516611480</p></a>`)
         .style('text-align', 'center');
@@ -334,16 +338,39 @@ function printVersion() {
 }
 function lazyLoadHiddenImages(images) {
     try {
-        const div = d3.select("#hiddenImages");
-        div.append("div").selectAll("img").data(images).enter().append("img").attrs({
+        console.log('Loading images in the background');
+        const div = d3.select('#hiddenImages');
+        div
+            .append('div')
+            .selectAll('img')
+            .data(images)
+            .enter()
+            .append('img')
+            .attrs({
             src: (d) => d.thumbnail,
         });
-        if (window.location.href === "https://www.pathos.co/kras/" || window.location.href === "https://www.pathos.co/kras") {
-            div.append("div").selectAll("img").data(images).enter().append("img").attrs({
+        if (window.location.href.indexOf('pathos.co') > -1) {
+            console.log('Load smugmug images on web version');
+            div
+                .append('div')
+                .selectAll('img')
+                .data(images)
+                .enter()
+                .append('img')
+                .attrs({
                 src: (d) => d.smugmug,
             });
         }
-        div.append("div").selectAll("img").data(images).enter().append("img").attrs({
+        else {
+            console.log('No need to do this for the print version');
+        }
+        div
+            .append('div')
+            .selectAll('img')
+            .data(images)
+            .enter()
+            .append('img')
+            .attrs({
             src: (d) => d.large,
         });
     }

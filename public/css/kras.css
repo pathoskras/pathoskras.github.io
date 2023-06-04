@@ -106,7 +106,6 @@ textarea.bigText {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
 }
 #d3-drawer #drawer-ui .btn:hover {
@@ -253,8 +252,7 @@ div#patientDetailForm td {
   position: relative;
   overflow: hidden;
   width: 100%;
-  padding-top: 56.25%;
-  /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+  padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
 }
 .iframe-container .responsive-iframe {
   position: absolute;

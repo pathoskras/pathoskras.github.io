@@ -422,6 +422,8 @@ function printVersion() {
 
 function lazyLoadHiddenImages(images: DrawingData[]) {
   try {
+    console.log('Loading images in the background')
+
     const div = d3.select('#hiddenImages')
     div
       .append('div')
@@ -432,13 +434,8 @@ function lazyLoadHiddenImages(images: DrawingData[]) {
       .attrs({
         src: (d) => d.thumbnail,
       })
-    if (
-      window.location.href === 'https://www.pathos.co/kras/' ||
-      window.location.href === 'https://www.pathos.co/kras' ||
-      window.location.href === 'https://pathos.co/kras/' ||
-      window.location.href === 'https://pathos.co/kras'
-    ) {
-      console.log('No need to do this for the print version?')
+    if (window.location.href.indexOf('pathos.co') > -1) {
+      console.log('Load smugmug images on web version')
       div
         .append('div')
         .selectAll('img')
@@ -448,7 +445,10 @@ function lazyLoadHiddenImages(images: DrawingData[]) {
         .attrs({
           src: (d) => d.smugmug,
         })
+    } else {
+      console.log('No need to do this for the print version')
     }
+
     div
       .append('div')
       .selectAll('img')
