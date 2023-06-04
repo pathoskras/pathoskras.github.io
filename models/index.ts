@@ -18,6 +18,8 @@ let seqOptions: sequelize.Options = {
 
 // Load options from config.json if one is provided
 const env = process.env.NODE_ENV || 'development'
+console.log(`Initialising Sequelize with environment: ${env}`)
+
 try {
   const configOptions = require(path.resolve(__dirname, '..', 'config', 'config.json'))[env]
   seqOptions = _.merge(seqOptions, configOptions)

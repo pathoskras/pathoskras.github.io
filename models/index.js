@@ -43,6 +43,7 @@ let seqOptions = {
     }
 };
 const env = process.env.NODE_ENV || 'development';
+console.log(`Initialising Sequelize with environment: ${env}`);
 try {
     const configOptions = require(path_1.default.resolve(__dirname, '..', 'config', 'config.json'))[env];
     seqOptions = lodash_1.default.merge(seqOptions, configOptions);

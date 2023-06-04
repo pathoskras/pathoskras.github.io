@@ -26,7 +26,7 @@ services:
     ports:
       - '1336:1337'
     environment:
-      - env=pi
+      - NODE_ENV=docker
     depends_on:
       db:
         condition: service_healthy
