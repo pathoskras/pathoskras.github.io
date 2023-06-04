@@ -386,7 +386,7 @@ function sendEmail(emailOptions) {
 async function makePdf(hash) {
     return new Promise((resolve, reject) => {
         let puppeteerOptions = {};
-        if (env === 'pi') {
+        if (env === 'docker') {
             puppeteerOptions = {
                 headless: true,
                 executablePath: '/usr/bin/chromium-browser',

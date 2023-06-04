@@ -491,7 +491,7 @@ async function makePdf(hash: string): Promise<string> {
       // slowMo: 0,
       // devtools: true
     }
-    if (env === 'pi') {
+    if (env === 'docker') {
       puppeteerOptions = {
         headless: true,
         executablePath: '/usr/bin/chromium-browser',
