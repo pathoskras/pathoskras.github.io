@@ -418,7 +418,8 @@ function lazyLoadHiddenImages(images :DrawingData[]) {
     div.append("div").selectAll("img").data(images).enter().append("img").attrs({
       src: (d) => d.thumbnail,
     });
-    if(window.location.href === "https://www.pathos.co/kras/" || window.location.href === "https://www.pathos.co/kras") {
+    if(window.location.href === "https://www.pathos.co/kras/" || window.location.href === "https://www.pathos.co/kras" || window.location.href === "https://pathos.co/kras/" || window.location.href === "https://pathos.co/kras") {
+      console.log("No need to do this for the print version?")
       div.append("div").selectAll("img").data(images).enter().append("img").attrs({
         src: (d) => d.smugmug,
       })
