@@ -12,8 +12,8 @@ const seq :seqObject = {
 }
 
 seq.sequelize.sync({ force: false })
-.then(() => {
-  console.log('Database & tables created!')
-})
+    .then(() => {
+    console.log('Sequelize kras database & worksheet table ready.');
+});
 
 export { seq }

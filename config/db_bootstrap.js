@@ -7,3 +7,7 @@ const seq = {
     Worksheet: models_1.Worksheet
 };
 exports.seq = seq;
+seq.sequelize.sync({ force: false })
+    .then(() => {
+    console.log('Sequelize kras database & worksheet table ready.');
+});
