@@ -2,7 +2,7 @@ console.log('Loaded wrapper.ts')
 
 declare let images: DrawingData[]
 
-lazyLoadHiddenImages(images);
+lazyLoadHiddenImages(images)
 
 const md = new showdown.Converter({ openLinksInNewWindow: true })
 
@@ -335,11 +335,11 @@ function drawHeader(
 function printVersion() {
   console.log('Print mode')
 
-// Clean up web version things
+  // Clean up web version things
   $('#wrapper').toggleClass('pdfMode')
   $('#bannerPageInner').remove()
 
-// Front page
+  // Front page
   const frontPage = d3
     .select('#contentBox')
     .append('div')
@@ -355,7 +355,7 @@ function printVersion() {
     .classed('col-xs-6', true)
     .html(md.makeHtml(introductionText))
 
-// Video Page
+  // Video Page
   const videoPage = d3
     .select('#contentBox')
     .append('div')
@@ -364,16 +364,24 @@ function printVersion() {
   drawHeader(videoPage)
 
   row = videoPage.append('div').classed('row', true)
-    row.append('div').classed("col-xs-6", true)
-    .html(`<a href="https://vimeo.com/506864719" rel="noopener noreferrer" target="_blank"><h1 style="font-size:16px;">The Role of KRas in Cancer</h1>
-    <img src="/images/VimeoPreview.png" style="width: 100%;" alt=""><p style="font-size:20px;">https://vimeo.com/506864719</p></a>`)
+  row
+    .append('div')
+    .classed('col-xs-6', true)
+    .html(
+      `<a href="https://vimeo.com/506864719" rel="noopener noreferrer" target="_blank"><h1 style="font-size:16px;">The Role of KRas in Cancer</h1>
+    <img src="/images/VimeoPreview.png" style="width: 100%;" alt=""><p style="font-size:20px;">https://vimeo.com/506864719</p></a>`
+    )
     .style('text-align', 'center')
-    row.append('div').classed("col-xs-6", true)
-    .html(`<a href="https://vimeo.com/516611480" rel="noopener noreferrer" target="_blank"><h1 style="font-size:16px;">The Role of KRas in Cancer with captions</h1>
-    <img src="/images/VimeoPreview.png" style="width: 100%;" alt=""><p style="font-size:20px;">https://vimeo.com/516611480</p></a>`)
+  row
+    .append('div')
+    .classed('col-xs-6', true)
+    .html(
+      `<a href="https://vimeo.com/516611480" rel="noopener noreferrer" target="_blank"><h1 style="font-size:16px;">The Role of KRas in Cancer with captions</h1>
+    <img src="/images/VimeoPreview.png" style="width: 100%;" alt=""><p style="font-size:20px;">https://vimeo.com/516611480</p></a>`
+    )
     .style('text-align', 'center')
 
-// Terms and Definitions Page
+  // Terms and Definitions Page
   const nextPage = d3
     .select('#contentBox')
     .append('div')
@@ -412,21 +420,44 @@ function printVersion() {
   })
 }
 
-function lazyLoadHiddenImages(images :DrawingData[]) {
+function lazyLoadHiddenImages(images: DrawingData[]) {
   try {
-    const div = d3.select("#hiddenImages")
-    div.append("div").selectAll("img").data(images).enter().append("img").attrs({
-      src: (d) => d.thumbnail,
-    });
-    if(window.location.href === "https://www.pathos.co/kras/" || window.location.href === "https://www.pathos.co/kras" || window.location.href === "https://pathos.co/kras/" || window.location.href === "https://pathos.co/kras") {
-      console.log("No need to do this for the print version?")
-      div.append("div").selectAll("img").data(images).enter().append("img").attrs({
-        src: (d) => d.smugmug,
+    const div = d3.select('#hiddenImages')
+    div
+      .append('div')
+      .selectAll('img')
+      .data(images)
+      .enter()
+      .append('img')
+      .attrs({
+        src: (d) => d.thumbnail,
       })
+    if (
+      window.location.href === 'https://www.pathos.co/kras/' ||
+      window.location.href === 'https://www.pathos.co/kras' ||
+      window.location.href === 'https://pathos.co/kras/' ||
+      window.location.href === 'https://pathos.co/kras'
+    ) {
+      console.log('No need to do this for the print version?')
+      div
+        .append('div')
+        .selectAll('img')
+        .data(images)
+        .enter()
+        .append('img')
+        .attrs({
+          src: (d) => d.smugmug,
+        })
     }
-    div.append("div").selectAll("img").data(images).enter().append("img").attrs({
-      src: (d) => d.large,
-    })
+    div
+      .append('div')
+      .selectAll('img')
+      .data(images)
+      .enter()
+      .append('img')
+      .attrs({
+        src: (d) => d.large,
+      })
   } catch (e) {
     console.error(e)
   }
@@ -434,6 +465,6 @@ function lazyLoadHiddenImages(images :DrawingData[]) {
 
 welcome()
 
-if(window.location.hash === '#printVersion') {
+if (window.location.hash === '#printVersion') {
   printVersion()
 }
