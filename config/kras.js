@@ -275,6 +275,22 @@ const kras = {
                     console.log('ERROR!', err);
                     router.res.end(err);
                 }
+                if (fields.email === undefined) {
+                    console.log('Error: No email address provided');
+                    router.res.end(err);
+                }
+                if (fields.firstName === undefined) {
+                    console.log('Error: No first name provided');
+                    router.res.end(err);
+                }
+                if (fields.lastName === undefined) {
+                    console.log('Error: No last name provided');
+                    router.res.end(err);
+                }
+                if (fields.doctor === undefined) {
+                    console.log('Error: No doctor provided');
+                    router.res.end(err);
+                }
                 const blob = {
                     email: typeof fields.email === 'string' ? fields.email : fields.email[0],
                     firstName: typeof fields.firstName === 'string'

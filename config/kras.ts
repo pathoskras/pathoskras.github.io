@@ -350,6 +350,26 @@ const kras: Thalia.WebsiteConfig = {
           router.res.end(err)
         }
 
+        if (fields.email === undefined) {
+          console.log('Error: No email address provided')
+          router.res.end(err)
+        }
+
+        if (fields.firstName === undefined) {
+          console.log('Error: No first name provided')
+          router.res.end(err)
+        }
+
+        if (fields.lastName === undefined) {
+          console.log('Error: No last name provided')
+          router.res.end(err)
+        }
+
+        if (fields.doctor === undefined) {
+          console.log('Error: No doctor provided')
+          router.res.end(err)
+        }
+
         // This is probably not the right way to enforce formidable fields as strings
         const blob: WorksheetAttributes = {
           email:
