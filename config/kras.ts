@@ -169,7 +169,13 @@ const kras: Thalia.WebsiteConfig = {
               const buffer = new Uint8Array(Buffer.from(output))
 
               writeFile(
-                path.resolve(__dirname, '..', 'public', 'emailSent', 'index.html'),
+                path.resolve(
+                  __dirname,
+                  '..',
+                  'public',
+                  'emailSent',
+                  'index.html'
+                ),
                 buffer,
                 (err) => {
                   if (err) {
@@ -330,10 +336,9 @@ const kras: Thalia.WebsiteConfig = {
       })
     },
     saveDetailsJSON: function (router) {
-
       const form = new formidable.IncomingForm()
       console.log(form)
-      router.res.end("okay form saved I guess")
+      router.res.end('okay form saved I guess')
     },
 
     saveDetails: function (router) {
@@ -472,7 +477,6 @@ const kras: Thalia.WebsiteConfig = {
 }
 
 function sendEmail(emailOptions) {
-  return
   console.log(`Sending email to ${emailOptions.to}`)
 
   const transporter = nodemailer.createTransport({

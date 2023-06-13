@@ -266,7 +266,7 @@ const kras = {
         saveDetailsJSON: function (router) {
             const form = new formidable_1.default.IncomingForm();
             console.log(form);
-            router.res.end("okay form saved I guess");
+            router.res.end('okay form saved I guess');
         },
         saveDetails: function (router) {
             const form = new formidable_1.default.IncomingForm();
@@ -371,7 +371,6 @@ const kras = {
 };
 exports.kras = kras;
 function sendEmail(emailOptions) {
-    return;
     console.log(`Sending email to ${emailOptions.to}`);
     const transporter = nodemailer_1.default.createTransport({
         pool: true,
