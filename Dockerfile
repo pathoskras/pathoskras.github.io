@@ -1,7 +1,8 @@
-FROM zenika/alpine-chrome:with-node as base
+FROM zenika/alpine-chrome:with-puppeteer as base
 
 ENV DISTRO=alpine
 USER root
+RUN apk update
 RUN apk upgrade
 RUN npm install -g typescript
 
@@ -19,6 +20,7 @@ RUN yarn install --ignore-scripts
 WORKDIR /usr/app/Thalia
 
 RUN yarn add pg
+RUN yarn add puppeteer --ignore-scripts
 
 COPY . websites/kras
 
