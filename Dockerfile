@@ -5,22 +5,27 @@ USER root
 RUN apk update
 RUN apk upgrade
 RUN npm install -g typescript
+RUN npm install -g pnpm
 
 WORKDIR /usr/app
+
+ADD https://api.github.com/repos/david-ma/Thalia/git/refs/heads/master Thalia_version.json
 RUN git clone https://github.com/david-ma/Thalia.git
 WORKDIR /usr/app/Thalia
-RUN yarn install --ignore-scripts
+RUN pnpm install --ignore-scripts
 
 WORKDIR /usr/app/Thalia/websites
 
+ADD https://api.github.com/repos/pathoskras/pathoskras.github.io/git/refs/heads/main kras_version.json
 RUN git clone https://github.com/pathoskras/pathoskras.github.io.git kras
+
 WORKDIR /usr/app/Thalia/websites/kras
-RUN yarn install --ignore-scripts
+RUN pnpm install --ignore-scripts
 
 WORKDIR /usr/app/Thalia
 
-RUN yarn add pg
-RUN yarn add puppeteer --ignore-scripts
+RUN pnpm add pg
+RUN pnpm add puppeteer --ignore-scripts
 
 COPY . websites/kras
 
