@@ -196,6 +196,7 @@ ul.menu li.image.hidden {
   min-height: 3000px;
   size: auto;
 }
+#wrapper.pdfMode .navigation,
 #wrapper.pdfMode .sidebar,
 #wrapper.pdfMode .sideBanner {
   display: none;
