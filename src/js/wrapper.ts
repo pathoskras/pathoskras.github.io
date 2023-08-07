@@ -343,6 +343,7 @@ function printVersion() {
   // Clean up web version things
   $('#wrapper').toggleClass('pdfMode')
   $('#bannerPageInner').remove()
+  $('.navigation').remove()
 
   // Front page
   const frontPage = d3

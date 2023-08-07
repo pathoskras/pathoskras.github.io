@@ -279,6 +279,7 @@ function printVersion() {
     console.log('Print mode');
     $('#wrapper').toggleClass('pdfMode');
     $('#bannerPageInner').remove();
+    $('.navigation').remove();
     const frontPage = d3
         .select('#contentBox')
         .append('div')
