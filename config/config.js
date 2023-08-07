@@ -12,7 +12,7 @@ const pathos = {
         '/oberyn': 'https://docs.google.com/presentation/d/e/2PACX-1vRbVjtvKU_jFcqWVnYxXQrHdB30Y2Q0oxp1IGDgBu4X_9I3Gm3Q2mTU2SAKl4wcp6A7OT7lIwQgmV1t/pub?start=false&loop=false&delayms=3000'
     },
     data: true,
-    domains: ['www.pathos.co', 'pathos.co', 'backup.pathos.co'],
+    domains: ['www.pathos.co', 'pathos.co', 'backup.pathos.co', 'server.pathos.co'],
     proxies: [
         {
             domains: ['www.pathos.co', 'pathos.co', 'backup.pathos.co'],
