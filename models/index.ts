@@ -1,5 +1,6 @@
 import * as sequelize from 'sequelize'
 import { WorksheetFactory } from './worksheet'
+import { LogFactory } from './log'
 import _ from 'lodash'
 import path from 'path'
 
@@ -33,4 +34,4 @@ export const dbConfig: sequelize.Sequelize = new sequelize.Sequelize(seqOptions)
 
 // Initialise models
 export const Worksheet = WorksheetFactory(dbConfig)
-
+export const Log = LogFactory(dbConfig)

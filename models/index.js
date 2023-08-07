@@ -26,9 +26,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Worksheet = exports.dbConfig = void 0;
+exports.Log = exports.Worksheet = exports.dbConfig = void 0;
 const sequelize = __importStar(require("sequelize"));
 const worksheet_1 = require("./worksheet");
+const log_1 = require("./log");
 const lodash_1 = __importDefault(require("lodash"));
 const path_1 = __importDefault(require("path"));
 let seqOptions = {
@@ -56,3 +57,4 @@ if (env === 'development') {
 }
 exports.dbConfig = new sequelize.Sequelize(seqOptions);
 exports.Worksheet = (0, worksheet_1.WorksheetFactory)(exports.dbConfig);
+exports.Log = (0, log_1.LogFactory)(exports.dbConfig);

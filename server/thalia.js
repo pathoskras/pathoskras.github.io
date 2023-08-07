@@ -769,7 +769,8 @@ define("server", ["require", "exports", "socket", "http", "url", "http-proxy", "
             let spam = false;
             const ip = request.headers['X-Real-IP'] ||
                 request.headers['x-real-ip'] ||
-                request.connection.remoteAddress;
+                request.connection.remoteAddress ||
+                request.socket.remoteAddress;
             if (ip) {
                 if (!host || blacklist.some((thing) => ip.includes(thing))) {
                     spam = true;

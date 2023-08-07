@@ -183,9 +183,14 @@ const kras = {
                             router.res.end(output);
                         })
                             .catch((e) => {
-                            console.log('ERROR?');
-                            console.log(e);
-                            router.res.end(JSON.stringify(e));
+                            router.db.Log.create({
+                                url: router.req.url,
+                                ipAddress: router.req.socket.remoteAddress,
+                                message: `Error loading kras hash: ${router.path[0]}`,
+                                data: e,
+                            });
+                            const url = '/kras';
+                            router.res.end(`<html><head><meta http-equiv="refresh" content="0;url='${url}'"></head><body>Redirecting to: <a href='${url}'>${url}</a></body></html>`);
                         });
                     }
                     else {
