@@ -122,7 +122,7 @@ const kras = {
                 }),
                 new Promise((resolve, reject) => {
                     router.readTemplate({
-                        template: 'email.mustache',
+                        template: 'content/email.mustache',
                         content: 'email',
                         callback: (views) => {
                             const data = {};
