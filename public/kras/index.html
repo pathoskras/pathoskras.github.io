@@ -174,9 +174,9 @@
                     <td><input value="" for="saveForm" id="doctor" name="doctor" value="" required="true"></td>
                   </tr>
                 </table>
-                <input id="saveDetailsButton" value="Save details" type="button" onclick="sendFormAsJson()">
 
-                <!-- <input value="Save details" type="submit"> -->
+                <input id="saveDetailsButton" value="Save details" type="button" onclick="sendFormByXhr()">
+
                 <div id="hiddenData" style="display: none;">
                   <textarea value="" name="lineData" id="lineData" for="saveForm"></textarea>
                   <input value="" name="hash" for="saveForm">
@@ -236,23 +236,37 @@
       }
     }
 
-    function sendFormAsJson() {
-      console.log("Sending form as JSON");
+    function sendFormByXhr() {
+      console.log("Sending form by xhr");
       d3.select("#saveDetailsButton").attr("disabled", true)
-        .attr("value", "Saving, please do not exit...");
+        .attr("value", "Saving, please do not exit.");
 
       let form = document.getElementById('saveForm');
       let data = new FormData(form);
       let xhr = new XMLHttpRequest();
-      xhr.open('POST', '/saveDetailsJSON', true);
+      xhr.open('POST', 'https://server.pathos.co/saveDetails', true);
       xhr.send(data);
-      xhr.onload = function() {
+
+      xhr.onload = function(d) {
         if (xhr.status === 200) {
           alert('Your details have been saved. You will receive an email shortly.');
+
+//          console.log(d)
+          window.location.href = '/emailSent'
         } else {
           alert('There was a problem saving your details. Please try again.');
+
+          d3.select("#saveDetailsButton").attr("disabled", null)
+            .attr("value", "Save details");
         }
       };
+
+      xhr.onerror = function() {
+          alert('There was a problem saving your details. Please try again.');
+
+          d3.select("#saveDetailsButton").attr("disabled", null)
+            .attr("value", "Save details");
+      }
     }
   </script>
 

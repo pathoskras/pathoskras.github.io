@@ -110,6 +110,8 @@ const imageData = {
   ],
 }
 
+const form = new formidable.IncomingForm()
+
 const kras: Thalia.WebsiteConfig = {
   publish: {
     dist: [
@@ -345,12 +347,17 @@ const kras: Thalia.WebsiteConfig = {
         },
       })
     },
-    saveDetailsJSON: function (router) {
-      const form = new formidable.IncomingForm()
-      console.log(form)
-      router.res.end('okay form saved I guess')
-    },
 
+    /**
+     * Recieve form data from the KRAS app and save it to the database
+     * Parse the form, and check that the fields are valid
+     * * Send error & log if invalid
+     * Generate a hash
+     * Save the data to the database
+     * Make a PDF
+     * Email the PDF to the user
+     * Return with a success message to the host
+     */
     saveDetails: function (router) {
       // console.log(router.db);
       // console.log('router.path is:', router.path)
@@ -358,7 +365,6 @@ const kras: Thalia.WebsiteConfig = {
       // console.log('db: ', Object.keys(router.db))
       // console.log('db: ', router.db.Worksheet)
 
-      const form = new formidable.IncomingForm()
       form.parse(router.req, (err, fields) => {
         if (err) {
           console.log('ERROR!', err)

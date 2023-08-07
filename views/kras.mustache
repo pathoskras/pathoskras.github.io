@@ -202,23 +202,38 @@
       }
     }
 
-    function sendFormAsJson() {
-      console.log("Sending form as JSON");
+    function sendFormByXhr() {
+      console.log("Sending form by xhr");
       d3.select("#saveDetailsButton").attr("disabled", true)
-        .attr("value", "Saving, please do not exit...");
+        .attr("value", "Saving, please do not exit.");
 
       let form = document.getElementById('saveForm');
       let data = new FormData(form);
       let xhr = new XMLHttpRequest();
-      xhr.open('POST', '/saveDetailsJSON', true);
+      xhr.open('POST', 'https://server.pathos.co/saveDetails', true);
+//      xhr.open('POST', 'http://127.0.0.1:1336/saveDetails', true);
       xhr.send(data);
-      xhr.onload = function() {
+
+      xhr.onload = function(d) {
         if (xhr.status === 200) {
           alert('Your details have been saved. You will receive an email shortly.');
+
+//          console.log(d)
+          window.location.href = '/emailSent'
         } else {
           alert('There was a problem saving your details. Please try again.');
+
+          d3.select("#saveDetailsButton").attr("disabled", null)
+            .attr("value", "Save details");
         }
       };
+
+      xhr.onerror = function() {
+          alert('There was a problem saving your details. Please try again.');
+
+          d3.select("#saveDetailsButton").attr("disabled", null)
+            .attr("value", "Save details");
+      }
     }
   </script>
 

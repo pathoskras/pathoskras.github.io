@@ -83,6 +83,7 @@ const imageData = {
         },
     ],
 };
+const form = new formidable_1.default.IncomingForm();
 const kras = {
     publish: {
         dist: [
@@ -268,13 +269,7 @@ const kras = {
                 },
             });
         },
-        saveDetailsJSON: function (router) {
-            const form = new formidable_1.default.IncomingForm();
-            console.log(form);
-            router.res.end('okay form saved I guess');
-        },
         saveDetails: function (router) {
-            const form = new formidable_1.default.IncomingForm();
             form.parse(router.req, (err, fields) => {
                 if (err) {
                     console.log('ERROR!', err);
