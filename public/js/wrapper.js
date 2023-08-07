@@ -95,6 +95,9 @@ function drawBannerPage(text, text2) {
         .classed('sideBanner', true);
     return result;
 }
+function navbutton() {
+    $(".navigation").toggleClass("showMenu");
+}
 function welcome() {
     hideEverything();
     d3.select('ul a[href="#Welcome"]').classed('selected', true);

@@ -152,7 +152,9 @@ const kras: Thalia.WebsiteConfig = {
                   }
 
                   // router.res.end
-                  resolve('Wrote the file to public/kras/index.html')
+                  resolve(
+                    'Used Mustache to render kras.mustache to public/kras/index.html'
+                  )
                 }
               )
             },
@@ -182,7 +184,7 @@ const kras: Thalia.WebsiteConfig = {
                     console.log(err)
                     reject(err)
                   }
-                  resolve('Wrote the file to public/kras/index.html')
+                  resolve('Wrote email.mustache to public/emailSent/index.html')
                 }
               )
             },
@@ -192,7 +194,7 @@ const kras: Thalia.WebsiteConfig = {
 
       Promise.all(promises)
         .then((values) => {
-          router.res.end(values.join('\n'))
+          router.res.end(values.join('<br>'))
         })
         .catch((err) => {
           router.res.end(err)

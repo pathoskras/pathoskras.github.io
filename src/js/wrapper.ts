@@ -108,6 +108,11 @@ function drawBannerPage(
   return result
 }
 
+function navbutton() {
+  // console.log("Nav button clicked");
+  $(".navigation").toggleClass("showMenu");
+}
+
 function welcome() {
   hideEverything()
   d3.select('ul a[href="#Welcome"]').classed('selected', true)

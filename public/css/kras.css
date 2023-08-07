@@ -122,36 +122,71 @@ img.bigImage {
   bottom: 50;
 }
 
+.navigation {
+  position: sticky;
+  margin: 10px 0;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  background: white;
+  border-bottom: solid 1px lightgrey;
+  z-index: 100;
+  text-align: center;
+  height: 100%;
+  max-height: 90px;
+  transition-duration: 300ms;
+  overflow: hidden;
+}
+.navigation .pmac_logo {
+  height: 80px;
+  width: auto;
+}
+.navigation .nav-button {
+  background: white;
+  padding: 10px;
+  margin: 20px 0;
+  font-size: 30px;
+}
+.navigation.showMenu {
+  max-height: 800px;
+}
+.navigation ul {
+  line-height: 1em;
+  font-size: 1em;
+}
+
 .sidebar {
   height: 100vh;
   border-right: solid 1px grey;
 }
-.sidebar ul {
+
+ul.menu {
+  text-align: left;
   list-style: none;
   padding-left: 0;
 }
-.sidebar ul li {
+ul.menu li {
   font-size: 20px;
   margin-bottom: 3px;
   border-radius: 2px;
   margin-right: 14px;
 }
-.sidebar ul li a {
+ul.menu li a {
   text-decoration: none;
   padding: 2px;
   display: block;
 }
-.sidebar ul li a.selected {
+ul.menu li a.selected {
   background: lightcyan;
 }
-.sidebar ul li a:hover {
+ul.menu li a:hover {
   background: lightblue;
 }
-.sidebar ul li.image {
+ul.menu li.image {
   margin-left: 14px;
   margin-right: 0;
 }
-.sidebar ul li.image.hidden {
+ul.menu li.image.hidden {
   display: none;
 }
 
