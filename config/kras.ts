@@ -139,6 +139,7 @@ const kras: Thalia.WebsiteConfig = {
             callback: (views) => {
               const data: any = _.cloneDeep(imageData)
               data.imagesJson = JSON.stringify(data.images)
+              data.clientOnlyVersion = `d3.select('#saveDetailsButton').attr('type', 'button').attr('onclick', 'sendFormByXhr()')`
               views.inner = views.kras
               const output = mustache.render(views.template, data, views)
               const buffer = new Uint8Array(Buffer.from(output))

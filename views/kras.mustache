@@ -152,8 +152,7 @@
                     <td><input value="{{doctor}}" for="saveForm" id="doctor" name="doctor" value="" required="true"></td>
                   </tr>
                 </table>
-                <input value="Save details" type="submit">
-                {{!-- <input id="saveDetailsButton" value="Save details" type="button" onclick="sendFormAsJson()"> --}}
+                <input id="saveDetailsButton" value="Save details" type="submit">
                 <div id="hiddenData" style="display: none;">
                   <textarea value="{{lineData}}" name="lineData" id="lineData" for="saveForm"></textarea>
                   <input value="{{hash}}" name="hash" for="saveForm">
@@ -201,6 +200,8 @@
         window.location.href = 'https://pathos.co/kras'
       }
     }
+
+    {{{ clientOnlyVersion }}}
 
     function sendFormByXhr() {
       console.log("Sending form by xhr");

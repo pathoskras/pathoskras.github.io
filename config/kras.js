@@ -108,6 +108,7 @@ const kras = {
                         callback: (views) => {
                             const data = lodash_1.default.cloneDeep(imageData);
                             data.imagesJson = JSON.stringify(data.images);
+                            data.clientOnlyVersion = `d3.select('#saveDetailsButton').attr('type', 'button').attr('onclick', 'sendFormByXhr()')`;
                             views.inner = views.kras;
                             const output = mustache_1.default.render(views.template, data, views);
                             const buffer = new Uint8Array(node_buffer_1.Buffer.from(output));

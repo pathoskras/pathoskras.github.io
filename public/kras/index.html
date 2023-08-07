@@ -174,9 +174,7 @@
                     <td><input value="" for="saveForm" id="doctor" name="doctor" value="" required="true"></td>
                   </tr>
                 </table>
-
-                <input id="saveDetailsButton" value="Save details" type="button" onclick="sendFormByXhr()">
-
+                <input id="saveDetailsButton" value="Save details" type="submit">
                 <div id="hiddenData" style="display: none;">
                   <textarea value="" name="lineData" id="lineData" for="saveForm"></textarea>
                   <input value="" name="hash" for="saveForm">
@@ -235,6 +233,8 @@
         window.location.href = 'https://pathos.co/kras'
       }
     }
+
+    d3.select('#saveDetailsButton').attr('type', 'button').attr('onclick', 'sendFormByXhr()')
 
     function sendFormByXhr() {
       console.log("Sending form by xhr");
