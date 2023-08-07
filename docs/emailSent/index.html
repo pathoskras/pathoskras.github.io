@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>KRas Email</title>
+
+  <style>
+    html {
+      line-height: 1.15;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      margin: 0;
+    }
+
+
+    main {
+      display: block;
+    }
+
+    h1 {
+      font-size: 2em;
+      margin: 0.67em 0;
+    }
+  </style>
+  <style>
+    html {
+      background-color: #f0f0f0;
+    }
+
+    .baseLayer {
+      background-color: #f0f0f0;
+      padding: 15px;
+    }
+
+    .emailLayer {
+      max-width: 680px;
+      background: white;
+      margin: auto;
+
+      text-align: center;
+    }
+
+    img.logo {
+      background: white;
+      width: 250px;
+      margin: auto;
+    }
+
+    .banner {
+      color: white;
+      background-color: #4b5563;
+      width: 100%;
+      padding: 5px 0;
+    }
+
+    .main {
+      padding: 15px;
+      text-align: left;
+    }
+  </style>
+  <style>html{line-height:1.15;font-family:Arial,Helvetica,sans-serif}body{margin:0}main{display:block}h1{font-size:2em;margin:.67em 0}html{background-color:#f0f0f0}.baseLayer{background-color:#f0f0f0;padding:15px}.emailLayer{max-width:680px;background:#fff;margin:auto;text-align:center}img.logo{background:#fff;width:250px;margin:auto}.banner{color:#fff;background-color:#4b5563;width:100%;padding:5px 0}.main{padding:15px;text-align:left}</style></head>
+
+<body>
+  <div class="baseLayer">
+    <div class="emailLayer">
+      <div class="banner">
+        <h1>Your personal KRas report </h1>
+      </div>
+
+      <div class="main">
+        <p>Hello <span id="name"></span></p>
+        <p>Thank you very much for participating in our study to assess the Interactive KRas Resource. We have attached
+          your personal KRas report as a PDF to this email. You can also access your report online at our <a
+            id="websiteWithHash" href="https://pathos.co/kras/">website</a>.
+        </p>
+        <p>Please share this information with your family
+          and friends and even your GP.</p>
+        <p>Thank you again for your participation and best wishes.</p>
+        <p style="margin-bottom: 5px;">The KRas Oncology Team</p>
+        <p style="margin-top: 0;">Peter MacCallum Cancer Centre</p>
+        <img class="logo" style="width: 200px;" src="https://pathos.co/images/petermac_logo_small.png"
+          alt="Peter Mac Logo">
+      </div>
+
+
+    </div>
+
+  </div>
+
+  <script>
+    function getParameterByName(name, url = window.location.href) {
+      name = name.replace(/[\[\]]/g, '\\$&');
+      var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+      if (!results) return null;
+      if (!results[2]) return '';
+      return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
+
+    var name = getParameterByName('name');
+    var hash = getParameterByName('hash');
+
+    console.log('Name', name)
+    console.log('Hash', hash)
+
+    if (name !== null && name !== 'null') document.getElementById("name").innerHTML = name;
+    if (hash !== null && hash !== 'null') document.getElementById("websiteWithHash").href = "https://pathos.co/kras/" + hash;
+  </script>
+
+  <script>
+      function getParameterByName(name, url = window.location.href) {
+        name = name.replace(/[\[\]]/g, '\\$&');
+        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+          results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, ' '));
+      }
+
+      var name = getParameterByName('name');
+      var hash = getParameterByName('hash');
+
+      console.log('Name', name)
+      console.log('Hash', hash)
+
+      if (name !== null && name !== 'null') document.getElementById("name").innerHTML = name;
+      if (hash !== null && hash !== 'null') document.getElementById("websiteWithHash").href = "https://pathos.co/kras/" + hash;
+    </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TMGFK8ED22"></script>
+  <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-TMGFK8ED22');
+    </script>  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TMGFK8ED22"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-TMGFK8ED22');
+  </script>
+</body>
+
+</html>

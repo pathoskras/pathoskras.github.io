@@ -212,14 +212,12 @@
       let data = new FormData(form);
       let xhr = new XMLHttpRequest();
       xhr.open('POST', 'https://server.pathos.co/saveDetails', true);
-//      xhr.open('POST', 'http://127.0.0.1:1336/saveDetails', true);
       xhr.send(data);
 
       xhr.onload = function(d) {
         if (xhr.status === 200) {
           alert('Your details have been saved. You will receive an email shortly.');
 
-//          console.log(d)
           window.location.href = '/emailSent'
         } else {
           alert('There was a problem saving your details. Please try again.');

@@ -40,9 +40,9 @@
 <body>
   <div id="wrapper" class="container-fluid page">
     <div class="row">
-      <div class="col-md-2 col-xs-3 sidebar">
+      <div class="col-sm-2 hidden-xs sidebar">
         <a href="#Welcome" onclick="welcome()"><img class="pmac_logo" src="/images/petermac_logo.png"></a>
-        <ul>
+        <ul class="menu">
           <li><a href="#Welcome" class="selected" onclick="welcome()">Welcome</a></li>
           <li><a href="#Introduction" onclick="introduction()">Introduction</a></li>
           <li><a href="#Video" onclick="video()">Video</a></li>
@@ -70,7 +70,50 @@
           <li><a href="#Reload" onclick="reload()">Reload page</a></li>
         </ul>
       </div>
-      <div class="col-md-10 col-xs-9 mainContent">
+
+      <div class="navigation visible-xs-block row">
+        <div class="col-xs-2">
+          <a onclick="navbutton()" href="#nav">
+            <i class="nav-button fa fa-bars fa-4" aria-hidden="true" ></i>
+          </a>
+        </div>
+
+        <div class="col-xs-8">
+          <a href="#Welcome" onclick="welcome()"><img class="pmac_logo" src="/images/petermac_logo.png"></a>
+        </div>
+
+        <div class="col-xs-12">
+          <ul class="menu">
+            <li><a href="#Welcome" class="selected" onclick="welcome()">Welcome</a></li>
+            <li><a href="#Introduction" onclick="introduction()">Introduction</a></li>
+            <li><a href="#Video" onclick="video()">Video</a></li>
+            <li><a href="#Images" onclick="toggleImageLinks()">Images</a></li>
+            <li class="hidden image">
+              <a href="#KRasEditPlusLabelsOFF_SwitchPlusWatermarkNewFont.png" onclick="openScreen(0)">KRas turned off</a>
+            </li>
+            <li class="hidden image">
+              <a href="#KRasEditPlusLabelsON_SwitchPlusWatermarkNewFont.png" onclick="openScreen(1)">KRas turned on</a>
+            </li>
+            <li class="hidden image">
+              <a href="#KRasEditPlusLabelsSwitchingOFF_PlusWatermarkNewFont.png" onclick="openScreen(2)">Turning off KRas</a>
+            </li>
+            <li class="hidden image">
+              <a href="#KRasEditPlusLabelsMUTANT_K_RasPlusWatermarkNewFont.png" onclick="openScreen(3)">Faulty KRas</a>
+            </li>
+            <li class="hidden image">
+              <a href="#KRasEditPlusLabelsCancerCellsDividingPlusWatermarkNewFont.png" onclick="openScreen(4)">Tumour cells dividing</a>
+            </li>
+            <li class="hidden image">
+              <a href="#FaultyKRasTreatmentWithLabelsPlusWatermarkNewFont_final.png" onclick="openScreen(5)">New treatments keep faulty KRas turned off</a>
+            </li>
+            <li><a href="#Terms" onclick="terms()">Terms and Definitions</a></li>
+            <li><a href="#Email" onclick="email()">Email to Patient</a></li>
+            <li><a href="#Reload" onclick="reload()">Reload page</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-sm-10 col-xs-12 mainContent">
 
         <div id='contentBox'></div>
 
@@ -131,7 +174,7 @@
                     <td><input value="" for="saveForm" id="doctor" name="doctor" value="" required="true"></td>
                   </tr>
                 </table>
-                <input value="Save details" type="submit">
+                <input id="saveDetailsButton" value="Save details" type="submit">
                 <div id="hiddenData" style="display: none;">
                   <textarea value="" name="lineData" id="lineData" for="saveForm"></textarea>
                   <input value="" name="hash" for="saveForm">
@@ -154,7 +197,25 @@
     </div>
   </div>
 
+  <script>
+      function getParameterByName(name, url = window.location.href) {
+        name = name.replace(/[\[\]]/g, '\\$&');
+        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+          results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, ' '));
+      }
 
+      var name = getParameterByName('name');
+      var hash = getParameterByName('hash');
+
+      console.log('Name', name)
+      console.log('Hash', hash)
+
+      if (name !== null && name !== 'null') document.getElementById("name").innerHTML = name;
+      if (hash !== null && hash !== 'null') document.getElementById("websiteWithHash").href = "https://pathos.co/kras/" + hash;
+    </script>
   <script type="text/javascript" src="/js/simplify.js"></script>
   <script type="text/javascript" src="/js/d3_drawer.js"></script>
 
@@ -172,9 +233,53 @@
         window.location.href = 'https://pathos.co/kras'
       }
     }
+
+    d3.select('#saveDetailsButton').attr('type', 'button').attr('onclick', 'sendFormByXhr()')
+
+    function sendFormByXhr() {
+      console.log("Sending form by xhr");
+      d3.select("#saveDetailsButton").attr("disabled", true)
+        .attr("value", "Saving, please do not exit.");
+
+      let form = document.getElementById('saveForm');
+      let data = new FormData(form);
+      let xhr = new XMLHttpRequest();
+      xhr.open('POST', 'https://server.pathos.co/saveDetails', true);
+      xhr.send(data);
+
+      xhr.onload = function(d) {
+        if (xhr.status === 200) {
+          alert('Your details have been saved. You will receive an email shortly.');
+
+          window.location.href = '/emailSent'
+        } else {
+          alert('There was a problem saving your details. Please try again.');
+
+          d3.select("#saveDetailsButton").attr("disabled", null)
+            .attr("value", "Save details");
+        }
+      };
+
+      xhr.onerror = function() {
+          alert('There was a problem saving your details. Please try again.');
+
+          d3.select("#saveDetailsButton").attr("disabled", null)
+            .attr("value", "Save details");
+      }
+    }
   </script>
 
   <script type="text/javascript" src="/js/wrapper.js"></script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TMGFK8ED22"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-TMGFK8ED22');
+  </script>
 
 </body>
 
