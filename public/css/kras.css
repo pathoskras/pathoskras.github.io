@@ -241,6 +241,9 @@ ul.menu li.image.hidden {
   vertical-align: bottom;
   bottom: 0;
 }
+#wrapper.pdfMode #d3-drawer .printPage:last-child {
+  page-break-after: avoid;
+}
 
 .pmac_logo {
   width: 100%;

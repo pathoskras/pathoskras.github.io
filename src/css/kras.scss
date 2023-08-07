@@ -267,6 +267,9 @@ ul.menu {
 
     page-break-after: always;
   }
+  #d3-drawer .printPage:last-child {
+    page-break-after: avoid;
+  }
   min-height: 3000px;
   size: auto;
 }
