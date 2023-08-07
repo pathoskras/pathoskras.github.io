@@ -11,6 +11,7 @@
 
 body {
 	background-color: #eee;
+	min-height: 100vh;
 }
 
 .page {
@@ -19,24 +20,16 @@ body {
 
 header {
 	width: 100%;
-	height: 500px;
+	height: 30vh;
 	background: #333e52;
 }
 header .blur_background {
-	height: 500px;
+	height: 30vh;
 	width: 100%;
 	position: absolute;
   background: url("/images/header.jpg");
   background-size: cover;
 	background-position: 50% 60%;
-}
-footer {
-	width: 100%;
-	height: 50px;
-	background: #ddd;
-}
-footer .container .row {
-  margin-top: 10px;
 }
 
 .mask {
@@ -45,18 +38,32 @@ footer .container .row {
 }
 
 header .container {
-	padding-top: 300px;
+	padding-top: 15vh;
 }
 
 header h1 {
-	font-size: 60px;
+	/* font-size: 60px; */
+	font-size: 3rem;
 	color: #eee;
 	margin: 0;
 }
 header h2 {
-	font-size: 30px;
+	/* font-size: 30px; */
+	font-size: 1.5rem;
 	color: #eee;
 	margin: 0;
+}
+
+footer {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	height: 50px;
+	background: #ddd;
+}
+
+footer .container .row {
+  margin-top: 10px;
 }
 
 .logo_div {
@@ -72,8 +79,10 @@ header h2 {
 }
 
 #pmac_logo {
-  height: 80px;
-  margin: 30px 10px;
+	height: 80px;
+	max-width: 100%;
+	margin: 30px auto;
+  /* margin: 30px 10px; */
 }
 #manager_photo {
   height: 140px;
@@ -104,7 +113,7 @@ header h2 {
 		</div>
 	</header>
 
-	<div class="container page">
+	<div class="container page hidden-xs">
 		<div class="row">
 			<div class="col-sm-offset-2 col-xs-4 logo_div">
           <img src="/images/pathos_logo.svg" id="pathos_logo"/>
@@ -122,16 +131,37 @@ header h2 {
 			<div class="col-sm-4">
 		    <p class="description">Peter Mac is one of the world's leading cancer research, education and treatment centres globally and is Australia's only public hospital solely dedicated to caring for people affected by cancer. We have over 2,500 staff, including more than 580 laboratory and clinical researchers, all focused on providing better treatments, better care and potential cures for cancer.</p>
 		  </div> 
-
 		</div>
-
 	</div>
+
+
+	<div class="container page visible-xs-block">
+		<div class="row">
+			<div class="col-xs-offset-1 col-xs-10 logo_div">
+          <img src="/images/pathos_logo.svg" id="pathos_logo"/>
+			</div>
+			<div class="col-xs-12">
+		    <p class="description">Peter Mac has designed a Molecular Genomics Diagnostic Reporting Package (PathOS) that uses cutting edge bioinformatics tools, federation of databases and a clinical information exchange platform to provide the clinician with a comprehensive account of the patient's genomic landscape, a list of "actionable" mutations (e.g. mutations that can be specifically targeted using so-called designer drugs).</p>
+		  </div>
+		</div>
+		
+		<div class="row">
+
+			<div class="col-xs-offset-2 col-xs-8 logo_div">
+				<img src="/images/pmac_logo.svg" id="pmac_logo"/>
+		</div>
+			<div class="col-xs-12">
+		    <p class="description">Peter Mac is one of the world's leading cancer research, education and treatment centres globally and is Australia's only public hospital solely dedicated to caring for people affected by cancer. We have over 2,500 staff, including more than 580 laboratory and clinical researchers, all focused on providing better treatments, better care and potential cures for cancer.</p>
+		  </div> 
+		</div>
+	</div>
+
 
 	<footer>
 		<div class="container">
 			<div class="row">
 				<p class="col-xs-6"></p>
-				<p class="col-xs-6 text-right"><a href="https://github.com/david-ma/Thalia">Thalia</a> by <a href="https://twitter.com/frostickle">@Frostickle</a></p>
+				<p class="col-xs-6 text-right">Website made with <a href="https://github.com/david-ma/Thalia">Thalia</a> by <a href="https://david-ma.net/">David Ma</a></p>
 			</div>
 		</div>
 	</footer>
