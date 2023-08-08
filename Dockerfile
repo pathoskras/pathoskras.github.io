@@ -10,17 +10,17 @@ RUN npm install -g pnpm
 WORKDIR /usr/app
 
 ADD https://api.github.com/repos/david-ma/Thalia/git/refs/heads/master Thalia_version.json
-RUN git clone https://github.com/david-ma/Thalia.git
+RUN git clone --depth=1 https://github.com/david-ma/Thalia.git
 WORKDIR /usr/app/Thalia
-RUN pnpm install --ignore-scripts
+RUN pnpm install --ignore-scripts --prod
 
 WORKDIR /usr/app/Thalia/websites
 
 ADD https://api.github.com/repos/pathoskras/pathoskras.github.io/git/refs/heads/main kras_version.json
-RUN git clone https://github.com/pathoskras/pathoskras.github.io.git kras
+RUN git clone --depth=1 https://github.com/pathoskras/pathoskras.github.io.git kras
 
 WORKDIR /usr/app/Thalia/websites/kras
-RUN pnpm install --ignore-scripts
+RUN pnpm install --ignore-scripts --prod
 
 WORKDIR /usr/app/Thalia
 

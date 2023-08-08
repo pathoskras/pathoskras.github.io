@@ -17,6 +17,7 @@ services:
 
   web:
     build: .
+    image: kras
     volumes:
       - pdfs:/usr/app/Thalia/websites/kras/data/pdfs
     security_opt:
