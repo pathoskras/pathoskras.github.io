@@ -149,10 +149,10 @@
           </div>
 
           <div id="emailForm" class="row hidden">
-            <div class="col-xs-9">
+            <div class="col-sm-9 col-xs-12">
               <h1>Email to patient</h1>
               <p>Please fill in this form to send the information from this Resource to your email.</p>
-              <div id="patientDetailForm">
+              <div id="patientDetailForm" class="col-sm-7 col-xs-12">
                 <table>
                   <tr>
                     <td>First Name:</td>
@@ -181,14 +181,14 @@
                 </div>
               </div>
 
-              <div id="emailExtraInfo">
+              <div id="emailExtraInfo" class="col-sm-7 col-xs-12">
                 <p>The information you receive will include a PDF similar to that shown below:</p>
-                <img src="/images/pdf-example.png" style="width: 50%;">
+                <img src="/images/pdf-example.png" style="width: 100%;">
               </div>
 
 
             </div>
-            <div class="sideBanner col-xs-3">
+            <div class="sideBanner col-sm-3 hidden-xs">
               <div id="hiddenImages"></div>
             </div>
           </div>
@@ -215,6 +215,14 @@
 
       if (name !== null && name !== 'null') document.getElementById("name").innerHTML = name;
       if (hash !== null && hash !== 'null') document.getElementById("websiteWithHash").href = "https://pathos.co/kras/" + hash;
+    </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TMGFK8ED22"></script>
+  <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-TMGFK8ED22');
     </script>
   <script type="text/javascript" src="/js/simplify.js"></script>
   <script type="text/javascript" src="/js/d3_drawer.js"></script>

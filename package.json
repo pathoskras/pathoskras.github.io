@@ -10,7 +10,8 @@
   "author": "David Ma <github@david-ma.net>",
   "license": "MIT",
   "scripts": {
-    "start": "node server/thalia.js"
+    "start": "node server/thalia.js",
+    "publish": "echo 'todo: write a script that publishes ts, scss and .mustache files to /public and copies all needed files to /docs"
   },
   "dependencies": {
     "amdefine": "^1.0.1",

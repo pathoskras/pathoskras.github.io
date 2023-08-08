@@ -263,7 +263,6 @@ ul.menu li.image.hidden {
 div#patientDetailForm {
   padding: 5px;
   border: solid 1px lightgrey;
-  width: 50%;
 }
 div#patientDetailForm td {
   padding: 2px 20px 2px 0;
