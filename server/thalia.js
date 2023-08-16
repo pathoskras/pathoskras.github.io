@@ -59,11 +59,35 @@ define("requestHandlers", ["require", "exports", "fs", "mustache", "path", "sass
                 let config;
                 try {
                     const start = Date.now();
-                    if (fs.existsSync(path.resolve(__dirname, '..', 'config.js'))) {
-                        config = require(path.resolve(__dirname, '..', 'config')).config;
+                    const list_of_paths = [
+                        {
+                            config: path.resolve(__dirname, '..', 'config.js'),
+                            workspace: path.resolve(__dirname, '..'),
+                        },
+                        {
+                            config: path.resolve(__dirname, '..', 'config', 'config.js'),
+                            workspace: path.resolve(__dirname, '..'),
+                        },
+                        {
+                            config: path.resolve(process.cwd(), 'config.js'),
+                            workspace: process.cwd(),
+                        },
+                        {
+                            config: path.resolve(process.cwd(), 'config', 'config.js'),
+                            workspace: process.cwd(),
+                        },
+                    ];
+                    for (const paths of list_of_paths) {
+                        if (fs.existsSync(paths.config)) {
+                            config = require(paths.config).config;
+                            config.workspacePath = paths.workspace;
+                            if (config) {
+                                break;
+                            }
+                        }
                     }
-                    else {
-                        config = require(path.resolve(__dirname, '..', 'config', 'config')).config;
+                    if (!config) {
+                        console.log('No config provided');
                     }
                     console.log(`Loading time: ${Date.now() - start} ms - config.js`);
                 }
@@ -79,7 +103,7 @@ define("requestHandlers", ["require", "exports", "fs", "mustache", "path", "sass
                     }
                 }
                 config.standAlone = true;
-                config.folder = path.resolve(__dirname, '..', 'public');
+                config.folder = path.resolve(config.workspacePath, 'public');
                 handle.addWebsite(site, config);
                 console.log('Setting workspace to current directory');
                 handle.index.localhost = workspace;
@@ -159,7 +183,7 @@ define("requestHandlers", ["require", "exports", "fs", "mustache", "path", "sass
             config = config || {};
             handle.websites[site] = new Website(site, config);
             const baseUrl = config.standAlone
-                ? path.resolve(__dirname, '..')
+                ? config.workspacePath
                 : path.resolve(__dirname, '..', 'websites', site);
             if (fs.existsSync(path.resolve(baseUrl, 'data'))) {
                 handle.websites[site].data = path.resolve(baseUrl, 'data');
@@ -224,13 +248,15 @@ define("requestHandlers", ["require", "exports", "fs", "mustache", "path", "sass
                 handle.websites[site].readAllViews = function (cb) {
                     readAllViews(path.resolve(baseUrl, 'views')).then((d) => cb(d));
                 };
-                handle.websites[site].readTemplate = function (options) {
-                    readMustache(options.template, path.resolve(baseUrl, 'views'), options.content)
+                handle.websites[site].readTemplate = function (config) {
+                    readTemplate(config.template, path.resolve(baseUrl, 'views'), config.content)
                         .catch((e) => {
                         console.error('error here?', e);
-                        options.callback(e);
+                        config.callback(e);
                     })
-                        .then((d) => options.callback(d));
+                        .then((d) => {
+                        config.callback(d);
+                    });
                 };
                 readAllViews(path.resolve(baseUrl, 'views')).then((views) => {
                     handle.websites[site].views = views;
@@ -284,7 +310,8 @@ define("requestHandlers", ["require", "exports", "fs", "mustache", "path", "sass
     };
     exports.handle = handle;
     handle.addWebsite('default', {});
-    async function readMustache(template, folder, content = '') {
+    async function readTemplate(template, folder, content = '') {
+        console.log(`Running readTemplate(${template}, ${folder}, ${content})`);
         return new Promise((resolve, reject) => {
             const promises = [];
             const filenames = ['template', 'content'];
