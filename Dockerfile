@@ -1,4 +1,4 @@
-FROM frostickle/thalia:4.0.0 as base
+FROM frostickle/thalia:1.0.1 as base
 
 ENV DISTRO=alpine
 USER root
